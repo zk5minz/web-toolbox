@@ -1,0 +1,403 @@
+.stopwatch-timer-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.stopwatch-timer-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb-home-link:hover {
+  opacity: 0.9 !important;
+  color: #FFFF00 !important;
+  text-decoration-color: #FFFF00 !important;
+}
+
+.breadcrumb span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.stopwatch-timer-header h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+.stopwatch-timer-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.stopwatch-timer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem 2rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.tab:hover {
+  color: #333;
+  background: #f9fafb;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  background: #f0f4ff;
+}
+
+/* Time Display */
+.time-display {
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  color: #333;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.time-display.warning {
+  color: #ef4444;
+  animation: pulse 1s infinite;
+}
+
+.time-display.complete-blink {
+  animation: blink 0.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 120px;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-start {
+  background: #10b981;
+  color: white;
+}
+
+.btn-start:hover:not(:disabled) {
+  background: #059669;
+}
+
+.btn-pause {
+  background: #f59e0b;
+  color: white;
+}
+
+.btn-pause:hover:not(:disabled) {
+  background: #d97706;
+}
+
+.btn-lap {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-lap:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.btn-reset {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+/* Laps Section */
+.laps-section {
+  margin-top: 2rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.laps-section h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.laps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 2px solid #e5e7eb;
+}
+
+.lap-item.fastest {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.lap-item.slowest {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+.lap-number {
+  font-weight: 700;
+  color: #666;
+  font-size: 1rem;
+}
+
+.lap-times {
+  display: flex;
+  gap: 2rem;
+  font-family: 'Courier New', monospace;
+}
+
+.lap-split {
+  font-weight: 700;
+  color: #333;
+  font-size: 1.125rem;
+}
+
+.lap-total {
+  color: #666;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Timer Input Section */
+.timer-input-section {
+  margin-bottom: 2rem;
+}
+
+.time-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-input-group label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #666;
+}
+
+.time-input-group input {
+  width: 80px;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.time-input-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.time-separator {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-top: 1.5rem;
+}
+
+.quick-timers {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quick-timers button {
+  padding: 0.75rem 1.25rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.quick-timers button:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Timer Complete Message */
+.timer-complete-message {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 1rem 0;
+  animation: pulse 1s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stopwatch-timer-container {
+    padding: 1rem;
+  }
+
+  .stopwatch-timer-header h1 {
+    font-size: 2rem;
+  }
+
+  .stopwatch-timer-content {
+    padding: 1.5rem;
+  }
+
+  .time-display {
+    font-size: 3rem;
+    padding: 1rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .time-inputs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .time-input-group input {
+    width: 70px;
+    padding: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .time-separator {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .lap-times {
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-display {
+    font-size: 2rem;
+  }
+
+  .tab {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .quick-timers {
+    gap: 0.25rem;
+  }
+
+  .quick-timers button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}

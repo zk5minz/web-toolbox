@@ -51,7 +51,7 @@
   padding: 10px 20px;
   background: white;
   border-bottom: 1px solid #ddd;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .dark-mode .notepad-breadcrumb {
@@ -101,7 +101,7 @@
   position: relative;
   padding: 14px 20px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -135,7 +135,7 @@
 .menu-option {
   padding: 12px 20px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 18px;
   min-height: 40px;
   display: flex;
   align-items: center;

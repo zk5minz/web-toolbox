@@ -1,0 +1,305 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './PasswordGenerator.css';
+
+function PasswordGenerator() {
+  const [password, setPassword] = useState('');
+  const [length, setLength] = useState(16);
+  const [options, setOptions] = useState({
+    uppercase: true,
+    lowercase: true,
+    numbers: true,
+    symbols: true,
+    excludeSimilar: false,
+    excludeAmbiguous: false
+  });
+  const [copyText, setCopyText] = useState('Copy');
+
+  // Character sets
+  const charSets = {
+    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+    numbers: '0123456789',
+    symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+  };
+
+  const similarChars = 'il1Lo0O';
+  const ambiguousChars = '{}[]()<>';
+
+  // Load settings from localStorage
+  useEffect(() => {
+    const savedLength = localStorage.getItem('passwordLength');
+    const savedOptions = localStorage.getItem('passwordOptions');
+
+    if (savedLength) setLength(parseInt(savedLength));
+    if (savedOptions) setOptions(JSON.parse(savedOptions));
+  }, []);
+
+  // Save settings to localStorage
+  useEffect(() => {
+    localStorage.setItem('passwordLength', length.toString());
+    localStorage.setItem('passwordOptions', JSON.stringify(options));
+  }, [length, options]);
+
+  // Generate password on mount and when options change
+  useEffect(() => {
+    generatePassword();
+  }, [length, options]);
+
+  const generatePassword = () => {
+    let charset = '';
+    let guaranteedChars = '';
+
+    // Build character set based on options
+    if (options.uppercase) {
+      let chars = charSets.uppercase;
+      if (options.excludeSimilar) chars = chars.replace(/[IL]/g, '');
+      charset += chars;
+      guaranteedChars += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    if (options.lowercase) {
+      let chars = charSets.lowercase;
+      if (options.excludeSimilar) chars = chars.replace(/[ilo]/g, '');
+      charset += chars;
+      guaranteedChars += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    if (options.numbers) {
+      let chars = charSets.numbers;
+      if (options.excludeSimilar) chars = chars.replace(/[01]/g, '');
+      charset += chars;
+      guaranteedChars += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    if (options.symbols) {
+      let chars = charSets.symbols;
+      if (options.excludeAmbiguous) {
+        chars = chars.split('').filter(c => !ambiguousChars.includes(c)).join('');
+      }
+      charset += chars;
+      guaranteedChars += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    // Ensure at least one option is selected
+    if (charset === '') {
+      setPassword('Please select at least one character type');
+      return;
+    }
+
+    // Generate password
+    let newPassword = guaranteedChars;
+    const remainingLength = length - guaranteedChars.length;
+
+    for (let i = 0; i < remainingLength; i++) {
+      newPassword += charset[Math.floor(Math.random() * charset.length)];
+    }
+
+    // Shuffle the password
+    newPassword = newPassword.split('').sort(() => Math.random() - 0.5).join('');
+
+    setPassword(newPassword);
+  };
+
+  const calculateStrength = () => {
+    if (!password || password.includes('Please select')) return { text: 'None', color: '#999', percentage: 0 };
+
+    let score = 0;
+
+    // Length score
+    if (length >= 8) score += 1;
+    if (length >= 12) score += 1;
+    if (length >= 16) score += 1;
+    if (length >= 20) score += 1;
+
+    // Variety score
+    if (options.uppercase) score += 1;
+    if (options.lowercase) score += 1;
+    if (options.numbers) score += 1;
+    if (options.symbols) score += 1;
+
+    const percentage = (score / 8) * 100;
+
+    if (score <= 3) return { text: 'Weak', color: '#ef4444', percentage };
+    if (score <= 5) return { text: 'Medium', color: '#f59e0b', percentage };
+    if (score <= 6) return { text: 'Strong', color: '#10b981', percentage };
+    return { text: 'Very Strong', color: '#059669', percentage };
+  };
+
+  const handleCopy = async () => {
+    if (!password || password.includes('Please select')) return;
+
+    try {
+      await navigator.clipboard.writeText(password);
+      setCopyText('Copied!');
+      setTimeout(() => setCopyText('Copy'), 2000);
+    } catch (err) {
+      alert('Failed to copy password');
+    }
+  };
+
+  const handleOptionChange = (option) => {
+    const newOptions = { ...options, [option]: !options[option] };
+
+    // Ensure at least one character type is selected
+    if (!newOptions.uppercase && !newOptions.lowercase && !newOptions.numbers && !newOptions.symbols) {
+      return;
+    }
+
+    setOptions(newOptions);
+  };
+
+  const strength = calculateStrength();
+
+  return (
+    <div className="password-generator-container">
+      <header className="password-generator-header">
+        <div className="breadcrumb">
+          <Link
+            to="/"
+            className="breadcrumb-home-link"
+            style={{
+              color: '#FFEB3B',
+              fontWeight: '700',
+              textDecoration: 'underline',
+              textDecorationThickness: '1.5px',
+              textDecorationColor: '#FFEB3B',
+              textUnderlineOffset: '3px'
+            }}
+          >
+            🏠 Home
+          </Link>
+          <span> &gt; </span>
+          <span>Tools</span>
+          <span> &gt; </span>
+          <span>Password Generator</span>
+        </div>
+        <h1>🔐 Password Generator</h1>
+        <p>Generate strong and secure passwords</p>
+      </header>
+
+      <div className="password-generator-content">
+        <div className="password-display-section">
+          <label className="section-label">Generated Password</label>
+          <div className="password-display-wrapper">
+            <input
+              type="text"
+              value={password}
+              readOnly
+              className="password-display"
+            />
+            <div className="password-buttons">
+              <button onClick={generatePassword} className="regenerate-btn">
+                Regenerate
+              </button>
+              <button onClick={handleCopy} className="copy-btn">
+                {copyText}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="password-strength-section">
+          <label className="section-label">Password Strength</label>
+          <div className="strength-bar-container">
+            <div
+              className="strength-bar"
+              style={{
+                width: `${strength.percentage}%`,
+                backgroundColor: strength.color
+              }}
+            />
+          </div>
+          <p className="strength-text" style={{ color: strength.color }}>
+            {strength.text}
+          </p>
+        </div>
+
+        <div className="password-options-section">
+          <div className="length-section">
+            <label className="section-label">
+              Password Length: <span className="length-value">{length}</span>
+            </label>
+            <input
+              type="range"
+              min="8"
+              max="32"
+              value={length}
+              onChange={(e) => setLength(parseInt(e.target.value))}
+              className="length-slider"
+            />
+            <div className="length-labels">
+              <span>8</span>
+              <span>32</span>
+            </div>
+          </div>
+
+          <div className="character-options">
+            <label className="section-label">Include Characters</label>
+            <div className="checkbox-group">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={options.uppercase}
+                  onChange={() => handleOptionChange('uppercase')}
+                />
+                <span>Uppercase Letters (A-Z)</span>
+              </label>
+
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={options.lowercase}
+                  onChange={() => handleOptionChange('lowercase')}
+                />
+                <span>Lowercase Letters (a-z)</span>
+              </label>
+
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={options.numbers}
+                  onChange={() => handleOptionChange('numbers')}
+                />
+                <span>Numbers (0-9)</span>
+              </label>
+
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={options.symbols}
+                  onChange={() => handleOptionChange('symbols')}
+                />
+                <span>Special Characters (!@#$%^&*)</span>
+              </label>
+
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={options.excludeSimilar}
+                  onChange={() => handleOptionChange('excludeSimilar')}
+                />
+                <span>Exclude Similar Characters (i, l, 1, L, o, 0, O)</span>
+              </label>
+
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={options.excludeAmbiguous}
+                  onChange={() => handleOptionChange('excludeAmbiguous')}
+                />
+                <span>Exclude Ambiguous Symbols ({'{}<>[]()'})</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button onClick={generatePassword} className="generate-btn">
+          Generate Password
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default PasswordGenerator;

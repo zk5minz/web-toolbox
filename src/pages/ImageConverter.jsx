@@ -462,7 +462,7 @@ function ImageConverter() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-6 sm:py-8 md:py-12">
       {/* Header */}
       <div className="text-center mb-6 sm:mb-8 px-4 relative">
-        <div className="flex items-center justify-center gap-2 mb-4 text-base sm:text-lg">
+        <div className="flex items-center justify-center gap-2 mb-4 text-lg sm:text-xl">
           <Link
             to="/"
             className="text-blue-600 font-bold hover:opacity-80 transition-opacity"

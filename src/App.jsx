@@ -2,6 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ImageConverter from './pages/ImageConverter';
 import Notepad from './pages/Notepad';
+import CharacterCounter from './pages/CharacterCounter';
+import PasswordGenerator from './pages/PasswordGenerator';
+import StopwatchTimer from './pages/StopwatchTimer';
+import NumberCounter from './pages/NumberCounter';
 
 function App() {
   return (
@@ -10,6 +14,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/image-converter" element={<ImageConverter />} />
         <Route path="/notepad" element={<Notepad />} />
+        <Route path="/character-counter" element={<CharacterCounter />} />
+        <Route path="/password-generator" element={<PasswordGenerator />} />
+        <Route path="/stopwatch-timer" element={<StopwatchTimer />} />
+        <Route path="/number-counter" element={<NumberCounter />} />
       </Routes>
     </Router>
   );
