@@ -6,7 +6,7 @@ function Home() {
     {
       id: 'image-converter',
       title: 'Image Converter',
-      description: 'Convert images between different formats (JPEG, PNG, WebP, etc.)',
+      description: 'Convert PDF and images between different formats (PDF, JPEG, PNG, WEBP, etc.)',
       path: '/image-converter',
       icon: '🖼️'
     },
