@@ -12,14 +12,34 @@
 }
 
 .breadcrumb {
-  margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 18px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb-home-link {
+  background: white;
+  color: #6366f1;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+.breadcrumb-home-link:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
 }
 
 .breadcrumb span {
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 5px;
+  color: white;
   font-weight: 700;
+  margin: 0 5px;
 }
 
 .calculator-header h1 {

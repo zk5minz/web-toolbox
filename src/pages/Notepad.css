@@ -66,13 +66,13 @@
   border-radius: 8px;
   text-decoration: underline;
   font-weight: 700;
+  font-size: 18px;
   transition: all 0.3s;
 }
 
 .notepad-breadcrumb a:hover {
-  background: #1e40af;
-  color: white;
-  transform: scale(1.05);
+  opacity: 0.8;
+  transform: translateY(-2px);
 }
 
 .notepad-breadcrumb span {

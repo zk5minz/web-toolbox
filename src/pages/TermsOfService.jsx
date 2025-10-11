@@ -201,7 +201,7 @@ function TermsOfService() {
             If you have any questions about these Terms, please contact us:
           </p>
           <ul>
-            <li>Email: <a href="mailto:contact@web-toolbox.com">contact@web-toolbox.com</a></li>
+            <li>Email: <a href="mailto:zk5minz@gmail.com">zk5minz@gmail.com</a></li>
             <li>Visit our <Link to="/contact">Contact Page</Link></li>
           </ul>
         </section>

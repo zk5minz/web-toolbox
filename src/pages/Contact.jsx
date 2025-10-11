@@ -30,7 +30,7 @@ function Contact() {
     e.preventDefault();
     
     // Create mailto link with form data
-    const mailtoLink = `mailto:contact@web-toolbox.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:zk5minz@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
     
@@ -71,7 +71,7 @@ function Contact() {
             <div className="contact-icon">📧</div>
             <h3>Email</h3>
             <p>
-              <a href="mailto:contact@web-toolbox.com">contact@web-toolbox.com</a>
+              <a href="mailto:zk5minz@gmail.com">zk5minz@gmail.com</a>
             </p>
             <p className="contact-description">
               For general inquiries, feedback, or support
@@ -199,7 +199,7 @@ function Contact() {
           <div className="faq-item">
             <h3>❓ I found a bug. How do I report it?</h3>
             <p>
-              Thank you for helping us improve! Please use the contact form with "Bug Report" as the subject and include:
+              Thank you for helping us improve! Please use the contact form with "Bug Report" as the subject, or email us at <a href="mailto:zk5minz@gmail.com">zk5minz@gmail.com</a> and include:
             </p>
             <ul>
               <li>What tool you were using</li>
