@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { fetchFile } from '@ffmpeg/util';
+import { fetchFile, toBlobURL } from '@ffmpeg/util';
 import './AudioConverter.css';
 
 function AudioConverter() {
@@ -29,6 +29,7 @@ function AudioConverter() {
 
   const loadFFmpeg = async () => {
     try {
+      const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
       const ffmpeg = ffmpegRef.current;
       
       ffmpeg.on('log', ({ message }) => {
@@ -40,8 +41,8 @@ function AudioConverter() {
       });
 
       await ffmpeg.load({
-        coreURL: `${window.location.origin}/ffmpeg-core.js`,
-        wasmURL: `${window.location.origin}/ffmpeg-core.wasm`,
+        coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+        wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
       });
       
       console.log('✅ FFmpeg loaded successfully!');
