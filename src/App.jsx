@@ -13,6 +13,10 @@ import QRGenerator from './pages/QRGenerator';
 import ColorExtractor from './pages/ColorExtractor';
 import AudioConverter from './pages/AudioConverter';
 import VideoConverter from './pages/VideoConverter';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
         <Route path="/color-extractor" element={<ColorExtractor />} />
         <Route path="/audio-converter" element={<AudioConverter />} />
         <Route path="/video-converter" element={<VideoConverter />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );

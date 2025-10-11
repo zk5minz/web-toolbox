@@ -173,6 +173,37 @@ function Home() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="home-footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>About</h3>
+            <ul>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h3>Legal</h3>
+            <ul>
+              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service">Terms of Service</Link></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">Sitemap</a></li>
+              <li><a href="/robots.txt" target="_blank" rel="noopener noreferrer">Robots.txt</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2025 Web Toolbox. All rights reserved.</p>
+          <p>Made with ❤️ for everyone</p>
+        </div>
+      </footer>
     </div>
   );
 }
