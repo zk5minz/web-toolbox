@@ -114,12 +114,23 @@ Reading Time: ${stats.readingTime} min`;
             to="/"
             className="breadcrumb-home-link"
             style={{
-              color: '#FFEB3B',
-              fontWeight: '700',
+              background: 'white',
+              color: '#6366f1',
+              padding: '8px 16px',
+              borderRadius: '8px',
               textDecoration: 'underline',
-              textDecorationThickness: '1.5px',
-              textDecorationColor: '#FFEB3B',
-              textUnderlineOffset: '3px'
+              fontWeight: '700',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#1e40af';
+              e.target.style.color = 'white';
+              e.target.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'white';
+              e.target.style.color = '#6366f1';
+              e.target.style.transform = 'scale(1)';
             }}
           >
             🏠 Home
@@ -129,8 +140,30 @@ Reading Time: ${stats.readingTime} min`;
           <span> &gt; </span>
           <span>Word & Character Counter</span>
         </div>
-        <h1>🔠 Word & Character Counter</h1>
-        <p>Analyze your text with real-time statistics</p>
+        <h1 style={{
+          fontSize: '56px',
+          fontWeight: '700',
+          color: 'white',
+          textAlign: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '20px',
+          margin: '0'
+        }}>
+          <span>🔠</span>
+          <span>Word & Character Counter</span>
+        </h1>
+        <p style={{
+          fontSize: '22px',
+          fontWeight: '700',
+          color: 'white',
+          textAlign: 'center',
+          marginTop: '10px',
+          marginBottom: '40px'
+        }}>
+          Analyze your text with real-time statistics
+        </p>
       </header>
 
       <div className="character-counter-content">

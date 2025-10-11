@@ -9,10 +9,10 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
   const [customColor, setCustomColor] = useState('#FFFFFF');
 
   const backgroundOptions = [
-    { value: 'transparent', label: '투명', color: 'transparent' },
-    { value: 'white', label: '흰색', color: '#FFFFFF' },
-    { value: 'black', label: '검은색', color: '#000000' },
-    { value: 'custom', label: '커스텀', color: customColor },
+    { value: 'transparent', label: 'Transparent', color: 'transparent' },
+    { value: 'white', label: 'White', color: '#FFFFFF' },
+    { value: 'black', label: 'Black', color: '#000000' },
+    { value: 'custom', label: 'Custom', color: customColor },
   ];
 
   useEffect(() => {
@@ -84,10 +84,10 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
             <svg className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
             </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">여백 추가</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add Padding</h2>
             {isPaddingEnabled && hasChanges && (
               <span className="ml-3 px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-medium">
-                활성화
+                Active
               </span>
             )}
           </div>
@@ -113,7 +113,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                   onChange={handleTogglePadding}
                   className="w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
                 />
-                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">여백 추가 활성화</span>
+                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">Enable Padding</span>
               </label>
             </div>
 
@@ -128,16 +128,16 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                       onChange={handleUniformChange}
                       className="w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
                     />
-                    <span className="ml-2 text-sm sm:text-base text-gray-700">모든 방향 동일</span>
+                    <span className="ml-2 text-sm sm:text-base text-gray-700">Uniform padding</span>
                   </label>
                 </div>
 
                 {/* Padding Inputs */}
                 <div className="mb-4 sm:mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">여백 크기 (px)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">Padding Size (px)</label>
                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label className="block text-xs text-gray-600 mb-1">상단</label>
+                      <label className="block text-xs text-gray-600 mb-1">Top</label>
                       <input
                         type="number"
                         min="0"
@@ -148,7 +148,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-gray-600 mb-1">하단</label>
+                      <label className="block text-xs text-gray-600 mb-1">Bottom</label>
                       <input
                         type="number"
                         min="0"
@@ -160,7 +160,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-gray-600 mb-1">좌측</label>
+                      <label className="block text-xs text-gray-600 mb-1">Left</label>
                       <input
                         type="number"
                         min="0"
@@ -172,7 +172,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-gray-600 mb-1">우측</label>
+                      <label className="block text-xs text-gray-600 mb-1">Right</label>
                       <input
                         type="number"
                         min="0"
@@ -188,7 +188,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
 
                 {/* Background Color Selection */}
                 <div className="mb-4 sm:mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">배경색</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">Background Color</label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                     {backgroundOptions.map((option) => (
                       <button
@@ -217,7 +217,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                   {/* Custom Color Picker */}
                   {backgroundColor === 'custom' && (
                     <div className="mt-3">
-                      <label className="block text-xs text-gray-600 mb-1">커스텀 색상</label>
+                      <label className="block text-xs text-gray-600 mb-1">Custom Color</label>
                       <input
                         type="color"
                         value={customColor}
@@ -231,10 +231,10 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                 {/* Size Preview */}
                 {originalWidth > 0 && originalHeight > 0 && (
                   <div className="mb-4 sm:mb-6 bg-gray-50 rounded-lg p-3 sm:p-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">크기 미리보기</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Size Preview</label>
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <div>
-                        <p className="text-xs text-gray-600">원본 크기</p>
+                        <p className="text-xs text-gray-600">Original Size</p>
                         <p className="text-base font-semibold text-gray-800">
                           {originalWidth} × {originalHeight}px
                         </p>
@@ -245,7 +245,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
                           <div>
-                            <p className="text-xs text-gray-600">여백 추가 후</p>
+                            <p className="text-xs text-gray-600">After Padding</p>
                             <p className="text-base font-semibold text-purple-600">
                               {newWidth} × {newHeight}px
                             </p>
@@ -270,7 +270,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
-                    초기화
+                    Reset
                   </button>
                 </div>
               </>
@@ -278,7 +278,7 @@ export default function PaddingTool({ originalWidth, originalHeight, onPaddingCh
 
             {!isPaddingEnabled && (
               <div className="text-center py-8 text-gray-500">
-                여백 추가를 활성화하려면 위의 체크박스를 선택하세요
+                Check the box above to enable padding
               </div>
             )}
           </div>

@@ -84,7 +84,7 @@ export function clearHistory() {
 /**
  * Calculate relative time from timestamp
  * @param {string} timestamp - ISO timestamp
- * @returns {string} Relative time string (e.g., "5분 전", "2시간 전")
+ * @returns {string} Relative time string (e.g., "5 minutes ago", "2 hours ago")
  */
 export function getRelativeTime(timestamp) {
   const now = new Date();
@@ -95,18 +95,17 @@ export function getRelativeTime(timestamp) {
   const diffHour = Math.floor(diffMin / 60);
   const diffDay = Math.floor(diffHour / 24);
 
-  if (diffSec < 60) return '방금 전';
-  if (diffMin < 60) return `${diffMin}분 전`;
-  if (diffHour < 24) return `${diffHour}시간 전`;
-  if (diffDay < 7) return `${diffDay}일 전`;
+  if (diffSec < 60) return 'just now';
+  if (diffMin < 60) return `${diffMin} minute${diffMin > 1 ? 's' : ''} ago`;
+  if (diffHour < 24) return `${diffHour} hour${diffHour > 1 ? 's' : ''} ago`;
+  if (diffDay < 7) return `${diffDay} day${diffDay > 1 ? 's' : ''} ago`;
+  if (diffDay < 30) return `${Math.floor(diffDay / 7)} week${Math.floor(diffDay / 7) > 1 ? 's' : ''} ago`;
 
-  // Format as date if older than 7 days
-  return past.toLocaleDateString('ko-KR', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  });
+  const diffMonth = Math.floor(diffDay / 30);
+  if (diffMonth < 12) return `${diffMonth} month${diffMonth > 1 ? 's' : ''} ago`;
+
+  const diffYear = Math.floor(diffMonth / 12);
+  return `${diffYear} year${diffYear > 1 ? 's' : ''} ago`;
 }
 
 /**

@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(mkdir:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(for file in Watermark.jsx Filters.jsx CropTool.jsx QualitySlider.jsx History.jsx Settings.jsx Stats.jsx FileSizeComparison.jsx)",
+      "Bash(done)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

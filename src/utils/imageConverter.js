@@ -658,7 +658,7 @@ export async function convertPDFToImages(pdfFile, format = 'png', quality = 0.9,
   } catch (error) {
     console.error('PDF to images conversion failed:', error);
     console.error('Error stack:', error.stack);
-    throw new Error('PDF 변환 실패: ' + error.message);
+    throw new Error('PDF conversion failed: ' + error.message);
   }
 }
 

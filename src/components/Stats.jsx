@@ -53,7 +53,7 @@ function Stats() {
     labels: ['JPG', 'PNG', 'WEBP', 'PDF'],
     datasets: [
       {
-        label: '변환 횟수',
+        label: 'Conversions',
         data: [
           stats.formatCounts.jpg,
           stats.formatCounts.png,
@@ -101,7 +101,7 @@ function Stats() {
     }),
     datasets: [
       {
-        label: '변환 횟수',
+        label: 'Conversions',
         data: dailyCounts,
         fill: false,
         borderColor: 'rgb(79, 70, 229)',
@@ -133,7 +133,7 @@ function Stats() {
             <svg className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">사용 통계</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Usage Statistics</h2>
           </div>
           <svg
             className={`w-5 h-5 sm:w-6 sm:h-6 text-gray-600 transition-transform ${isOpen ? 'transform rotate-180' : ''}`}
@@ -154,7 +154,7 @@ function Stats() {
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm text-blue-600 font-medium">총 변환 횟수</p>
+                    <p className="text-xs sm:text-sm text-blue-600 font-medium">Total Conversions</p>
                     <p className="text-2xl sm:text-3xl font-bold text-blue-700 mt-1">{stats.totalConversions}</p>
                   </div>
                   <svg className="w-8 h-8 sm:w-10 sm:h-10 text-blue-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,7 +167,7 @@ function Stats() {
               <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm text-green-600 font-medium">총 파일 개수</p>
+                    <p className="text-xs sm:text-sm text-green-600 font-medium">Total Files</p>
                     <p className="text-2xl sm:text-3xl font-bold text-green-700 mt-1">{stats.totalFiles}</p>
                   </div>
                   <svg className="w-8 h-8 sm:w-10 sm:h-10 text-green-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,7 +180,7 @@ function Stats() {
               <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm text-red-600 font-medium">JPG 변환</p>
+                    <p className="text-xs sm:text-sm text-red-600 font-medium">JPG Conversions</p>
                     <p className="text-2xl sm:text-3xl font-bold text-red-700 mt-1">{stats.formatCounts.jpg}</p>
                   </div>
                   <span className="text-xl sm:text-2xl font-bold text-red-500 opacity-50">JPG</span>
@@ -191,7 +191,7 @@ function Stats() {
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm text-blue-600 font-medium">PNG 변환</p>
+                    <p className="text-xs sm:text-sm text-blue-600 font-medium">PNG Conversions</p>
                     <p className="text-2xl sm:text-3xl font-bold text-blue-700 mt-1">{stats.formatCounts.png}</p>
                   </div>
                   <span className="text-xl sm:text-2xl font-bold text-blue-500 opacity-50">PNG</span>
@@ -202,7 +202,7 @@ function Stats() {
               <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm text-yellow-600 font-medium">WEBP 변환</p>
+                    <p className="text-xs sm:text-sm text-yellow-600 font-medium">WEBP Conversions</p>
                     <p className="text-2xl sm:text-3xl font-bold text-yellow-700 mt-1">{stats.formatCounts.webp}</p>
                   </div>
                   <span className="text-lg sm:text-xl font-bold text-yellow-500 opacity-50">WEBP</span>
@@ -213,7 +213,7 @@ function Stats() {
               <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-lg p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm text-teal-600 font-medium">PDF 변환</p>
+                    <p className="text-xs sm:text-sm text-teal-600 font-medium">PDF Conversions</p>
                     <p className="text-2xl sm:text-3xl font-bold text-teal-700 mt-1">{stats.formatCounts.pdf}</p>
                   </div>
                   <span className="text-xl sm:text-2xl font-bold text-teal-500 opacity-50">PDF</span>
@@ -224,7 +224,7 @@ function Stats() {
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 sm:p-5 col-span-2">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm text-purple-600 font-medium">총 절약한 용량</p>
+                    <p className="text-xs sm:text-sm text-purple-600 font-medium">Total Space Saved</p>
                     <p className="text-2xl sm:text-3xl font-bold text-purple-700 mt-1">{formatBytes(stats.totalSavedSize)}</p>
                   </div>
                   <svg className="w-8 h-8 sm:w-10 sm:h-10 text-purple-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,13 +238,13 @@ function Stats() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
               {/* 도넛 차트 */}
               <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-4">포맷별 변환 비율</h3>
+                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-4">Conversions by Format</h3>
                 <div className="h-64">
                   {stats.totalConversions > 0 ? (
                     <Doughnut data={doughnutData} options={chartOptions} />
                   ) : (
                     <div className="flex items-center justify-center h-full text-gray-400">
-                      <p>변환 데이터가 없습니다</p>
+                      <p>No conversion data</p>
                     </div>
                   )}
                 </div>
@@ -252,7 +252,7 @@ function Stats() {
 
               {/* 라인 차트 */}
               <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-4">최근 7일 변환 추이</h3>
+                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-4">Last 7 Days Trend</h3>
                 <div className="h-64">
                   <Line data={lineData} options={chartOptions} />
                 </div>
@@ -266,22 +266,22 @@ function Stats() {
                   onClick={() => setShowResetConfirm(true)}
                   className="px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors font-medium text-sm sm:text-base"
                 >
-                  통계 초기화
+                  Reset Statistics
                 </button>
               ) : (
                 <div className="flex items-center gap-3">
-                  <p className="text-sm sm:text-base text-gray-700 font-medium">정말 초기화하시겠습니까?</p>
+                  <p className="text-sm sm:text-base text-gray-700 font-medium">Are you sure you want to reset?</p>
                   <button
                     onClick={handleReset}
                     className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium text-sm sm:text-base"
                   >
-                    확인
+                    Confirm
                   </button>
                   <button
                     onClick={() => setShowResetConfirm(false)}
                     className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium text-sm sm:text-base"
                   >
-                    취소
+                    Cancel
                   </button>
                 </div>
               )}

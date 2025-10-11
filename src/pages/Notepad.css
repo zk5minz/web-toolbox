@@ -60,17 +60,19 @@
 }
 
 .notepad-breadcrumb a {
-  color: #007bff;
+  background: white;
+  color: #6366f1;
+  padding: 8px 16px;
+  border-radius: 8px;
   text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-decoration-color: #0066cc;
-  text-underline-offset: 3px;
   font-weight: 700;
-  transition: opacity 0.2s;
+  transition: all 0.3s;
 }
 
 .notepad-breadcrumb a:hover {
-  opacity: 0.8;
+  background: #1e40af;
+  color: white;
+  transform: scale(1.05);
 }
 
 .notepad-breadcrumb span {

@@ -44,6 +44,43 @@ function Home() {
       description: 'Simple number counter with increment and decrement buttons',
       path: '/number-counter',
       icon: '🔢'
+    },
+    {
+      id: 'world-clock',
+      title: 'World Clock',
+      description: 'Check the time around the world',
+      path: '/world-clock',
+      icon: '🌍'
+    },
+    {
+      id: 'qr-generator',
+      title: 'QR Code Generator',
+      description: 'Create custom QR codes for URLs, text, WiFi, and more',
+      path: '/qr-generator',
+      icon: '/qr-icon.png',
+      isImage: true
+    },
+    {
+      id: 'scientific-calculator',
+      title: 'Scientific Calculator',
+      description: 'Professional scientific calculator with advanced functions',
+      path: '/scientific-calculator',
+      icon: '/calculator-icon.png',
+      isImage: true
+    },
+    {
+      id: 'background-remover',
+      title: 'Background Remover',
+      description: 'Remove image backgrounds automatically with AI',
+      path: '/background-remover',
+      icon: '🪄'
+    },
+    {
+      id: 'color-extractor',
+      title: 'Color Extractor',
+      description: 'Extract color palette from any image with HEX and RGB codes',
+      path: '/color-extractor',
+      icon: '🎨'
     }
   ];
 
@@ -58,7 +95,13 @@ function Home() {
         <div className="tools-grid">
           {tools.map(tool => (
             <Link to={tool.path} key={tool.id} className="tool-card">
-              <div className="tool-icon">{tool.icon}</div>
+              <div className="tool-icon">
+                {tool.icon.startsWith('/') ? (
+                  <img src={tool.icon} alt={tool.title} style={{width: '48px', height: '48px'}} />
+                ) : (
+                  <div style={{fontSize: '48px'}}>{tool.icon}</div>
+                )}
+              </div>
               <h2>{tool.title}</h2>
               <p>{tool.description}</p>
             </Link>

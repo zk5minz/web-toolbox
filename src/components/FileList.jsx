@@ -42,7 +42,7 @@ export default function FileList({ files, fileStatuses, convertedImages, selecte
     switch (status?.status) {
       case 'pending':
         return (
-          <div className="absolute top-2 left-2 bg-gray-400 text-white rounded-full w-6 h-6 flex items-center justify-center" title="대기 중">
+          <div className="absolute top-2 left-2 bg-gray-400 text-white rounded-full w-6 h-6 flex items-center justify-center" title="Pending">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -50,7 +50,7 @@ export default function FileList({ files, fileStatuses, convertedImages, selecte
         );
       case 'converting':
         return (
-          <div className="absolute top-2 left-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center" title="변환 중">
+          <div className="absolute top-2 left-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center" title="Converting">
             <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
@@ -59,7 +59,7 @@ export default function FileList({ files, fileStatuses, convertedImages, selecte
         );
       case 'success':
         return (
-          <div className="absolute top-2 left-2 bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center" title="변환 완료">
+          <div className="absolute top-2 left-2 bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center" title="Conversion Complete">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
@@ -67,7 +67,7 @@ export default function FileList({ files, fileStatuses, convertedImages, selecte
         );
       case 'error':
         return (
-          <div className="absolute top-2 left-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center" title={`변환 실패: ${status.error || '알 수 없는 오류'}`}>
+          <div className="absolute top-2 left-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center" title={`Conversion Failed: ${status.error || 'Unknown error'}`}>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -85,7 +85,7 @@ export default function FileList({ files, fileStatuses, convertedImages, selecte
   return (
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 pb-4 sm:pb-6">
       <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8">
-        <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">업로드된 파일 ({files.length})</h3>
+        <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-800">Uploaded Files ({files.length})</h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {previewUrls.map(({ file, url }, index) => (
@@ -97,7 +97,7 @@ export default function FileList({ files, fileStatuses, convertedImages, selecte
               <button
                 onClick={() => onRemove(index)}
                 className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors opacity-0 group-hover:opacity-100 z-10"
-                title="파일 삭제"
+                title="Delete File"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -132,7 +132,7 @@ export default function FileList({ files, fileStatuses, convertedImages, selecte
                   <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  다운로드
+                  Download
                 </button>
               )}
             </div>

@@ -14,6 +14,7 @@ export default function Watermark({ onWatermarkChange }) {
 
   // Image watermark options
   const [watermarkImage, setWatermarkImage] = useState(null);
+  const [watermarkFileName, setWatermarkFileName] = useState('');
   const [imageSize, setImageSize] = useState(50);
   const [imageOpacity, setImageOpacity] = useState(50);
 
@@ -22,15 +23,15 @@ export default function Watermark({ onWatermarkChange }) {
   const [margin, setMargin] = useState(20);
 
   const positions = [
-    { value: 'top-left', label: '좌상단', icon: '↖' },
-    { value: 'top-center', label: '상단', icon: '↑' },
-    { value: 'top-right', label: '우상단', icon: '↗' },
-    { value: 'middle-left', label: '좌측', icon: '←' },
-    { value: 'center', label: '중앙', icon: '●' },
-    { value: 'middle-right', label: '우측', icon: '→' },
-    { value: 'bottom-left', label: '좌하단', icon: '↙' },
-    { value: 'bottom-center', label: '하단', icon: '↓' },
-    { value: 'bottom-right', label: '우하단', icon: '↘' },
+    { value: 'top-left', label: 'Top Left', icon: '↖' },
+    { value: 'top-center', label: 'Top Center', icon: '↑' },
+    { value: 'top-right', label: 'Top Right', icon: '↗' },
+    { value: 'middle-left', label: 'Middle Left', icon: '←' },
+    { value: 'center', label: 'Center', icon: '●' },
+    { value: 'middle-right', label: 'Middle Right', icon: '→' },
+    { value: 'bottom-left', label: 'Bottom Left', icon: '↙' },
+    { value: 'bottom-center', label: 'Bottom Center', icon: '↓' },
+    { value: 'bottom-right', label: 'Bottom Right', icon: '↘' },
   ];
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export default function Watermark({ onWatermarkChange }) {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith('image/')) {
+      setWatermarkFileName(file.name);
       const reader = new FileReader();
       reader.onload = (event) => {
         setWatermarkImage(event.target.result);
@@ -87,6 +89,7 @@ export default function Watermark({ onWatermarkChange }) {
     setTextOpacity(50);
     setFontBold(false);
     setWatermarkImage(null);
+    setWatermarkFileName('');
     setImageSize(50);
     setImageOpacity(50);
     setPosition('bottom-right');
@@ -108,10 +111,10 @@ export default function Watermark({ onWatermarkChange }) {
             <svg className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
             </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">워터마크 추가</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add Watermark</h2>
             {isEnabled && hasChanges && (
               <span className="ml-3 px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs font-medium">
-                활성화
+                Active
               </span>
             )}
           </div>
@@ -137,7 +140,7 @@ export default function Watermark({ onWatermarkChange }) {
                   onChange={(e) => setIsEnabled(e.target.checked)}
                   className="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">워터마크 추가 활성화</span>
+                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">Enable Watermark</span>
               </label>
             </div>
 
@@ -145,7 +148,7 @@ export default function Watermark({ onWatermarkChange }) {
               <>
                 {/* Watermark Type Selection */}
                 <div className="mb-4 sm:mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">워터마크 타입</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">Watermark Type</label>
                   <div className="grid grid-cols-2 gap-3">
                     <label className={`flex items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
                       watermarkType === 'text' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-300 bg-white hover:border-indigo-400'
@@ -161,7 +164,7 @@ export default function Watermark({ onWatermarkChange }) {
                       <svg className={`w-6 h-6 mr-2 ${watermarkType === 'text' ? 'text-indigo-600' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                       </svg>
-                      <span className={`font-medium ${watermarkType === 'text' ? 'text-indigo-600' : 'text-gray-700'}`}>텍스트</span>
+                      <span className={`font-medium ${watermarkType === 'text' ? 'text-indigo-600' : 'text-gray-700'}`}>Text</span>
                     </label>
                     <label className={`flex items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
                       watermarkType === 'image' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-300 bg-white hover:border-indigo-400'
@@ -177,7 +180,7 @@ export default function Watermark({ onWatermarkChange }) {
                       <svg className={`w-6 h-6 mr-2 ${watermarkType === 'image' ? 'text-indigo-600' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      <span className={`font-medium ${watermarkType === 'image' ? 'text-indigo-600' : 'text-gray-700'}`}>이미지</span>
+                      <span className={`font-medium ${watermarkType === 'image' ? 'text-indigo-600' : 'text-gray-700'}`}>Image</span>
                     </label>
                   </div>
                 </div>
@@ -187,12 +190,12 @@ export default function Watermark({ onWatermarkChange }) {
                   <div className="mb-4 sm:mb-6 space-y-4">
                     {/* Text Input */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">워터마크 텍스트</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Watermark Text</label>
                       <input
                         type="text"
                         value={text}
                         onChange={(e) => setText(e.target.value)}
-                        placeholder="예: © 2024 My Company"
+                        placeholder="e.g., © 2024 My Company"
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                       />
                     </div>
@@ -200,7 +203,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Font Size */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        폰트 크기: {fontSize}px
+                        Font Size: {fontSize}px
                       </label>
                       <input
                         type="range"
@@ -215,7 +218,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Font Color & Bold */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">폰트 색상</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Font Color</label>
                         <input
                           type="color"
                           value={fontColor}
@@ -224,7 +227,7 @@ export default function Watermark({ onWatermarkChange }) {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">폰트 스타일</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Font Style</label>
                         <label className="flex items-center h-12 px-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                           <input
                             type="checkbox"
@@ -232,7 +235,7 @@ export default function Watermark({ onWatermarkChange }) {
                             onChange={(e) => setFontBold(e.target.checked)}
                             className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                           />
-                          <span className="ml-2 text-sm font-bold">굵게</span>
+                          <span className="ml-2 text-sm font-bold">Bold</span>
                         </label>
                       </div>
                     </div>
@@ -240,7 +243,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Text Opacity */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        투명도: {textOpacity}%
+                        Opacity: {textOpacity}%
                       </label>
                       <input
                         type="range"
@@ -259,13 +262,26 @@ export default function Watermark({ onWatermarkChange }) {
                   <div className="mb-4 sm:mb-6 space-y-4">
                     {/* Image Upload */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">워터마크 이미지</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Watermark Image</label>
                       <input
                         type="file"
                         accept="image/*"
                         onChange={handleImageUpload}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+                        id="watermark-file-input"
+                        className="hidden"
                       />
+                      <div className="flex items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => document.getElementById('watermark-file-input').click()}
+                          className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold text-sm hover:bg-indigo-700 transition-colors"
+                        >
+                          Choose File
+                        </button>
+                        <span className="text-sm text-gray-600">
+                          {watermarkFileName || 'No file selected'}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Image Preview */}
@@ -278,7 +294,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Image Size */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        크기: {imageSize}%
+                        Size: {imageSize}%
                       </label>
                       <input
                         type="range"
@@ -293,7 +309,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Image Opacity */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        투명도: {imageOpacity}%
+                        Opacity: {imageOpacity}%
                       </label>
                       <input
                         type="range"
@@ -309,7 +325,7 @@ export default function Watermark({ onWatermarkChange }) {
 
                 {/* Position Selection */}
                 <div className="mb-4 sm:mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">위치 선택</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">Position</label>
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     {positions.map((pos) => (
                       <button
@@ -331,7 +347,7 @@ export default function Watermark({ onWatermarkChange }) {
                 {/* Margin */}
                 <div className="mb-4 sm:mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    가장자리 여백: {margin}px
+                    Margin: {margin}px
                   </label>
                   <input
                     type="number"
@@ -354,7 +370,7 @@ export default function Watermark({ onWatermarkChange }) {
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
-                    초기화
+                    Reset
                   </button>
                 </div>
               </>
@@ -362,7 +378,7 @@ export default function Watermark({ onWatermarkChange }) {
 
             {!isEnabled && (
               <div className="text-center py-8 text-gray-500">
-                워터마크를 추가하려면 위의 체크박스를 선택하세요
+                Check the box above to add watermark
               </div>
             )}
           </div>

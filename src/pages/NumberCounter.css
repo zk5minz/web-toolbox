@@ -19,9 +19,9 @@
 }
 
 .breadcrumb-home-link:hover {
-  opacity: 0.9 !important;
-  color: #FFFF00 !important;
-  text-decoration-color: #FFFF00 !important;
+  background: #1e40af !important;
+  color: white !important;
+  transform: scale(1.05) !important;
 }
 
 .breadcrumb span {

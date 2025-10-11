@@ -138,7 +138,7 @@ function ImageConverter() {
 
   const handleConvert = async () => {
     if (uploadedFiles.length === 0) {
-      showToast('이미지를 먼저 선택해주세요', 'warning');
+      showToast('Please select images first', 'warning');
       return;
     }
 
@@ -152,7 +152,7 @@ function ImageConverter() {
         const imageFiles = uploadedFiles.filter(f => f.type.startsWith('image/'));
 
         if (imageFiles.length === 0) {
-          showToast('PDF 변환을 위한 이미지가 없습니다', 'error');
+          showToast('No images available for PDF conversion', 'error');
           setIsConverting(false);
           return;
         }
@@ -175,7 +175,7 @@ function ImageConverter() {
             console.log(`Stats updated for ${file.name} -> PDF (single mode)`);
           });
 
-          showToast('PDF 변환이 완료되었습니다', 'success');
+          showToast('PDF conversion completed', 'success');
         } else {
           // Multiple PDF mode: each image to individual PDF
           const pdfBlobs = [];
@@ -209,11 +209,11 @@ function ImageConverter() {
           console.log('Stats updated for PDF conversion (multiple mode)');
 
           const successCount = statuses.filter(s => s.status === 'success').length;
-          showToast(`${successCount}개 PDF 파일 변환 완료`, 'success');
+          showToast(`${successCount} PDF files converted successfully`, 'success');
         }
       } catch (error) {
         console.error('PDF conversion failed:', error);
-        showToast('PDF 변환에 실패했습니다', 'error');
+        showToast('PDF conversion failed', 'error');
       } finally {
         setIsConverting(false);
       }
@@ -255,10 +255,10 @@ function ImageConverter() {
           console.log(`Stats updated for PDF page ${index + 1} -> ${selectedFormat}`);
         });
 
-        showToast(`PDF에서 ${allImageBlobs.length}개 이미지로 변환 완료`, 'success');
+        showToast(`PDF converted to ${allImageBlobs.length} images successfully`, 'success');
       } catch (error) {
         console.error('PDF to images conversion failed:', error);
-        showToast('PDF 변환에 실패했습니다', 'error');
+        showToast('PDF conversion failed', 'error');
       } finally {
         setIsConverting(false);
       }
@@ -357,11 +357,11 @@ function ImageConverter() {
       const failCount = results.filter(r => !r.success).length;
 
       if (failCount === 0) {
-        showToast(`모든 이미지 변환이 완료되었습니다 (${successCount}개)`, 'success');
+        showToast(`All images converted successfully (${successCount})`, 'success');
       } else if (successCount === 0) {
-        showToast('모든 이미지 변환에 실패했습니다', 'error');
+        showToast('All image conversions failed', 'error');
       } else {
-        showToast(`${successCount}개 성공, ${failCount}개 실패`, 'warning');
+        showToast(`${successCount} succeeded, ${failCount} failed`, 'warning');
       }
 
       // Refresh history component
@@ -449,43 +449,56 @@ function ImageConverter() {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      showToast('ZIP 파일 다운로드가 완료되었습니다', 'success');
+      showToast('ZIP file download completed', 'success');
     } catch (error) {
       console.error('ZIP creation failed:', error);
-      showToast('ZIP 파일 생성에 실패했습니다', 'error');
+      showToast('ZIP file creation failed', 'error');
     } finally {
       setIsCreatingZip(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-6 sm:py-8 md:py-12">
+    <div className="min-h-screen py-6 sm:py-8 md:py-12" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
       {/* Header */}
       <div className="text-center mb-6 sm:mb-8 px-4 relative">
         <div className="flex items-center justify-center gap-2 mb-4 text-lg sm:text-xl">
           <Link
             to="/"
-            className="text-blue-600 font-bold hover:opacity-80 transition-opacity"
+            className="home-button"
             style={{
+              background: 'white',
+              color: '#6366f1',
+              padding: '8px 16px',
+              borderRadius: '8px',
               textDecoration: 'underline',
-              textDecorationThickness: '1.5px',
-              textDecorationColor: '#0066cc',
-              textUnderlineOffset: '3px'
+              fontWeight: '700',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#1e40af';
+              e.target.style.color = 'white';
+              e.target.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'white';
+              e.target.style.color = '#6366f1';
+              e.target.style.transform = 'scale(1)';
             }}
           >
             🏠 Home
           </Link>
-          <span className="text-gray-400">{'>'}</span>
-          <span className="text-gray-600">Image Converter</span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{'>'}</span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Image Converter</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-2">PDF & IMAGE CHANGE</h1>
-        <p className="text-sm sm:text-base text-gray-600">이미지를 JPG, PNG, WEBP 형식으로 변환하세요</p>
+        <h1 className="font-bold mb-2" style={{ color: 'white', fontSize: '2.5rem', fontWeight: '700' }}>PDF & Image Converter</h1>
+        <p className="text-sm sm:text-base" style={{ color: 'white' }}>Convert images to JPG, PNG, WEBP formats</p>
 
         {/* Settings Button */}
         <button
           onClick={() => setIsSettingsOpen(true)}
           className="absolute top-0 right-4 sm:right-6 p-2 sm:p-3 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 transition-all"
-          title="설정"
+          title="Settings"
         >
           <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -595,10 +608,10 @@ function ImageConverter() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                 </svg>
-                변환 중... ({conversionProgress.current}/{conversionProgress.total})
+                Converting... ({conversionProgress.current}/{conversionProgress.total})
               </span>
             ) : (
-              '변환하기'
+              'Convert'
             )}
           </button>
 
@@ -618,8 +631,8 @@ function ImageConverter() {
                 <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                <span className="hidden sm:inline">모두 다운로드 ({convertedImages.filter(img => img !== null).length}개)</span>
-                <span className="sm:hidden">전체 다운로드 ({convertedImages.filter(img => img !== null).length}개)</span>
+                <span className="hidden sm:inline">Download All ({convertedImages.filter(img => img !== null).length})</span>
+                <span className="sm:hidden">Download All ({convertedImages.filter(img => img !== null).length})</span>
               </span>
             </button>
 
@@ -641,16 +654,16 @@ function ImageConverter() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
-                      <span className="hidden sm:inline">ZIP 생성 중...</span>
-                      <span className="sm:hidden">생성 중...</span>
+                      <span className="hidden sm:inline">Creating ZIP...</span>
+                      <span className="sm:hidden">Creating...</span>
                     </>
                   ) : (
                     <>
                       <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
                       </svg>
-                      <span className="hidden sm:inline">ZIP으로 다운로드</span>
-                      <span className="sm:hidden">ZIP 다운로드</span>
+                      <span className="hidden sm:inline">Download as ZIP</span>
+                      <span className="sm:hidden">Download ZIP</span>
                     </>
                   )}
                 </span>

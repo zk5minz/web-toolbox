@@ -34,7 +34,7 @@ export default function History({ onHistoryUpdate }) {
   };
 
   const handleClearAll = () => {
-    if (window.confirm('모든 히스토리를 삭제하시겠습니까?')) {
+    if (window.confirm('Delete all history?')) {
       const emptyHistory = clearHistory();
       setHistory(emptyHistory);
       if (onHistoryUpdate) {
@@ -65,10 +65,10 @@ export default function History({ onHistoryUpdate }) {
             <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">변환 히스토리</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Conversion History</h2>
             {history.length > 0 && (
               <span className="ml-3 px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium">
-                {history.length}개
+                {history.length} items
               </span>
             )}
           </div>
@@ -90,7 +90,7 @@ export default function History({ onHistoryUpdate }) {
                 <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <p className="text-sm sm:text-base">변환 기록이 없습니다</p>
+                <p className="text-sm sm:text-base">No conversion history</p>
               </div>
             ) : (
               <>
@@ -103,7 +103,7 @@ export default function History({ onHistoryUpdate }) {
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
                     </svg>
-                    {sortOrder === 'newest' ? '최신 순' : '오래된 순'}
+                    {sortOrder === 'newest' ? 'Latest First' : 'Oldest First'}
                   </button>
                   <button
                     onClick={handleClearAll}
@@ -112,7 +112,7 @@ export default function History({ onHistoryUpdate }) {
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
-                    전체 삭제
+                    Delete All
                   </button>
                 </div>
 
@@ -158,7 +158,7 @@ export default function History({ onHistoryUpdate }) {
                                   <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
                                   </svg>
-                                  {sizeReduction}% 감소
+                                  {sizeReduction}% reduced
                                 </span>
                               )}
                               {sizeReduction < 0 && (
@@ -166,7 +166,7 @@ export default function History({ onHistoryUpdate }) {
                                   <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                   </svg>
-                                  {Math.abs(sizeReduction)}% 증가
+                                  {Math.abs(sizeReduction)}% increased
                                 </span>
                               )}
                               <span className="hidden sm:inline text-gray-400">•</span>
@@ -178,7 +178,7 @@ export default function History({ onHistoryUpdate }) {
                           <button
                             onClick={() => handleDeleteItem(item.id)}
                             className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors flex-shrink-0"
-                            title="삭제"
+                            title="Delete"
                           >
                             <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

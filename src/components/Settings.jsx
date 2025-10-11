@@ -63,7 +63,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
   };
 
   const handleReset = () => {
-    if (window.confirm('모든 설정을 기본값으로 초기화하시겠습니까?')) {
+    if (window.confirm('Reset all settings to default?')) {
       const defaultSettings = resetSettings();
       setSettings(defaultSettings);
       if (onSettingsChange) {
@@ -88,7 +88,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <h2 className="text-2xl font-bold text-gray-800">설정</h2>
+            <h2 className="text-2xl font-bold text-gray-800">Settings</h2>
           </div>
           <button onClick={handleCancel} className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +101,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
         <div className="p-6 space-y-6">
           {/* Default Format */}
           <section>
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">기본 출력 포맷</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Default Output Format</h3>
             <div className="grid grid-cols-3 gap-3">
               {['jpg', 'png', 'webp'].map((format) => (
                 <button
@@ -121,7 +121,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
 
           {/* Default Quality */}
           <section>
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">기본 품질</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Default Quality</h3>
             <div className="space-y-2">
               <input
                 type="range"
@@ -142,7 +142,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
 
           {/* File Naming */}
           <section>
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">파일명 규칙</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">File Naming Rules</h3>
             <div className="space-y-3">
               <label className="flex items-center cursor-pointer">
                 <input
@@ -151,7 +151,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
                   onChange={(e) => handleFileNamingChange('keepOriginalName', e.target.checked)}
                   className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <span className="ml-2 text-gray-700">원본 파일명 유지</span>
+                <span className="ml-2 text-gray-700">Keep original filename</span>
               </label>
 
               <label className="flex items-center cursor-pointer">
@@ -161,7 +161,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
                   onChange={(e) => handleFileNamingChange('addTimestamp', e.target.checked)}
                   className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <span className="ml-2 text-gray-700">타임스탬프 추가</span>
+                <span className="ml-2 text-gray-700">Add timestamp</span>
               </label>
 
               <label className="flex items-center cursor-pointer">
@@ -171,34 +171,34 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
                   onChange={(e) => handleFileNamingChange('addConvertedSuffix', e.target.checked)}
                   className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <span className="ml-2 text-gray-700">&quot;_converted&quot; 접미사 추가</span>
+                <span className="ml-2 text-gray-700">Add &quot;_converted&quot; suffix</span>
               </label>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">커스텀 접두사</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Custom prefix</label>
                 <input
                   type="text"
                   value={settings.fileNaming.customPrefix}
                   onChange={(e) => handleFileNamingChange('customPrefix', e.target.value)}
-                  placeholder="예: my_"
+                  placeholder="e.g., my_"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">커스텀 접미사</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Custom suffix</label>
                 <input
                   type="text"
                   value={settings.fileNaming.customSuffix}
                   onChange={(e) => handleFileNamingChange('customSuffix', e.target.value)}
-                  placeholder="예: _final"
+                  placeholder="e.g., _final"
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               {/* Preview */}
               <div className="bg-gray-50 p-3 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">미리보기:</p>
+                <p className="text-xs text-gray-600 mb-1">Preview:</p>
                 <p className="text-sm font-medium text-gray-800">
                   {(() => {
                     const { fileNaming } = settings;
@@ -217,7 +217,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
 
           {/* Notifications */}
           <section>
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">알림</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Notifications</h3>
             <div className="space-y-3">
               <label className="flex items-center cursor-pointer">
                 <input
@@ -226,14 +226,14 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
                   onChange={(e) => handleNotificationChange('showToast', e.target.checked)}
                   className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <span className="ml-2 text-gray-700">변환 완료 시 Toast 알림 표시</span>
+                <span className="ml-2 text-gray-700">Show toast notification on conversion complete</span>
               </label>
             </div>
           </section>
 
           {/* History */}
           <section>
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">히스토리</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">History</h3>
             <div className="space-y-3">
               <label className="flex items-center cursor-pointer">
                 <input
@@ -242,7 +242,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
                   onChange={(e) => handleHistoryChange('autoSave', e.target.checked)}
                   className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <span className="ml-2 text-gray-700">변환 히스토리 자동 저장</span>
+                <span className="ml-2 text-gray-700">Auto-save conversion history</span>
               </label>
             </div>
           </section>
@@ -254,20 +254,20 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
             onClick={handleReset}
             className="py-2 px-4 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium"
           >
-            기본값으로 초기화
+            Reset to Defaults
           </button>
           <div className="flex gap-3">
             <button
               onClick={handleCancel}
               className="flex-1 sm:flex-none py-2 px-6 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
             >
-              취소
+              Cancel
             </button>
             <button
               onClick={handleSave}
               className="flex-1 sm:flex-none py-2 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
-              저장
+              Save
             </button>
           </div>
         </div>

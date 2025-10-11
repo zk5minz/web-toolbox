@@ -23,20 +23,20 @@ export default function FileSizeComparison({ originalSize, convertedSize }) {
           <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
           </svg>
-          파일 크기 비교
+          File Size Comparison
         </h3>
 
         {/* Size Comparison */}
         <div className="flex flex-col sm:grid sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
           {/* Original Size */}
           <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
-            <p className="text-xs sm:text-sm text-gray-600 mb-1">원본 크기</p>
+            <p className="text-xs sm:text-sm text-gray-600 mb-1">Original Size</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-800">{originalMB} MB</p>
           </div>
 
           {/* Converted Size */}
           <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
-            <p className="text-xs sm:text-sm text-gray-600 mb-1">변환 후 크기</p>
+            <p className="text-xs sm:text-sm text-gray-600 mb-1">Converted Size</p>
             <p className="text-xl sm:text-2xl font-bold text-gray-800">{convertedMB} MB</p>
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function FileSizeComparison({ originalSize, convertedSize }) {
           {/* Original Size Bar */}
           <div className="mb-3">
             <div className="flex justify-between text-xs text-gray-600 mb-1">
-              <span>원본</span>
+              <span>Original</span>
               <span>100%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3 sm:h-4">
@@ -60,7 +60,7 @@ export default function FileSizeComparison({ originalSize, convertedSize }) {
           {/* Converted Size Bar */}
           <div>
             <div className="flex justify-between text-xs text-gray-600 mb-1">
-              <span>변환 후</span>
+              <span>Converted</span>
               <span>{relativeSize.toFixed(1)}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3 sm:h-4">
@@ -90,17 +90,17 @@ export default function FileSizeComparison({ originalSize, convertedSize }) {
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
-                {Math.abs(reductionPercent)}% 감소
+                {Math.abs(reductionPercent)}% Reduced
               </>
             ) : isIncreased ? (
               <>
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
                 </svg>
-                {Math.abs(reductionPercent)}% 증가
+                {Math.abs(reductionPercent)}% Increased
               </>
             ) : (
-              <>동일한 크기</>
+              <>Same Size</>
             )}
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function FileSizeComparison({ originalSize, convertedSize }) {
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              파일 크기가 {(Math.abs(difference) / (1024 * 1024)).toFixed(2)} MB 감소했습니다!
+              File size reduced by {(Math.abs(difference) / (1024 * 1024)).toFixed(2)} MB!
             </p>
           </div>
         )}
@@ -123,7 +123,7 @@ export default function FileSizeComparison({ originalSize, convertedSize }) {
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
-              변환 후 파일 크기가 증가했습니다. 다른 포맷이나 품질을 시도해보세요.
+              File size increased after conversion. Try different format or quality settings.
             </p>
           </div>
         )}

@@ -80,12 +80,23 @@ function NumberCounter() {
             to="/"
             className="breadcrumb-home-link"
             style={{
-              color: '#FFEB3B',
-              fontWeight: '700',
+              background: 'white',
+              color: '#6366f1',
+              padding: '8px 16px',
+              borderRadius: '8px',
               textDecoration: 'underline',
-              textDecorationThickness: '1.5px',
-              textDecorationColor: '#FFEB3B',
-              textUnderlineOffset: '3px'
+              fontWeight: '700',
+              transition: 'all 0.3s'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#1e40af';
+              e.target.style.color = 'white';
+              e.target.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'white';
+              e.target.style.color = '#6366f1';
+              e.target.style.transform = 'scale(1)';
             }}
           >
             🏠 Home
