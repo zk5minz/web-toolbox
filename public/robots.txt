@@ -8,7 +8,6 @@ Sitemap: https://web-toolbox-7dx.pages.dev/sitemap.xml
 
 # Disallow certain paths (if any)
 Disallow: /api/
-Disallow: /*.json$
 
 # Allow search engines to crawl all tools
 Allow: /notepad

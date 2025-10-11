@@ -17,10 +17,12 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import CookieConsent from './components/CookieConsent';
 
 function App() {
   return (
     <Router>
+      <CookieConsent />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/image-converter" element={<ImageConverter />} />
