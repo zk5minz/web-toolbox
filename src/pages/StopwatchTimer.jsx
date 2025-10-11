@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 import './StopwatchTimer.css';
 
 function StopwatchTimer() {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free Stopwatch & Timer - Precision Time Tracking Tool | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Free online stopwatch and countdown timer with lap time recording. Precision timing tool perfect for workouts, cooking, and productivity. Accurate to milliseconds.');
+    }
+  }, []);
+  
   const [activeTab, setActiveTab] = useState('stopwatch');
 
   // Stopwatch state

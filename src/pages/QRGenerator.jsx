@@ -1,9 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import './CharacterCounter.css';
 
 function QRGenerator() {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free QR Code Generator - Create Custom QR Codes | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Create custom QR codes for URLs, text, WiFi, phone numbers, and more. Free QR code generator with customizable colors and download options (PNG, SVG, JPEG).');
+    }
+  }, []);
+  
   const qrRef = useRef(null);
 
   // Tab state

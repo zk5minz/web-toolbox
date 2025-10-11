@@ -24,6 +24,15 @@ function Notepad() {
   const typingTimerRef = useRef(null);
   const fileHandleRef = useRef(null);
 
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free Online Notepad - Auto-Save & Dark Mode | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Free online notepad with auto-save feature, dark mode, find & replace, and word count. Your notes are stored locally in browser. 100% private and secure.');
+    }
+  }, []);
+
   // Load from localStorage
   useEffect(() => {
     const saved = localStorage.getItem('notepad-text');

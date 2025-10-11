@@ -50,6 +50,12 @@ function VideoConverter() {
 
   useEffect(() => {
     loadFFmpeg();
+    // SEO Meta Tags
+    document.title = 'Free Video Converter - MP4, WEBM, AVI, MOV | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Convert video files between MP4, WEBM, AVI, and MOV formats. Free online video converter with resolution and quality control. 100% private, browser-based.');
+    }
   }, []);
 
   const handleFileChange = (e) => {

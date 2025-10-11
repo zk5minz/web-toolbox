@@ -19,6 +19,12 @@ function AudioConverter() {
 
   useEffect(() => {
     loadFFmpeg();
+    // SEO Meta Tags
+    document.title = 'Free Audio Converter - MP3, WAV, OGG, M4A, FLAC | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Convert audio files between MP3, WAV, OGG, M4A, and FLAC formats. Free online audio converter with quality control. 100% private, no server upload.');
+    }
   }, []);
 
   const loadFFmpeg = async () => {

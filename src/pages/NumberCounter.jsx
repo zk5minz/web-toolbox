@@ -22,6 +22,13 @@ function NumberCounter() {
 
   // Load saved settings from localStorage
   useEffect(() => {
+    // SEO Meta Tags
+    document.title = 'Free Number Counter - Simple Click Counter Tool | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Simple number counter with increment and decrement buttons. Customizable settings, auto-save, and history tracking. Free online click counter tool.');
+    }
+    
     const savedCount = localStorage.getItem('numberCount');
     const savedIncrement = localStorage.getItem('numberIncrement');
     const savedLimits = localStorage.getItem('limitsEnabled');

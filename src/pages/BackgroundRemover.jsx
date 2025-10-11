@@ -1,8 +1,17 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { removeBackground } from '@imgly/background-removal';
 
 const BackgroundRemover = () => {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free Background Remover - Remove Image Backgrounds with AI | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Remove image backgrounds automatically with AI. Free background remover tool with transparent PNG output. Perfect for product photos, portraits, and design.');
+    }
+  }, []);
+  
   const [originalImage, setOriginalImage] = useState(null);
   const [processedImage, setProcessedImage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);

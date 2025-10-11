@@ -77,6 +77,15 @@ const CITIES = [
 const DEFAULT_CITIES = ['Seoul', 'New York', 'London', 'Tokyo'];
 
 function WorldClock() {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free World Clock - Check Time Around the World | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Check current time around the world. Free world clock tool with multiple time zones, major cities worldwide. Real-time clock with date and UTC offset.');
+    }
+  }, []);
+  
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedCities, setSelectedCities] = useState(DEFAULT_CITIES);
   const [showModal, setShowModal] = useState(false);
@@ -221,6 +230,43 @@ function WorldClock() {
           </div>
         </div>
       )}
+
+      {/* Features Section */}
+      <div className="features-section">
+        <h2>Why Use Our World Clock?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>100% Private & Secure</h3>
+            <p>All time calculations are done locally in your browser. No tracking, no data collection, ensuring complete privacy.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🌍</div>
+            <h3>Global Coverage</h3>
+            <p>Track time in major cities across all continents. From Seoul to New York, London to Sydney, access 100+ cities worldwide.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⏰</div>
+            <h3>Real-Time Updates</h3>
+            <p>Live clock display with automatic updates every second. Always shows accurate local time for all selected cities.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">💾</div>
+            <h3>Save Your Cities</h3>
+            <p>Your selected cities are automatically saved in your browser. No need to re-add them every time you visit.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🔍</div>
+            <h3>Easy Search</h3>
+            <p>Quick city search with timezone offset display. Find any city instantly with our intuitive search interface.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🆓</div>
+            <h3>100% Free Forever</h3>
+            <p>No registration required, no limits. Track unlimited cities and timezones completely free with all features.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -7,6 +7,13 @@ function CharacterCounter() {
 
   // Load saved text from localStorage
   useEffect(() => {
+    // SEO Meta Tags
+    document.title = 'Free Character Counter - Word & Character Count Tool | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Count characters, words, sentences, and analyze text statistics in real-time. Free character counter with detailed analysis. Perfect for essays, articles, and social media.');
+    }
+    
     const savedText = localStorage.getItem('characterCounterText');
     if (savedText) {
       setText(savedText);

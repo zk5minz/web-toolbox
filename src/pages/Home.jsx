@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import './Home.css';
 
 function Home() {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free Online Tools - Image/Audio/Video Converter, QR Generator, Calculator';
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', '100% free online tools. Image converter, audio converter, video converter, background remover, color extractor, QR generator, password generator, scientific calculator. Privacy guaranteed.');
+    }
+  }, []);
   const tools = [
     // 1열: 노트패드, 이미지변환기, 백그라운드리무버, 컬러추출기
     {

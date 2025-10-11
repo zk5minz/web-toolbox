@@ -13,6 +13,13 @@ function ScientificCalculator() {
 
   // Load from localStorage
   useEffect(() => {
+    // SEO Meta Tags
+    document.title = 'Free Scientific Calculator - Advanced Math Functions | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Free online scientific calculator with trigonometry, logarithms, exponentials, and statistics. Advanced math calculator with calculation history. Perfect for students and engineers.');
+    }
+    
     const savedHistory = localStorage.getItem('calcHistory');
     const savedAngleMode = localStorage.getItem('calcAngleMode');
     const savedLastResult = localStorage.getItem('lastResult');

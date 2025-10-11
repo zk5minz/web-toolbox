@@ -1,8 +1,17 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ColorExtractor.css';
 
 function ColorExtractor() {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free Color Extractor - Extract Color Palette from Images | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Extract color palette from any image with HEX and RGB codes. Free color picker tool with smart color detection. Perfect for designers and developers.');
+    }
+  }, []);
+  
   const [image, setImage] = useState(null);
   const [colors, setColors] = useState([]);
   const [isExtracting, setIsExtracting] = useState(false);

@@ -23,6 +23,15 @@ import { getSettings, generateFileName } from '../utils/settings'
 import { updateStats } from '../utils/stats'
 
 function ImageConverter() {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free Image Converter - JPG, PNG, WEBP, PDF | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Free online image converter with batch processing. Convert JPG, PNG, WEBP, PDF formats. Resize, crop, rotate, add watermarks. 100% private - all processing happens locally in your browser.');
+    }
+  }, []);
+
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [selectedFormat, setSelectedFormat] = useState('png');
   const [pdfMode, setPdfMode] = useState('single'); // 'single' or 'multiple'

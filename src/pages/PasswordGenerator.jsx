@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 import './PasswordGenerator.css';
 
 function PasswordGenerator() {
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = 'Free Password Generator - Strong & Secure Passwords | Online Tools';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Generate strong and secure passwords with customizable options. Free password generator with uppercase, lowercase, numbers, and symbols. 100% private and secure.');
+    }
+  }, []);
+  
   const [password, setPassword] = useState('');
   const [length, setLength] = useState(16);
   const [options, setOptions] = useState({
