@@ -1,8 +1,29 @@
+# robots.txt for Web Toolbox
+
 User-agent: *
 Allow: /
 
-# Disallow admin or private pages (if any)
-# Disallow: /admin/
-
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://web-toolbox-7dx.pages.dev/sitemap.xml
+
+# Disallow certain paths (if any)
+Disallow: /api/
+Disallow: /*.json$
+
+# Allow search engines to crawl all tools
+Allow: /notepad
+Allow: /image-converter
+Allow: /background-remover
+Allow: /password-generator
+Allow: /scientific-calculator
+Allow: /stopwatch-timer
+Allow: /character-counter
+Allow: /number-counter
+Allow: /world-clock
+Allow: /qr-generator
+Allow: /color-extractor
+Allow: /audio-converter
+Allow: /video-converter
+
+# Crawl delay (optional, in seconds)
+Crawl-delay: 1
