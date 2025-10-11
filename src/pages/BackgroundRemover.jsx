@@ -397,6 +397,43 @@ const BackgroundRemover = () => {
         </div>
       </div>
 
+      {/* Features Section */}
+      <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderTop: '2px solid #e5e7eb' }}>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>Why Use Our Background Remover?</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Private & Secure</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>All processing happens locally in your browser using AI. Your images never leave your device and are not uploaded to any server.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🤖</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>AI-Powered Precision</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Advanced AI technology automatically detects and removes backgrounds with high accuracy, even for complex images.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚡</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Instant Results</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Fast background removal in seconds. No waiting, no complicated settings, just upload and get results.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🖼️</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Transparent PNG Output</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Download high-quality PNG images with transparent backgrounds, perfect for design and marketing.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📱</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Works Anywhere</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Fully responsive design works on desktop, tablet, and mobile. Remove backgrounds from any device.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Free Forever</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>No watermarks, no limits. Remove backgrounds from unlimited images completely free.</p>
+          </div>
+        </div>
+      </div>
+
       {/* Add spinner animation */}
       <style>
         {`

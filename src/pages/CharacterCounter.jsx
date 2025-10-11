@@ -289,6 +289,43 @@ Reading Time: ${stats.readingTime} min`;
           </div>
         </div>
       </div>
+
+      {/* Features Section */}
+      <div className="features-section">
+        <h2>Why Use Our Character Counter?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>100% Private & Secure</h3>
+            <p>All text analysis happens locally in your browser. Your content never leaves your device and is not stored anywhere.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⚡</div>
+            <h3>Real-Time Analysis</h3>
+            <p>Instant character, word, and sentence counting as you type. No need to click any buttons or wait for results.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📊</div>
+            <h3>Detailed Statistics</h3>
+            <p>Get comprehensive text analysis including word count, sentence count, reading time, and character type breakdown.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🌐</div>
+            <h3>Multi-Language Support</h3>
+            <p>Accurately counts Korean, English, numbers, and special characters separately for multilingual content.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📝</div>
+            <h3>Perfect for Writers</h3>
+            <p>Ideal for essays, articles, social media posts, and any content with character or word limits.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🆓</div>
+            <h3>100% Free Forever</h3>
+            <p>No registration, no limits, completely free. Count unlimited text with all features available at no cost.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

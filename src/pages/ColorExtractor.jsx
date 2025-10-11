@@ -279,6 +279,43 @@ function ColorExtractor() {
           </div>
         )}
       </div>
+
+      {/* Features Section */}
+      <div className="features-section">
+        <h2>Why Use Our Color Extractor?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>100% Private & Secure</h3>
+            <p>All color extraction happens locally in your browser. Your images never leave your device and are not uploaded to any server.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🎨</div>
+            <h3>Smart Color Detection</h3>
+            <p>Advanced algorithm detects dominant colors with intelligent grouping. Get the most representative color palette from any image.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📊</div>
+            <h3>Multiple Formats</h3>
+            <p>Get color codes in both HEX and RGB formats. One-click copy makes it easy to use colors in your projects.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⚡</div>
+            <h3>Instant Results</h3>
+            <p>Fast color extraction with real-time preview. See your color palette within seconds of uploading an image.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🖼️</div>
+            <h3>Any Image Type</h3>
+            <p>Supports JPG, PNG, WEBP, and more. Extract colors from photos, logos, artwork, or any image file.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🆓</div>
+            <h3>100% Free Forever</h3>
+            <p>No watermarks, no limits. Extract unlimited color palettes from unlimited images completely free.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

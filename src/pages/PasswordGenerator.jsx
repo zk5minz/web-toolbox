@@ -331,6 +331,43 @@ function PasswordGenerator() {
           Generate Password
         </button>
       </div>
+
+      {/* Features Section */}
+      <div className="features-section">
+        <h2>Why Use Our Password Generator?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>100% Secure & Private</h3>
+            <p>All passwords are generated locally in your browser. Nothing is sent to any server, ensuring your passwords remain completely private.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🛡️</div>
+            <h3>Cryptographically Strong</h3>
+            <p>Uses secure random number generation to create truly random passwords that are resistant to brute-force attacks.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⚙️</div>
+            <h3>Fully Customizable</h3>
+            <p>Choose length from 8-32 characters and select which character types to include: uppercase, lowercase, numbers, and symbols.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📊</div>
+            <h3>Real-Time Strength Check</h3>
+            <p>Instantly see password strength with visual indicators and estimated crack time to ensure maximum security.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📋</div>
+            <h3>One-Click Copy</h3>
+            <p>Quickly copy generated passwords to clipboard with a single click. Perfect for fast password creation and usage.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🆓</div>
+            <h3>100% Free Forever</h3>
+            <p>No registration required, no limits on usage. Generate unlimited secure passwords completely free of charge.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

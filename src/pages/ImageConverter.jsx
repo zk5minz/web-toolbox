@@ -678,6 +678,43 @@ function ImageConverter() {
 
       {/* Stats */}
       <Stats />
+
+      {/* Features Section */}
+      <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderRadius: '12px' }}>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>Why Use Our Image Converter?</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Private & Secure</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>All conversions happen locally in your browser. Your images never leave your device and are not uploaded to any server.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔄</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Multiple Formats</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Convert between PDF, JPEG, PNG, WEBP, and more. Support for all major image and document formats.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚙️</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Advanced Tools</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Resize, crop, rotate, apply filters, add watermarks, and compress images with professional-grade tools.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📦</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Batch Processing</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Convert multiple files at once. Apply the same settings to all images and download as ZIP.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📊</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Quality Control</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Adjust compression quality and see file size comparison before and after conversion.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Free Forever</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>No watermarks, no file limits. Convert unlimited images with all features completely free.</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

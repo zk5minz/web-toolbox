@@ -574,6 +574,43 @@ function ScientificCalculator() {
           </div>
         </div>
       </div>
+
+      {/* Features Section */}
+      <div className="features-section">
+        <h2>Why Use Our Scientific Calculator?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>100% Private & Secure</h3>
+            <p>All calculations are processed locally in your browser. No data is sent to any server, ensuring complete privacy.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📊</div>
+            <h3>Advanced Functions</h3>
+            <p>Full scientific calculator with trigonometry, logarithms, exponentials, statistics, and complex mathematical operations.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📝</div>
+            <h3>Calculation History</h3>
+            <p>Keep track of all your calculations with a detailed history panel. Quickly reuse previous calculations.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🎯</div>
+            <h3>High Precision</h3>
+            <p>Accurate calculations with support for complex equations, matrices, and statistical functions.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⌨️</div>
+            <h3>Keyboard Support</h3>
+            <p>Full keyboard support for faster input. Use your keyboard for numbers, operators, and functions.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🆓</div>
+            <h3>100% Free Forever</h3>
+            <p>No registration required. Use all advanced scientific calculator features completely free with unlimited calculations.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -11,6 +11,8 @@ import ScientificCalculator from './pages/ScientificCalculator';
 import BackgroundRemover from './pages/BackgroundRemover';
 import QRGenerator from './pages/QRGenerator';
 import ColorExtractor from './pages/ColorExtractor';
+import AudioConverter from './pages/AudioConverter';
+import VideoConverter from './pages/VideoConverter';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/background-remover" element={<BackgroundRemover />} />
         <Route path="/qr-generator" element={<QRGenerator />} />
         <Route path="/color-extractor" element={<ColorExtractor />} />
+        <Route path="/audio-converter" element={<AudioConverter />} />
+        <Route path="/video-converter" element={<VideoConverter />} />
       </Routes>
     </Router>
   );

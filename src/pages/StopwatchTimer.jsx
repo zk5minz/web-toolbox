@@ -405,6 +405,43 @@ function StopwatchTimer() {
           </div>
         )}
       </div>
+
+      {/* Features Section */}
+      <div className="features-section">
+        <h2>Why Use Our Stopwatch & Timer?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>100% Private & Secure</h3>
+            <p>All timing is done locally in your browser. No tracking, no data collection, ensuring complete privacy.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⏱️</div>
+            <h3>Precision Timing</h3>
+            <p>Accurate to milliseconds for stopwatch. Perfect for sports, workouts, cooking, and any time-sensitive activities.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🏃</div>
+            <h3>Lap Time Recording</h3>
+            <p>Record and compare multiple lap times with detailed statistics including fastest and slowest laps.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⏰</div>
+            <h3>Flexible Timer</h3>
+            <p>Set custom countdown timers with quick presets or manual input. Audio alerts when time is up.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📱</div>
+            <h3>Works Everywhere</h3>
+            <p>Fully responsive design works on desktop, tablet, and mobile devices. Use it anywhere, anytime.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🆓</div>
+            <h3>100% Free Forever</h3>
+            <p>No limits on usage. Create unlimited stopwatches and timers completely free with all features.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

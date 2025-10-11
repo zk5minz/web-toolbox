@@ -752,6 +752,43 @@ function QRGenerator() {
           )}
         </div>
       </div>
+
+      {/* Features Section */}
+      <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderTop: '2px solid #e5e7eb' }}>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>Why Use Our QR Code Generator?</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Private & Secure</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>All QR codes are generated locally in your browser. Your data never leaves your device and is not stored on any server.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🎨</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Fully Customizable</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Customize colors, size, error correction level, and download in multiple formats (PNG, SVG, JPEG).</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📦</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Multiple QR Types</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Create QR codes for URLs, text, emails, phone numbers, WiFi credentials, and more.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>💾</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Download & Share</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Download high-quality QR codes or copy to clipboard instantly. Perfect for print and digital use.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📅</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>History Tracking</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Recent QR codes are saved locally so you can quickly regenerate or modify previous codes.</p>
+          </div>
+          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Free Forever</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>No watermarks, no limits, completely free. Generate unlimited QR codes with all features.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

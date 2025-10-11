@@ -248,6 +248,43 @@ function NumberCounter() {
           </div>
         </div>
       )}
+
+      {/* Features Section */}
+      <div className="features-section">
+        <h2>Why Use Our Number Counter?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <h3>100% Private & Secure</h3>
+            <p>All counting is done locally in your browser. No data is sent to any server, ensuring complete privacy.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">💾</div>
+            <h3>Auto-Save Settings</h3>
+            <p>Your counter value and custom settings are automatically saved, so you never lose your progress.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🎨</div>
+            <h3>Fully Customizable</h3>
+            <p>Personalize your counter with custom increments, colors, fonts, and sizes to match your preferences.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⏱️</div>
+            <h3>History Tracking</h3>
+            <p>Keep track of all your counting activities with timestamp history that you can review anytime.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">⚙️</div>
+            <h3>Keyboard Shortcuts</h3>
+            <p>Quick access with keyboard shortcuts for increment, decrement, and reset operations.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🆓</div>
+            <h3>100% Free Forever</h3>
+            <p>No limits, no subscriptions. Use unlimited counters with all customization features completely free.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

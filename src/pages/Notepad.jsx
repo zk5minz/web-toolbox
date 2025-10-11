@@ -408,6 +408,7 @@ function Notepad() {
   }, []);
 
   return (
+    <>
     <div className={`notepad-container ${darkMode ? 'dark-mode' : ''}`}>
       {/* Alert */}
       {showAlert && (
@@ -658,6 +659,44 @@ function Notepad() {
         </div>
       )}
     </div>
+
+    {/* Features Section */}
+    <div className="notepad-features">
+      <h2>Why Use Our Online Notepad?</h2>
+      <div className="features-grid">
+        <div className="feature-card">
+          <div className="feature-icon">🔒</div>
+          <h3>100% Private & Secure</h3>
+          <p>Your notes are stored locally in your browser. Nothing is uploaded to any server, ensuring complete privacy and security.</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">💾</div>
+          <h3>Auto-Save Feature</h3>
+          <p>Never lose your work! All changes are automatically saved to your browser's local storage in real-time.</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">🌙</div>
+          <h3>Dark Mode Support</h3>
+          <p>Switch between light and dark themes for comfortable writing in any lighting condition. Your preference is saved.</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">🖋️</div>
+          <h3>Rich Text Editing</h3>
+          <p>Full editing capabilities with undo/redo, find & replace, word count, and customizable font size for optimal writing experience.</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">📤</div>
+          <h3>Easy File Operations</h3>
+          <p>Open, save, and download text files. Export your notes as TXT files or share via email with just one click.</p>
+        </div>
+        <div className="feature-card">
+          <div className="feature-icon">🆓</div>
+          <h3>100% Free Forever</h3>
+          <p>No premium features, no subscriptions, no hidden costs. All features are completely free with unlimited usage.</p>
+        </div>
+      </div>
+    </div>
+    </>
   );
 }
 
