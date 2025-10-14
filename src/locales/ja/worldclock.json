@@ -1,0 +1,109 @@
+{
+  "breadcrumb": {
+    "home": "ホーム",
+    "current": "世界時計"
+  },
+  "header": {
+    "title": "世界時計"
+  },
+  "buttons": {
+    "addCity": "都市を追加",
+    "remove": "都市を削除"
+  },
+  "modal": {
+    "title": "都市を選択",
+    "searchPlaceholder": "都市を検索...",
+    "selected": "選択済み"
+  },
+  "cities": {
+    "Seoul": "ソウル",
+    "Busan": "釜山",
+    "Tokyo": "東京",
+    "Osaka": "大阪",
+    "Beijing": "北京",
+    "Shanghai": "上海",
+    "Hong Kong": "香港",
+    "Taipei": "台北",
+    "Singapore": "シンガポール",
+    "Bangkok": "バンコク",
+    "Hanoi": "ハノイ",
+    "Ho Chi Minh": "ホーチミン",
+    "Jakarta": "ジャカルタ",
+    "Manila": "マニラ",
+    "Kuala Lumpur": "クアラルンプール",
+    "New Delhi": "ニューデリー",
+    "Mumbai": "ムンバイ",
+    "Dubai": "ドバイ",
+    "Tel Aviv": "テルアビブ",
+    "Istanbul": "イスタンブール",
+    "London": "ロンドン",
+    "Paris": "パリ",
+    "Berlin": "ベルリン",
+    "Rome": "ローマ",
+    "Madrid": "マドリード",
+    "Barcelona": "バルセロナ",
+    "Amsterdam": "アムステルダム",
+    "Brussels": "ブリュッセル",
+    "Zurich": "チューリッヒ",
+    "Vienna": "ウィーン",
+    "Prague": "プラハ",
+    "Warsaw": "ワルシャワ",
+    "Stockholm": "ストックホルム",
+    "Copenhagen": "コペンハーゲン",
+    "Oslo": "オスロ",
+    "Helsinki": "ヘルシンキ",
+    "Dublin": "ダブリン",
+    "Lisbon": "リスボン",
+    "Athens": "アテネ",
+    "Moscow": "モスクワ",
+    "New York": "ニューヨーク",
+    "Los Angeles": "ロサンゼルス",
+    "Chicago": "シカゴ",
+    "Houston": "ヒューストン",
+    "Miami": "マイアミ",
+    "San Francisco": "サンフランシスコ",
+    "Seattle": "シアトル",
+    "Las Vegas": "ラスベガス",
+    "Toronto": "トロント",
+    "Vancouver": "バンクーバー",
+    "Mexico City": "メキシコシティ",
+    "Buenos Aires": "ブエノスアイレス",
+    "São Paulo": "サンパウロ",
+    "Rio de Janeiro": "リオデジャネイロ",
+    "Santiago": "サンティアゴ",
+    "Lima": "リマ",
+    "Sydney": "シドニー",
+    "Melbourne": "メルボルン",
+    "Auckland": "オークランド",
+    "Cairo": "カイロ",
+    "Johannesburg": "ヨハネスブルグ",
+    "Nairobi": "ナイロビ"
+  },
+  "features": {
+    "title": "当社の世界時計を使用する理由",
+    "private": {
+      "title": "100%プライベート＆セキュア",
+      "description": "すべての時間計算はブラウザでローカルに実行されます。追跡なし、データ収集なし、完全なプライバシーを保証します。"
+    },
+    "global": {
+      "title": "グローバルカバレッジ",
+      "description": "すべての大陸の主要都市の時間を追跡します。ソウルからニューヨーク、ロンドンからシドニーまで、世界中の100以上の都市にアクセスできます。"
+    },
+    "realTime": {
+      "title": "リアルタイム更新",
+      "description": "毎秒自動更新されるライブクロック表示。選択したすべての都市の正確な現地時間を常に表示します。"
+    },
+    "save": {
+      "title": "都市を保存",
+      "description": "選択した都市はブラウザに自動的に保存されます。訪問するたびに再度追加する必要はありません。"
+    },
+    "search": {
+      "title": "簡単検索",
+      "description": "タイムゾーンオフセット表示による高速都市検索。直感的な検索インターフェースでどの都市も即座に見つけられます。"
+    },
+    "free": {
+      "title": "永久に100%無料",
+      "description": "登録不要、制限なし。すべての機能で無制限の都市とタイムゾーンを完全に無料で追跡できます。"
+    }
+  }
+}

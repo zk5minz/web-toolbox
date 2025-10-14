@@ -1,0 +1,57 @@
+{
+  "metaTitle": "免费颜色提取器 - 从图像中提取颜色调色板 | 在线工具",
+  "metaDescription": "使用HEX和RGB代码从任何图像中提取调色板。具有智能色彩检测的免费色彩选择器工具。非常适合设计师和开发人员。",
+  "breadcrumb": {
+    "home": "首页",
+    "tools": "工具",
+    "colorExtractor": "颜色提取器"
+  },
+  "title": "🎨 颜色提取器",
+  "subtitle": "从任何图像中提取颜色调色板",
+  "upload": {
+    "dragDrop": "拖放图片到此处",
+    "or": "或",
+    "clickUpload": "点击上传",
+    "supportedFormats": "支持的格式: JPG, PNG, WEBP (最大 10MB)"
+  },
+  "extracting": {
+    "title": "正在提取颜色..."
+  },
+  "palette": {
+    "title": "颜色调色板",
+    "hex": "HEX:",
+    "rgb": "RGB:",
+    "copyHex": "复制HEX",
+    "copyRgb": "复制RGB"
+  },
+  "buttons": {
+    "uploadNew": "上传新图像"
+  },
+  "features": {
+    "title": "为什么使用我们的颜色提取器？",
+    "privateSecure": {
+      "title": "🔒 100%私密安全",
+      "description": "所有颜色提取都在浏览器中本地进行。您的图像永远不会离开您的设备，也不会上传到任何服务器。"
+    },
+    "smartDetection": {
+      "title": "🎨 智能色彩检测",
+      "description": "高级算法通过智能分组检测主色。从任何图像获取最具代表性的调色板。"
+    },
+    "multipleFormats": {
+      "title": "📊 多种格式",
+      "description": "获取HEX和RGB格式的颜色代码。一键复制使其易于在您的项目中使用颜色。"
+    },
+    "instantResults": {
+      "title": "⚡ 即时结果",
+      "description": "具有实时预览的快速色彩提取。上传图像后几秒内即可查看您的调色板。"
+    },
+    "anyImageType": {
+      "title": "🖼️ 任何图像类型",
+      "description": "支持JPG、PNG、WEBP等。从照片、徽标、插图或任何图像文件中提取颜色。"
+    },
+    "free": {
+      "title": "🆓 100%永久免费",
+      "description": "无水印，无限制。从无限图像中无限提取调色板，完全免费。"
+    }
+  }
+}

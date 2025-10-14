@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import '../styles/WorldClock.css';
 
 const CITIES = [
@@ -77,6 +79,8 @@ const CITIES = [
 const DEFAULT_CITIES = ['Seoul', 'New York', 'London', 'Tokyo'];
 
 function WorldClock() {
+  const { t, i18n } = useTranslation(['worldclock', 'translation']);
+  
   // SEO Meta Tags
   useEffect(() => {
     document.title = 'Free World Clock - Check Time Around the World | Online Tools';
@@ -140,7 +144,15 @@ function WorldClock() {
   };
 
   const getDateForCity = (timezone) => {
-    return currentTime.toLocaleDateString('en-US', {
+    const localeMap = {
+      en: 'en-US',
+      ko: 'ko-KR',
+      ja: 'ja-JP',
+      zh: 'zh-CN',
+      es: 'es-ES'
+    };
+    const locale = localeMap[i18n.language] || 'en-US';
+    return currentTime.toLocaleDateString(locale, {
       timeZone: timezone,
       year: 'numeric',
       month: 'long',
@@ -165,17 +177,22 @@ function WorldClock() {
     .filter(Boolean);
 
   const getCityDisplay = (city) => {
-    return `${city.flag} ${city.name} (${city.countryCode})`;
+    const translatedName = t(`worldclock:cities.${city.name}`, city.name);
+    return `${city.flag} ${translatedName} (${city.countryCode})`;
   };
 
   return (
     <div className="world-clock-container">
+      <div style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1000 }}>
+        <LanguageSwitcher />
+      </div>
+      
       <div className="breadcrumb">
-        <Link to="/" className="home-button">🏠 Home</Link>
-        <span> &gt; World Clock</span>
+        <Link to="/" className="home-button">🏠 {t('translation:nav.home')}</Link>
+        <span> &gt; {t('worldclock:breadcrumb.current')}</span>
       </div>
 
-      <h1 className="world-clock-title">🌍 World Clock</h1>
+      <h1 className="world-clock-title">🌍 {t('worldclock:header.title')}</h1>
 
       <div className="clocks-grid">
         {displayedCities.map((city) => (
@@ -183,7 +200,7 @@ function WorldClock() {
             <button
               className="remove-button"
               onClick={() => removeCity(city.name)}
-              aria-label="Remove city"
+              aria-label={t('worldclock:buttons.remove')}
             >
               ✕
             </button>
@@ -195,7 +212,7 @@ function WorldClock() {
         ))}
 
         <button className="add-city-button" onClick={() => setShowModal(true)}>
-          ➕ Add City
+          ➕ {t('worldclock:buttons.addCity')}
         </button>
       </div>
 
@@ -203,7 +220,7 @@ function WorldClock() {
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>Select City</h2>
+              <h2>{t('worldclock:modal.title')}</h2>
               <button className="modal-close" onClick={() => setShowModal(false)}>
                 ✕
               </button>
@@ -211,7 +228,7 @@ function WorldClock() {
             <input
               type="text"
               className="search-input"
-              placeholder="Search cities..."
+              placeholder={t('worldclock:modal.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               autoFocus
@@ -233,37 +250,37 @@ function WorldClock() {
 
       {/* Features Section */}
       <div className="features-section">
-        <h2>Why Use Our World Clock?</h2>
+        <h2>{t('worldclock:features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Private & Secure</h3>
-            <p>All time calculations are done locally in your browser. No tracking, no data collection, ensuring complete privacy.</p>
+            <h3>{t('worldclock:features.private.title')}</h3>
+            <p>{t('worldclock:features.private.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🌍</div>
-            <h3>Global Coverage</h3>
-            <p>Track time in major cities across all continents. From Seoul to New York, London to Sydney, access 100+ cities worldwide.</p>
+            <h3>{t('worldclock:features.global.title')}</h3>
+            <p>{t('worldclock:features.global.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⏰</div>
-            <h3>Real-Time Updates</h3>
-            <p>Live clock display with automatic updates every second. Always shows accurate local time for all selected cities.</p>
+            <h3>{t('worldclock:features.realTime.title')}</h3>
+            <p>{t('worldclock:features.realTime.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">💾</div>
-            <h3>Save Your Cities</h3>
-            <p>Your selected cities are automatically saved in your browser. No need to re-add them every time you visit.</p>
+            <h3>{t('worldclock:features.save.title')}</h3>
+            <p>{t('worldclock:features.save.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🔍</div>
-            <h3>Easy Search</h3>
-            <p>Quick city search with timezone offset display. Find any city instantly with our intuitive search interface.</p>
+            <h3>{t('worldclock:features.search.title')}</h3>
+            <p>{t('worldclock:features.search.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>100% Free Forever</h3>
-            <p>No registration required, no limits. Track unlimited cities and timezones completely free with all features.</p>
+            <h3>{t('worldclock:features.free.title')}</h3>
+            <p>{t('worldclock:features.free.description')}</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,53 @@
+{
+  "breadcrumb": {
+    "home": "홈",
+    "tools": "도구",
+    "current": "숫자 카운터"
+  },
+  "header": {
+    "title": "숫자 카운터",
+    "subtitle": "사용자 지정 증가값으로 숫자 계산"
+  },
+  "buttons": {
+    "reset": "초기화",
+    "settings": "설정",
+    "close": "닫기",
+    "resetSettings": "설정 초기화"
+  },
+  "settings": {
+    "title": "설정",
+    "limits": "제한",
+    "maximum": "최대값",
+    "on": "켜짐",
+    "off": "꺼짐",
+    "background": "배경",
+    "fontColor": "글꼴 색상"
+  },
+  "features": {
+    "title": "왜 우리 숫자 카운터를 사용해야 하나요?",
+    "private": {
+      "title": "100% 개인정보 보호 및 보안",
+      "description": "모든 계산은 브라우저에서 로컬로 수행됩니다. 어떤 데이터도 서버로 전송되지 않아 완벽한 개인정보 보호를 보장합니다."
+    },
+    "autoSave": {
+      "title": "자동 저장 설정",
+      "description": "카운터 값과 사용자 지정 설정이 자동으로 저장되므로 진행 상황을 절대 잃지 않습니다."
+    },
+    "customizable": {
+      "title": "완전한 맞춤 설정",
+      "description": "사용자 지정 증가값, 색상, 글꼴 및 크기로 카운터를 개인화하여 선호도에 맞게 조정하세요."
+    },
+    "history": {
+      "title": "기록 추적",
+      "description": "언제든지 검토할 수 있는 타임스탬프 기록으로 모든 계산 활동을 추적하세요."
+    },
+    "shortcuts": {
+      "title": "키보드 단축키",
+      "description": "증가, 감소 및 초기화 작업을 위한 키보드 단축키로 빠른 액세스가 가능합니다."
+    },
+    "free": {
+      "title": "영원히 100% 무료",
+      "description": "제한 없음, 구독 없음. 모든 사용자 지정 기능이 포함된 무제한 카운터를 완전히 무료로 사용하세요."
+    }
+  }
+}

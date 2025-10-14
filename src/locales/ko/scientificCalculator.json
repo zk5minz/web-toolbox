@@ -1,0 +1,98 @@
+{
+  "title": "공학용 계산기",
+  "metaTitle": "무료 공학용 계산기 - 고급 수학 함수 | 온라인 도구",
+  "metaDescription": "삼각함수, 로그, 지수 및 통계 기능이 있는 무료 온라인 공학용 계산기입니다. 고급 수학 계산기와 계산 기록. 학생과 엔지니어에게 완벽합니다.",
+  "header": {
+    "home": "홈",
+    "tools": "도구",
+    "title": "공학용 계산기",
+    "subtitle": "고급 수학 함수가 있는 강력한 계산기"
+  },
+  "tabs": {
+    "basic": "기본",
+    "functions": "함수",
+    "variables": "변수"
+  },
+  "angleMode": {
+    "deg": "DEG",
+    "rad": "RAD"
+  },
+  "buttons": {
+    "clear": "C",
+    "allClear": "AC",
+    "delete": "⌫",
+    "equals": "=",
+    "squared": "a²",
+    "power": "aᵇ",
+    "sqrt": "√",
+    "nthRoot": "ⁿ√",
+    "pi": "π",
+    "abs": "|a|",
+    "sin": "sin",
+    "cos": "cos",
+    "tan": "tan",
+    "asin": "sin⁻¹",
+    "acos": "cos⁻¹",
+    "atan": "tan⁻¹",
+    "exp": "eˣ",
+    "round": "round",
+    "mean": "mean",
+    "std": "stdev",
+    "stdp": "stdevp",
+    "ln": "ln",
+    "log": "log",
+    "nPr": "nPr",
+    "nCr": "nCr",
+    "factorial": "!",
+    "e": "e",
+    "ans": "ans",
+    "leftParen": "(",
+    "rightParen": ")",
+    "comma": ",",
+    "divide": "÷",
+    "multiply": "×",
+    "minus": "-",
+    "plus": "+",
+    "modulo": "%",
+    "fraction": "a/b"
+  },
+  "display": {
+    "placeholder": "식을 입력하세요",
+    "error": "오류"
+  },
+  "history": {
+    "title": "계산 기록",
+    "clearHistory": "기록 삭제",
+    "empty": "계산 기록이 없습니다"
+  },
+  "messages": {
+    "clearConfirm": "모든 계산 기록을 삭제하시겠습니까?"
+  },
+  "features": {
+    "title": "공학용 계산기를 선택하는 이유?",
+    "privateSecure": {
+      "title": "100% 개인정보 보호 & 보안",
+      "description": "모든 계산은 브라우저에서 로컬로 처리됩니다. 데이터가 서버로 전송되지 않아 완벽한 개인정보 보호를 보장합니다."
+    },
+    "advancedFunctions": {
+      "title": "고급 함수",
+      "description": "삼각함수, 로그, 지수, 통계 및 복잡한 수학 연산을 포함한 완전한 과학 계산기입니다."
+    },
+    "calculationHistory": {
+      "title": "계산 기록",
+      "description": "상세한 기록 패널로 모든 계산을 추적하세요. 이전 계산을 빠르게 다시 사용할 수 있습니다."
+    },
+    "highPrecision": {
+      "title": "높은 정확도",
+      "description": "복잡한 방정식, 행렬 및 통계 함수를 지원하는 정확한 계산입니다."
+    },
+    "keyboardSupport": {
+      "title": "키보드 지원",
+      "description": "더 빠른 입력을 위한 완전한 키보드 지원. 숫자, 연산자 및 함수에 키보드를 사용하세요."
+    },
+    "free": {
+      "title": "영구 무료",
+      "description": "회원가입 필요 없음. 모든 고급 공학용 계산기 기능을 무제한으로 완전 무료로 사용하세요."
+    }
+  }
+}

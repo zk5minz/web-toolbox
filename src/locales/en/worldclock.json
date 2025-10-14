@@ -1,0 +1,109 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "current": "World Clock"
+  },
+  "header": {
+    "title": "World Clock"
+  },
+  "buttons": {
+    "addCity": "Add City",
+    "remove": "Remove city"
+  },
+  "modal": {
+    "title": "Select City",
+    "searchPlaceholder": "Search cities...",
+    "selected": "selected"
+  },
+  "cities": {
+    "Seoul": "Seoul",
+    "Busan": "Busan",
+    "Tokyo": "Tokyo",
+    "Osaka": "Osaka",
+    "Beijing": "Beijing",
+    "Shanghai": "Shanghai",
+    "Hong Kong": "Hong Kong",
+    "Taipei": "Taipei",
+    "Singapore": "Singapore",
+    "Bangkok": "Bangkok",
+    "Hanoi": "Hanoi",
+    "Ho Chi Minh": "Ho Chi Minh",
+    "Jakarta": "Jakarta",
+    "Manila": "Manila",
+    "Kuala Lumpur": "Kuala Lumpur",
+    "New Delhi": "New Delhi",
+    "Mumbai": "Mumbai",
+    "Dubai": "Dubai",
+    "Tel Aviv": "Tel Aviv",
+    "Istanbul": "Istanbul",
+    "London": "London",
+    "Paris": "Paris",
+    "Berlin": "Berlin",
+    "Rome": "Rome",
+    "Madrid": "Madrid",
+    "Barcelona": "Barcelona",
+    "Amsterdam": "Amsterdam",
+    "Brussels": "Brussels",
+    "Zurich": "Zurich",
+    "Vienna": "Vienna",
+    "Prague": "Prague",
+    "Warsaw": "Warsaw",
+    "Stockholm": "Stockholm",
+    "Copenhagen": "Copenhagen",
+    "Oslo": "Oslo",
+    "Helsinki": "Helsinki",
+    "Dublin": "Dublin",
+    "Lisbon": "Lisbon",
+    "Athens": "Athens",
+    "Moscow": "Moscow",
+    "New York": "New York",
+    "Los Angeles": "Los Angeles",
+    "Chicago": "Chicago",
+    "Houston": "Houston",
+    "Miami": "Miami",
+    "San Francisco": "San Francisco",
+    "Seattle": "Seattle",
+    "Las Vegas": "Las Vegas",
+    "Toronto": "Toronto",
+    "Vancouver": "Vancouver",
+    "Mexico City": "Mexico City",
+    "Buenos Aires": "Buenos Aires",
+    "São Paulo": "São Paulo",
+    "Rio de Janeiro": "Rio de Janeiro",
+    "Santiago": "Santiago",
+    "Lima": "Lima",
+    "Sydney": "Sydney",
+    "Melbourne": "Melbourne",
+    "Auckland": "Auckland",
+    "Cairo": "Cairo",
+    "Johannesburg": "Johannesburg",
+    "Nairobi": "Nairobi"
+  },
+  "features": {
+    "title": "Why Use Our World Clock?",
+    "private": {
+      "title": "100% Private & Secure",
+      "description": "All time calculations are done locally in your browser. No tracking, no data collection, ensuring complete privacy."
+    },
+    "global": {
+      "title": "Global Coverage",
+      "description": "Track time in major cities across all continents. From Seoul to New York, London to Sydney, access 100+ cities worldwide."
+    },
+    "realTime": {
+      "title": "Real-Time Updates",
+      "description": "Live clock display with automatic updates every second. Always shows accurate local time for all selected cities."
+    },
+    "save": {
+      "title": "Save Your Cities",
+      "description": "Your selected cities are automatically saved in your browser. No need to re-add them every time you visit."
+    },
+    "search": {
+      "title": "Easy Search",
+      "description": "Quick city search with timezone offset display. Find any city instantly with our intuitive search interface."
+    },
+    "free": {
+      "title": "100% Free Forever",
+      "description": "No registration required, no limits. Track unlimited cities and timezones completely free with all features."
+    }
+  }
+}

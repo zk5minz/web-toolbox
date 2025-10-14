@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "home": "홈",
+    "tools": "도구",
+    "about": "소개",
+    "contact": "문의",
+    "privacy": "개인정보처리방침",
+    "terms": "이용약관"
+  },
+  "home": {
+    "title": "온라인 도구",
+    "subtitle": "일상에 필요한 무료 온라인 도구",
+    "metaTitle": "무료 온라인 도구 - 이미지/오디오/비디오 변환기, QR 생성기, 계산기",
+    "metaDescription": "100% 무료 온라인 도구. 이미지 변환기, 오디오 변환기, 비디오 변환기, 배경 제거, 색상 추출기, QR 생성기, 비밀번호 생성기, 공학용 계산기. 개인정보 보호 보장."
+  },
+  "tools": {
+    "notepad": {
+      "title": "메모장",
+      "description": "자동 저장 및 다크 모드를 지원하는 간단한 온라인 메모장"
+    },
+    "imageConverter": {
+      "title": "이미지 변환기",
+      "description": "PDF 및 이미지를 다양한 형식으로 변환 (PDF, JPEG, PNG, WEBP 등)"
+    },
+    "backgroundRemover": {
+      "title": "배경 제거",
+      "description": "AI로 이미지 배경을 자동으로 제거"
+    },
+    "colorExtractor": {
+      "title": "색상 추출기",
+      "description": "이미지에서 HEX 및 RGB 코드로 색상 팔레트 추출"
+    },
+    "audioConverter": {
+      "title": "오디오 변환기",
+      "description": "MP3, WAV, OGG, M4A, FLAC 형식 간 오디오 파일 변환"
+    },
+    "videoConverter": {
+      "title": "비디오 변환기",
+      "description": "MP4, WEBM, AVI, MOV 형식 간 비디오 파일 변환"
+    },
+    "qrGenerator": {
+      "title": "QR 코드 생성기",
+      "description": "URL, 텍스트, WiFi 등을 위한 맞춤형 QR 코드 생성"
+    },
+    "passwordGenerator": {
+      "title": "비밀번호 생성기",
+      "description": "커스터마이징 가능한 옵션으로 강력하고 안전한 비밀번호 생성"
+    },
+    "scientificCalculator": {
+      "title": "공학용 계산기",
+      "description": "고급 수학 기능을 갖춘 전문 공학용 계산기"
+    },
+    "stopwatchTimer": {
+      "title": "스톱워치 & 타이머",
+      "description": "스톱워치 및 카운트다운 타이머로 시간 추적"
+    },
+    "numberCounter": {
+      "title": "숫자 카운터",
+      "description": "증가 및 감소 버튼이 있는 간단한 숫자 카운터"
+    },
+    "characterCounter": {
+      "title": "단어 & 글자 수 세기",
+      "description": "단어, 글자, 문장 수를 세고 텍스트 통계 분석"
+    },
+    "worldClock": {
+      "title": "세계 시계",
+      "description": "전 세계의 시간 확인"
+    }
+  },
+  "features": {
+    "title": "왜 우리 도구를 선택해야 할까요?",
+    "privateSecure": {
+      "title": "100% 개인정보 보호 및 보안",
+      "description": "모든 처리는 브라우저에서 로컬로 이루어집니다. 파일과 데이터는 기기를 떠나지 않으며 서버에 업로드되지 않습니다."
+    },
+    "completelyFree": {
+      "title": "완전 무료",
+      "description": "숨겨진 비용, 구독, 프리미엄 기능이 없습니다. 모든 도구는 영원히 무제한으로 100% 무료입니다."
+    },
+    "fastEasy": {
+      "title": "빠르고 쉬움",
+      "description": "설치나 등록이 필요 없습니다. 브라우저를 열고 즉시 도구 사용을 시작하세요."
+    },
+    "noDataCollection": {
+      "title": "데이터 수집 없음",
+      "description": "귀하의 데이터를 추적, 저장 또는 수집하지 않습니다. 완전한 개인정보 보호가 보장됩니다."
+    },
+    "worksEverywhere": {
+      "title": "어디서나 작동",
+      "description": "데스크톱, 태블릿, 모바일 기기에서 작동하는 완전 반응형 디자인. 언제 어디서나 도구를 사용하세요."
+    },
+    "noLimits": {
+      "title": "제한 없음",
+      "description": "파일 크기나 변환 횟수에 제한 없이 무제한 파일을 처리하세요. 필요한 만큼 사용하세요."
+    }
+  },
+  "footer": {
+    "about": "소개",
+    "aboutUs": "회사 소개",
+    "contact": "문의",
+    "legal": "법적 고지",
+    "privacyPolicy": "개인정보처리방침",
+    "termsOfService": "이용약관",
+    "resources": "리소스",
+    "sitemap": "사이트맵",
+    "robots": "Robots.txt",
+    "copyright": "© 2025 Web Toolbox. All rights reserved.",
+    "madeWith": "모두를 위해 ❤️ 로 만들었습니다"
+  },
+  "common": {
+    "language": "언어",
+    "selectLanguage": "언어 선택",
+    "upload": "업로드",
+    "download": "다운로드",
+    "reset": "초기화",
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "copy": "복사",
+    "paste": "붙여넣기",
+    "clear": "지우기",
+    "start": "시작",
+    "stop": "정지",
+    "pause": "일시정지",
+    "resume": "재개"
+  }
+}

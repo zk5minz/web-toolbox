@@ -1,0 +1,55 @@
+filters 섹션에 추가할 내용:
+  "filters": {
+    "title": "필터 및 효과",
+    "enable": "필터 활성화",
+    "instruction": "필터를 활성화하려면 위의 체크박스를 선택하세요",
+    "brightness": "밝기",
+    "contrast": "대비",
+    "saturation": "채도",
+    "blur": "흐림",
+    "grayscale": "회색조",
+    "sepia": "세피아",
+    "invert": "반전",
+    "hue": "색조",
+    "presetFilters": "프리셋 필터",
+    "manualAdjustments": "수동 조정",
+    "original": "원본",
+    "vivid": "선명",
+    "vintage": "빈티지",
+    "cool": "쿨톤",
+    "warm": "웜톤",
+    "custom": "사용자 정의",
+    "darker": "어둡게",
+    "brighter": "밝게",
+    "low": "낮음",
+    "high": "높음",
+    "grayscaleLabel": "회색조",
+    "vividLabel": "선명",
+    "guideTitle": "필터 가이드",
+    "guide1": "빠른 효과를 위해 프리셋 필터를 사용해보세요",
+    "guide2": "미세 조정을 위해 수동 슬라이더를 사용하세요",
+    "guide3": "독특한 결과를 위해 여러 조정을 결합하세요"
+  },
+
+crop 섹션에 추가할 내용:
+  "crop": {
+    "title": "이미지 자르기",
+    "enable": "자르기 활성화",
+    "instruction": "자르기를 활성화하려면 위의 체크박스를 선택하세요",
+    "aspectRatio": "비율",
+    "free": "자유 비율",
+    "square": "정사각형 (1:1)",
+    "landscape": "가로",
+    "portrait": "세로",
+    "zoom": "확대/축소",
+    "selectionArea": "선택 영역",
+    "originalImage": "원본 이미지",
+    "displaySize": "표시 크기",
+    "orientation": "방향",
+    "file": "파일",
+    "type": "유형",
+    "size": "크기"
+  },
+
+buttons 섹션에 추가할 내용:
+    "cancel": "취소"

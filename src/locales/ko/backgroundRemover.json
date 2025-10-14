@@ -1,0 +1,66 @@
+{
+  "metaTitle": "무료 배경 제거기 - AI로 이미지 배경 제거 | 온라인 도구",
+  "metaDescription": "AI로 자동으로 이미지 배경을 제거합니다. 투명 PNG 출력이 가능한 무료 배경 제거 도구입니다. 제품 사진, 인물 사진 및 디자인에 완벽합니다.",
+  "breadcrumb": {
+    "home": "홈",
+    "tools": "도구",
+    "backgroundRemover": "배경 제거기"
+  },
+  "title": "배경 제거기",
+  "subtitle": "AI로 이미지 배경 자동 제거",
+  "header": {
+    "title": "🪄 배경 제거기",
+    "description": "AI로 이미지 배경 자동 제거"
+  },
+  "upload": {
+    "dragDrop": "여기에 이미지를 드래그 앤 드롭하세요",
+    "or": "또는",
+    "clickUpload": "클릭하여 업로드",
+    "supportedFormats": "지원 형식: JPG, PNG, WEBP (최대 10MB)"
+  },
+  "processing": {
+    "title": "배경을 제거하는 중입니다...",
+    "description": "조금 걸릴 수 있습니다"
+  },
+  "errors": {
+    "fileTooLarge": "파일 크기가 너무 큽니다. 최대 10MB입니다.",
+    "unsupportedFormat": "지원하지 않는 형식입니다. JPG, PNG 또는 WEBP를 사용하세요.",
+    "processingFailed": "배경 제거에 실패했습니다. 다시 시도해주세요."
+  },
+  "results": {
+    "title": "배경이 성공적으로 제거되었습니다!",
+    "before": "이전",
+    "after": "이후"
+  },
+  "buttons": {
+    "download": "⬇️ PNG 다운로드",
+    "tryAnother": "🔄 다른 이미지 시도"
+  },
+  "features": {
+    "title": "배경 제거기를 사용하는 이유는?",
+    "privateSecure": {
+      "title": "🔒 100% 비공개 및 안전",
+      "description": "모든 처리는 브라우저에서 AI를 사용하여 로컬로 수행됩니다. 이미지가 기기를 벗어나지 않으며 서버에 업로드되지 않습니다."
+    },
+    "aiPowered": {
+      "title": "🤖 AI 기반 정확도",
+      "description": "고급 AI 기술이 복잡한 이미지까지도 배경을 자동으로 감지하고 높은 정확도로 제거합니다."
+    },
+    "instantResults": {
+      "title": "⚡ 즉시 결과",
+      "description": "초 단위로 빠른 배경 제거가 가능합니다. 대기 없음, 복잡한 설정 없음, 업로드하면 결과를 얻습니다."
+    },
+    "transparentPng": {
+      "title": "🖼️ 투명 PNG 출력",
+      "description": "디자인 및 마케팅에 완벽한 투명한 배경의 고품질 PNG 이미지를 다운로드합니다."
+    },
+    "worksAnywhere": {
+      "title": "📱 어디서나 작동",
+      "description": "완전히 반응형 디자인으로 데스크톱, 태블릿 및 모바일에서 작동합니다. 모든 기기에서 배경을 제거합니다."
+    },
+    "free": {
+      "title": "🆓 100% 영구 무료",
+      "description": "워터마크 없음, 제한 없음. 무제한으로 이미지 배경을 완전히 무료로 제거합니다."
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "metaTitle": "免费音频转换器 - MP3、WAV、OGG、M4A、FLAC | 在线工具",
+  "metaDescription": "在MP3、WAV、OGG、M4A和FLAC格式之间转换音频文件。具有质量控制的免费在线音频转换器。100%私密，无服务器上传。",
+  "breadcrumb": {
+    "home": "首页",
+    "tools": "工具",
+    "audioConverter": "音频转换器"
+  },
+  "title": "🎵 音频转换器",
+  "subtitle": "将音频文件转换为不同格式",
+  "loading": {
+    "title": "正在加载音频处理器...",
+    "hint": "首次加载可能需要一些时间"
+  },
+  "upload": {
+    "dragDrop": "拖放音频文件到此处",
+    "or": "或",
+    "clickUpload": "点击上传",
+    "supportedFormats": "支持的格式: MP3、WAV、OGG、M4A、FLAC (最大 100MB)"
+  },
+  "fileInfo": {
+    "size": "MB"
+  },
+  "options": {
+    "outputFormat": "输出格式",
+    "quality": "质量:",
+    "kbps": "kbps",
+    "qualityLabels": {
+      "low": "低 (64)",
+      "standard": "标准 (192)",
+      "high": "高 (320)"
+    }
+  },
+  "errors": {
+    "fileTooLarge": "文件太大。最大大小为100MB。",
+    "conversionFailed": "转换失败。请重试或使用其他文件。",
+    "loadFailed": "无法加载音频处理器。请刷新页面。"
+  },
+  "buttons": {
+    "convert": "转换音频",
+    "converting": "转换中...",
+    "download": "📥 下载",
+    "remove": "✕"
+  },
+  "features": {
+    "title": "为什么使用我们的音频转换器？",
+    "privateSecure": {
+      "title": "🔒 100%私密安全",
+      "description": "所有转换都在浏览器中进行。您的文件永远不会离开您的设备，也不会上传到任何服务器。"
+    },
+    "fastEfficient": {
+      "title": "⚡ 快速高效",
+      "description": "没有服务器上传或下载意味着更快的转换。在本地处理文件，无需等待队列。"
+    },
+    "multipleFormats": {
+      "title": "🎵 多种格式",
+      "description": "使用可自定义的质量设置在MP3、WAV、OGG、M4A和FLAC格式之间转换。"
+    },
+    "freeUnlimited": {
+      "title": "💾 免费无限",
+      "description": "没有文件大小限制、没有转换限制、完全免费。根据需要转换任意多个文件。"
+    },
+    "qualityControl": {
+      "title": "🔧 质量控制",
+      "description": "从64kbps调整到320kbps比特率，平衡文件大小和音频质量。"
+    },
+    "worksOffline": {
+      "title": "🌐 离线工作",
+      "description": "加载后，转换器完全离线工作。转换不需要互联网连接。"
+    }
+  }
+}

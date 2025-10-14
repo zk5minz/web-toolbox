@@ -1,0 +1,98 @@
+{
+  "title": "工程计算器",
+  "metaTitle": "免费工程计算器 - 高级数学函数 | 在线工具",
+  "metaDescription": "免费在线工程计算器，具有三角函数、对数、指数和统计功能。高级数学计算器和计算历史。非常适合学生和工程师。",
+  "header": {
+    "home": "主页",
+    "tools": "工具",
+    "title": "工程计算器",
+    "subtitle": "具有高级数学函数的强大计算器"
+  },
+  "tabs": {
+    "basic": "基础",
+    "functions": "函数",
+    "variables": "变量"
+  },
+  "angleMode": {
+    "deg": "DEG",
+    "rad": "RAD"
+  },
+  "buttons": {
+    "clear": "C",
+    "allClear": "AC",
+    "delete": "⌫",
+    "equals": "=",
+    "squared": "a²",
+    "power": "aᵇ",
+    "sqrt": "√",
+    "nthRoot": "ⁿ√",
+    "pi": "π",
+    "abs": "|a|",
+    "sin": "sin",
+    "cos": "cos",
+    "tan": "tan",
+    "asin": "sin⁻¹",
+    "acos": "cos⁻¹",
+    "atan": "tan⁻¹",
+    "exp": "eˣ",
+    "round": "round",
+    "mean": "mean",
+    "std": "stdev",
+    "stdp": "stdevp",
+    "ln": "ln",
+    "log": "log",
+    "nPr": "nPr",
+    "nCr": "nCr",
+    "factorial": "!",
+    "e": "e",
+    "ans": "ans",
+    "leftParen": "(",
+    "rightParen": ")",
+    "comma": ",",
+    "divide": "÷",
+    "multiply": "×",
+    "minus": "-",
+    "plus": "+",
+    "modulo": "%",
+    "fraction": "a/b"
+  },
+  "display": {
+    "placeholder": "输入表达式",
+    "error": "错误"
+  },
+  "history": {
+    "title": "计算历史",
+    "clearHistory": "清除历史",
+    "empty": "还没有计算"
+  },
+  "messages": {
+    "clearConfirm": "清除所有计算历史吗？"
+  },
+  "features": {
+    "title": "为什么使用我们的工程计算器？",
+    "privateSecure": {
+      "title": "100% 隐私 & 安全",
+      "description": "所有计算都在浏览器中本地处理。数据不会发送到任何服务器，确保完全隐私。"
+    },
+    "advancedFunctions": {
+      "title": "高级功能",
+      "description": "完整的科学计算器，包含三角函数、对数、指数、统计和复杂的数学运算。"
+    },
+    "calculationHistory": {
+      "title": "计算历史",
+      "description": "使用详细的历史面板跟踪所有计算。快速重用以前的计算。"
+    },
+    "highPrecision": {
+      "title": "高精度",
+      "description": "支持复杂方程、矩阵和统计函数的精确计算。"
+    },
+    "keyboardSupport": {
+      "title": "键盘支持",
+      "description": "完整的键盘支持以实现更快的输入。为数字、运算符和函数使用键盘。"
+    },
+    "free": {
+      "title": "永远免费",
+      "description": "无需注册。无限使用所有高级工程计算器功能，完全免费。"
+    }
+  }
+}

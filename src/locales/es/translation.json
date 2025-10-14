@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio"
+  },
+  "home": {
+    "title": "Herramientas en Línea",
+    "subtitle": "Herramientas en línea gratuitas para tus necesidades diarias",
+    "metaTitle": "Herramientas en Línea Gratuitas - Conversor de Imagen/Audio/Video, Generador QR, Calculadora",
+    "metaDescription": "Herramientas en línea 100% gratuitas. Conversor de imágenes, conversor de audio, conversor de video, eliminador de fondo, extractor de color, generador QR, generador de contraseñas, calculadora científica. Privacidad garantizada."
+  },
+  "tools": {
+    "notepad": {
+      "title": "Bloc de Notas",
+      "description": "Bloc de notas en línea simple con guardado automático y modo oscuro"
+    },
+    "imageConverter": {
+      "title": "Conversor de Imágenes",
+      "description": "Convierte PDF e imágenes entre diferentes formatos (PDF, JPEG, PNG, WEBP, etc.)"
+    },
+    "backgroundRemover": {
+      "title": "Eliminador de Fondo",
+      "description": "Elimina fondos de imágenes automáticamente con IA"
+    },
+    "colorExtractor": {
+      "title": "Extractor de Color",
+      "description": "Extrae paleta de colores de cualquier imagen con códigos HEX y RGB"
+    },
+    "audioConverter": {
+      "title": "Conversor de Audio",
+      "description": "Convierte archivos de audio entre formatos MP3, WAV, OGG, M4A y FLAC"
+    },
+    "videoConverter": {
+      "title": "Conversor de Video",
+      "description": "Convierte archivos de video entre formatos MP4, WEBM, AVI y MOV"
+    },
+    "qrGenerator": {
+      "title": "Generador de Código QR",
+      "description": "Crea códigos QR personalizados para URLs, texto, WiFi y más"
+    },
+    "passwordGenerator": {
+      "title": "Generador de Contraseñas",
+      "description": "Genera contraseñas fuertes y seguras con opciones personalizables"
+    },
+    "scientificCalculator": {
+      "title": "Calculadora Científica",
+      "description": "Calculadora científica profesional con funciones avanzadas"
+    },
+    "stopwatchTimer": {
+      "title": "Cronómetro y Temporizador",
+      "description": "Rastrea el tiempo con cronómetro y temporizador de cuenta regresiva"
+    },
+    "numberCounter": {
+      "title": "Contador de Números",
+      "description": "Contador de números simple con botones de incremento y decremento"
+    },
+    "characterCounter": {
+      "title": "Contador de Palabras y Caracteres",
+      "description": "Cuenta palabras, caracteres, oraciones y analiza estadísticas de texto"
+    },
+    "worldClock": {
+      "title": "Reloj Mundial",
+      "description": "Consulta la hora en todo el mundo"
+    }
+  },
+  "features": {
+    "title": "¿Por qué elegir nuestras herramientas?",
+    "privateSecure": {
+      "title": "100% Privado y Seguro",
+      "description": "Todo el procesamiento ocurre localmente en tu navegador. Tus archivos y datos nunca salen de tu dispositivo ni se cargan en ningún servidor."
+    },
+    "completelyFree": {
+      "title": "Completamente Gratis",
+      "description": "Sin costos ocultos, suscripciones ni funciones premium. Todas las herramientas son 100% gratuitas con uso ilimitado para siempre."
+    },
+    "fastEasy": {
+      "title": "Rápido y Fácil",
+      "description": "No requiere instalación ni registro. Solo abre tu navegador y comienza a usar nuestras herramientas al instante."
+    },
+    "noDataCollection": {
+      "title": "Sin Recopilación de Datos",
+      "description": "No rastreamos, almacenamos ni recopilamos ninguno de tus datos. Protección de privacidad completa garantizada."
+    },
+    "worksEverywhere": {
+      "title": "Funciona en Todas Partes",
+      "description": "Diseño totalmente responsive que funciona en computadoras de escritorio, tabletas y dispositivos móviles. Usa nuestras herramientas en cualquier lugar, en cualquier momento."
+    },
+    "noLimits": {
+      "title": "Sin Límites",
+      "description": "Procesa archivos ilimitados sin restricciones de tamaño de archivo o número de conversiones. Usa tanto como necesites."
+    }
+  },
+  "footer": {
+    "about": "Acerca de",
+    "aboutUs": "Sobre Nosotros",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio",
+    "resources": "Recursos",
+    "sitemap": "Mapa del Sitio",
+    "robots": "Robots.txt",
+    "copyright": "© 2025 Web Toolbox. Todos los derechos reservados.",
+    "madeWith": "Hecho con ❤️ para todos"
+  },
+  "common": {
+    "language": "Idioma",
+    "selectLanguage": "Seleccionar Idioma",
+    "upload": "Subir",
+    "download": "Descargar",
+    "reset": "Restablecer",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "copy": "Copiar",
+    "paste": "Pegar",
+    "clear": "Limpiar",
+    "start": "Iniciar",
+    "stop": "Detener",
+    "pause": "Pausar",
+    "resume": "Reanudar"
+  }
+}

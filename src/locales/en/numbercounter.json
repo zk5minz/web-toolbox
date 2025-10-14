@@ -1,0 +1,53 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "current": "Number Counter"
+  },
+  "header": {
+    "title": "Number Counter",
+    "subtitle": "Count numbers with customizable increments"
+  },
+  "buttons": {
+    "reset": "Reset",
+    "settings": "Settings",
+    "close": "Close",
+    "resetSettings": "Reset Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "limits": "Limits",
+    "maximum": "Maximum",
+    "on": "On",
+    "off": "Off",
+    "background": "Background",
+    "fontColor": "Font Color"
+  },
+  "features": {
+    "title": "Why Use Our Number Counter?",
+    "private": {
+      "title": "100% Private & Secure",
+      "description": "All counting is done locally in your browser. No data is sent to any server, ensuring complete privacy."
+    },
+    "autoSave": {
+      "title": "Auto-Save Settings",
+      "description": "Your counter value and custom settings are automatically saved, so you never lose your progress."
+    },
+    "customizable": {
+      "title": "Fully Customizable",
+      "description": "Personalize your counter with custom increments, colors, fonts, and sizes to match your preferences."
+    },
+    "history": {
+      "title": "History Tracking",
+      "description": "Keep track of all your counting activities with timestamp history that you can review anytime."
+    },
+    "shortcuts": {
+      "title": "Keyboard Shortcuts",
+      "description": "Quick access with keyboard shortcuts for increment, decrement, and reset operations."
+    },
+    "free": {
+      "title": "100% Free Forever",
+      "description": "No limits, no subscriptions. Use unlimited counters with all customization features completely free."
+    }
+  }
+}

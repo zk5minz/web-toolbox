@@ -1,9 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './CharacterCounter.css';
 
 function QRGenerator() {
+  const { t } = useTranslation(['qrgenerator', 'translation']);
+  
   // SEO Meta Tags
   useEffect(() => {
     document.title = 'Free QR Code Generator - Create Custom QR Codes | Online Tools';
@@ -84,28 +88,28 @@ function QRGenerator() {
   const getPlaceholder = () => {
     switch (activeTab) {
       case 'website':
-        return 'Enter website URL (e.g., https://example.com)';
+        return t('qrgenerator:placeholders.website');
       case 'text':
-        return 'Enter any text you want to encode';
+        return t('qrgenerator:placeholders.text');
       case 'email':
-        return 'Email address';
+        return t('qrgenerator:placeholders.emailAddress');
       case 'phone':
-        return 'Enter phone number (e.g., +1234567890)';
+        return t('qrgenerator:placeholders.phone');
       case 'sms':
-        return 'Enter phone number';
+        return t('qrgenerator:placeholders.smsNumber');
       case 'wifi':
-        return 'Network name (SSID)';
+        return t('qrgenerator:placeholders.wifiSsid');
       case 'vcard':
-        return 'Full name';
+        return t('qrgenerator:placeholders.vcardName');
       default:
-        return 'Enter content';
+        return t('qrgenerator:placeholders.text');
     }
   };
 
   // Handle download
   const handleDownload = async () => {
     if (!qrValue) {
-      setError('Please enter content to generate QR code');
+      setError(t('qrgenerator:errors.enterContent'));
       return;
     }
 
@@ -161,7 +165,7 @@ function QRGenerator() {
 
       addToHistory();
     } catch (err) {
-      setError('Failed to download QR code');
+      setError(t('qrgenerator:errors.downloadFailed'));
       setIsDownloading(false);
     }
   };
@@ -186,7 +190,7 @@ function QRGenerator() {
   // Copy QR to clipboard
   const handleCopyToClipboard = async () => {
     if (!qrValue) {
-      setError('Please enter content to generate QR code');
+      setError(t('qrgenerator:errors.enterContent'));
       return;
     }
 
@@ -218,7 +222,7 @@ function QRGenerator() {
 
       img.src = url;
     } catch (err) {
-      setError('Failed to copy to clipboard');
+      setError(t('qrgenerator:errors.copyFailed'));
     }
   };
 
@@ -263,18 +267,21 @@ function QRGenerator() {
   };
 
   const tabs = [
-    { id: 'website', label: 'Website', icon: '🌐' },
-    { id: 'text', label: 'Text', icon: '📝' },
-    { id: 'email', label: 'Email', icon: '📧' },
-    { id: 'phone', label: 'Phone', icon: '📞' },
-    { id: 'sms', label: 'SMS', icon: '💬' },
-    { id: 'wifi', label: 'WiFi', icon: '📶' },
-    { id: 'vcard', label: 'vCard', icon: '👤' },
+    { id: 'website', label: t('qrgenerator:contentType.website'), icon: '🌐' },
+    { id: 'text', label: t('qrgenerator:contentType.text'), icon: '📝' },
+    { id: 'email', label: t('qrgenerator:contentType.email'), icon: '📧' },
+    { id: 'phone', label: t('qrgenerator:contentType.phone'), icon: '📞' },
+    { id: 'sms', label: t('qrgenerator:contentType.sms'), icon: '💬' },
+    { id: 'wifi', label: t('qrgenerator:contentType.wifi'), icon: '📶' },
+    { id: 'vcard', label: t('qrgenerator:contentType.vcard'), icon: '👤' },
   ];
 
   return (
     <div className="character-counter-container">
       <header className="character-counter-header">
+        <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
+          <LanguageSwitcher />
+        </div>
         <div className="breadcrumb">
           <Link
             to="/"
@@ -299,12 +306,12 @@ function QRGenerator() {
               e.target.style.transform = 'scale(1)';
             }}
           >
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span> &gt; </span>
-          <span>Tools</span>
+          <span>{t('qrgenerator:breadcrumb.tools')}</span>
           <span> &gt; </span>
-          <span>QR Code Generator</span>
+          <span>{t('qrgenerator:breadcrumb.current')}</span>
         </div>
         <div style={{
           display: 'flex',
@@ -327,16 +334,16 @@ function QRGenerator() {
             color: 'white',
             margin: '0'
           }}>
-            QR Code Generator
+            {t('qrgenerator:header.title')}
           </h1>
         </div>
-        <p>Create custom QR codes for websites, text, contacts, and more</p>
+        <p>{t('qrgenerator:header.subtitle')}</p>
       </header>
 
       <div className="character-counter-content">
         <div className="text-input-section">
           <div className="input-header">
-            <h2>Quick Presets</h2>
+            <h2>{t('qrgenerator:presets.title')}</h2>
           </div>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' }}>
             {Object.entries(presets).map(([key, preset]) => (
@@ -352,7 +359,7 @@ function QRGenerator() {
           </div>
 
           <div className="input-header">
-            <h2>Content Type</h2>
+            <h2>{t('qrgenerator:contentType.title')}</h2>
           </div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '15px' }}>
             {tabs.map((tab) => (
@@ -387,7 +394,7 @@ function QRGenerator() {
                 type="email"
                 value={emailAddress}
                 onChange={(e) => setEmailAddress(e.target.value)}
-                placeholder="Email address"
+                placeholder={t('qrgenerator:placeholders.emailAddress')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -399,7 +406,7 @@ function QRGenerator() {
                 type="text"
                 value={emailSubject}
                 onChange={(e) => setEmailSubject(e.target.value)}
-                placeholder="Subject (optional)"
+                placeholder={t('qrgenerator:placeholders.emailSubject')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -410,7 +417,7 @@ function QRGenerator() {
               <textarea
                 value={emailBody}
                 onChange={(e) => setEmailBody(e.target.value)}
-                placeholder="Message (optional)"
+                placeholder={t('qrgenerator:placeholders.emailBody')}
                 className="text-input"
                 style={{ minHeight: '60px' }}
               />
@@ -439,7 +446,7 @@ function QRGenerator() {
                 type="tel"
                 value={smsNumber}
                 onChange={(e) => setSmsNumber(e.target.value)}
-                placeholder="Phone number"
+                placeholder={t('qrgenerator:placeholders.smsNumber')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -450,7 +457,7 @@ function QRGenerator() {
               <textarea
                 value={smsMessage}
                 onChange={(e) => setSmsMessage(e.target.value)}
-                placeholder="Message (optional)"
+                placeholder={t('qrgenerator:placeholders.smsMessage')}
                 className="text-input"
                 style={{ minHeight: '60px' }}
               />
@@ -463,7 +470,7 @@ function QRGenerator() {
                 type="text"
                 value={wifiSsid}
                 onChange={(e) => setWifiSsid(e.target.value)}
-                placeholder="Network name (SSID)"
+                placeholder={t('qrgenerator:placeholders.wifiSsid')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -475,7 +482,7 @@ function QRGenerator() {
                 type="text"
                 value={wifiPassword}
                 onChange={(e) => setWifiPassword(e.target.value)}
-                placeholder="Password"
+                placeholder={t('qrgenerator:placeholders.wifiPassword')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -493,9 +500,9 @@ function QRGenerator() {
                   fontSize: '1rem',
                 }}
               >
-                <option value="WPA">WPA/WPA2</option>
-                <option value="WEP">WEP</option>
-                <option value="nopass">No Password</option>
+                <option value="WPA">{t('qrgenerator:customization.wifiSecurity.wpa')}</option>
+                <option value="WEP">{t('qrgenerator:customization.wifiSecurity.wep')}</option>
+                <option value="nopass">{t('qrgenerator:customization.wifiSecurity.nopass')}</option>
               </select>
             </div>
           )}
@@ -506,7 +513,7 @@ function QRGenerator() {
                 type="text"
                 value={vcardName}
                 onChange={(e) => setVcardName(e.target.value)}
-                placeholder="Full name"
+                placeholder={t('qrgenerator:placeholders.vcardName')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -518,7 +525,7 @@ function QRGenerator() {
                 type="tel"
                 value={vcardPhone}
                 onChange={(e) => setVcardPhone(e.target.value)}
-                placeholder="Phone number"
+                placeholder={t('qrgenerator:placeholders.vcardPhone')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -530,7 +537,7 @@ function QRGenerator() {
                 type="email"
                 value={vcardEmail}
                 onChange={(e) => setVcardEmail(e.target.value)}
-                placeholder="Email address"
+                placeholder={t('qrgenerator:placeholders.vcardEmail')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -542,7 +549,7 @@ function QRGenerator() {
                 type="text"
                 value={vcardOrg}
                 onChange={(e) => setVcardOrg(e.target.value)}
-                placeholder="Organization (optional)"
+                placeholder={t('qrgenerator:placeholders.vcardOrg')}
                 style={{
                   padding: '10px',
                   border: '2px solid #e5e7eb',
@@ -555,12 +562,12 @@ function QRGenerator() {
 
           <div style={{ marginTop: '20px' }}>
             <div className="input-header">
-              <h2>Customization</h2>
+              <h2>{t('qrgenerator:customization.title')}</h2>
             </div>
             <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
               <div style={{ flex: 1 }}>
                 <label style={{ fontSize: '14px', fontWeight: '700', display: 'block', marginBottom: '5px' }}>
-                  QR Color
+                  {t('qrgenerator:customization.qrColor')}
                 </label>
                 <input
                   type="color"
@@ -577,7 +584,7 @@ function QRGenerator() {
               </div>
               <div style={{ flex: 1 }}>
                 <label style={{ fontSize: '14px', fontWeight: '700', display: 'block', marginBottom: '5px' }}>
-                  BG Color
+                  {t('qrgenerator:customization.bgColor')}
                 </label>
                 <input
                   type="color"
@@ -595,7 +602,7 @@ function QRGenerator() {
             </div>
             <div style={{ marginBottom: '15px' }}>
               <label style={{ fontSize: '14px', fontWeight: '700', display: 'block', marginBottom: '5px' }}>
-                Size: {qrSize}px
+                {t('qrgenerator:customization.size')}: {qrSize}px
               </label>
               <input
                 type="range"
@@ -608,7 +615,7 @@ function QRGenerator() {
             </div>
             <div style={{ marginBottom: '15px' }}>
               <label style={{ fontSize: '14px', fontWeight: '700', display: 'block', marginBottom: '5px' }}>
-                Error Correction
+                {t('qrgenerator:customization.errorCorrection')}
               </label>
               <select
                 value={errorLevel}
@@ -621,15 +628,15 @@ function QRGenerator() {
                   fontSize: '1rem',
                 }}
               >
-                <option value="L">Low</option>
-                <option value="M">Medium</option>
-                <option value="Q">Quartile</option>
-                <option value="H">High</option>
+                <option value="L">{t('qrgenerator:customization.errorLevels.low')}</option>
+                <option value="M">{t('qrgenerator:customization.errorLevels.medium')}</option>
+                <option value="Q">{t('qrgenerator:customization.errorLevels.quartile')}</option>
+                <option value="H">{t('qrgenerator:customization.errorLevels.high')}</option>
               </select>
             </div>
             <div>
               <label style={{ fontSize: '14px', fontWeight: '700', display: 'block', marginBottom: '5px' }}>
-                Format
+                {t('qrgenerator:customization.format')}
               </label>
               <select
                 value={downloadFormat}
@@ -652,7 +659,7 @@ function QRGenerator() {
 
         <div className="stats-panel">
           <div className="stats-header">
-            <h2>Preview</h2>
+            <h2>{t('qrgenerator:preview.title')}</h2>
           </div>
 
           <div
@@ -678,7 +685,7 @@ function QRGenerator() {
                 />
               ) : (
                 <div style={{ fontSize: '16px', fontWeight: '700', color: '#999', textAlign: 'center' }}>
-                  Enter content to generate QR code
+                  {t('qrgenerator:preview.emptyState')}
                 </div>
               )}
             </div>
@@ -686,7 +693,7 @@ function QRGenerator() {
 
           {qrValue && (
             <div style={{ textAlign: 'center', fontSize: '14px', fontWeight: '700', color: '#666', marginBottom: '15px' }}>
-              Size: {qrSize}px × {qrSize}px
+              {t('qrgenerator:preview.sizeLabel')}: {qrSize}px × {qrSize}px
             </div>
           )}
 
@@ -709,19 +716,19 @@ function QRGenerator() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <button onClick={handleDownload} disabled={isDownloading || !qrValue} className="copy-stats-btn">
-              {isDownloading ? 'Downloading...' : `Download (${downloadFormat})`}
+              {isDownloading ? t('qrgenerator:buttons.downloading') : `${t('qrgenerator:buttons.download')} (${downloadFormat})`}
             </button>
             <button onClick={handleCopyToClipboard} disabled={!qrValue} className="copy-stats-btn">
-              {copiedToClipboard ? '✓ Copied!' : '📋 Copy'}
+              {copiedToClipboard ? `✓ ${t('qrgenerator:buttons.copied')}` : `📋 ${t('qrgenerator:buttons.copy')}`}
             </button>
             <button onClick={handleReset} className="clear-btn">
-              Reset
+              {t('qrgenerator:buttons.reset')}
             </button>
           </div>
 
           {qrHistory.length > 0 && (
             <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '2px solid #e5e7eb' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '15px' }}>Recent (Last 5)</h3>
+              <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '15px' }}>{t('qrgenerator:history.title')}</h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px' }}>
                 {qrHistory.map((item) => (
                   <div
@@ -764,37 +771,37 @@ function QRGenerator() {
 
       {/* Features Section */}
       <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderTop: '2px solid #e5e7eb' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>Why Use Our QR Code Generator?</h2>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>{t('qrgenerator:features.title')}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Private & Secure</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>All QR codes are generated locally in your browser. Your data never leaves your device and is not stored on any server.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('qrgenerator:features.private.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('qrgenerator:features.private.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🎨</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Fully Customizable</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Customize colors, size, error correction level, and download in multiple formats (PNG, SVG, JPEG).</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('qrgenerator:features.customizable.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('qrgenerator:features.customizable.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📦</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Multiple QR Types</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Create QR codes for URLs, text, emails, phone numbers, WiFi credentials, and more.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('qrgenerator:features.multipleTypes.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('qrgenerator:features.multipleTypes.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>💾</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Download & Share</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Download high-quality QR codes or copy to clipboard instantly. Perfect for print and digital use.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('qrgenerator:features.downloadShare.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('qrgenerator:features.downloadShare.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📅</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>History Tracking</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Recent QR codes are saved locally so you can quickly regenerate or modify previous codes.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('qrgenerator:features.history.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('qrgenerator:features.history.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Free Forever</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>No watermarks, no limits, completely free. Generate unlimited QR codes with all features.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('qrgenerator:features.free.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('qrgenerator:features.free.description')}</p>
           </div>
         </div>
       </div>

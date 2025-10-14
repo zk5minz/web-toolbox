@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './Notepad.css';
 
 function Notepad() {
+  const { t, i18n } = useTranslation(['notepad', 'translation']);
   const [text, setText] = useState('');
   const [darkMode, setDarkMode] = useState(false);
   const [fontSize, setFontSize] = useState(14);
@@ -26,12 +29,12 @@ function Notepad() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = 'Free Online Notepad - Auto-Save & Dark Mode | Online Tools';
+    document.title = t('notepad:metaTitle');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free online notepad with auto-save feature, dark mode, find & replace, and word count. Your notes are stored locally in browser. 100% private and secure.');
+      metaDescription.setAttribute('content', t('notepad:metaDescription'));
     }
-  }, []);
+  }, [t, i18n.language]);
 
   // Load from localStorage
   useEffect(() => {
@@ -155,7 +158,7 @@ function Notepad() {
 
   // File operations
   const handleNew = () => {
-    if (text && !confirm('Current text will be lost. Continue?')) return;
+    if (text && !confirm(t('notepad:messages.confirmNew'))) return;
     setText('');
     setHistory(['']);
     setHistoryIndex(0);
@@ -193,7 +196,7 @@ function Notepad() {
         const writable = await fileHandleRef.current.createWritable();
         await writable.write(text);
         await writable.close();
-        alert('File saved successfully!');
+        alert(t('notepad:messages.fileSaved'));
         return;
       } catch (err) {
         console.error('Error saving file:', err);
@@ -228,12 +231,12 @@ function Notepad() {
       } catch (err) {
         if (err.name !== 'AbortError') {
           console.error('Error saving file:', err);
-          alert('Failed to save file');
+          alert(t('notepad:messages.saveFailed'));
         }
       }
     } else {
       // Fallback: traditional download
-      const filename = prompt('Enter filename:', currentFileName || 'notepad.txt');
+      const filename = prompt(t('notepad:messages.enterFilename'), currentFileName || 'notepad.txt');
       if (filename) {
         const blob = new Blob([text], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
@@ -256,7 +259,7 @@ function Notepad() {
   const handleCopyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(text);
-      alert('Text copied to clipboard!');
+      alert(t('notepad:messages.copiedToClipboard'));
       setShowShareModal(false);
     } catch (err) {
       // Fallback for older browsers
@@ -266,10 +269,10 @@ function Notepad() {
       textarea.select();
       try {
         document.execCommand('copy');
-        alert('Text copied to clipboard!');
+        alert(t('notepad:messages.copiedToClipboard'));
         setShowShareModal(false);
       } catch (e) {
-        alert('Failed to copy to clipboard');
+        alert(t('notepad:messages.copyFailed'));
       }
       document.body.removeChild(textarea);
     }
@@ -424,7 +427,7 @@ function Notepad() {
         <div className="notepad-alert">
           <div className="alert-content">
             <span>
-              This notepad uses localStorage to save your notes. Your data is stored locally in your browser.
+              {t('notepad:alert')}
             </span>
             <button onClick={() => setShowAlert(false)} className="alert-close">×</button>
           </div>
@@ -433,21 +436,24 @@ function Notepad() {
 
       {/* Breadcrumb */}
       <div className="notepad-breadcrumb">
-        <Link to="/">🏠 Home</Link>
+        <Link to="/">🏠 {t('translation:nav.home')}</Link>
         <span> {'>'} </span>
-        <span>Tools</span>
+        <span>{t('translation:nav.tools')}</span>
         <span> {'>'} </span>
-        <span>Notepad</span>
+        <span>{t('notepad:breadcrumb.notepad')}</span>
         <span className="file-name-display">
           {currentFileName ? (
             <>
-              <span style={{ marginLeft: '20px', marginRight: '8px' }}>File 📄</span>
+              <span style={{ marginLeft: '20px', marginRight: '8px' }}>{t('notepad:breadcrumb.file')} 📄</span>
               <span style={{ color: '#888' }}>{currentFileName}</span>
             </>
           ) : (
-            <span style={{ marginLeft: '20px', color: '#888' }}>File 📄</span>
+            <span style={{ marginLeft: '20px', color: '#888' }}>{t('notepad:breadcrumb.file')} 📄</span>
           )}
         </span>
+        <div style={{ marginLeft: 'auto' }}>
+          <LanguageSwitcher />
+        </div>
       </div>
 
       {/* Menu Bar */}
@@ -457,16 +463,16 @@ function Notepad() {
           closeAllMenus();
           setShowFileMenu(true);
         }}>
-          File
+          {t('notepad:menu.file')}
           {showFileMenu && (
             <div className="dropdown-menu">
-              <div className="menu-option" onClick={handleNew}>New</div>
-              <div className="menu-option" onClick={handleOpen}>Open</div>
-              <div className="menu-option" onClick={handleSave}>Save (Ctrl+S)</div>
-              <div className="menu-option" onClick={handleSaveAs}>Save As</div>
+              <div className="menu-option" onClick={handleNew}>{t('notepad:fileMenu.new')}</div>
+              <div className="menu-option" onClick={handleOpen}>{t('notepad:fileMenu.open')}</div>
+              <div className="menu-option" onClick={handleSave}>{t('notepad:fileMenu.save')}</div>
+              <div className="menu-option" onClick={handleSaveAs}>{t('notepad:fileMenu.saveAs')}</div>
               <div className="menu-divider"></div>
-              <div className="menu-option" onClick={handleShare}>Share</div>
-              <div className="menu-option" onClick={handlePrint}>Print (Ctrl+P)</div>
+              <div className="menu-option" onClick={handleShare}>{t('notepad:fileMenu.share')}</div>
+              <div className="menu-option" onClick={handlePrint}>{t('notepad:fileMenu.print')}</div>
             </div>
           )}
         </div>
@@ -476,22 +482,22 @@ function Notepad() {
           closeAllMenus();
           setShowEditMenu(true);
         }}>
-          Edit
+          {t('notepad:menu.edit')}
           {showEditMenu && (
             <div className="dropdown-menu">
               <div className="menu-option" onClick={handleUndo} style={{ opacity: historyIndex <= 0 ? 0.5 : 1 }}>
-                Undo (Ctrl+Z)
+                {t('notepad:editMenu.undo')}
               </div>
               <div className="menu-option" onClick={handleRedo} style={{ opacity: historyIndex >= history.length - 1 ? 0.5 : 1 }}>
-                Redo (Ctrl+Y)
+                {t('notepad:editMenu.redo')}
               </div>
               <div className="menu-divider"></div>
-              <div className="menu-option" onClick={handleCut}>Cut (Ctrl+X)</div>
-              <div className="menu-option" onClick={handleCopy}>Copy (Ctrl+C)</div>
-              <div className="menu-option" onClick={handlePaste}>Paste (Ctrl+V)</div>
-              <div className="menu-option" onClick={handleDelete}>Delete</div>
+              <div className="menu-option" onClick={handleCut}>{t('notepad:editMenu.cut')}</div>
+              <div className="menu-option" onClick={handleCopy}>{t('notepad:editMenu.copy')}</div>
+              <div className="menu-option" onClick={handlePaste}>{t('notepad:editMenu.paste')}</div>
+              <div className="menu-option" onClick={handleDelete}>{t('notepad:editMenu.delete')}</div>
               <div className="menu-divider"></div>
-              <div className="menu-option" onClick={handleSelectAll}>Select All (Ctrl+A)</div>
+              <div className="menu-option" onClick={handleSelectAll}>{t('notepad:editMenu.selectAll')}</div>
             </div>
           )}
         </div>
@@ -501,17 +507,17 @@ function Notepad() {
           closeAllMenus();
           setShowViewMenu(true);
         }}>
-          View
+          {t('notepad:menu.view')}
           {showViewMenu && (
             <div className="dropdown-menu">
               <div className="menu-option" onClick={() => setDarkMode(!darkMode)}>
-                {darkMode ? 'Light Mode' : 'Dark Mode'}
+                {darkMode ? t('notepad:viewMenu.lightMode') : t('notepad:viewMenu.darkMode')}
               </div>
               <div className="menu-divider"></div>
-              <div className="menu-option" onClick={handleZoomIn}>Zoom In</div>
-              <div className="menu-option" onClick={handleZoomOut}>Zoom Out</div>
+              <div className="menu-option" onClick={handleZoomIn}>{t('notepad:viewMenu.zoomIn')}</div>
+              <div className="menu-option" onClick={handleZoomOut}>{t('notepad:viewMenu.zoomOut')}</div>
               <div className="menu-divider"></div>
-              <div className="menu-option" onClick={() => setShowPreferences(true)}>Preferences</div>
+              <div className="menu-option" onClick={() => setShowPreferences(true)}>{t('notepad:viewMenu.preferences')}</div>
             </div>
           )}
         </div>
@@ -521,14 +527,14 @@ function Notepad() {
           closeAllMenus();
           setShowHelpMenu(true);
         }}>
-          Help
+          {t('notepad:menu.help')}
           {showHelpMenu && (
             <div className="dropdown-menu">
-              <div className="menu-option" onClick={() => alert('Simple online notepad with auto-save\nVersion 1.0')}>
-                About
+              <div className="menu-option" onClick={() => alert(t('notepad:helpMenu.aboutText'))}>
+                {t('notepad:helpMenu.about')}
               </div>
-              <div className="menu-option" onClick={() => alert('Keyboard shortcuts:\nCtrl+S - Save\nCtrl+Z - Undo\nCtrl+Y - Redo\nCtrl+A - Select All\nCtrl+P - Print')}>
-                Keyboard Shortcuts
+              <div className="menu-option" onClick={() => alert(t('notepad:helpMenu.shortcutsText'))}>
+                {t('notepad:helpMenu.shortcuts')}
               </div>
             </div>
           )}
@@ -537,19 +543,19 @@ function Notepad() {
 
       {/* Toolbar */}
       <div className="notepad-toolbar">
-        <button onClick={handleNew} title="New" className="toolbar-btn">📄</button>
-        <button onClick={handleOpen} title="Open" className="toolbar-btn">📂</button>
-        <button onClick={handleSave} title="Save (Ctrl+S)" className="toolbar-btn">💾</button>
+        <button onClick={handleNew} title={t('notepad:toolbar.new')} className="toolbar-btn">📄</button>
+        <button onClick={handleOpen} title={t('notepad:toolbar.open')} className="toolbar-btn">📂</button>
+        <button onClick={handleSave} title={t('notepad:toolbar.save')} className="toolbar-btn">💾</button>
         <div className="toolbar-divider"></div>
-        <button onClick={handleCut} title="Cut (Ctrl+X)" className="toolbar-btn">✂️</button>
-        <button onClick={handleCopy} title="Copy (Ctrl+C)" className="toolbar-btn">📑</button>
-        <button onClick={handlePaste} title="Paste (Ctrl+V)" className="toolbar-btn">📋</button>
+        <button onClick={handleCut} title={t('notepad:toolbar.cut')} className="toolbar-btn">✂️</button>
+        <button onClick={handleCopy} title={t('notepad:toolbar.copy')} className="toolbar-btn">📑</button>
+        <button onClick={handlePaste} title={t('notepad:toolbar.paste')} className="toolbar-btn">📋</button>
         <div className="toolbar-divider"></div>
-        <button onClick={handleUndo} title="Undo (Ctrl+Z)" className="toolbar-btn" disabled={historyIndex <= 0}>↶</button>
-        <button onClick={handleRedo} title="Redo (Ctrl+Y)" className="toolbar-btn" disabled={historyIndex >= history.length - 1}>↷</button>
+        <button onClick={handleUndo} title={t('notepad:toolbar.undo')} className="toolbar-btn" disabled={historyIndex <= 0}>↶</button>
+        <button onClick={handleRedo} title={t('notepad:toolbar.redo')} className="toolbar-btn" disabled={historyIndex >= history.length - 1}>↷</button>
         <div className="toolbar-divider"></div>
-        <button onClick={handleZoomIn} title="Zoom In" className="toolbar-btn">🔍+</button>
-        <button onClick={handleZoomOut} title="Zoom Out" className="toolbar-btn">🔍−</button>
+        <button onClick={handleZoomIn} title={t('notepad:toolbar.zoomIn')} className="toolbar-btn">🔍+</button>
+        <button onClick={handleZoomOut} title={t('notepad:toolbar.zoomOut')} className="toolbar-btn">🔍−</button>
         <div className="toolbar-divider"></div>
         <button
           ref={fontSizeButtonRef}
@@ -557,7 +563,7 @@ function Notepad() {
             e.stopPropagation();
             setShowFontSizeMenu(!showFontSizeMenu);
           }}
-          title="Font Size"
+          title={t('notepad:toolbar.fontSize')}
           className="toolbar-btn toolbar-btn-relative"
         >
           A
@@ -575,7 +581,7 @@ function Notepad() {
             </div>
           )}
         </button>
-        <button onClick={() => alert('Help: Use the menu bar for file operations and editing')} title="Help" className="toolbar-btn">❓</button>
+        <button onClick={() => alert(t('notepad:helpMenu.aboutText'))} title={t('notepad:toolbar.help')} className="toolbar-btn">❓</button>
       </div>
 
       {/* Text Area Container with Zoom */}
@@ -589,26 +595,26 @@ function Notepad() {
           onCompositionEnd={handleCompositionEnd}
           onKeyDown={handleKeyDown}
           style={{ fontSize: `${fontSize}px`, minHeight: '100%' }}
-          placeholder="Start typing..."
+          placeholder={t('notepad:placeholder')}
         />
       </div>
 
       {/* Status Bar */}
       <div className="notepad-statusbar">
-        <span>Line: {currentLine}</span>
-        <span>Column: {currentColumn}</span>
-        <span>Chars: {chars}</span>
-        <span>Words: {words}</span>
+        <span>{t('notepad:statusBar.line')}: {currentLine}</span>
+        <span>{t('notepad:statusBar.column')}: {currentColumn}</span>
+        <span>{t('notepad:statusBar.chars')}: {chars}</span>
+        <span>{t('notepad:statusBar.words')}: {words}</span>
       </div>
 
       {/* Preferences Modal */}
       {showPreferences && (
         <div className="modal-overlay" onClick={() => setShowPreferences(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>Preferences</h2>
+            <h2>{t('notepad:preferences.title')}</h2>
             <div className="preferences-form">
               <div className="pref-group">
-                <label>Font Size: {fontSize}px</label>
+                <label>{t('notepad:preferences.fontSize')}: {fontSize}px</label>
                 <input
                   type="range"
                   min="8"
@@ -624,11 +630,11 @@ function Notepad() {
                     checked={darkMode}
                     onChange={(e) => setDarkMode(e.target.checked)}
                   />
-                  Dark Mode
+                  {t('notepad:preferences.darkMode')}
                 </label>
               </div>
             </div>
-            <button onClick={() => setShowPreferences(false)} className="modal-close-btn">Close</button>
+            <button onClick={() => setShowPreferences(false)} className="modal-close-btn">{t('notepad:preferences.close')}</button>
           </div>
         </div>
       )}
@@ -638,29 +644,29 @@ function Notepad() {
         <div className="modal-overlay" onClick={() => setShowShareModal(false)}>
           <div className="modal-content share-modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>Share Options</h2>
+              <h2>{t('notepad:share.title')}</h2>
               <button className="modal-close-x" onClick={() => setShowShareModal(false)}>×</button>
             </div>
             <div className="share-options">
               <button className="share-option-btn" onClick={handleCopyToClipboard}>
                 <span className="share-icon">📋</span>
                 <div className="share-option-text">
-                  <div className="share-option-title">Copy to Clipboard</div>
-                  <div className="share-option-desc">Copy text to paste anywhere</div>
+                  <div className="share-option-title">{t('notepad:share.copyClipboard.title')}</div>
+                  <div className="share-option-desc">{t('notepad:share.copyClipboard.description')}</div>
                 </div>
               </button>
               <button className="share-option-btn" onClick={handleEmailShare}>
                 <span className="share-icon">📧</span>
                 <div className="share-option-text">
-                  <div className="share-option-title">Send via Email</div>
-                  <div className="share-option-desc">Open email client with text</div>
+                  <div className="share-option-title">{t('notepad:share.email.title')}</div>
+                  <div className="share-option-desc">{t('notepad:share.email.description')}</div>
                 </div>
               </button>
               <button className="share-option-btn" onClick={handleDownloadShare}>
                 <span className="share-icon">💾</span>
                 <div className="share-option-text">
-                  <div className="share-option-title">Download as TXT</div>
-                  <div className="share-option-desc">Save as text file</div>
+                  <div className="share-option-title">{t('notepad:share.download.title')}</div>
+                  <div className="share-option-desc">{t('notepad:share.download.description')}</div>
                 </div>
               </button>
             </div>
@@ -671,37 +677,37 @@ function Notepad() {
 
     {/* Features Section */}
     <div className="notepad-features">
-      <h2>Why Use Our Online Notepad?</h2>
+      <h2>{t('notepad:features.title')}</h2>
       <div className="features-grid">
         <div className="feature-card">
           <div className="feature-icon">🔒</div>
-          <h3>100% Private & Secure</h3>
-          <p>Your notes are stored locally in your browser. Nothing is uploaded to any server, ensuring complete privacy and security.</p>
+          <h3>{t('notepad:features.privateSecure.title')}</h3>
+          <p>{t('notepad:features.privateSecure.description')}</p>
         </div>
         <div className="feature-card">
           <div className="feature-icon">💾</div>
-          <h3>Auto-Save Feature</h3>
-          <p>Never lose your work! All changes are automatically saved to your browser's local storage in real-time.</p>
+          <h3>{t('notepad:features.autoSave.title')}</h3>
+          <p>{t('notepad:features.autoSave.description')}</p>
         </div>
         <div className="feature-card">
           <div className="feature-icon">🌙</div>
-          <h3>Dark Mode Support</h3>
-          <p>Switch between light and dark themes for comfortable writing in any lighting condition. Your preference is saved.</p>
+          <h3>{t('notepad:features.darkMode.title')}</h3>
+          <p>{t('notepad:features.darkMode.description')}</p>
         </div>
         <div className="feature-card">
           <div className="feature-icon">🖋️</div>
-          <h3>Rich Text Editing</h3>
-          <p>Full editing capabilities with undo/redo, find & replace, word count, and customizable font size for optimal writing experience.</p>
+          <h3>{t('notepad:features.richText.title')}</h3>
+          <p>{t('notepad:features.richText.description')}</p>
         </div>
         <div className="feature-card">
           <div className="feature-icon">📤</div>
-          <h3>Easy File Operations</h3>
-          <p>Open, save, and download text files. Export your notes as TXT files or share via email with just one click.</p>
+          <h3>{t('notepad:features.fileOps.title')}</h3>
+          <p>{t('notepad:features.fileOps.description')}</p>
         </div>
         <div className="feature-card">
           <div className="feature-icon">🆓</div>
-          <h3>100% Free Forever</h3>
-          <p>No premium features, no subscriptions, no hidden costs. All features are completely free with unlimited usage.</p>
+          <h3>{t('notepad:features.free.title')}</h3>
+          <p>{t('notepad:features.free.description')}</p>
         </div>
       </div>
     </div>

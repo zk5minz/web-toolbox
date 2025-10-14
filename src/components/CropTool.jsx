@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function CropTool({ file, onCropChange }) {
+  const { t } = useTranslation('imageConverter');
   const [isExpanded, setIsExpanded] = useState(false);
   const [aspectRatio, setAspectRatio] = useState(null);
   const [orientation, setOrientation] = useState('landscape'); // 'landscape' | 'portrait'
@@ -45,11 +47,11 @@ export default function CropTool({ file, onCropChange }) {
   };
 
   const aspectRatios = [
-    { name: 'Free', baseValue: null, displayName: 'Free Ratio' },
-    { name: '1:1', baseValue: 1, displayName: '1:1 (Square)' },
-    { name: '16:9', baseValue: 16 / 9, displayName: orientation === 'landscape' ? '16:9 (Landscape)' : '9:16 (Portrait)' },
-    { name: '4:3', baseValue: 4 / 3, displayName: orientation === 'landscape' ? '4:3 (Landscape)' : '3:4 (Portrait)' },
-    { name: '3:2', baseValue: 3 / 2, displayName: orientation === 'landscape' ? '3:2 (Landscape)' : '2:3 (Portrait)' },
+    { name: t('crop.free'), baseValue: null, displayName: t('crop.free') },
+    { name: '1:1', baseValue: 1, displayName: t('crop.square') },
+    { name: '16:9', baseValue: 16 / 9, displayName: orientation === 'landscape' ? '16:9 (' + t('crop.landscape') + ')' : '9:16 (' + t('crop.portrait') + ')' },
+    { name: '4:3', baseValue: 4 / 3, displayName: orientation === 'landscape' ? '4:3 (' + t('crop.landscape') + ')' : '3:4 (' + t('crop.portrait') + ')' },
+    { name: '3:2', baseValue: 3 / 2, displayName: orientation === 'landscape' ? '3:2 (' + t('crop.landscape') + ')' : '2:3 (' + t('crop.portrait') + ')' },
   ];
 
   const handleApply = () => {
@@ -521,10 +523,10 @@ export default function CropTool({ file, onCropChange }) {
             <svg className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
             </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Crop Image</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t('crop.title')}</h2>
             {isCropEnabled && (
               <span className="ml-3 px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs font-medium">
-                Active
+                {t('padding.active')}
               </span>
             )}
           </div>
@@ -550,7 +552,7 @@ export default function CropTool({ file, onCropChange }) {
                   onChange={handleToggleCrop}
                   className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">Enable Cropping</span>
+                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">{t('crop.enable')}</span>
               </label>
             </div>
 
@@ -695,10 +697,10 @@ export default function CropTool({ file, onCropChange }) {
                   {/* Crop Info */}
                   {imageDisplay && (
                     <div className="mt-2 text-sm text-center text-gray-600">
-                      <p>Selection Area: {Math.round(cropBox.width)} × {Math.round(cropBox.height)} px (display size)</p>
+                      <p>{t('crop.selectionArea')}: {Math.round(cropBox.width)} × {Math.round(cropBox.height)} px (display size)</p>
                       {imageDisplay.naturalWidth && (
                         <p className="text-xs text-gray-500 mt-1">
-                          Original Image: {imageDisplay.naturalWidth} × {imageDisplay.naturalHeight} px
+                          {t('crop.originalImage')}: {imageDisplay.naturalWidth} × {imageDisplay.naturalHeight} px
                         </p>
                       )}
                     </div>
@@ -707,9 +709,9 @@ export default function CropTool({ file, onCropChange }) {
                   {/* Debug Info */}
                   {file && (
                     <div className="mt-2 text-xs text-gray-500">
-                      <p>File: {file.name}</p>
-                      <p>Type: {file.type}</p>
-                      <p>Size: {(file.size / 1024).toFixed(2)} KB</p>
+                      <p>{t('crop.file')}: {file.name}</p>
+                      <p>{t('crop.type')}: {file.type}</p>
+                      <p>{t('crop.size')}: {(file.size / 1024).toFixed(2)} KB</p>
                     </div>
                   )}
                 </div>
@@ -717,7 +719,7 @@ export default function CropTool({ file, onCropChange }) {
                 {/* Zoom Slider */}
                 <div className="mb-4 sm:mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Zoom: <span className="text-indigo-600 font-bold">{zoom.toFixed(1)}x</span>
+                    {t('crop.zoom')}: <span className="text-indigo-600 font-bold">{zoom.toFixed(1)}x</span>
                   </label>
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-gray-600 min-w-[2.5rem]">0.5x</span>
@@ -736,7 +738,7 @@ export default function CropTool({ file, onCropChange }) {
 
                 {/* Aspect Ratio Selection */}
                 <div className="mb-4 sm:mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">Aspect Ratio</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">{t('crop.aspectRatio')}</label>
                   {/* Orientation Toggle */}
                   <div className="flex gap-2 mb-4">
                     <button
@@ -747,7 +749,7 @@ export default function CropTool({ file, onCropChange }) {
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
-                      Landscape
+                      {t('crop.landscape')}
                     </button>
                     <button
                       onClick={() => handleOrientationChange('portrait')}
@@ -757,7 +759,7 @@ export default function CropTool({ file, onCropChange }) {
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
-                      Portrait
+                      {t('crop.portrait')}
                     </button>
                   </div>
 
@@ -788,19 +790,19 @@ export default function CropTool({ file, onCropChange }) {
                     onClick={handleApply}
                     className="flex-1 py-2 sm:py-3 px-4 sm:px-6 bg-indigo-600 text-white rounded-lg font-bold text-base hover:bg-indigo-700 shadow-md transition-all min-h-[44px]"
                   >
-                    Apply
+                    {t('buttons.apply')}
                   </button>
                   <button
                     onClick={handleReset}
                     className="flex-1 py-2 sm:py-3 px-4 sm:px-6 bg-gray-100 text-gray-700 rounded-lg font-bold text-base hover:bg-gray-200 shadow-md transition-all min-h-[44px]"
                   >
-                    Reset
+                    {t('buttons.reset')}
                   </button>
                   <button
                     onClick={handleCancel}
                     className="flex-1 py-2 sm:py-3 px-4 sm:px-6 bg-gray-600 text-white rounded-lg font-bold text-base hover:bg-gray-700 shadow-md transition-all min-h-[44px]"
                   >
-                    Cancel
+                    {t('buttons.cancel')}
                   </button>
                 </div>
               </>
@@ -808,7 +810,7 @@ export default function CropTool({ file, onCropChange }) {
 
             {!isCropEnabled && (
               <div className="text-center py-8 text-gray-500">
-                Check the box above to enable cropping
+                {t('crop.instruction')}
               </div>
             )}
           </div>

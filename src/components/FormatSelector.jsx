@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function FormatSelector({ onChange }) {
+  const { t } = useTranslation('imageConverter');
   const [selectedFormat, setSelectedFormat] = useState('png');
   const [pdfMode, setPdfMode] = useState('single'); // 'single' or 'multiple'
 
   const formats = [
     {
       value: 'jpg',
-      label: 'JPG',
-      description: 'Small size, photo optimized',
+      label: t('format.jpg', 'JPG'),
+      description: t('format.jpgDesc', 'Small size, photo optimized'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -17,8 +19,8 @@ export default function FormatSelector({ onChange }) {
     },
     {
       value: 'png',
-      label: 'PNG',
-      description: 'High quality, transparency',
+      label: t('format.png', 'PNG'),
+      description: t('format.pngDesc', 'High quality, transparency'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
@@ -27,8 +29,8 @@ export default function FormatSelector({ onChange }) {
     },
     {
       value: 'webp',
-      label: 'WEBP',
-      description: 'Best compression, web optimized',
+      label: t('format.webp', 'WEBP'),
+      description: t('format.webpDesc', 'Best compression, web optimized'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -37,8 +39,8 @@ export default function FormatSelector({ onChange }) {
     },
     {
       value: 'pdf',
-      label: 'PDF',
-      description: 'Document format, multi-page',
+      label: t('format.pdf', 'PDF'),
+      description: t('format.pdfDesc', 'Document format, multi-page'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -65,7 +67,7 @@ export default function FormatSelector({ onChange }) {
   return (
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
       <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8">
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">Select Output Format</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">{t('format.selectOutput', 'Select Output Format')}</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {formats.map((format) => (
@@ -116,7 +118,7 @@ export default function FormatSelector({ onChange }) {
         {/* PDF Mode Options */}
         {selectedFormat === 'pdf' && (
           <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">PDF Conversion Options</h3>
+            <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">{t('pdfOptions.title', 'PDF Conversion Options')}</h3>
             <div className="space-y-2">
               <label className="flex items-center cursor-pointer">
                 <input
@@ -128,7 +130,7 @@ export default function FormatSelector({ onChange }) {
                   className="w-4 h-4 text-blue-600"
                 />
                 <span className="ml-3 text-sm sm:text-base text-gray-700">
-                  Merge all into one PDF <span className="text-gray-500">(Default)</span>
+                  {t('pdfOptions.single', 'Single PDF (All images in one file)')}
                 </span>
               </label>
               <label className="flex items-center cursor-pointer">
@@ -141,7 +143,7 @@ export default function FormatSelector({ onChange }) {
                   className="w-4 h-4 text-blue-600"
                 />
                 <span className="ml-3 text-sm sm:text-base text-gray-700">
-                  Generate individual PDFs
+                  {t('pdfOptions.multiple', 'Multiple PDFs (One per image)')}
                 </span>
               </label>
             </div>
@@ -155,10 +157,10 @@ export default function FormatSelector({ onChange }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span className="text-sm sm:text-base text-gray-700">
-              Selected Format: <span className="font-bold text-blue-600">{selectedFormat.toUpperCase()}</span>
+              {t('format.selectedFormat', 'Selected Format')}: <span className="font-bold text-blue-600">{selectedFormat.toUpperCase()}</span>
               {selectedFormat === 'pdf' && (
                 <span className="ml-2 text-gray-500">
-                  ({pdfMode === 'single' ? 'Merged PDF' : 'Individual PDFs'})
+                  ({pdfMode === 'single' ? t('format.mergedPdf', 'Merged PDF') : t('format.individualPdfs', 'Individual PDFs')})
                 </span>
               )}
             </span>

@@ -1,0 +1,57 @@
+{
+  "metaTitle": "Free Color Extractor - Extract Color Palette from Images | Online Tools",
+  "metaDescription": "Extract color palette from any image with HEX and RGB codes. Free color picker tool with smart color detection. Perfect for designers and developers.",
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "colorExtractor": "Color Extractor"
+  },
+  "title": "🎨 Color Extractor",
+  "subtitle": "Extract color palette from any image",
+  "upload": {
+    "dragDrop": "Drag & Drop your image here",
+    "or": "or",
+    "clickUpload": "click to upload",
+    "supportedFormats": "Supports: JPG, PNG, WEBP (Max 10MB)"
+  },
+  "extracting": {
+    "title": "Extracting colors..."
+  },
+  "palette": {
+    "title": "Color Palette",
+    "hex": "HEX:",
+    "rgb": "RGB:",
+    "copyHex": "Copy HEX",
+    "copyRgb": "Copy RGB"
+  },
+  "buttons": {
+    "uploadNew": "Upload New Image"
+  },
+  "features": {
+    "title": "Why Use Our Color Extractor?",
+    "privateSecure": {
+      "title": "🔒 100% Private & Secure",
+      "description": "All color extraction happens locally in your browser. Your images never leave your device and are not uploaded to any server."
+    },
+    "smartDetection": {
+      "title": "🎨 Smart Color Detection",
+      "description": "Advanced algorithm detects dominant colors with intelligent grouping. Get the most representative color palette from any image."
+    },
+    "multipleFormats": {
+      "title": "📊 Multiple Formats",
+      "description": "Get color codes in both HEX and RGB formats. One-click copy makes it easy to use colors in your projects."
+    },
+    "instantResults": {
+      "title": "⚡ Instant Results",
+      "description": "Fast color extraction with real-time preview. See your color palette within seconds of uploading an image."
+    },
+    "anyImageType": {
+      "title": "🖼️ Any Image Type",
+      "description": "Supports JPG, PNG, WEBP, and more. Extract colors from photos, logos, artwork, or any image file."
+    },
+    "free": {
+      "title": "🆓 100% Free Forever",
+      "description": "No watermarks, no limits. Extract unlimited color palettes from unlimited images completely free."
+    }
+  }
+}

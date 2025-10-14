@@ -1,0 +1,53 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "current": "Contador de Números"
+  },
+  "header": {
+    "title": "Contador de Números",
+    "subtitle": "Cuenta números con incrementos personalizables"
+  },
+  "buttons": {
+    "reset": "Restablecer",
+    "settings": "Configuración",
+    "close": "Cerrar",
+    "resetSettings": "Restablecer Configuración"
+  },
+  "settings": {
+    "title": "Configuración",
+    "limits": "Límites",
+    "maximum": "Máximo",
+    "on": "Activado",
+    "off": "Desactivado",
+    "background": "Fondo",
+    "fontColor": "Color de Fuente"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Contador de Números?",
+    "private": {
+      "title": "100% Privado y Seguro",
+      "description": "Todo el conteo se realiza localmente en su navegador. No se envían datos a ningún servidor, garantizando privacidad completa."
+    },
+    "autoSave": {
+      "title": "Configuración de Guardado Automático",
+      "description": "El valor de su contador y la configuración personalizada se guardan automáticamente, por lo que nunca perderá su progreso."
+    },
+    "customizable": {
+      "title": "Totalmente Personalizable",
+      "description": "Personalice su contador con incrementos, colores, fuentes y tamaños personalizados para que coincida con sus preferencias."
+    },
+    "history": {
+      "title": "Seguimiento de Historial",
+      "description": "Realice un seguimiento de todas sus actividades de conteo con un historial de marcas de tiempo que puede revisar en cualquier momento."
+    },
+    "shortcuts": {
+      "title": "Atajos de Teclado",
+      "description": "Acceso rápido con atajos de teclado para operaciones de incremento, decremento y restablecimiento."
+    },
+    "free": {
+      "title": "100% Gratis para Siempre",
+      "description": "Sin límites, sin suscripciones. Use contadores ilimitados con todas las funciones de personalización completamente gratis."
+    }
+  }
+}

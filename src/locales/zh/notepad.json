@@ -1,0 +1,124 @@
+{
+  "metaTitle": "免费在线记事本 - 自动保存和深色模式 | 在线工具",
+  "metaDescription": "带有自动保存功能、深色模式、查找和替换以及字数统计的免费在线记事本。您的笔记存储在浏览器本地。100%私密和安全。",
+  "alert": "此记事本使用localStorage保存您的笔记。数据存储在您的浏览器本地。",
+  "breadcrumb": {
+    "home": "首页",
+    "tools": "工具",
+    "notepad": "记事本",
+    "file": "文件"
+  },
+  "menu": {
+    "file": "文件",
+    "edit": "编辑",
+    "view": "查看",
+    "help": "帮助"
+  },
+  "fileMenu": {
+    "new": "新建",
+    "open": "打开",
+    "save": "保存 (Ctrl+S)",
+    "saveAs": "另存为",
+    "share": "分享",
+    "print": "打印 (Ctrl+P)"
+  },
+  "editMenu": {
+    "undo": "撤销 (Ctrl+Z)",
+    "redo": "重做 (Ctrl+Y)",
+    "cut": "剪切 (Ctrl+X)",
+    "copy": "复制 (Ctrl+C)",
+    "paste": "粘贴 (Ctrl+V)",
+    "delete": "删除",
+    "selectAll": "全选 (Ctrl+A)"
+  },
+  "viewMenu": {
+    "lightMode": "浅色模式",
+    "darkMode": "深色模式",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "preferences": "首选项"
+  },
+  "helpMenu": {
+    "about": "关于",
+    "aboutText": "带有自动保存功能的简单在线记事本\\n版本 1.0",
+    "shortcuts": "键盘快捷键",
+    "shortcutsText": "键盘快捷键：\\nCtrl+S - 保存\\nCtrl+Z - 撤销\\nCtrl+Y - 重做\\nCtrl+A - 全选\\nCtrl+P - 打印"
+  },
+  "toolbar": {
+    "new": "新建",
+    "open": "打开",
+    "save": "保存 (Ctrl+S)",
+    "cut": "剪切 (Ctrl+X)",
+    "copy": "复制 (Ctrl+C)",
+    "paste": "粘贴 (Ctrl+V)",
+    "undo": "撤销 (Ctrl+Z)",
+    "redo": "重做 (Ctrl+Y)",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "fontSize": "字体大小",
+    "help": "帮助"
+  },
+  "statusBar": {
+    "line": "行",
+    "column": "列",
+    "chars": "字符",
+    "words": "单词"
+  },
+  "preferences": {
+    "title": "首选项",
+    "fontSize": "字体大小",
+    "darkMode": "深色模式",
+    "close": "关闭"
+  },
+  "share": {
+    "title": "分享选项",
+    "copyClipboard": {
+      "title": "复制到剪贴板",
+      "description": "复制文本以便粘贴到任何地方"
+    },
+    "email": {
+      "title": "通过电子邮件发送",
+      "description": "打开带有文本的电子邮件客户端"
+    },
+    "download": {
+      "title": "下载为TXT",
+      "description": "保存为文本文件"
+    }
+  },
+  "messages": {
+    "confirmNew": "当前文本将丢失。继续吗？",
+    "fileSaved": "文件保存成功！",
+    "saveFailed": "保存文件失败",
+    "enterFilename": "输入文件名：",
+    "copiedToClipboard": "文本已复制到剪贴板！",
+    "copyFailed": "复制到剪贴板失败"
+  },
+  "placeholder": "开始输入...",
+  "features": {
+    "title": "为什么使用我们的在线记事本？",
+    "privateSecure": {
+      "title": "100%私密和安全",
+      "description": "您的笔记存储在浏览器本地。不会上传到任何服务器，确保完全的隐私和安全。"
+    },
+    "autoSave": {
+      "title": "自动保存功能",
+      "description": "永不丢失您的工作！所有更改都会实时自动保存到浏览器的本地存储。"
+    },
+    "darkMode": {
+      "title": "深色模式支持",
+      "description": "在任何光照条件下舒适写作，在浅色和深色主题之间切换。您的偏好将被保存。"
+    },
+    "richText": {
+      "title": "丰富的文本编辑",
+      "description": "具有撤销/重做、查找和替换、字数统计以及可自定义字体大小的完整编辑功能，提供最佳写作体验。"
+    },
+    "fileOps": {
+      "title": "简单的文件操作",
+      "description": "打开、保存和下载文本文件。将笔记导出为TXT文件或一键通过电子邮件分享。"
+    },
+    "free": {
+      "title": "永久100%免费",
+      "description": "没有高级功能、订阅或隐藏费用。所有功能完全免费，无限制使用。"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "metaTitle": "免费字符计数器 - 单词和字符计数工具 | 在线工具",
+  "metaDescription": "实时计算字符、单词、句子数量并分析文本统计。带有详细分析的免费字符计数器。非常适合论文、文章和社交媒体。",
+  "breadcrumb": {
+    "home": "首页",
+    "tools": "工具",
+    "characterCounter": "字符计数器"
+  },
+  "title": "字符计数器",
+  "subtitle": "计算单词、字符、句子并分析文本",
+  "placeholder": "在此处开始输入或粘贴文本...",
+  "stats": {
+    "title": "统计",
+    "characters": "字符",
+    "charactersNoSpaces": "字符（不含空格）",
+    "words": "单词",
+    "sentences": "句子",
+    "paragraphs": "段落",
+    "lines": "行",
+    "numbers": "数字",
+    "specialChars": "特殊字符",
+    "koreanChars": "韩语字符",
+    "englishChars": "英语字符",
+    "avgWordLength": "平均单词长度",
+    "avgSentenceLength": "平均句子长度",
+    "readingTime": "阅读时间",
+    "speakingTime": "朗读时间"
+  },
+  "buttons": {
+    "textInput": "文本输入",
+    "clear": "全部清除",
+    "copy": "复制文本",
+    "copyStats": "复制统计",
+    "paste": "粘贴",
+    "uppercase": "大写",
+    "lowercase": "小写",
+    "titleCase": "标题格式",
+    "sentenceCase": "句子格式",
+    "reverse": "反转文本",
+    "removeSpaces": "删除空格",
+    "removeLineBreaks": "删除换行"
+  },
+  "messages": {
+    "copied": "文本已复制到剪贴板！",
+    "cleared": "文本已清除！",
+    "statsCopied": "统计已复制到剪贴板！",
+    "confirmClear": "您确定要清除所有文本吗？"
+  },
+  "features": {
+    "title": "为什么使用我们的字符计数器？",
+    "realtime": {
+      "title": "实时分析",
+      "description": "在您输入时立即获取字符、单词和句子计数。非常适合满足特定长度要求。"
+    },
+    "detailed": {
+      "title": "详细统计",
+      "description": "包括阅读时间、朗读时间、平均单词长度等的全面文本分析。"
+    },
+    "textTools": {
+      "title": "文本转换工具",
+      "description": "一键将文本转换为大写、小写、标题格式或句子格式。"
+    },
+    "private": {
+      "title": "100%私密",
+      "description": "所有处理都在您的浏览器中本地进行。您的文本不会上传到任何服务器。"
+    },
+    "autosave": {
+      "title": "自动保存",
+      "description": "您的文本会自动保存到浏览器的本地存储，因此您永远不会丢失工作。"
+    },
+    "free": {
+      "title": "完全免费",
+      "description": "无限制，无需注册。免费计算无限字符和单词。"
+    }
+  }
+}

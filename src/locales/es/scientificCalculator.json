@@ -1,0 +1,98 @@
+{
+  "title": "Calculadora de Ingeniería",
+  "metaTitle": "Calculadora de Ingeniería Gratuita - Funciones Matemáticas Avanzadas | Herramientas en Línea",
+  "metaDescription": "Calculadora de ingeniería en línea gratuita con funciones trigonométricas, logarítmicas, exponenciales y estadísticas. Calculadora matemática avanzada con historial de cálculos. Perfecta para estudiantes e ingenieros.",
+  "header": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "title": "Calculadora de Ingeniería",
+    "subtitle": "Calculadora potente con funciones matemáticas avanzadas"
+  },
+  "tabs": {
+    "basic": "Básico",
+    "functions": "Funciones",
+    "variables": "Variables"
+  },
+  "angleMode": {
+    "deg": "DEG",
+    "rad": "RAD"
+  },
+  "buttons": {
+    "clear": "C",
+    "allClear": "AC",
+    "delete": "⌫",
+    "equals": "=",
+    "squared": "a²",
+    "power": "aᵇ",
+    "sqrt": "√",
+    "nthRoot": "ⁿ√",
+    "pi": "π",
+    "abs": "|a|",
+    "sin": "sin",
+    "cos": "cos",
+    "tan": "tan",
+    "asin": "sin⁻¹",
+    "acos": "cos⁻¹",
+    "atan": "tan⁻¹",
+    "exp": "eˣ",
+    "round": "round",
+    "mean": "mean",
+    "std": "stdev",
+    "stdp": "stdevp",
+    "ln": "ln",
+    "log": "log",
+    "nPr": "nPr",
+    "nCr": "nCr",
+    "factorial": "!",
+    "e": "e",
+    "ans": "ans",
+    "leftParen": "(",
+    "rightParen": ")",
+    "comma": ",",
+    "divide": "÷",
+    "multiply": "×",
+    "minus": "-",
+    "plus": "+",
+    "modulo": "%",
+    "fraction": "a/b"
+  },
+  "display": {
+    "placeholder": "Ingrese una expresión",
+    "error": "Error"
+  },
+  "history": {
+    "title": "Historial",
+    "clearHistory": "Limpiar Historial",
+    "empty": "Sin cálculos aún"
+  },
+  "messages": {
+    "clearConfirm": "¿Limpiar todo el historial de cálculos?"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestra Calculadora de Ingeniería?",
+    "privateSecure": {
+      "title": "100% Privado y Seguro",
+      "description": "Todos los cálculos se procesan localmente en su navegador. Ningún dato se envía a ningún servidor, lo que garantiza privacidad total."
+    },
+    "advancedFunctions": {
+      "title": "Funciones Avanzadas",
+      "description": "Calculadora científica completa con trigonometría, logaritmos, exponenciales, estadísticas y operaciones matemáticas complejas."
+    },
+    "calculationHistory": {
+      "title": "Historial de Cálculos",
+      "description": "Realice un seguimiento de todos sus cálculos con un panel de historial detallado. Reutilice rápidamente cálculos anteriores."
+    },
+    "highPrecision": {
+      "title": "Alta Precisión",
+      "description": "Cálculos precisos con soporte para ecuaciones complejas, matrices y funciones estadísticas."
+    },
+    "keyboardSupport": {
+      "title": "Soporte de Teclado",
+      "description": "Soporte completo de teclado para entrada más rápida. Use su teclado para números, operadores y funciones."
+    },
+    "free": {
+      "title": "100% Gratis para Siempre",
+      "description": "Sin registro requerido. Utilice todas las funciones avanzadas de la calculadora de ingeniería de forma totalmente gratuita e ilimitada."
+    }
+  }
+}

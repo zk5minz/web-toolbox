@@ -1,0 +1,106 @@
+{
+  "breadcrumb": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "current": "QRコードジェネレーター"
+  },
+  "header": {
+    "title": "QRコードジェネレーター",
+    "subtitle": "ウェブサイト、テキスト、連絡先などのカスタムQRコードを作成"
+  },
+  "presets": {
+    "title": "クイックプリセット"
+  },
+  "contentType": {
+    "title": "コンテンツタイプ",
+    "website": "ウェブサイト",
+    "text": "テキスト",
+    "email": "メール",
+    "phone": "電話",
+    "sms": "SMS",
+    "wifi": "WiFi",
+    "vcard": "vCard"
+  },
+  "placeholders": {
+    "website": "ウェブサイトのURLを入力（例：https://example.com）",
+    "text": "エンコードしたいテキストを入力",
+    "emailAddress": "メールアドレス",
+    "emailSubject": "件名（オプション）",
+    "emailBody": "メッセージ（オプション）",
+    "phone": "電話番号を入力（例：+819012345678）",
+    "smsNumber": "電話番号",
+    "smsMessage": "メッセージ（オプション）",
+    "wifiSsid": "ネットワーク名（SSID）",
+    "wifiPassword": "パスワード",
+    "vcardName": "氏名",
+    "vcardPhone": "電話番号",
+    "vcardEmail": "メールアドレス",
+    "vcardOrg": "組織（オプション）"
+  },
+  "customization": {
+    "title": "カスタマイズ",
+    "qrColor": "QRカラー",
+    "bgColor": "背景色",
+    "size": "サイズ",
+    "errorCorrection": "エラー訂正",
+    "format": "形式",
+    "errorLevels": {
+      "low": "低",
+      "medium": "中",
+      "quartile": "高",
+      "high": "最高"
+    },
+    "wifiSecurity": {
+      "wpa": "WPA/WPA2",
+      "wep": "WEP",
+      "nopass": "パスワードなし"
+    }
+  },
+  "preview": {
+    "title": "プレビュー",
+    "emptyState": "QRコードを生成するには内容を入力してください",
+    "sizeLabel": "サイズ"
+  },
+  "buttons": {
+    "download": "ダウンロード",
+    "downloading": "ダウンロード中...",
+    "copy": "コピー",
+    "copied": "コピーしました！",
+    "reset": "リセット"
+  },
+  "history": {
+    "title": "最近の履歴（最大5件）"
+  },
+  "errors": {
+    "enterContent": "QRコードを生成するには内容を入力してください",
+    "downloadFailed": "QRコードのダウンロードに失敗しました",
+    "copyFailed": "クリップボードへのコピーに失敗しました"
+  },
+  "features": {
+    "title": "当社のQRコードジェネレーターを使用する理由",
+    "private": {
+      "title": "100%プライベート＆セキュア",
+      "description": "すべてのQRコードはブラウザでローカルに生成されます。データはデバイスから離れることはなく、サーバーに保存されません。"
+    },
+    "customizable": {
+      "title": "完全にカスタマイズ可能",
+      "description": "色、サイズ、エラー訂正レベルをカスタマイズし、複数の形式（PNG、SVG、JPEG）でダウンロードできます。"
+    },
+    "multipleTypes": {
+      "title": "複数のQRタイプ",
+      "description": "URL、テキスト、メール、電話番号、WiFi認証情報などのQRコードを作成できます。"
+    },
+    "downloadShare": {
+      "title": "ダウンロード＆シェア",
+      "description": "高品質のQRコードを即座にダウンロードまたはクリップボードにコピーできます。印刷およびデジタル使用に最適です。"
+    },
+    "history": {
+      "title": "履歴追跡",
+      "description": "最近のQRコードがローカルに保存されるため、以前のコードを素早く再生成または変更できます。"
+    },
+    "free": {
+      "title": "永久に100%無料",
+      "description": "透かしなし、制限なし、完全に無料。すべての機能で無制限のQRコードを生成できます。"
+    }
+  }
+}

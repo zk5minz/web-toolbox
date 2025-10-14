@@ -1,0 +1,124 @@
+{
+  "metaTitle": "無料オンラインメモ帳 - 自動保存＆ダークモード | オンラインツール",
+  "metaDescription": "自動保存機能、ダークモード、検索と置換、文字数カウント付きの無料オンラインメモ帳。メモはブラウザにローカル保存されます。100%プライベート＆セキュア。",
+  "alert": "このメモ帳はlocalStorageを使用してメモを保存します。データはブラウザにローカル保存されます。",
+  "breadcrumb": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "notepad": "メモ帳",
+    "file": "ファイル"
+  },
+  "menu": {
+    "file": "ファイル",
+    "edit": "編集",
+    "view": "表示",
+    "help": "ヘルプ"
+  },
+  "fileMenu": {
+    "new": "新規作成",
+    "open": "開く",
+    "save": "保存 (Ctrl+S)",
+    "saveAs": "名前を付けて保存",
+    "share": "共有",
+    "print": "印刷 (Ctrl+P)"
+  },
+  "editMenu": {
+    "undo": "元に戻す (Ctrl+Z)",
+    "redo": "やり直す (Ctrl+Y)",
+    "cut": "切り取り (Ctrl+X)",
+    "copy": "コピー (Ctrl+C)",
+    "paste": "貼り付け (Ctrl+V)",
+    "delete": "削除",
+    "selectAll": "すべて選択 (Ctrl+A)"
+  },
+  "viewMenu": {
+    "lightMode": "ライトモード",
+    "darkMode": "ダークモード",
+    "zoomIn": "拡大",
+    "zoomOut": "縮小",
+    "preferences": "環境設定"
+  },
+  "helpMenu": {
+    "about": "について",
+    "aboutText": "自動保存機能付きシンプルなオンラインメモ帳\\nバージョン 1.0",
+    "shortcuts": "キーボードショートカット",
+    "shortcutsText": "キーボードショートカット:\\nCtrl+S - 保存\\nCtrl+Z - 元に戻す\\nCtrl+Y - やり直す\\nCtrl+A - すべて選択\\nCtrl+P - 印刷"
+  },
+  "toolbar": {
+    "new": "新規作成",
+    "open": "開く",
+    "save": "保存 (Ctrl+S)",
+    "cut": "切り取り (Ctrl+X)",
+    "copy": "コピー (Ctrl+C)",
+    "paste": "貼り付け (Ctrl+V)",
+    "undo": "元に戻す (Ctrl+Z)",
+    "redo": "やり直す (Ctrl+Y)",
+    "zoomIn": "拡大",
+    "zoomOut": "縮小",
+    "fontSize": "フォントサイズ",
+    "help": "ヘルプ"
+  },
+  "statusBar": {
+    "line": "行",
+    "column": "列",
+    "chars": "文字",
+    "words": "単語"
+  },
+  "preferences": {
+    "title": "環境設定",
+    "fontSize": "フォントサイズ",
+    "darkMode": "ダークモード",
+    "close": "閉じる"
+  },
+  "share": {
+    "title": "共有オプション",
+    "copyClipboard": {
+      "title": "クリップボードにコピー",
+      "description": "どこにでも貼り付けられるようテキストをコピー"
+    },
+    "email": {
+      "title": "メールで送信",
+      "description": "テキストと共にメールクライアントを開く"
+    },
+    "download": {
+      "title": "TXTとしてダウンロード",
+      "description": "テキストファイルとして保存"
+    }
+  },
+  "messages": {
+    "confirmNew": "現在のテキストが失われます。続けますか？",
+    "fileSaved": "ファイルが正常に保存されました！",
+    "saveFailed": "ファイルの保存に失敗しました",
+    "enterFilename": "ファイル名を入力してください：",
+    "copiedToClipboard": "テキストがクリップボードにコピーされました！",
+    "copyFailed": "クリップボードへのコピーに失敗しました"
+  },
+  "placeholder": "入力を開始してください...",
+  "features": {
+    "title": "なぜ私たちのオンラインメモ帳を使うべきか？",
+    "privateSecure": {
+      "title": "100%プライベート＆セキュア",
+      "description": "メモはブラウザにローカル保存されます。サーバーにアップロードされないため、完全なプライバシーとセキュリティが保証されます。"
+    },
+    "autoSave": {
+      "title": "自動保存機能",
+      "description": "作業内容を決して失いません！すべての変更がリアルタイムでブラウザのローカルストレージに自動保存されます。"
+    },
+    "darkMode": {
+      "title": "ダークモード対応",
+      "description": "あらゆる照明条件で快適に書けるよう、ライトテーマとダークテーマを切り替え。設定は保存されます。"
+    },
+    "richText": {
+      "title": "リッチテキスト編集",
+      "description": "元に戻す/やり直す、検索と置換、文字数カウント、カスタマイズ可能なフォントサイズで最適な執筆体験を提供する完全な編集機能。"
+    },
+    "fileOps": {
+      "title": "簡単なファイル操作",
+      "description": "テキストファイルを開く、保存、ダウンロード。メモをTXTファイルとしてエクスポートするか、ワンクリックでメール共有。"
+    },
+    "free": {
+      "title": "永久に100%無料",
+      "description": "プレミアム機能、サブスクリプション、隠れたコストはありません。すべての機能が無制限に完全無料で利用できます。"
+    }
+  }
+}

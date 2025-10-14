@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Watermark({ onWatermarkChange }) {
+  const { t } = useTranslation('imageConverter');
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
   const [watermarkType, setWatermarkType] = useState('text'); // 'text' or 'image'
@@ -23,15 +25,15 @@ export default function Watermark({ onWatermarkChange }) {
   const [margin, setMargin] = useState(20);
 
   const positions = [
-    { value: 'top-left', label: 'Top Left', icon: '↖' },
-    { value: 'top-center', label: 'Top Center', icon: '↑' },
-    { value: 'top-right', label: 'Top Right', icon: '↗' },
-    { value: 'middle-left', label: 'Middle Left', icon: '←' },
-    { value: 'center', label: 'Center', icon: '●' },
-    { value: 'middle-right', label: 'Middle Right', icon: '→' },
-    { value: 'bottom-left', label: 'Bottom Left', icon: '↙' },
-    { value: 'bottom-center', label: 'Bottom Center', icon: '↓' },
-    { value: 'bottom-right', label: 'Bottom Right', icon: '↘' },
+    { value: 'top-left', label: t('watermark.topLeft'), icon: '↖' },
+    { value: 'top-center', label: t('watermark.topCenter'), icon: '↑' },
+    { value: 'top-right', label: t('watermark.topRight'), icon: '↗' },
+    { value: 'middle-left', label: t('watermark.middleLeft'), icon: '←' },
+    { value: 'center', label: t('watermark.center'), icon: '●' },
+    { value: 'middle-right', label: t('watermark.middleRight'), icon: '→' },
+    { value: 'bottom-left', label: t('watermark.bottomLeft'), icon: '↙' },
+    { value: 'bottom-center', label: t('watermark.bottomCenter'), icon: '↓' },
+    { value: 'bottom-right', label: t('watermark.bottomRight'), icon: '↘' },
   ];
 
   useEffect(() => {
@@ -111,10 +113,10 @@ export default function Watermark({ onWatermarkChange }) {
             <svg className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
             </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Add Watermark</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t('watermark.title')}</h2>
             {isEnabled && hasChanges && (
               <span className="ml-3 px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs font-medium">
-                Active
+                {t('padding.active')}
               </span>
             )}
           </div>
@@ -140,7 +142,7 @@ export default function Watermark({ onWatermarkChange }) {
                   onChange={(e) => setIsEnabled(e.target.checked)}
                   className="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">Enable Watermark</span>
+                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">{t('watermark.enable')}</span>
               </label>
             </div>
 
@@ -148,7 +150,7 @@ export default function Watermark({ onWatermarkChange }) {
               <>
                 {/* Watermark Type Selection */}
                 <div className="mb-4 sm:mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">Watermark Type</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">{t('watermark.type')}</label>
                   <div className="grid grid-cols-2 gap-3">
                     <label className={`flex items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
                       watermarkType === 'text' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-300 bg-white hover:border-indigo-400'
@@ -164,7 +166,7 @@ export default function Watermark({ onWatermarkChange }) {
                       <svg className={`w-6 h-6 mr-2 ${watermarkType === 'text' ? 'text-indigo-600' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                       </svg>
-                      <span className={`font-medium ${watermarkType === 'text' ? 'text-indigo-600' : 'text-gray-700'}`}>Text</span>
+                      <span className={`font-medium ${watermarkType === 'text' ? 'text-indigo-600' : 'text-gray-700'}`}>{t('watermark.textType')}</span>
                     </label>
                     <label className={`flex items-center justify-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
                       watermarkType === 'image' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-300 bg-white hover:border-indigo-400'
@@ -180,7 +182,7 @@ export default function Watermark({ onWatermarkChange }) {
                       <svg className={`w-6 h-6 mr-2 ${watermarkType === 'image' ? 'text-indigo-600' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      <span className={`font-medium ${watermarkType === 'image' ? 'text-indigo-600' : 'text-gray-700'}`}>Image</span>
+                      <span className={`font-medium ${watermarkType === 'image' ? 'text-indigo-600' : 'text-gray-700'}`}>{t('watermark.imageType')}</span>
                     </label>
                   </div>
                 </div>
@@ -190,12 +192,12 @@ export default function Watermark({ onWatermarkChange }) {
                   <div className="mb-4 sm:mb-6 space-y-4">
                     {/* Text Input */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Watermark Text</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">{t('watermark.text')}</label>
                       <input
                         type="text"
                         value={text}
                         onChange={(e) => setText(e.target.value)}
-                        placeholder="e.g., © 2024 My Company"
+                        placeholder={t('watermark.placeholder')}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                       />
                     </div>
@@ -203,7 +205,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Font Size */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Font Size: {fontSize}px
+                        {t('watermark.fontSize')}: {fontSize}px
                       </label>
                       <input
                         type="range"
@@ -218,7 +220,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Font Color & Bold */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Font Color</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">{t('watermark.color')}</label>
                         <input
                           type="color"
                           value={fontColor}
@@ -227,7 +229,7 @@ export default function Watermark({ onWatermarkChange }) {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Font Style</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">{t('watermark.fontStyle')}</label>
                         <label className="flex items-center h-12 px-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                           <input
                             type="checkbox"
@@ -235,7 +237,7 @@ export default function Watermark({ onWatermarkChange }) {
                             onChange={(e) => setFontBold(e.target.checked)}
                             className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                           />
-                          <span className="ml-2 text-sm font-bold">Bold</span>
+                          <span className="ml-2 text-sm font-bold">{t('watermark.bold')}</span>
                         </label>
                       </div>
                     </div>
@@ -243,7 +245,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Text Opacity */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Opacity: {textOpacity}%
+                        {t('watermark.opacity')}: {textOpacity}%
                       </label>
                       <input
                         type="range"
@@ -262,7 +264,7 @@ export default function Watermark({ onWatermarkChange }) {
                   <div className="mb-4 sm:mb-6 space-y-4">
                     {/* Image Upload */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Watermark Image</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">{t('watermark.imageLabel')}</label>
                       <input
                         type="file"
                         accept="image/*"
@@ -276,10 +278,10 @@ export default function Watermark({ onWatermarkChange }) {
                           onClick={() => document.getElementById('watermark-file-input').click()}
                           className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold text-sm hover:bg-indigo-700 transition-colors"
                         >
-                          Choose File
+                          {t('watermark.chooseFile')}
                         </button>
                         <span className="text-sm text-gray-600">
-                          {watermarkFileName || 'No file selected'}
+                          {watermarkFileName || t('watermark.noFileSelected')}
                         </span>
                       </div>
                     </div>
@@ -287,14 +289,14 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Image Preview */}
                     {watermarkImage && (
                       <div className="flex justify-center p-4 bg-gray-50 rounded-lg">
-                        <img src={watermarkImage} alt="Watermark preview" className="max-h-32 rounded" />
+                        <img src={watermarkImage} alt={t('watermark.previewAlt')} className="max-h-32 rounded" />
                       </div>
                     )}
 
                     {/* Image Size */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Size: {imageSize}%
+                        {t('watermark.size')}: {imageSize}%
                       </label>
                       <input
                         type="range"
@@ -309,7 +311,7 @@ export default function Watermark({ onWatermarkChange }) {
                     {/* Image Opacity */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Opacity: {imageOpacity}%
+                        {t('watermark.opacity')}: {imageOpacity}%
                       </label>
                       <input
                         type="range"
@@ -325,7 +327,7 @@ export default function Watermark({ onWatermarkChange }) {
 
                 {/* Position Selection */}
                 <div className="mb-4 sm:mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">Position</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">{t('watermark.position')}</label>
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     {positions.map((pos) => (
                       <button
@@ -347,7 +349,7 @@ export default function Watermark({ onWatermarkChange }) {
                 {/* Margin */}
                 <div className="mb-4 sm:mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Margin: {margin}px
+                    {t('watermark.margin')}: {margin}px
                   </label>
                   <input
                     type="number"
@@ -370,7 +372,7 @@ export default function Watermark({ onWatermarkChange }) {
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
-                    Reset
+                    {t('buttons.reset')}
                   </button>
                 </div>
               </>
@@ -378,7 +380,7 @@ export default function Watermark({ onWatermarkChange }) {
 
             {!isEnabled && (
               <div className="text-center py-8 text-gray-500">
-                Check the box above to add watermark
+                {t('watermark.instruction')}
               </div>
             )}
           </div>

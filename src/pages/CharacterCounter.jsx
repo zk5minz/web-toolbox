@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './CharacterCounter.css';
 
 function CharacterCounter() {
+  const { t, i18n } = useTranslation(['characterCounter', 'translation']);
   const [text, setText] = useState('');
 
   // Load saved text from localStorage
   useEffect(() => {
     // SEO Meta Tags
-    document.title = 'Free Character Counter - Word & Character Count Tool | Online Tools';
+    document.title = t('characterCounter:metaTitle');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Count characters, words, sentences, and analyze text statistics in real-time. Free character counter with detailed analysis. Perfect for essays, articles, and social media.');
+      metaDescription.setAttribute('content', t('characterCounter:metaDescription'));
     }
     
     const savedText = localStorage.getItem('characterCounterText');
@@ -88,7 +91,7 @@ function CharacterCounter() {
   const stats = getStats();
 
   const handleClear = () => {
-    if (confirm('Are you sure you want to clear all text?')) {
+    if (confirm(t('characterCounter:messages.confirmClear'))) {
       setText('');
     }
   };
@@ -109,13 +112,18 @@ Average Word Length: ${stats.avgWordLength}
 Reading Time: ${stats.readingTime} min`;
 
     navigator.clipboard.writeText(statsText).then(() => {
-      alert('Statistics copied to clipboard!');
+      alert(t('characterCounter:messages.statsCopied'));
     });
   };
 
   return (
     <div className="character-counter-container">
       <header className="character-counter-header">
+        {/* Language Switcher */}
+        <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
+          <LanguageSwitcher />
+        </div>
+        
         <div className="breadcrumb">
           <Link
             to="/"
@@ -140,12 +148,12 @@ Reading Time: ${stats.readingTime} min`;
               e.target.style.transform = 'scale(1)';
             }}
           >
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span> &gt; </span>
-          <span>Tools</span>
+          <span>{t('translation:nav.tools')}</span>
           <span> &gt; </span>
-          <span>Word & Character Counter</span>
+          <span>{t('characterCounter:breadcrumb.characterCounter')}</span>
         </div>
         <h1 style={{
           fontSize: '56px',
@@ -159,7 +167,7 @@ Reading Time: ${stats.readingTime} min`;
           margin: '0'
         }}>
           <span>🔠</span>
-          <span>Word & Character Counter</span>
+          <span>{t('characterCounter:title')}</span>
         </h1>
         <p style={{
           fontSize: '22px',
@@ -169,31 +177,31 @@ Reading Time: ${stats.readingTime} min`;
           marginTop: '10px',
           marginBottom: '40px'
         }}>
-          Analyze your text with real-time statistics
+          {t('characterCounter:subtitle')}
         </p>
       </header>
 
       <div className="character-counter-content">
         <div className="text-input-section">
           <div className="input-header">
-            <h2>Text Input</h2>
+            <h2>{t('characterCounter:buttons.textInput')}</h2>
             <button onClick={handleClear} className="clear-btn">
-              🗑️ Clear
+              🗑️ {t('characterCounter:buttons.clear')}
             </button>
           </div>
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Start typing or paste your text here..."
+            placeholder={t('characterCounter:placeholder')}
             className="text-input"
           />
         </div>
 
         <div className="stats-panel">
           <div className="stats-header">
-            <h2>Statistics</h2>
+            <h2>{t('characterCounter:stats.title')}</h2>
             <button onClick={handleCopyStats} className="copy-stats-btn">
-              📋 Copy Stats
+              📋 {t('characterCounter:buttons.copyStats')}
             </button>
           </div>
 
@@ -201,7 +209,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">📝</div>
               <div className="stat-info">
-                <div className="stat-label">Characters (with spaces)</div>
+                <div className="stat-label">{t('characterCounter:stats.characters')}</div>
                 <div className="stat-value">{stats.charsWithSpaces}</div>
               </div>
             </div>
@@ -209,7 +217,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">✏️</div>
               <div className="stat-info">
-                <div className="stat-label">Characters (without spaces)</div>
+                <div className="stat-label">{t('characterCounter:stats.charactersNoSpaces')}</div>
                 <div className="stat-value">{stats.charsWithoutSpaces}</div>
               </div>
             </div>
@@ -217,7 +225,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">📖</div>
               <div className="stat-info">
-                <div className="stat-label">Words</div>
+                <div className="stat-label">{t('characterCounter:stats.words')}</div>
                 <div className="stat-value">{stats.wordCount}</div>
               </div>
             </div>
@@ -225,7 +233,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">💬</div>
               <div className="stat-info">
-                <div className="stat-label">Sentences</div>
+                <div className="stat-label">{t('characterCounter:stats.sentences')}</div>
                 <div className="stat-value">{stats.sentenceCount}</div>
               </div>
             </div>
@@ -233,7 +241,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">📄</div>
               <div className="stat-info">
-                <div className="stat-label">Paragraphs</div>
+                <div className="stat-label">{t('characterCounter:stats.paragraphs')}</div>
                 <div className="stat-value">{stats.paragraphCount}</div>
               </div>
             </div>
@@ -241,7 +249,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">📏</div>
               <div className="stat-info">
-                <div className="stat-label">Lines</div>
+                <div className="stat-label">{t('characterCounter:stats.lines')}</div>
                 <div className="stat-value">{stats.lineCount}</div>
               </div>
             </div>
@@ -249,7 +257,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">🔢</div>
               <div className="stat-info">
-                <div className="stat-label">Numbers</div>
+                <div className="stat-label">{t('characterCounter:stats.numbers')}</div>
                 <div className="stat-value">{stats.numberCount}</div>
               </div>
             </div>
@@ -257,7 +265,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">⚡</div>
               <div className="stat-info">
-                <div className="stat-label">Special Characters</div>
+                <div className="stat-label">{t('characterCounter:stats.specialChars')}</div>
                 <div className="stat-value">{stats.specialCharCount}</div>
               </div>
             </div>
@@ -265,7 +273,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">🇰🇷</div>
               <div className="stat-info">
-                <div className="stat-label">Korean Characters</div>
+                <div className="stat-label">{t('characterCounter:stats.koreanChars')}</div>
                 <div className="stat-value">{stats.koreanCharCount}</div>
               </div>
             </div>
@@ -273,7 +281,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">🇬🇧</div>
               <div className="stat-info">
-                <div className="stat-label">English Characters</div>
+                <div className="stat-label">{t('characterCounter:stats.englishChars')}</div>
                 <div className="stat-value">{stats.englishCharCount}</div>
               </div>
             </div>
@@ -281,7 +289,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">📊</div>
               <div className="stat-info">
-                <div className="stat-label">Average Word Length</div>
+                <div className="stat-label">{t('characterCounter:stats.avgWordLength')}</div>
                 <div className="stat-value">{stats.avgWordLength}</div>
               </div>
             </div>
@@ -289,7 +297,7 @@ Reading Time: ${stats.readingTime} min`;
             <div className="stat-card">
               <div className="stat-icon">⏱️</div>
               <div className="stat-info">
-                <div className="stat-label">Reading Time</div>
+                <div className="stat-label">{t('characterCounter:stats.readingTime')}</div>
                 <div className="stat-value">{stats.readingTime} min</div>
               </div>
             </div>
@@ -299,37 +307,37 @@ Reading Time: ${stats.readingTime} min`;
 
       {/* Features Section */}
       <div className="features-section">
-        <h2>Why Use Our Character Counter?</h2>
+        <h2>{t('characterCounter:features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Private & Secure</h3>
-            <p>All text analysis happens locally in your browser. Your content never leaves your device and is not stored anywhere.</p>
+            <h3>{t('characterCounter:features.private.title')}</h3>
+            <p>{t('characterCounter:features.private.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⚡</div>
-            <h3>Real-Time Analysis</h3>
-            <p>Instant character, word, and sentence counting as you type. No need to click any buttons or wait for results.</p>
+            <h3>{t('characterCounter:features.realtime.title')}</h3>
+            <p>{t('characterCounter:features.realtime.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📊</div>
-            <h3>Detailed Statistics</h3>
-            <p>Get comprehensive text analysis including word count, sentence count, reading time, and character type breakdown.</p>
+            <h3>{t('characterCounter:features.detailed.title')}</h3>
+            <p>{t('characterCounter:features.detailed.description')}</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon">🌐</div>
-            <h3>Multi-Language Support</h3>
-            <p>Accurately counts Korean, English, numbers, and special characters separately for multilingual content.</p>
+            <div className="feature-icon">💾</div>
+            <h3>{t('characterCounter:features.autosave.title')}</h3>
+            <p>{t('characterCounter:features.autosave.description')}</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon">📝</div>
-            <h3>Perfect for Writers</h3>
-            <p>Ideal for essays, articles, social media posts, and any content with character or word limits.</p>
+            <div className="feature-icon">⚙️</div>
+            <h3>{t('characterCounter:features.textTools.title')}</h3>
+            <p>{t('characterCounter:features.textTools.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>100% Free Forever</h3>
-            <p>No registration, no limits, completely free. Count unlimited text with all features available at no cost.</p>
+            <h3>{t('characterCounter:features.free.title')}</h3>
+            <p>{t('characterCounter:features.free.description')}</p>
           </div>
         </div>
       </div>

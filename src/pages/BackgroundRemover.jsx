@@ -1,16 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { removeBackground } from '@imgly/background-removal';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 const BackgroundRemover = () => {
+  const { t } = useTranslation(['backgroundRemover', 'translation']);
+
   // SEO Meta Tags
   useEffect(() => {
-    document.title = 'Free Background Remover - Remove Image Backgrounds with AI | Online Tools';
+    document.title = t('backgroundRemover:metaTitle');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Remove image backgrounds automatically with AI. Free background remover tool with transparent PNG output. Perfect for product photos, portraits, and design.');
+      metaDescription.setAttribute('content', t('backgroundRemover:metaDescription'));
     }
-  }, []);
+  }, [t]);
   
   const [originalImage, setOriginalImage] = useState(null);
   const [processedImage, setProcessedImage] = useState(null);
@@ -25,13 +29,13 @@ const BackgroundRemover = () => {
 
     // File size check (10MB)
     if (file.size > 10 * 1024 * 1024) {
-      setError('File size too large. Maximum 10MB.');
+      setError(t('backgroundRemover:errors.fileTooLarge'));
       return;
     }
 
     // Format check
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-      setError('Unsupported format. Use JPG, PNG, or WEBP.');
+      setError(t('backgroundRemover:errors.unsupportedFormat'));
       return;
     }
 
@@ -50,7 +54,7 @@ const BackgroundRemover = () => {
 
     } catch (err) {
       console.error('Error:', err);
-      setError('Failed to remove background. Please try again.');
+      setError(t('backgroundRemover:errors.processingFailed'));
     } finally {
       setIsProcessing(false);
     }
@@ -84,6 +88,13 @@ const BackgroundRemover = () => {
         position: 'relative'
       }}>
         <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0
+        }}>
+          <LanguageSwitcher />
+        </div>
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -113,10 +124,10 @@ const BackgroundRemover = () => {
               e.target.style.transform = 'scale(1)';
             }}
           >
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{'>'}</span>
-          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Background Remover</span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{t('backgroundRemover:breadcrumb.backgroundRemover')}</span>
         </div>
         <h1 style={{
           fontSize: '2.5rem',
@@ -124,14 +135,14 @@ const BackgroundRemover = () => {
           color: 'white',
           marginBottom: '8px'
         }}>
-          🪄 Background Remover
+          {t('backgroundRemover:header.title')}
         </h1>
         <p style={{
           fontSize: '16px',
           fontWeight: 700,
           color: 'white'
         }}>
-          Remove image backgrounds automatically with AI
+          {t('backgroundRemover:header.description')}
         </p>
       </div>
 
@@ -194,11 +205,13 @@ const BackgroundRemover = () => {
               >
                 <div style={{ fontSize: '80px', marginBottom: '20px' }}>📤</div>
                 <h3 style={{ fontWeight: 700, marginBottom: '10px', fontSize: '28px', color: '#333' }}>
-                  Drag & Drop your image here
+                  {t('backgroundRemover:upload.dragDrop')}
                 </h3>
-                <p style={{ fontWeight: 700, color: '#666', fontSize: '18px', marginBottom: '10px' }}>or click to upload</p>
+                <p style={{ fontWeight: 700, color: '#666', fontSize: '18px', marginBottom: '10px' }}>
+                  {t('backgroundRemover:upload.or')} {t('backgroundRemover:upload.clickUpload')}
+                </p>
                 <p style={{ fontWeight: 700, color: '#999', fontSize: '16px', marginTop: '10px' }}>
-                  Supports: JPG, PNG, WEBP (Max 10MB)
+                  {t('backgroundRemover:upload.supportedFormats')}
                 </p>
               </div>
 
@@ -233,14 +246,14 @@ const BackgroundRemover = () => {
                 color: '#333',
                 marginBottom: '10px'
               }}>
-                Removing background...
+                {t('backgroundRemover:processing.title')}
               </h3>
               <p style={{
                 fontSize: '16px',
                 fontWeight: 700,
                 color: '#666'
               }}>
-                This may take a few moments
+                {t('backgroundRemover:processing.description')}
               </p>
             </div>
           )}
@@ -260,7 +273,7 @@ const BackgroundRemover = () => {
                 gap: '10px'
               }}>
                 <span>✨</span>
-                <span>Background Removed Successfully!</span>
+                <span>{t('backgroundRemover:results.title')}</span>
               </h2>
 
               {/* Before/After Comparison */}
@@ -279,7 +292,7 @@ const BackgroundRemover = () => {
                     marginBottom: '10px',
                     textAlign: 'center'
                   }}>
-                    Before
+                    {t('backgroundRemover:results.before')}
                   </h3>
                   <div style={{
                     border: '2px solid #e0e0e0',
@@ -309,7 +322,7 @@ const BackgroundRemover = () => {
                     marginBottom: '10px',
                     textAlign: 'center'
                   }}>
-                    After
+                    {t('backgroundRemover:results.after')}
                   </h3>
                   <div style={{
                     border: '2px solid #4CAF50',
@@ -370,7 +383,7 @@ const BackgroundRemover = () => {
                     e.target.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
                   }}
                 >
-                  ⬇️ Download PNG
+                  {t('backgroundRemover:buttons.download')}
                 </button>
 
                 <button
@@ -398,7 +411,7 @@ const BackgroundRemover = () => {
                     e.target.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
                   }}
                 >
-                  🔄 Try Another Image
+                  {t('backgroundRemover:buttons.tryAnother')}
                 </button>
               </div>
             </div>
@@ -408,37 +421,37 @@ const BackgroundRemover = () => {
 
       {/* Features Section */}
       <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderTop: '2px solid #e5e7eb' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>Why Use Our Background Remover?</h2>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>{t('backgroundRemover:features.title')}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Private & Secure</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>All processing happens locally in your browser using AI. Your images never leave your device and are not uploaded to any server.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.privateSecure.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.privateSecure.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🤖</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>AI-Powered Precision</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Advanced AI technology automatically detects and removes backgrounds with high accuracy, even for complex images.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.aiPowered.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.aiPowered.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚡</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Instant Results</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Fast background removal in seconds. No waiting, no complicated settings, just upload and get results.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.instantResults.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.instantResults.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🖼️</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Transparent PNG Output</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Download high-quality PNG images with transparent backgrounds, perfect for design and marketing.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.transparentPng.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.transparentPng.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📱</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Works Anywhere</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Fully responsive design works on desktop, tablet, and mobile. Remove backgrounds from any device.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.worksAnywhere.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.worksAnywhere.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Free Forever</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>No watermarks, no limits. Remove backgrounds from unlimited images completely free.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.free.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.free.description')}</p>
           </div>
         </div>
       </div>

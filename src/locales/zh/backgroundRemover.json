@@ -1,0 +1,66 @@
+{
+  "metaTitle": "免费背景移除器 - 用AI移除图片背景 | 在线工具",
+  "metaDescription": "使用AI自动移除图片背景。支持透明PNG输出的免费背景移除工具。适合产品照片、肖像照片和设计。",
+  "breadcrumb": {
+    "home": "首页",
+    "tools": "工具",
+    "backgroundRemover": "背景移除器"
+  },
+  "title": "背景移除器",
+  "subtitle": "用AI自动移除图片背景",
+  "header": {
+    "title": "🪄 背景移除器",
+    "description": "用AI自动移除图片背景"
+  },
+  "upload": {
+    "dragDrop": "拖放图片到此处",
+    "or": "或",
+    "clickUpload": "点击上传",
+    "supportedFormats": "支持的格式: JPG, PNG, WEBP (最大 10MB)"
+  },
+  "processing": {
+    "title": "正在移除背景...",
+    "description": "这可能需要一些时间"
+  },
+  "errors": {
+    "fileTooLarge": "文件太大。最大10MB。",
+    "unsupportedFormat": "不支持的格式。请使用JPG、PNG或WEBP。",
+    "processingFailed": "移除背景失败。请重试。"
+  },
+  "results": {
+    "title": "背景已成功移除！",
+    "before": "移除前",
+    "after": "移除后"
+  },
+  "buttons": {
+    "download": "⬇️ 下载PNG",
+    "tryAnother": "🔄 尝试另一张图片"
+  },
+  "features": {
+    "title": "为什么使用我们的背景移除器？",
+    "privateSecure": {
+      "title": "🔒 100%私密安全",
+      "description": "所有处理都在浏览器中使用AI本地进行。您的图片永远不会离开您的设备，也不会上传到任何服务器。"
+    },
+    "aiPowered": {
+      "title": "🤖 AI驱动的精度",
+      "description": "先进的AI技术能自动检测和移除背景，即使是复杂的图片也能高精度处理。"
+    },
+    "instantResults": {
+      "title": "⚡ 即时结果",
+      "description": "在数秒内快速移除背景。无需等待，无需复杂设置，上传即获得结果。"
+    },
+    "transparentPng": {
+      "title": "🖼️ 透明PNG输出",
+      "description": "下载高质量PNG图像，具有透明背景，完美适合设计和营销。"
+    },
+    "worksAnywhere": {
+      "title": "📱 在任何地方工作",
+      "description": "完全响应式设计适用于桌面、平板和移动设备。从任何设备移除背景。"
+    },
+    "free": {
+      "title": "🆓 100%永久免费",
+      "description": "无水印，无限制。完全免费移除无限张图片的背景。"
+    }
+  }
+}

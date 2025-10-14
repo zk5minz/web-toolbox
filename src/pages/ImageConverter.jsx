@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from '../components/LanguageSwitcher'
 import JSZip from 'jszip'
 import ImageUploader from '../components/ImageUploader'
 import FileList from '../components/FileList'
@@ -23,14 +25,16 @@ import { getSettings, generateFileName } from '../utils/settings'
 import { updateStats } from '../utils/stats'
 
 function ImageConverter() {
+  const { t, i18n } = useTranslation(['imageConverter', 'translation']);
+  
   // SEO Meta Tags
   useEffect(() => {
-    document.title = 'Free Image Converter - JPG, PNG, WEBP, PDF | Online Tools';
+    document.title = t('imageConverter:metaTitle');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free online image converter with batch processing. Convert JPG, PNG, WEBP, PDF formats. Resize, crop, rotate, add watermarks. 100% private - all processing happens locally in your browser.');
+      metaDescription.setAttribute('content', t('imageConverter:metaDescription'));
     }
-  }, []);
+  }, [t, i18n.language]);
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [selectedFormat, setSelectedFormat] = useState('png');
@@ -147,7 +151,7 @@ function ImageConverter() {
 
   const handleConvert = async () => {
     if (uploadedFiles.length === 0) {
-      showToast('Please select images first', 'warning');
+      showToast(t('imageConverter:messages.selectImagesFirst'), 'warning');
       return;
     }
 
@@ -161,7 +165,7 @@ function ImageConverter() {
         const imageFiles = uploadedFiles.filter(f => f.type.startsWith('image/'));
 
         if (imageFiles.length === 0) {
-          showToast('No images available for PDF conversion', 'error');
+          showToast(t('imageConverter:messages.noImagesForPdf'), 'error');
           setIsConverting(false);
           return;
         }
@@ -184,7 +188,7 @@ function ImageConverter() {
             console.log(`Stats updated for ${file.name} -> PDF (single mode)`);
           });
 
-          showToast('PDF conversion completed', 'success');
+          showToast(t('imageConverter:messages.pdfConversionComplete'), 'success');
         } else {
           // Multiple PDF mode: each image to individual PDF
           const pdfBlobs = [];
@@ -218,11 +222,11 @@ function ImageConverter() {
           console.log('Stats updated for PDF conversion (multiple mode)');
 
           const successCount = statuses.filter(s => s.status === 'success').length;
-          showToast(`${successCount} PDF files converted successfully`, 'success');
+          showToast(t('imageConverter:messages.pdfFilesConverted', { count: successCount }), 'success');
         }
       } catch (error) {
         console.error('PDF conversion failed:', error);
-        showToast('PDF conversion failed', 'error');
+        showToast(t('imageConverter:messages.pdfConversionFailed'), 'error');
       } finally {
         setIsConverting(false);
       }
@@ -264,10 +268,10 @@ function ImageConverter() {
           console.log(`Stats updated for PDF page ${index + 1} -> ${selectedFormat}`);
         });
 
-        showToast(`PDF converted to ${allImageBlobs.length} images successfully`, 'success');
+        showToast(t('imageConverter:messages.pdfConverted', { count: allImageBlobs.length }), 'success');
       } catch (error) {
         console.error('PDF to images conversion failed:', error);
-        showToast('PDF conversion failed', 'error');
+        showToast(t('imageConverter:messages.pdfConversionFailed'), 'error');
       } finally {
         setIsConverting(false);
       }
@@ -366,11 +370,11 @@ function ImageConverter() {
       const failCount = results.filter(r => !r.success).length;
 
       if (failCount === 0) {
-        showToast(`All images converted successfully (${successCount})`, 'success');
+        showToast(t('imageConverter:messages.allImagesSuccess', { count: successCount }), 'success');
       } else if (successCount === 0) {
-        showToast('All image conversions failed', 'error');
+        showToast(t('imageConverter:messages.allImagesFailed'), 'error');
       } else {
-        showToast(`${successCount} succeeded, ${failCount} failed`, 'warning');
+        showToast(t('imageConverter:messages.partialSuccess', { success: successCount, fail: failCount }), 'warning');
       }
 
       // Refresh history component
@@ -458,10 +462,10 @@ function ImageConverter() {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      showToast('ZIP file download completed', 'success');
+      showToast(t('imageConverter:messages.zipComplete'), 'success');
     } catch (error) {
       console.error('ZIP creation failed:', error);
-      showToast('ZIP file creation failed', 'error');
+      showToast(t('imageConverter:messages.zipFailed'), 'error');
     } finally {
       setIsCreatingZip(false);
     }
@@ -471,6 +475,21 @@ function ImageConverter() {
     <div className="min-h-screen py-6 sm:py-8 md:py-12" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
       {/* Header */}
       <div className="text-center mb-6 sm:mb-8 px-4 relative">
+        {/* Language Switcher and Settings */}
+        <div style={{ position: 'absolute', top: '0', right: '20px', display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <LanguageSwitcher />
+          <button
+            onClick={() => setIsSettingsOpen(true)}
+            className="p-2 sm:p-3 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 transition-all"
+            title="Settings"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+        </div>
+        
         <div className="flex items-center justify-center gap-2 mb-4 text-lg sm:text-xl">
           <Link
             to="/"
@@ -495,25 +514,13 @@ function ImageConverter() {
               e.target.style.transform = 'scale(1)';
             }}
           >
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{'>'}</span>
-          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Image Converter</span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{t('imageConverter:breadcrumb.imageConverter')}</span>
         </div>
-        <h1 className="font-bold mb-2" style={{ color: 'white', fontSize: '2.5rem', fontWeight: '700' }}>PDF & Image Converter</h1>
-        <p className="text-sm sm:text-base" style={{ color: 'white' }}>Convert images to JPG, PNG, WEBP formats</p>
-
-        {/* Settings Button */}
-        <button
-          onClick={() => setIsSettingsOpen(true)}
-          className="absolute top-0 right-4 sm:right-6 p-2 sm:p-3 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 transition-all"
-          title="Settings"
-        >
-          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </button>
+        <h1 className="font-bold mb-2" style={{ color: 'white', fontSize: '2.5rem', fontWeight: '700' }}>{t('imageConverter:title')}</h1>
+        <p className="text-sm sm:text-base" style={{ color: 'white' }}>{t('imageConverter:subtitle')}</p>
       </div>
 
       {/* Settings Modal */}
@@ -617,10 +624,10 @@ function ImageConverter() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                 </svg>
-                Converting... ({conversionProgress.current}/{conversionProgress.total})
+                {t('imageConverter:buttons.convertingProgress', { current: conversionProgress.current, total: conversionProgress.total })}
               </span>
             ) : (
-              'Convert'
+              t('imageConverter:buttons.convert')
             )}
           </button>
 
@@ -640,8 +647,8 @@ function ImageConverter() {
                 <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                <span className="hidden sm:inline">Download All ({convertedImages.filter(img => img !== null).length})</span>
-                <span className="sm:hidden">Download All ({convertedImages.filter(img => img !== null).length})</span>
+                <span className="hidden sm:inline">{t('imageConverter:buttons.downloadAll', { count: convertedImages.filter(img => img !== null).length })}</span>
+                <span className="sm:hidden">{t('imageConverter:buttons.downloadAll', { count: convertedImages.filter(img => img !== null).length })}</span>
               </span>
             </button>
 
@@ -663,16 +670,16 @@ function ImageConverter() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
-                      <span className="hidden sm:inline">Creating ZIP...</span>
-                      <span className="sm:hidden">Creating...</span>
+                      <span className="hidden sm:inline">{t('imageConverter:buttons.creatingZip')}</span>
+                      <span className="sm:hidden">{t('imageConverter:buttons.creating')}</span>
                     </>
                   ) : (
                     <>
                       <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
                       </svg>
-                      <span className="hidden sm:inline">Download as ZIP</span>
-                      <span className="sm:hidden">Download ZIP</span>
+                      <span className="hidden sm:inline">{t('imageConverter:buttons.downloadZip')}</span>
+                      <span className="sm:hidden">{t('imageConverter:buttons.downloadZipShort')}</span>
                     </>
                   )}
                 </span>
@@ -690,37 +697,37 @@ function ImageConverter() {
 
       {/* Features Section */}
       <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderRadius: '12px' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>Why Use Our Image Converter?</h2>
+        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>{t('imageConverter:features.title')}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Private & Secure</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>All conversions happen locally in your browser. Your images never leave your device and are not uploaded to any server.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.privateSecure.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.privateSecure.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔄</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Multiple Formats</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Convert between PDF, JPEG, PNG, WEBP, and more. Support for all major image and document formats.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.multipleFormats.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.multipleFormats.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚙️</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Advanced Tools</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Resize, crop, rotate, apply filters, add watermarks, and compress images with professional-grade tools.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.advancedTools.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.advancedTools.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📦</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Batch Processing</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Convert multiple files at once. Apply the same settings to all images and download as ZIP.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.batchProcessing.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.batchProcessing.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📊</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>Quality Control</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>Adjust compression quality and see file size comparison before and after conversion.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.qualityControl.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.qualityControl.description')}</p>
           </div>
           <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>100% Free Forever</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>No watermarks, no file limits. Convert unlimited images with all features completely free.</p>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.free.title')}</h3>
+            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.free.description')}</p>
           </div>
         </div>
       </div>

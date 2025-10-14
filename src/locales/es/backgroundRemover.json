@@ -1,0 +1,66 @@
+{
+  "metaTitle": "Removedor de Fondo Gratuito - Elimina Fondos de Imágenes con IA | Herramientas en Línea",
+  "metaDescription": "Elimina automáticamente fondos de imágenes con IA. Herramienta gratuita de eliminación de fondos con salida PNG transparente. Perfecta para fotos de productos, retratos y diseño.",
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "backgroundRemover": "Removedor de Fondo"
+  },
+  "title": "Removedor de Fondo",
+  "subtitle": "Elimina automáticamente fondos de imágenes con IA",
+  "header": {
+    "title": "🪄 Removedor de Fondo",
+    "description": "Elimina automáticamente fondos de imágenes con IA"
+  },
+  "upload": {
+    "dragDrop": "Arrastra y suelta tu imagen aquí",
+    "or": "o",
+    "clickUpload": "haz clic para subir",
+    "supportedFormats": "Formatos compatibles: JPG, PNG, WEBP (Máx 10MB)"
+  },
+  "processing": {
+    "title": "Eliminando fondo...",
+    "description": "Esto puede tomar un momento"
+  },
+  "errors": {
+    "fileTooLarge": "El archivo es demasiado grande. Máximo 10MB.",
+    "unsupportedFormat": "Formato no compatible. Usa JPG, PNG o WEBP.",
+    "processingFailed": "Error al eliminar fondo. Por favor, inténtalo de nuevo."
+  },
+  "results": {
+    "title": "¡Fondo eliminado correctamente!",
+    "before": "Antes",
+    "after": "Después"
+  },
+  "buttons": {
+    "download": "⬇️ Descargar PNG",
+    "tryAnother": "🔄 Probar Otra Imagen"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Removedor de Fondo?",
+    "privateSecure": {
+      "title": "🔒 100% Privado y Seguro",
+      "description": "Todo el procesamiento ocurre localmente en tu navegador usando IA. Tus imágenes nunca salen de tu dispositivo y no se suben a ningún servidor."
+    },
+    "aiPowered": {
+      "title": "🤖 Precisión Impulsada por IA",
+      "description": "La tecnología de IA avanzada detecta y elimina automáticamente fondos con alta precisión, incluso en imágenes complejas."
+    },
+    "instantResults": {
+      "title": "⚡ Resultados Instantáneos",
+      "description": "Eliminación rápida de fondos en segundos. Sin esperas, sin configuraciones complicadas, simplemente sube y obtén resultados."
+    },
+    "transparentPng": {
+      "title": "🖼️ Salida PNG Transparente",
+      "description": "Descarga imágenes PNG de alta calidad con fondos transparentes, perfectas para diseño y marketing."
+    },
+    "worksAnywhere": {
+      "title": "📱 Funciona en Cualquier Lugar",
+      "description": "Diseño completamente responsivo que funciona en escritorio, tablet y móvil. Elimina fondos desde cualquier dispositivo."
+    },
+    "free": {
+      "title": "🆓 100% Gratis Para Siempre",
+      "description": "Sin marcas de agua, sin límites. Elimina fondos de imágenes ilimitadas completamente gratis."
+    }
+  }
+}

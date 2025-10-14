@@ -1,0 +1,71 @@
+{
+  "breadcrumb": {
+    "home": "홈",
+    "tools": "도구",
+    "current": "스톱워치 & 타이머"
+  },
+  "header": {
+    "title": "스톱워치 & 타이머",
+    "subtitle": "시간을 추적하고 관리하세요"
+  },
+  "tabs": {
+    "stopwatch": "스톱워치",
+    "timer": "타이머"
+  },
+  "buttons": {
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "lap": "Lap"
+  },
+  "stopwatch": {
+    "lapTimes": "랩 타임",
+    "lapNumber": "랩"
+  },
+  "timer": {
+    "hours": "시",
+    "minutes": "분",
+    "seconds": "초",
+    "quickTimers": {
+      "1sec": "1초",
+      "5sec": "5초",
+      "10sec": "10초",
+      "1min": "1분",
+      "5min": "5분",
+      "10min": "10분",
+      "1hour": "1시간"
+    },
+    "complete": "시간이 다 되었습니다! 🎉",
+    "notification": {
+      "title": "시간 종료!",
+      "body": "타이머가 완료되었습니다!"
+    }
+  },
+  "features": {
+    "title": "왜 우리 스톱워치 & 타이머를 사용해야 하나요?",
+    "private": {
+      "title": "100% 개인정보 보호 및 보안",
+      "description": "모든 시간 측정은 브라우저에서 로컬로 수행됩니다. 추적 없음, 데이터 수집 없음, 완벽한 개인정보 보호를 보장합니다."
+    },
+    "precision": {
+      "title": "정밀한 시간 측정",
+      "description": "스톱워치는 밀리초 단위까지 정확합니다. 스포츠, 운동, 요리 및 모든 시간에 민감한 활동에 완벽합니다."
+    },
+    "lapRecording": {
+      "title": "랩 타임 기록",
+      "description": "가장 빠른 랩과 가장 느린 랩을 포함한 상세한 통계로 여러 랩 타임을 기록하고 비교하세요."
+    },
+    "flexible": {
+      "title": "유연한 타이머",
+      "description": "빠른 프리셋 또는 수동 입력으로 사용자 정의 카운트다운 타이머를 설정하세요. 시간이 다 되면 오디오 알림."
+    },
+    "responsive": {
+      "title": "어디서나 작동",
+      "description": "완전한 반응형 디자인으로 데스크톱, 태블릿, 모바일 기기에서 작동합니다. 언제 어디서나 사용하세요."
+    },
+    "free": {
+      "title": "영원히 100% 무료",
+      "description": "사용 제한 없음. 모든 기능으로 무제한 스톱워치와 타이머를 완전히 무료로 만드세요."
+    }
+  }
+}

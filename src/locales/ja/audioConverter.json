@@ -1,0 +1,72 @@
+{
+  "metaTitle": "無料オーディオ変換ツール - MP3、WAV、OGG、M4A、FLAC | オンラインツール",
+  "metaDescription": "MP3、WAV、OGG、M4A、FLAC形式間でオーディオファイルを変換します。品質管理機能付きの無料オンラインオーディオ変換ツール。100%プライベート、サーバーアップロードなし。",
+  "breadcrumb": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "audioConverter": "オーディオ変換ツール"
+  },
+  "title": "🎵 オーディオ変換ツール",
+  "subtitle": "オーディオファイルをさまざまな形式に変換",
+  "loading": {
+    "title": "オーディオプロセッサを読み込み中です...",
+    "hint": "最初の読み込みには少し時間がかかる場合があります"
+  },
+  "upload": {
+    "dragDrop": "ここにオーディオファイルをドラッグ＆ドロップ",
+    "or": "または",
+    "clickUpload": "クリックしてアップロード",
+    "supportedFormats": "対応形式: MP3、WAV、OGG、M4A、FLAC (最大 100MB)"
+  },
+  "fileInfo": {
+    "size": "MB"
+  },
+  "options": {
+    "outputFormat": "出力形式",
+    "quality": "品質:",
+    "kbps": "kbps",
+    "qualityLabels": {
+      "low": "低 (64)",
+      "standard": "標準 (192)",
+      "high": "高 (320)"
+    }
+  },
+  "errors": {
+    "fileTooLarge": "ファイルが大きすぎます。最大サイズは100MBです。",
+    "conversionFailed": "変換に失敗しました。もう一度お試いただくか、別のファイルをお試しください。",
+    "loadFailed": "オーディオプロセッサを読み込めませんでした。ページを更新してください。"
+  },
+  "buttons": {
+    "convert": "オーディオを変換",
+    "converting": "変換中...",
+    "download": "📥 ダウンロード",
+    "remove": "✕"
+  },
+  "features": {
+    "title": "オーディオ変換ツールを使用する理由は？",
+    "privateSecure": {
+      "title": "🔒 100% プライベート＆安全",
+      "description": "すべての変換はブラウザで実行されます。ファイルはデバイスを離れず、サーバーにアップロードされません。"
+    },
+    "fastEfficient": {
+      "title": "⚡ 高速かつ効率的",
+      "description": "サーバーのアップロードまたはダウンロードがないため、より高速な変換が可能です。キューで待つことなくローカルでファイルを処理します。"
+    },
+    "multipleFormats": {
+      "title": "🎵 複数の形式",
+      "description": "カスタマイズ可能な品質設定を使用して、MP3、WAV、OGG、M4A、FLAC形式間で変換できます。"
+    },
+    "freeUnlimited": {
+      "title": "💾 無料で無制限",
+      "description": "ファイルサイズ制限なし、変換制限なし、完全に無料。必要なだけ多くのファイルを変換できます。"
+    },
+    "qualityControl": {
+      "title": "🔧 品質管理",
+      "description": "64kbpsから320kbpsのビットレートを調整して、ファイルサイズとオーディオ品質のバランスを取ります。"
+    },
+    "worksOffline": {
+      "title": "🌐 オフラインで動作",
+      "description": "読み込まれると、コンバーターは完全にオフラインで動作します。変換にはインターネット接続は必要ありません。"
+    }
+  }
+}

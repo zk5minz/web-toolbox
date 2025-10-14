@@ -1,0 +1,124 @@
+{
+  "metaTitle": "Bloc de Notas en Línea Gratuito - Guardado Automático y Modo Oscuro | Herramientas en Línea",
+  "metaDescription": "Bloc de notas en línea gratuito con función de guardado automático, modo oscuro, buscar y reemplazar, y contador de palabras. Tus notas se almacenan localmente en el navegador. 100% privado y seguro.",
+  "alert": "Este bloc de notas usa localStorage para guardar tus notas. Tus datos se almacenan localmente en tu navegador.",
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "notepad": "Bloc de Notas",
+    "file": "Archivo"
+  },
+  "menu": {
+    "file": "Archivo",
+    "edit": "Editar",
+    "view": "Ver",
+    "help": "Ayuda"
+  },
+  "fileMenu": {
+    "new": "Nuevo",
+    "open": "Abrir",
+    "save": "Guardar (Ctrl+S)",
+    "saveAs": "Guardar como",
+    "share": "Compartir",
+    "print": "Imprimir (Ctrl+P)"
+  },
+  "editMenu": {
+    "undo": "Deshacer (Ctrl+Z)",
+    "redo": "Rehacer (Ctrl+Y)",
+    "cut": "Cortar (Ctrl+X)",
+    "copy": "Copiar (Ctrl+C)",
+    "paste": "Pegar (Ctrl+V)",
+    "delete": "Eliminar",
+    "selectAll": "Seleccionar todo (Ctrl+A)"
+  },
+  "viewMenu": {
+    "lightMode": "Modo Claro",
+    "darkMode": "Modo Oscuro",
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "preferences": "Preferencias"
+  },
+  "helpMenu": {
+    "about": "Acerca de",
+    "aboutText": "Bloc de notas en línea simple con guardado automático\\nVersión 1.0",
+    "shortcuts": "Atajos de Teclado",
+    "shortcutsText": "Atajos de teclado:\\nCtrl+S - Guardar\\nCtrl+Z - Deshacer\\nCtrl+Y - Rehacer\\nCtrl+A - Seleccionar todo\\nCtrl+P - Imprimir"
+  },
+  "toolbar": {
+    "new": "Nuevo",
+    "open": "Abrir",
+    "save": "Guardar (Ctrl+S)",
+    "cut": "Cortar (Ctrl+X)",
+    "copy": "Copiar (Ctrl+C)",
+    "paste": "Pegar (Ctrl+V)",
+    "undo": "Deshacer (Ctrl+Z)",
+    "redo": "Rehacer (Ctrl+Y)",
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "fontSize": "Tamaño de Fuente",
+    "help": "Ayuda"
+  },
+  "statusBar": {
+    "line": "Línea",
+    "column": "Columna",
+    "chars": "Caracteres",
+    "words": "Palabras"
+  },
+  "preferences": {
+    "title": "Preferencias",
+    "fontSize": "Tamaño de Fuente",
+    "darkMode": "Modo Oscuro",
+    "close": "Cerrar"
+  },
+  "share": {
+    "title": "Opciones para Compartir",
+    "copyClipboard": {
+      "title": "Copiar al Portapapeles",
+      "description": "Copiar texto para pegar en cualquier lugar"
+    },
+    "email": {
+      "title": "Enviar por Correo",
+      "description": "Abrir cliente de correo con el texto"
+    },
+    "download": {
+      "title": "Descargar como TXT",
+      "description": "Guardar como archivo de texto"
+    }
+  },
+  "messages": {
+    "confirmNew": "El texto actual se perderá. ¿Continuar?",
+    "fileSaved": "¡Archivo guardado exitosamente!",
+    "saveFailed": "Error al guardar el archivo",
+    "enterFilename": "Ingrese el nombre del archivo:",
+    "copiedToClipboard": "¡Texto copiado al portapapeles!",
+    "copyFailed": "Error al copiar al portapapeles"
+  },
+  "placeholder": "Comienza a escribir...",
+  "features": {
+    "title": "¿Por qué usar nuestro Bloc de Notas en Línea?",
+    "privateSecure": {
+      "title": "100% Privado y Seguro",
+      "description": "Tus notas se almacenan localmente en tu navegador. Nada se sube a ningún servidor, garantizando privacidad y seguridad completas."
+    },
+    "autoSave": {
+      "title": "Función de Guardado Automático",
+      "description": "¡Nunca pierdas tu trabajo! Todos los cambios se guardan automáticamente en el almacenamiento local del navegador en tiempo real."
+    },
+    "darkMode": {
+      "title": "Soporte de Modo Oscuro",
+      "description": "Cambia entre temas claro y oscuro para escribir cómodamente en cualquier condición de iluminación. Tu preferencia se guarda."
+    },
+    "richText": {
+      "title": "Edición de Texto Enriquecido",
+      "description": "Capacidades de edición completas con deshacer/rehacer, buscar y reemplazar, contador de palabras y tamaño de fuente personalizable para una experiencia de escritura óptima."
+    },
+    "fileOps": {
+      "title": "Operaciones de Archivo Fáciles",
+      "description": "Abre, guarda y descarga archivos de texto. Exporta tus notas como archivos TXT o comparte por correo con un solo clic."
+    },
+    "free": {
+      "title": "100% Gratis Para Siempre",
+      "description": "Sin funciones premium, suscripciones ni costos ocultos. Todas las funciones son completamente gratuitas con uso ilimitado."
+    }
+  }
+}

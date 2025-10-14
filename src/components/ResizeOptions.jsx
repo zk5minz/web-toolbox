@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function ResizeOptions({ originalWidth, originalHeight, onResizeChange }) {
+  const { t } = useTranslation('imageConverter');
   const [width, setWidth] = useState(originalWidth || 0);
   const [height, setHeight] = useState(originalHeight || 0);
   const [maintainRatio, setMaintainRatio] = useState(true);
@@ -15,11 +17,11 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
   }, [originalWidth, originalHeight]);
 
   const presets = [
-    { name: 'Full HD', width: 1920, height: 1080 },
-    { name: 'HD', width: 1280, height: 720 },
+    { name: t('resize.fullHD', 'Full HD'), width: 1920, height: 1080 },
+    { name: t('resize.hd', 'HD'), width: 1280, height: 720 },
     { name: '800x600', width: 800, height: 600 },
     { name: '640x480', width: 640, height: 480 },
-    { name: 'Original', width: originalWidth, height: originalHeight },
+    { name: t('resize.original', 'Original'), width: originalWidth, height: originalHeight },
   ];
 
   const handleWidthChange = (e) => {
@@ -66,13 +68,13 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
   return (
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
       <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8">
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">Image Resize</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">{t('resize.title', 'Image Resize')}</h2>
 
         {/* Current Size Display */}
         <div className="mb-4 sm:mb-6 bg-gray-50 rounded-lg p-3 sm:p-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
-              <p className="text-xs sm:text-sm text-gray-600">Original Size</p>
+              <p className="text-xs sm:text-sm text-gray-600">{t('resize.originalSize', 'Original Size')}</p>
               <p className="text-base sm:text-lg font-semibold text-gray-800">
                 {originalWidth} × {originalHeight}px
               </p>
@@ -83,7 +85,7 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
                 <div>
-                  <p className="text-xs sm:text-sm text-gray-600">New Size</p>
+                  <p className="text-xs sm:text-sm text-gray-600">{t('resize.newSize', 'New Size')}</p>
                   <p className="text-base sm:text-lg font-semibold text-blue-600">
                     {width} × {height}px
                   </p>
@@ -98,7 +100,7 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {/* Width Input */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Width (px)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('resize.width', 'Width (px)')}</label>
               <input
                 type="number"
                 value={width}
@@ -110,7 +112,7 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
 
             {/* Height Input */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Height (px)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('resize.height', 'Height (px)')}</label>
               <input
                 type="number"
                 value={height}
@@ -130,14 +132,14 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
                 onChange={(e) => setMaintainRatio(e.target.checked)}
                 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
-              <span className="ml-2 text-sm sm:text-base text-gray-700">Keep Aspect Ratio</span>
+              <span className="ml-2 text-sm sm:text-base text-gray-700">{t('resize.keepAspectRatio', 'Keep Aspect Ratio')}</span>
             </label>
           </div>
         </div>
 
         {/* Preset Buttons */}
         <div className="mb-4 sm:mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-3">Preset Sizes</label>
+          <label className="block text-sm font-medium text-gray-700 mb-3">{t('resize.presetSizes', 'Preset Sizes')}</label>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
             {presets.map((preset, index) => (
               <button
@@ -163,7 +165,7 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            Apply
+            {t('buttons.apply', 'Apply')}
           </button>
           <button
             onClick={handleReset}
@@ -174,7 +176,7 @@ export default function ResizeOptions({ originalWidth, originalHeight, onResizeC
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            Reset
+            {t('buttons.reset', 'Reset')}
           </button>
         </div>
       </div>

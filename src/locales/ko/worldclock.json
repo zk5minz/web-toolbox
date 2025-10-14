@@ -1,0 +1,109 @@
+{
+  "breadcrumb": {
+    "home": "홈",
+    "current": "세계 시계"
+  },
+  "header": {
+    "title": "세계 시계"
+  },
+  "buttons": {
+    "addCity": "도시 추가",
+    "remove": "도시 제거"
+  },
+  "modal": {
+    "title": "도시 선택",
+    "searchPlaceholder": "도시 검색...",
+    "selected": "선택됨"
+  },
+  "cities": {
+    "Seoul": "서울",
+    "Busan": "부산",
+    "Tokyo": "도쿄",
+    "Osaka": "오사카",
+    "Beijing": "베이징",
+    "Shanghai": "상하이",
+    "Hong Kong": "홍콩",
+    "Taipei": "타이페이",
+    "Singapore": "싱가포르",
+    "Bangkok": "방콕",
+    "Hanoi": "하노이",
+    "Ho Chi Minh": "호치민",
+    "Jakarta": "자카르타",
+    "Manila": "마닐라",
+    "Kuala Lumpur": "쿠알라룸푸르",
+    "New Delhi": "뉴델리",
+    "Mumbai": "뭄바이",
+    "Dubai": "두바이",
+    "Tel Aviv": "텔아비브",
+    "Istanbul": "이스탄불",
+    "London": "런던",
+    "Paris": "파리",
+    "Berlin": "베를린",
+    "Rome": "로마",
+    "Madrid": "마드리드",
+    "Barcelona": "바르셀로나",
+    "Amsterdam": "암스테르담",
+    "Brussels": "브뤼셀",
+    "Zurich": "취리히",
+    "Vienna": "비엔나",
+    "Prague": "프라하",
+    "Warsaw": "바르샤바",
+    "Stockholm": "스톡홀름",
+    "Copenhagen": "코펜하겐",
+    "Oslo": "오슬로",
+    "Helsinki": "헬싱키",
+    "Dublin": "더블린",
+    "Lisbon": "리스본",
+    "Athens": "아테네",
+    "Moscow": "모스크바",
+    "New York": "뉴욕",
+    "Los Angeles": "로스앤젤레스",
+    "Chicago": "시카고",
+    "Houston": "휴스턴",
+    "Miami": "마이애미",
+    "San Francisco": "샌프란시스코",
+    "Seattle": "시애틀",
+    "Las Vegas": "라스베이거스",
+    "Toronto": "토론토",
+    "Vancouver": "밴쿠버",
+    "Mexico City": "멕시코시티",
+    "Buenos Aires": "부에노스아이레스",
+    "São Paulo": "상파울루",
+    "Rio de Janeiro": "리우데자네이루",
+    "Santiago": "산티아고",
+    "Lima": "리마",
+    "Sydney": "시드니",
+    "Melbourne": "멜버른",
+    "Auckland": "오클랜드",
+    "Cairo": "카이로",
+    "Johannesburg": "요하네스버그",
+    "Nairobi": "나이로비"
+  },
+  "features": {
+    "title": "왜 우리 세계 시계를 사용해야 하나요?",
+    "private": {
+      "title": "100% 개인정보 보호 및 보안",
+      "description": "모든 시간 계산은 브라우저에서 로컬로 수행됩니다. 추적 없음, 데이터 수집 없음, 완벽한 개인정보 보호를 보장합니다."
+    },
+    "global": {
+      "title": "글로벌 범위",
+      "description": "모든 대륙의 주요 도시 시간을 추적하세요. 서울부터 뉴욕, 런던부터 시드니까지, 전 세계 100개 이상의 도시에 액세스하세요."
+    },
+    "realTime": {
+      "title": "실시간 업데이트",
+      "description": "매초 자동 업데이트되는 라이브 시계 디스플레이. 선택한 모든 도시의 정확한 현지 시간을 항상 표시합니다."
+    },
+    "save": {
+      "title": "도시 저장",
+      "description": "선택한 도시가 브라우저에 자동으로 저장됩니다. 방문할 때마다 다시 추가할 필요가 없습니다."
+    },
+    "search": {
+      "title": "쉬운 검색",
+      "description": "시간대 오프셋 표시로 빠른 도시 검색. 직관적인 검색 인터페이스로 모든 도시를 즉시 찾을 수 있습니다."
+    },
+    "free": {
+      "title": "영원히 100% 무료",
+      "description": "등록 불필요, 제한 없음. 모든 기능으로 무제한 도시와 시간대를 완전히 무료로 추적하세요."
+    }
+  }
+}

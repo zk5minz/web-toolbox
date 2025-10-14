@@ -1,0 +1,76 @@
+{
+  "metaTitle": "Contador de Caracteres Gratuito - Herramienta de Conteo de Palabras y Caracteres | Herramientas en Línea",
+  "metaDescription": "Cuenta caracteres, palabras, oraciones y analiza estadísticas de texto en tiempo real. Contador de caracteres gratuito con análisis detallado. Perfecto para ensayos, artículos y redes sociales.",
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "characterCounter": "Contador de Caracteres"
+  },
+  "title": "Contador de Caracteres",
+  "subtitle": "Cuenta palabras, caracteres, oraciones y analiza texto",
+  "placeholder": "Comienza a escribir o pega tu texto aquí...",
+  "stats": {
+    "title": "Estadísticas",
+    "characters": "Caracteres",
+    "charactersNoSpaces": "Caracteres (sin espacios)",
+    "words": "Palabras",
+    "sentences": "Oraciones",
+    "paragraphs": "Párrafos",
+    "lines": "Líneas",
+    "numbers": "Números",
+    "specialChars": "Caracteres Especiales",
+    "koreanChars": "Caracteres Coreanos",
+    "englishChars": "Caracteres Ingleses",
+    "avgWordLength": "Longitud Promedio de Palabra",
+    "avgSentenceLength": "Longitud Promedio de Oración",
+    "readingTime": "Tiempo de Lectura",
+    "speakingTime": "Tiempo de Habla"
+  },
+  "buttons": {
+    "textInput": "Entrada de Texto",
+    "clear": "Limpiar Todo",
+    "copy": "Copiar Texto",
+    "copyStats": "Copiar Estadísticas",
+    "paste": "Pegar",
+    "uppercase": "MAYÚSCULAS",
+    "lowercase": "minúsculas",
+    "titleCase": "Formato de Título",
+    "sentenceCase": "Formato de oración",
+    "reverse": "Invertir Texto",
+    "removeSpaces": "Eliminar Espacios",
+    "removeLineBreaks": "Eliminar Saltos de Línea"
+  },
+  "messages": {
+    "copied": "¡Texto copiado al portapapeles!",
+    "cleared": "¡Texto limpiado!",
+    "statsCopied": "¡Estadísticas copiadas al portapapeles!",
+    "confirmClear": "¿Estás seguro de que quieres limpiar todo el texto?"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Contador de Caracteres?",
+    "realtime": {
+      "title": "Análisis en Tiempo Real",
+      "description": "Obtén conteos instantáneos de caracteres, palabras y oraciones mientras escribes. Perfecto para cumplir requisitos de longitud específicos."
+    },
+    "detailed": {
+      "title": "Estadísticas Detalladas",
+      "description": "Análisis de texto completo que incluye tiempo de lectura, tiempo de habla, longitud promedio de palabras y más."
+    },
+    "textTools": {
+      "title": "Herramientas de Transformación de Texto",
+      "description": "Convierte texto a mayúsculas, minúsculas, formato de título o formato de oración con un clic."
+    },
+    "private": {
+      "title": "100% Privado",
+      "description": "Todo el procesamiento ocurre localmente en tu navegador. Tu texto nunca se carga en ningún servidor."
+    },
+    "autosave": {
+      "title": "Guardado Automático",
+      "description": "Tu texto se guarda automáticamente en el almacenamiento local de tu navegador, así nunca pierdes tu trabajo."
+    },
+    "free": {
+      "title": "Completamente Gratis",
+      "description": "Sin límites, sin registro requerido. Cuenta caracteres y palabras ilimitadas gratis."
+    }
+  }
+}

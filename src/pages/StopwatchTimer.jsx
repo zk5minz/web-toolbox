@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './StopwatchTimer.css';
 
 function StopwatchTimer() {
+  const { t } = useTranslation(['stopwatchTimer', 'translation']);
+
   // SEO Meta Tags
   useEffect(() => {
     document.title = 'Free Stopwatch & Timer - Precision Time Tracking Tool | Online Tools';
@@ -182,15 +186,15 @@ function StopwatchTimer() {
 
   const showNotification = () => {
     if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification("Time's Up!", {
-        body: 'Your timer has finished!',
+      new Notification(t('stopwatchTimer:timer.notification.title'), {
+        body: t('stopwatchTimer:timer.notification.body'),
         icon: '⏱️'
       });
     } else if ('Notification' in window && Notification.permission !== 'denied') {
       Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
-          new Notification("Time's Up!", {
-            body: 'Your timer has finished!',
+          new Notification(t('stopwatchTimer:timer.notification.title'), {
+            body: t('stopwatchTimer:timer.notification.body'),
             icon: '⏱️'
           });
         }
@@ -232,6 +236,10 @@ function StopwatchTimer() {
 
   return (
     <div className="stopwatch-timer-container">
+      <div style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1000 }}>
+        <LanguageSwitcher />
+      </div>
+
       <header className="stopwatch-timer-header">
         <div className="breadcrumb">
           <Link
@@ -257,15 +265,15 @@ function StopwatchTimer() {
               e.target.style.transform = 'scale(1)';
             }}
           >
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span> &gt; </span>
-          <span>Tools</span>
+          <span>{t('stopwatchTimer:breadcrumb.tools')}</span>
           <span> &gt; </span>
-          <span>Stopwatch & Timer</span>
+          <span>{t('stopwatchTimer:breadcrumb.current')}</span>
         </div>
-        <h1>⏱️ Stopwatch & Timer</h1>
-        <p>Track and manage your time</p>
+        <h1>⏱️ {t('stopwatchTimer:header.title')}</h1>
+        <p>{t('stopwatchTimer:header.subtitle')}</p>
       </header>
 
       <div className="stopwatch-timer-content">
@@ -274,13 +282,13 @@ function StopwatchTimer() {
             className={`tab ${activeTab === 'stopwatch' ? 'active' : ''}`}
             onClick={() => setActiveTab('stopwatch')}
           >
-            Stopwatch
+            {t('stopwatchTimer:tabs.stopwatch')}
           </button>
           <button
             className={`tab ${activeTab === 'timer' ? 'active' : ''}`}
             onClick={() => setActiveTab('timer')}
           >
-            Timer
+            {t('stopwatchTimer:tabs.timer')}
           </button>
         </div>
 
@@ -293,11 +301,11 @@ function StopwatchTimer() {
             <div className="button-group">
               {!isStopwatchRunning ? (
                 <button className="btn btn-start" onClick={startStopwatch}>
-                  Start
+                  {t('stopwatchTimer:buttons.start')}
                 </button>
               ) : (
                 <button className="btn btn-pause" onClick={pauseStopwatch}>
-                  Pause
+                  {t('stopwatchTimer:buttons.pause')}
                 </button>
               )}
               <button
@@ -305,16 +313,16 @@ function StopwatchTimer() {
                 onClick={recordLap}
                 disabled={!isStopwatchRunning}
               >
-                Lap
+                {t('stopwatchTimer:buttons.lap')}
               </button>
               <button className="btn btn-reset" onClick={resetStopwatch}>
-                Reset
+                {t('stopwatchTimer:buttons.reset')}
               </button>
             </div>
 
             {laps.length > 0 && (
               <div className="laps-section">
-                <h3>Lap Times</h3>
+                <h3>{t('stopwatchTimer:stopwatch.lapTimes')}</h3>
                 <div className="laps-list">
                   {[...laps].reverse().map((lap, index) => {
                     const originalIndex = laps.length - 1 - index;
@@ -326,7 +334,7 @@ function StopwatchTimer() {
                           originalIndex === fastest && laps.length > 1 ? 'fastest' : ''
                         } ${originalIndex === slowest && laps.length > 1 ? 'slowest' : ''}`}
                       >
-                        <span className="lap-number">Lap {lapNumber}</span>
+                        <span className="lap-number">{t('stopwatchTimer:stopwatch.lapNumber')} {lapNumber}</span>
                         <div className="lap-times">
                           <span className="lap-split">{formatStopwatchTime(lap.split)}</span>
                           <span className="lap-total">{formatStopwatchTime(lap.time)}</span>
@@ -344,7 +352,7 @@ function StopwatchTimer() {
               <div className="timer-input-section">
                 <div className="time-inputs">
                   <div className="time-input-group">
-                    <label>Hours</label>
+                    <label>{t('stopwatchTimer:timer.hours')}</label>
                     <input
                       type="number"
                       min="0"
@@ -355,7 +363,7 @@ function StopwatchTimer() {
                   </div>
                   <span className="time-separator">:</span>
                   <div className="time-input-group">
-                    <label>Minutes</label>
+                    <label>{t('stopwatchTimer:timer.minutes')}</label>
                     <input
                       type="number"
                       min="0"
@@ -366,7 +374,7 @@ function StopwatchTimer() {
                   </div>
                   <span className="time-separator">:</span>
                   <div className="time-input-group">
-                    <label>Seconds</label>
+                    <label>{t('stopwatchTimer:timer.seconds')}</label>
                     <input
                       type="number"
                       min="0"
@@ -378,13 +386,13 @@ function StopwatchTimer() {
                 </div>
 
                 <div className="quick-timers">
-                  <button onClick={() => addQuickTime(1)}>1 sec</button>
-                  <button onClick={() => addQuickTime(5)}>5 sec</button>
-                  <button onClick={() => addQuickTime(10)}>10 sec</button>
-                  <button onClick={() => addQuickTime(60)}>1 min</button>
-                  <button onClick={() => addQuickTime(300)}>5 min</button>
-                  <button onClick={() => addQuickTime(600)}>10 min</button>
-                  <button onClick={() => addQuickTime(3600)}>1 hour</button>
+                  <button onClick={() => addQuickTime(1)}>{t('stopwatchTimer:timer.quickTimers.1sec')}</button>
+                  <button onClick={() => addQuickTime(5)}>{t('stopwatchTimer:timer.quickTimers.5sec')}</button>
+                  <button onClick={() => addQuickTime(10)}>{t('stopwatchTimer:timer.quickTimers.10sec')}</button>
+                  <button onClick={() => addQuickTime(60)}>{t('stopwatchTimer:timer.quickTimers.1min')}</button>
+                  <button onClick={() => addQuickTime(300)}>{t('stopwatchTimer:timer.quickTimers.5min')}</button>
+                  <button onClick={() => addQuickTime(600)}>{t('stopwatchTimer:timer.quickTimers.10min')}</button>
+                  <button onClick={() => addQuickTime(3600)}>{t('stopwatchTimer:timer.quickTimers.1hour')}</button>
                 </div>
               </div>
             )}
@@ -394,21 +402,21 @@ function StopwatchTimer() {
             </div>
 
             {isTimerComplete && (
-              <div className="timer-complete-message">Time's Up! 🎉</div>
+              <div className="timer-complete-message">{t('stopwatchTimer:timer.complete')}</div>
             )}
 
             <div className="button-group">
               {!isTimerRunning ? (
                 <button className="btn btn-start" onClick={startTimer}>
-                  Start
+                  {t('stopwatchTimer:buttons.start')}
                 </button>
               ) : (
                 <button className="btn btn-pause" onClick={pauseTimer}>
-                  Pause
+                  {t('stopwatchTimer:buttons.pause')}
                 </button>
               )}
               <button className="btn btn-reset" onClick={resetTimer}>
-                Reset
+                {t('stopwatchTimer:buttons.reset')}
               </button>
             </div>
           </div>
@@ -417,37 +425,37 @@ function StopwatchTimer() {
 
       {/* Features Section */}
       <div className="features-section">
-        <h2>Why Use Our Stopwatch & Timer?</h2>
+        <h2>{t('stopwatchTimer:features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Private & Secure</h3>
-            <p>All timing is done locally in your browser. No tracking, no data collection, ensuring complete privacy.</p>
+            <h3>{t('stopwatchTimer:features.private.title')}</h3>
+            <p>{t('stopwatchTimer:features.private.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⏱️</div>
-            <h3>Precision Timing</h3>
-            <p>Accurate to milliseconds for stopwatch. Perfect for sports, workouts, cooking, and any time-sensitive activities.</p>
+            <h3>{t('stopwatchTimer:features.precision.title')}</h3>
+            <p>{t('stopwatchTimer:features.precision.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🏃</div>
-            <h3>Lap Time Recording</h3>
-            <p>Record and compare multiple lap times with detailed statistics including fastest and slowest laps.</p>
+            <h3>{t('stopwatchTimer:features.lapRecording.title')}</h3>
+            <p>{t('stopwatchTimer:features.lapRecording.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⏰</div>
-            <h3>Flexible Timer</h3>
-            <p>Set custom countdown timers with quick presets or manual input. Audio alerts when time is up.</p>
+            <h3>{t('stopwatchTimer:features.flexible.title')}</h3>
+            <p>{t('stopwatchTimer:features.flexible.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📱</div>
-            <h3>Works Everywhere</h3>
-            <p>Fully responsive design works on desktop, tablet, and mobile devices. Use it anywhere, anytime.</p>
+            <h3>{t('stopwatchTimer:features.responsive.title')}</h3>
+            <p>{t('stopwatchTimer:features.responsive.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>100% Free Forever</h3>
-            <p>No limits on usage. Create unlimited stopwatches and timers completely free with all features.</p>
+            <h3>{t('stopwatchTimer:features.free.title')}</h3>
+            <p>{t('stopwatchTimer:features.free.description')}</p>
           </div>
         </div>
       </div>

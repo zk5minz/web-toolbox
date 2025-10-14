@@ -1,0 +1,71 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "current": "Stopwatch & Timer"
+  },
+  "header": {
+    "title": "Stopwatch & Timer",
+    "subtitle": "Track and manage your time"
+  },
+  "tabs": {
+    "stopwatch": "Stopwatch",
+    "timer": "Timer"
+  },
+  "buttons": {
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "lap": "Lap"
+  },
+  "stopwatch": {
+    "lapTimes": "Lap Times",
+    "lapNumber": "Lap"
+  },
+  "timer": {
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "quickTimers": {
+      "1sec": "1 sec",
+      "5sec": "5 sec",
+      "10sec": "10 sec",
+      "1min": "1 min",
+      "5min": "5 min",
+      "10min": "10 min",
+      "1hour": "1 hour"
+    },
+    "complete": "Time's Up! 🎉",
+    "notification": {
+      "title": "Time's Up!",
+      "body": "Your timer has finished!"
+    }
+  },
+  "features": {
+    "title": "Why Use Our Stopwatch & Timer?",
+    "private": {
+      "title": "100% Private & Secure",
+      "description": "All timing is done locally in your browser. No tracking, no data collection, ensuring complete privacy."
+    },
+    "precision": {
+      "title": "Precision Timing",
+      "description": "Accurate to milliseconds for stopwatch. Perfect for sports, workouts, cooking, and any time-sensitive activities."
+    },
+    "lapRecording": {
+      "title": "Lap Time Recording",
+      "description": "Record and compare multiple lap times with detailed statistics including fastest and slowest laps."
+    },
+    "flexible": {
+      "title": "Flexible Timer",
+      "description": "Set custom countdown timers with quick presets or manual input. Audio alerts when time is up."
+    },
+    "responsive": {
+      "title": "Works Everywhere",
+      "description": "Fully responsive design works on desktop, tablet, and mobile devices. Use it anywhere, anytime."
+    },
+    "free": {
+      "title": "100% Free Forever",
+      "description": "No limits on usage. Create unlimited stopwatches and timers completely free with all features."
+    }
+  }
+}

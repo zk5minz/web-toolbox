@@ -1,0 +1,57 @@
+{
+  "metaTitle": "無料カラー抽出ツール - 画像からカラーパレットを抽出 | オンラインツール",
+  "metaDescription": "HEXおよびRGBコード付きの任意の画像からカラーパレットを抽出します。スマートカラー検出機能付きの無料カラーピッカーツール。デザイナーと開発者に最適です。",
+  "breadcrumb": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "colorExtractor": "カラー抽出ツール"
+  },
+  "title": "🎨 カラー抽出ツール",
+  "subtitle": "任意の画像からカラーパレットを抽出",
+  "upload": {
+    "dragDrop": "ここに画像をドラッグ＆ドロップ",
+    "or": "または",
+    "clickUpload": "クリックしてアップロード",
+    "supportedFormats": "対応形式: JPG, PNG, WEBP (最大 10MB)"
+  },
+  "extracting": {
+    "title": "色を抽出中です..."
+  },
+  "palette": {
+    "title": "カラーパレット",
+    "hex": "HEX:",
+    "rgb": "RGB:",
+    "copyHex": "HEXをコピー",
+    "copyRgb": "RGBをコピー"
+  },
+  "buttons": {
+    "uploadNew": "新しい画像をアップロード"
+  },
+  "features": {
+    "title": "カラー抽出ツールを使用する理由は？",
+    "privateSecure": {
+      "title": "🔒 100% プライベート＆安全",
+      "description": "すべてのカラー抽出はブラウザ内でローカルで実行されます。画像はデバイスから離れることなく、サーバーにアップロードされません。"
+    },
+    "smartDetection": {
+      "title": "🎨 スマートカラー検出",
+      "description": "高度なアルゴリズムがインテリジェントなグループ化で支配的な色を検出します。任意の画像から最も代表的なカラーパレットを取得します。"
+    },
+    "multipleFormats": {
+      "title": "📊 複数の形式",
+      "description": "HEXおよびRGB形式でカラーコードを取得します。ワンクリックコピーで、プロジェクトで簡単に色を使用できます。"
+    },
+    "instantResults": {
+      "title": "⚡ 即座の結果",
+      "description": "リアルタイムプレビュー付きの高速カラー抽出。画像をアップロードしてから数秒以内にカラーパレットを表示します。"
+    },
+    "anyImageType": {
+      "title": "🖼️ 任意の画像タイプ",
+      "description": "JPG、PNG、WEBPなど対応。写真、ロゴ、アートワーク、または任意の画像ファイルから色を抽出します。"
+    },
+    "free": {
+      "title": "🆓 100% 永久無料",
+      "description": "ウォーターマークなし、制限なし。無制限の画像から無制限にカラーパレットを抽出できます。"
+    }
+  }
+}

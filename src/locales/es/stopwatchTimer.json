@@ -1,0 +1,71 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "current": "Cronómetro y Temporizador"
+  },
+  "header": {
+    "title": "Cronómetro y Temporizador",
+    "subtitle": "Rastree y administre su tiempo"
+  },
+  "tabs": {
+    "stopwatch": "Cronómetro",
+    "timer": "Temporizador"
+  },
+  "buttons": {
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "lap": "Lap"
+  },
+  "stopwatch": {
+    "lapTimes": "Tiempos de Vuelta",
+    "lapNumber": "Vuelta"
+  },
+  "timer": {
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos",
+    "quickTimers": {
+      "1sec": "1 seg",
+      "5sec": "5 seg",
+      "10sec": "10 seg",
+      "1min": "1 min",
+      "5min": "5 min",
+      "10min": "10 min",
+      "1hour": "1 hora"
+    },
+    "complete": "¡Tiempo terminado! 🎉",
+    "notification": {
+      "title": "¡Tiempo terminado!",
+      "body": "¡Su temporizador ha finalizado!"
+    }
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Cronómetro y Temporizador?",
+    "private": {
+      "title": "100% Privado y Seguro",
+      "description": "Todo el cronometraje se realiza localmente en su navegador. Sin seguimiento, sin recopilación de datos, garantizando privacidad completa."
+    },
+    "precision": {
+      "title": "Cronometraje de Precisión",
+      "description": "Preciso hasta milisegundos para el cronómetro. Perfecto para deportes, entrenamientos, cocina y cualquier actividad sensible al tiempo."
+    },
+    "lapRecording": {
+      "title": "Registro de Tiempo de Vuelta",
+      "description": "Registre y compare múltiples tiempos de vuelta con estadísticas detalladas que incluyen las vueltas más rápidas y más lentas."
+    },
+    "flexible": {
+      "title": "Temporizador Flexible",
+      "description": "Configure temporizadores de cuenta regresiva personalizados con ajustes rápidos o entrada manual. Alertas de audio cuando se acaba el tiempo."
+    },
+    "responsive": {
+      "title": "Funciona en Todas Partes",
+      "description": "Diseño completamente responsivo que funciona en escritorio, tableta y dispositivos móviles. Úselo en cualquier lugar, en cualquier momento."
+    },
+    "free": {
+      "title": "100% Gratis para Siempre",
+      "description": "Sin límites de uso. Cree cronómetros y temporizadores ilimitados completamente gratis con todas las funciones."
+    }
+  }
+}

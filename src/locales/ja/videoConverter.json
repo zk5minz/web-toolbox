@@ -1,0 +1,84 @@
+{
+  "title": "動画コンバーター",
+  "description": "動画ファイルを異なる形式に変換",
+  "breadcrumb": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "videoConverter": "動画コンバーター"
+  },
+  "upload": {
+    "title": "動画ファイルをここにドラッグ＆ドロップ",
+    "subtitle": "またはクリックしてアップロード",
+    "formats": "対応形式：MP4、AVI、MOV、MKV、WEBM、FLV、WMV（最大500MB）",
+    "loading": "動画コンバーターを読み込み中..."
+  },
+  "settings": {
+    "outputFormat": "出力形式",
+    "quality": "品質",
+    "resolution": "解像度",
+    "formats": {
+      "mp4": "MP4（H.264）",
+      "webm": "WEBM（VP9）",
+      "avi": "AVI（MPEG-4）",
+      "mov": "MOV（QuickTime）"
+    },
+    "qualities": {
+      "low": "低（ファイルサイズ小）",
+      "medium": "中（バランス）",
+      "high": "高（高品質）"
+    },
+    "resolutions": {
+      "original": "オリジナル",
+      "1080p": "1080p（1920x1080）",
+      "720p": "720p（1280x720）",
+      "480p": "480p（854x480）",
+      "360p": "360p（640x360）"
+    }
+  },
+  "buttons": {
+    "convert": "動画を変換",
+    "converting": "変換中...",
+    "cancel": "キャンセル",
+    "download": "動画をダウンロード",
+    "convertAnother": "別の動画を変換"
+  },
+  "progress": {
+    "converting": "変換中..."
+  },
+  "result": {
+    "success": "変換完了！",
+    "original": "元のサイズ",
+    "ofOriginal": "元のサイズ比"
+  },
+  "features": {
+    "title": "なぜ当社の動画コンバーターを使うのか？",
+    "private": {
+      "title": "100%プライベート＆安全",
+      "description": "すべての動画変換はブラウザ内でローカルに行われます。動画がデバイスを離れることはなく、サーバーにアップロードされません。"
+    },
+    "formats": {
+      "title": "複数の形式",
+      "description": "MP4、WEBM、AVI、MOV形式間で変換。すべての主要な動画コーデックとコンテナをサポート。"
+    },
+    "quality": {
+      "title": "品質管理",
+      "description": "品質設定と解像度を選択。必要に応じてファイルサイズまたは動画品質を最適化。"
+    },
+    "fast": {
+      "title": "高速変換",
+      "description": "FFmpeg WebAssemblyを使用してブラウザ内で直接高速かつ効率的な動画処理を実現。"
+    },
+    "progress": {
+      "title": "リアルタイム進行状況",
+      "description": "詳細な進行状況インジケーターと予想時間でリアルタイムの変換進行状況を確認。"
+    },
+    "free": {
+      "title": "永久無料",
+      "description": "透かしなし、制限なし。すべての機能を完全無料で無制限に動画変換。"
+    }
+  },
+  "meta": {
+    "title": "無料動画コンバーター - MP4、WEBM、AVI、MOV｜オンラインツール",
+    "description": "MP4、WEBM、AVI、MOV形式間で動画ファイルを変換。解像度と品質管理が可能な無料オンライン動画コンバーター。100%プライベート、ブラウザベース。"
+  }
+}

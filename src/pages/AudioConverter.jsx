@@ -1,10 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile, toBlobURL } from '@ffmpeg/util';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './AudioConverter.css';
 
 function AudioConverter() {
+  const { t } = useTranslation(['audioConverter', 'translation']);
+  
   const [audioFile, setAudioFile] = useState(null);
   const [outputFormat, setOutputFormat] = useState('mp3');
   const [bitrate, setBitrate] = useState('192');
@@ -20,12 +24,12 @@ function AudioConverter() {
   useEffect(() => {
     loadFFmpeg();
     // SEO Meta Tags
-    document.title = 'Free Audio Converter - MP3, WAV, OGG, M4A, FLAC | Online Tools';
+    document.title = t('audioConverter:metaTitle');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Convert audio files between MP3, WAV, OGG, M4A, and FLAC formats. Free online audio converter with quality control. 100% private, no server upload.');
+      metaDescription.setAttribute('content', t('audioConverter:metaDescription'));
     }
-  }, []);
+  }, [t]);
 
   const loadFFmpeg = async () => {
     try {
@@ -49,7 +53,7 @@ function AudioConverter() {
       setIsLoading(false);
     } catch (err) {
       console.error('❌ Failed to load FFmpeg:', err);
-      setError('Failed to load audio processor. Please refresh the page.');
+      setError(t('audioConverter:errors.loadFailed'));
       setIsLoading(false);
     }
   };
@@ -58,7 +62,7 @@ function AudioConverter() {
     const file = e.target.files[0];
     if (file) {
       if (file.size > 100 * 1024 * 1024) {
-        setError('File too large. Maximum size is 100MB.');
+        setError(t('audioConverter:errors.fileTooLarge'));
         return;
       }
       setAudioFile(file);
@@ -72,7 +76,7 @@ function AudioConverter() {
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith('audio/')) {
       if (file.size > 100 * 1024 * 1024) {
-        setError('File too large. Maximum size is 100MB.');
+        setError(t('audioConverter:errors.fileTooLarge'));
         return;
       }
       setAudioFile(file);
@@ -136,7 +140,7 @@ function AudioConverter() {
 
     } catch (err) {
       console.error('Conversion error:', err);
-      setError('Conversion failed. Please try again or use a different file.');
+      setError(t('audioConverter:errors.conversionFailed'));
     } finally {
       setIsConverting(false);
       setProgress(0);
@@ -165,25 +169,28 @@ function AudioConverter() {
   return (
     <div className="audio-converter-container">
       <header className="audio-converter-header">
+        <div style={{ position: 'absolute', top: 20, right: 20 }}>
+          <LanguageSwitcher />
+        </div>
         <div className="breadcrumb">
           <Link to="/" className="breadcrumb-home-link">
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span> &gt; </span>
-          <span>Tools</span>
+          <span>{t('translation:nav.tools')}</span>
           <span> &gt; </span>
-          <span>Audio Converter</span>
+          <span>{t('audioConverter:breadcrumb.audioConverter')}</span>
         </div>
-        <h1>🎵 Audio Converter</h1>
-        <p>Convert audio files to different formats</p>
+        <h1>{t('audioConverter:title')}</h1>
+        <p>{t('audioConverter:subtitle')}</p>
       </header>
 
       <div className="audio-converter-content">
         {isLoading ? (
           <div className="loading-message">
             <div className="spinner"></div>
-            <p>Loading audio processor...</p>
-            <p className="loading-hint">This may take a moment on first load</p>
+            <p>{t('audioConverter:loading.title')}</p>
+            <p className="loading-hint">{t('audioConverter:loading.hint')}</p>
           </div>
         ) : (
           <>
@@ -196,9 +203,9 @@ function AudioConverter() {
                 onClick={() => fileInputRef.current?.click()}
               >
                 <div className="upload-icon">🎵</div>
-                <h2>Drag & Drop your audio file here</h2>
-                <p>or click to upload</p>
-                <p className="upload-hint">Supports: MP3, WAV, OGG, M4A, FLAC (Max 100MB)</p>
+                <h2>{t('audioConverter:upload.dragDrop')}</h2>
+                <p>{t('audioConverter:upload.or')} {t('audioConverter:upload.clickUpload')}</p>
+                <p className="upload-hint">{t('audioConverter:upload.supportedFormats')}</p>
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -214,17 +221,17 @@ function AudioConverter() {
                   <div className="file-icon">📁</div>
                   <div className="file-details">
                     <h3>{audioFile.name}</h3>
-                    <p>{(audioFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+                    <p>{(audioFile.size / (1024 * 1024)).toFixed(2)} {t('audioConverter:fileInfo.size')}</p>
                   </div>
                   <button onClick={handleReset} className="remove-btn">
-                    ✕
+                    {t('audioConverter:buttons.remove')}
                   </button>
                 </div>
 
                 {/* Conversion Options */}
                 <div className="conversion-options">
                   <div className="option-group">
-                    <label>Output Format</label>
+                    <label>{t('audioConverter:options.outputFormat')}</label>
                     <div className="format-buttons">
                       {['mp3', 'wav', 'ogg', 'm4a', 'flac'].map(format => (
                         <button
@@ -240,7 +247,7 @@ function AudioConverter() {
 
                   <div className="option-group">
                     <label>
-                      Quality: <span className="quality-value">{bitrate} kbps</span>
+                      {t('audioConverter:options.quality')} <span className="quality-value">{bitrate} {t('audioConverter:options.kbps')}</span>
                     </label>
                     <input
                       type="range"
@@ -252,9 +259,9 @@ function AudioConverter() {
                       className="quality-slider"
                     />
                     <div className="quality-labels">
-                      <span>Low (64)</span>
-                      <span>Standard (192)</span>
-                      <span>High (320)</span>
+                      <span>{t('audioConverter:options.qualityLabels.low')}</span>
+                      <span>{t('audioConverter:options.qualityLabels.standard')}</span>
+                      <span>{t('audioConverter:options.qualityLabels.high')}</span>
                     </div>
                   </div>
                 </div>
@@ -275,17 +282,17 @@ function AudioConverter() {
                   {isConverting ? (
                     <>
                       <div className="btn-spinner"></div>
-                      Converting... {progress}%
+                      {t('audioConverter:buttons.converting')} {progress}%
                     </>
                   ) : (
-                    'Convert Audio'
+                    t('audioConverter:buttons.convert')
                   )}
                 </button>
 
                 {/* Download Button */}
                 {convertedFile && (
                   <button onClick={handleDownload} className="download-btn">
-                    📥 Download {outputFormat.toUpperCase()}
+                    {t('audioConverter:buttons.download')} {outputFormat.toUpperCase()}
                   </button>
                 )}
               </div>
@@ -293,37 +300,37 @@ function AudioConverter() {
 
             {/* Features Section */}
             <div className="features-section">
-              <h2>Why Use Our Audio Converter?</h2>
+              <h2>{t('audioConverter:features.title')}</h2>
               <div className="features-grid">
                 <div className="feature-card">
                   <div className="feature-icon">🔒</div>
-                  <h3>100% Private & Secure</h3>
-                  <p>All conversions happen in your browser. Your files never leave your device and are not uploaded to any server.</p>
+                  <h3>{t('audioConverter:features.privateSecure.title')}</h3>
+                  <p>{t('audioConverter:features.privateSecure.description')}</p>
                 </div>
                 <div className="feature-card">
                   <div className="feature-icon">⚡</div>
-                  <h3>Fast & Efficient</h3>
-                  <p>No server upload or download means faster conversion. Process your files locally without waiting in queue.</p>
+                  <h3>{t('audioConverter:features.fastEfficient.title')}</h3>
+                  <p>{t('audioConverter:features.fastEfficient.description')}</p>
                 </div>
                 <div className="feature-card">
                   <div className="feature-icon">🎵</div>
-                  <h3>Multiple Formats</h3>
-                  <p>Convert between MP3, WAV, OGG, M4A, and FLAC formats with customizable quality settings.</p>
+                  <h3>{t('audioConverter:features.multipleFormats.title')}</h3>
+                  <p>{t('audioConverter:features.multipleFormats.description')}</p>
                 </div>
                 <div className="feature-card">
                   <div className="feature-icon">💾</div>
-                  <h3>Free & Unlimited</h3>
-                  <p>No file size limits, no conversion limits, and completely free to use. Convert as many files as you need.</p>
+                  <h3>{t('audioConverter:features.freeUnlimited.title')}</h3>
+                  <p>{t('audioConverter:features.freeUnlimited.description')}</p>
                 </div>
                 <div className="feature-card">
                   <div className="feature-icon">🔧</div>
-                  <h3>Quality Control</h3>
-                  <p>Adjust bitrate from 64 kbps to 320 kbps to balance between file size and audio quality.</p>
+                  <h3>{t('audioConverter:features.qualityControl.title')}</h3>
+                  <p>{t('audioConverter:features.qualityControl.description')}</p>
                 </div>
                 <div className="feature-card">
                   <div className="feature-icon">🌐</div>
-                  <h3>Works Offline</h3>
-                  <p>Once loaded, the converter works completely offline. No internet connection required for conversion.</p>
+                  <h3>{t('audioConverter:features.worksOffline.title')}</h3>
+                  <p>{t('audioConverter:features.worksOffline.description')}</p>
                 </div>
               </div>
             </div>

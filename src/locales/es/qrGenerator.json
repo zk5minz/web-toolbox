@@ -1,0 +1,106 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "current": "Generador de Códigos QR"
+  },
+  "header": {
+    "title": "Generador de Códigos QR",
+    "subtitle": "Crea códigos QR personalizados para sitios web, texto, contactos y más"
+  },
+  "presets": {
+    "title": "Ajustes Rápidos"
+  },
+  "contentType": {
+    "title": "Tipo de Contenido",
+    "website": "Sitio Web",
+    "text": "Texto",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "sms": "SMS",
+    "wifi": "WiFi",
+    "vcard": "vCard"
+  },
+  "placeholders": {
+    "website": "Ingrese la URL del sitio web (ej: https://ejemplo.com)",
+    "text": "Ingrese cualquier texto que desee codificar",
+    "emailAddress": "Dirección de correo electrónico",
+    "emailSubject": "Asunto (opcional)",
+    "emailBody": "Mensaje (opcional)",
+    "phone": "Ingrese el número de teléfono (ej: +34612345678)",
+    "smsNumber": "Número de teléfono",
+    "smsMessage": "Mensaje (opcional)",
+    "wifiSsid": "Nombre de la red (SSID)",
+    "wifiPassword": "Contraseña",
+    "vcardName": "Nombre completo",
+    "vcardPhone": "Número de teléfono",
+    "vcardEmail": "Dirección de correo electrónico",
+    "vcardOrg": "Organización (opcional)"
+  },
+  "customization": {
+    "title": "Personalización",
+    "qrColor": "Color del QR",
+    "bgColor": "Color de Fondo",
+    "size": "Tamaño",
+    "errorCorrection": "Corrección de Errores",
+    "format": "Formato",
+    "errorLevels": {
+      "low": "Bajo",
+      "medium": "Medio",
+      "quartile": "Alto",
+      "high": "Muy Alto"
+    },
+    "wifiSecurity": {
+      "wpa": "WPA/WPA2",
+      "wep": "WEP",
+      "nopass": "Sin Contraseña"
+    }
+  },
+  "preview": {
+    "title": "Vista Previa",
+    "emptyState": "Ingrese contenido para generar el código QR",
+    "sizeLabel": "Tamaño"
+  },
+  "buttons": {
+    "download": "Descargar",
+    "downloading": "Descargando...",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "reset": "Restablecer"
+  },
+  "history": {
+    "title": "Recientes (Últimos 5)"
+  },
+  "errors": {
+    "enterContent": "Por favor ingrese contenido para generar el código QR",
+    "downloadFailed": "Error al descargar el código QR",
+    "copyFailed": "Error al copiar al portapapeles"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Generador de Códigos QR?",
+    "private": {
+      "title": "100% Privado y Seguro",
+      "description": "Todos los códigos QR se generan localmente en su navegador. Sus datos nunca salen de su dispositivo y no se almacenan en ningún servidor."
+    },
+    "customizable": {
+      "title": "Totalmente Personalizable",
+      "description": "Personalice colores, tamaño, nivel de corrección de errores y descargue en múltiples formatos (PNG, SVG, JPEG)."
+    },
+    "multipleTypes": {
+      "title": "Múltiples Tipos de QR",
+      "description": "Cree códigos QR para URLs, texto, correos electrónicos, números de teléfono, credenciales WiFi y más."
+    },
+    "downloadShare": {
+      "title": "Descargar y Compartir",
+      "description": "Descargue códigos QR de alta calidad o copie al portapapeles al instante. Perfecto para uso impreso y digital."
+    },
+    "history": {
+      "title": "Seguimiento de Historial",
+      "description": "Los códigos QR recientes se guardan localmente para que pueda regenerar o modificar rápidamente códigos anteriores."
+    },
+    "free": {
+      "title": "100% Gratis para Siempre",
+      "description": "Sin marcas de agua, sin límites, completamente gratis. Genere códigos QR ilimitados con todas las funciones."
+    }
+  }
+}

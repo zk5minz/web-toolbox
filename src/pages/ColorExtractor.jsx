@@ -1,16 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './ColorExtractor.css';
 
 function ColorExtractor() {
+  const { t } = useTranslation(['colorExtractor', 'translation']);
+
   // SEO Meta Tags
   useEffect(() => {
-    document.title = 'Free Color Extractor - Extract Color Palette from Images | Online Tools';
+    document.title = t('colorExtractor:metaTitle');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Extract color palette from any image with HEX and RGB codes. Free color picker tool with smart color detection. Perfect for designers and developers.');
+      metaDescription.setAttribute('content', t('colorExtractor:metaDescription'));
     }
-  }, []);
+  }, [t]);
   
   const [image, setImage] = useState(null);
   const [colors, setColors] = useState([]);
@@ -199,17 +203,20 @@ function ColorExtractor() {
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       
       <header className="color-extractor-header">
+        <div style={{ position: 'absolute', top: 20, right: 20 }}>
+          <LanguageSwitcher />
+        </div>
         <div className="breadcrumb">
           <Link to="/" className="breadcrumb-home-link">
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span> &gt; </span>
-          <span>Tools</span>
+          <span>{t('translation:nav.tools')}</span>
           <span> &gt; </span>
-          <span>Color Extractor</span>
+          <span>{t('colorExtractor:breadcrumb.colorExtractor')}</span>
         </div>
-        <h1>🎨 Color Extractor</h1>
-        <p>Extract color palette from any image</p>
+        <h1>{t('colorExtractor:title')}</h1>
+        <p>{t('colorExtractor:subtitle')}</p>
       </header>
 
       <div className="color-extractor-content">
@@ -221,9 +228,9 @@ function ColorExtractor() {
             onClick={() => fileInputRef.current?.click()}
           >
             <div className="upload-icon">📁</div>
-            <h2>Drag & Drop your image here</h2>
-            <p>or click to upload</p>
-            <p className="upload-hint">Supports: JPG, PNG, WEBP (Max 10MB)</p>
+            <h2>{t('colorExtractor:upload.dragDrop')}</h2>
+            <p>{t('colorExtractor:upload.or')} {t('colorExtractor:upload.clickUpload')}</p>
+            <p className="upload-hint">{t('colorExtractor:upload.supportedFormats')}</p>
             <input
               ref={fileInputRef}
               type="file"
@@ -237,18 +244,18 @@ function ColorExtractor() {
             <div className="image-preview">
               <img src={image} alt="Uploaded" />
               <button onClick={handleReset} className="reset-btn">
-                Upload New Image
+                {t('colorExtractor:buttons.uploadNew')}
               </button>
             </div>
 
             {isExtracting ? (
               <div className="extracting-message">
                 <div className="spinner"></div>
-                <p>Extracting colors...</p>
+                <p>{t('colorExtractor:extracting.title')}</p>
               </div>
             ) : (
               <div className="colors-grid">
-                <h2>Color Palette</h2>
+                <h2>{t('colorExtractor:palette.title')}</h2>
                 <div className="palette">
                   {colors.map((color, index) => (
                     <div key={index} className="color-card">
@@ -258,23 +265,23 @@ function ColorExtractor() {
                       ></div>
                       <div className="color-info">
                         <div className="color-code-row">
-                          <span className="color-label">HEX:</span>
+                          <span className="color-label">{t('colorExtractor:palette.hex')}</span>
                           <span className="color-code">{color.hex}</span>
                           <button
                             onClick={() => copyToClipboard(color.hex, `hex-${index}`)}
                             className="copy-btn-small"
-                            title="Copy HEX"
+                            title={t('colorExtractor:palette.copyHex')}
                           >
                             {copiedIndex === `hex-${index}` ? '✓' : '📋'}
                           </button>
                         </div>
                         <div className="color-code-row">
-                          <span className="color-label">RGB:</span>
+                          <span className="color-label">{t('colorExtractor:palette.rgb')}</span>
                           <span className="color-code">{`${color.r}, ${color.g}, ${color.b}`}</span>
                           <button
                             onClick={() => copyToClipboard(color.rgb, `rgb-${index}`)}
                             className="copy-btn-small"
-                            title="Copy RGB"
+                            title={t('colorExtractor:palette.copyRgb')}
                           >
                             {copiedIndex === `rgb-${index}` ? '✓' : '📋'}
                           </button>
@@ -291,37 +298,37 @@ function ColorExtractor() {
 
       {/* Features Section */}
       <div className="features-section">
-        <h2>Why Use Our Color Extractor?</h2>
+        <h2>{t('colorExtractor:features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Private & Secure</h3>
-            <p>All color extraction happens locally in your browser. Your images never leave your device and are not uploaded to any server.</p>
+            <h3>{t('colorExtractor:features.privateSecure.title')}</h3>
+            <p>{t('colorExtractor:features.privateSecure.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🎨</div>
-            <h3>Smart Color Detection</h3>
-            <p>Advanced algorithm detects dominant colors with intelligent grouping. Get the most representative color palette from any image.</p>
+            <h3>{t('colorExtractor:features.smartDetection.title')}</h3>
+            <p>{t('colorExtractor:features.smartDetection.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📊</div>
-            <h3>Multiple Formats</h3>
-            <p>Get color codes in both HEX and RGB formats. One-click copy makes it easy to use colors in your projects.</p>
+            <h3>{t('colorExtractor:features.multipleFormats.title')}</h3>
+            <p>{t('colorExtractor:features.multipleFormats.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⚡</div>
-            <h3>Instant Results</h3>
-            <p>Fast color extraction with real-time preview. See your color palette within seconds of uploading an image.</p>
+            <h3>{t('colorExtractor:features.instantResults.title')}</h3>
+            <p>{t('colorExtractor:features.instantResults.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🖼️</div>
-            <h3>Any Image Type</h3>
-            <p>Supports JPG, PNG, WEBP, and more. Extract colors from photos, logos, artwork, or any image file.</p>
+            <h3>{t('colorExtractor:features.anyImageType.title')}</h3>
+            <p>{t('colorExtractor:features.anyImageType.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>100% Free Forever</h3>
-            <p>No watermarks, no limits. Extract unlimited color palettes from unlimited images completely free.</p>
+            <h3>{t('colorExtractor:features.free.title')}</h3>
+            <p>{t('colorExtractor:features.free.description')}</p>
           </div>
         </div>
       </div>

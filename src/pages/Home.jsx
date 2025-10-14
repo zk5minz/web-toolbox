@@ -1,112 +1,113 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './Home.css';
 
 function Home() {
+  const { t, i18n } = useTranslation();
+  
   // SEO Meta Tags
   useEffect(() => {
-    document.title = 'Free Online Tools - Image/Audio/Video Converter, QR Generator, Calculator';
+    document.title = t('home.metaTitle');
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', '100% free online tools. Image converter, audio converter, video converter, background remover, color extractor, QR generator, password generator, scientific calculator. Privacy guaranteed.');
+      metaDescription.setAttribute('content', t('home.metaDescription'));
     }
-  }, []);
+  }, [t, i18n.language]);
+
   const tools = [
-    // 1열: 노트패드, 이미지변환기, 백그라운드리무버, 컬러추출기
     {
       id: 'notepad',
-      title: 'Notepad',
-      description: 'Simple online notepad with auto-save and dark mode',
+      title: t('tools.notepad.title'),
+      description: t('tools.notepad.description'),
       path: '/notepad',
       icon: '📝'
     },
     {
       id: 'image-converter',
-      title: 'Image Converter',
-      description: 'Convert PDF and images between different formats (PDF, JPEG, PNG, WEBP, etc.)',
+      title: t('tools.imageConverter.title'),
+      description: t('tools.imageConverter.description'),
       path: '/image-converter',
       icon: '🖼️'
     },
     {
       id: 'background-remover',
-      title: 'Background Remover',
-      description: 'Remove image backgrounds automatically with AI',
+      title: t('tools.backgroundRemover.title'),
+      description: t('tools.backgroundRemover.description'),
       path: '/background-remover',
       icon: '🪄'
     },
     {
       id: 'color-extractor',
-      title: 'Color Extractor',
-      description: 'Extract color palette from any image with HEX and RGB codes',
+      title: t('tools.colorExtractor.title'),
+      description: t('tools.colorExtractor.description'),
       path: '/color-extractor',
       icon: '🎨'
     },
-    // 2열: 오디오변환기, 동영상변환기, QR생성기, 비밀번호생성기
     {
       id: 'audio-converter',
-      title: 'Audio Converter',
-      description: 'Convert audio files between MP3, WAV, OGG, M4A, and FLAC formats',
+      title: t('tools.audioConverter.title'),
+      description: t('tools.audioConverter.description'),
       path: '/audio-converter',
       icon: '🎵'
     },
     {
       id: 'video-converter',
-      title: 'Video Converter',
-      description: 'Convert video files between MP4, WEBM, AVI, and MOV formats',
+      title: t('tools.videoConverter.title'),
+      description: t('tools.videoConverter.description'),
       path: '/video-converter',
       icon: '🎬'
     },
     {
       id: 'qr-generator',
-      title: 'QR Code Generator',
-      description: 'Create custom QR codes for URLs, text, WiFi, and more',
+      title: t('tools.qrGenerator.title'),
+      description: t('tools.qrGenerator.description'),
       path: '/qr-generator',
       icon: '/qr-icon.png',
       isImage: true
     },
     {
       id: 'password-generator',
-      title: 'Password Generator',
-      description: 'Generate strong and secure passwords with customizable options',
+      title: t('tools.passwordGenerator.title'),
+      description: t('tools.passwordGenerator.description'),
       path: '/password-generator',
       icon: '🔐'
     },
-    // 3열: 공학용계산기, 스탑워치&타이머, 넘버카운터, 글자캐릭터카운터
     {
       id: 'scientific-calculator',
-      title: 'Scientific Calculator',
-      description: 'Professional scientific calculator with advanced functions',
+      title: t('tools.scientificCalculator.title'),
+      description: t('tools.scientificCalculator.description'),
       path: '/scientific-calculator',
       icon: '/calculator-icon.png',
       isImage: true
     },
     {
       id: 'stopwatch-timer',
-      title: 'Stopwatch & Timer',
-      description: 'Track time with stopwatch and countdown timer',
+      title: t('tools.stopwatchTimer.title'),
+      description: t('tools.stopwatchTimer.description'),
       path: '/stopwatch-timer',
       icon: '⏱️'
     },
     {
       id: 'number-counter',
-      title: 'Number Counter',
-      description: 'Simple number counter with increment and decrement buttons',
+      title: t('tools.numberCounter.title'),
+      description: t('tools.numberCounter.description'),
       path: '/number-counter',
       icon: '🔢'
     },
     {
       id: 'character-counter',
-      title: 'Word & Character Counter',
-      description: 'Count words, characters, sentences, and analyze text statistics',
+      title: t('tools.characterCounter.title'),
+      description: t('tools.characterCounter.description'),
       path: '/character-counter',
       icon: '🔠'
     },
-    // 4열: 세계시각
     {
       id: 'world-clock',
-      title: 'World Clock',
-      description: 'Check the time around the world',
+      title: t('tools.worldClock.title'),
+      description: t('tools.worldClock.description'),
       path: '/world-clock',
       icon: '🌍'
     }
@@ -116,8 +117,11 @@ function Home() {
     <div className="home-container">
       <div className="home-wrapper">
         <header className="home-header">
-          <h1>Online Tools</h1>
-          <p>Free online tools for your daily needs</p>
+          <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
+            <LanguageSwitcher />
+          </div>
+          <h1>{t('home.title')}</h1>
+          <p>{t('home.subtitle')}</p>
         </header>
 
         <div className="tools-grid">
@@ -139,37 +143,37 @@ function Home() {
 
       {/* Why Choose Section */}
       <div className="why-choose-section">
-        <h2>Why Choose Our Tools?</h2>
+        <h2>{t('features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Private & Secure</h3>
-            <p>All processing happens locally in your browser. Your files and data never leave your device and are not uploaded to any server.</p>
+            <h3>{t('features.privateSecure.title')}</h3>
+            <p>{t('features.privateSecure.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>Completely Free</h3>
-            <p>No hidden costs, no subscriptions, no premium features. All tools are 100% free with unlimited usage forever.</p>
+            <h3>{t('features.completelyFree.title')}</h3>
+            <p>{t('features.completelyFree.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⚡</div>
-            <h3>Fast & Easy</h3>
-            <p>No installation or registration required. Just open your browser and start using our tools instantly.</p>
+            <h3>{t('features.fastEasy.title')}</h3>
+            <p>{t('features.fastEasy.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🛡️</div>
-            <h3>No Data Collection</h3>
-            <p>We don't track, store, or collect any of your data. Complete privacy protection guaranteed.</p>
+            <h3>{t('features.noDataCollection.title')}</h3>
+            <p>{t('features.noDataCollection.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📱</div>
-            <h3>Works Everywhere</h3>
-            <p>Fully responsive design works on desktop, tablet, and mobile devices. Use our tools anywhere, anytime.</p>
+            <h3>{t('features.worksEverywhere.title')}</h3>
+            <p>{t('features.worksEverywhere.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🌐</div>
-            <h3>No Limits</h3>
-            <p>Process unlimited files with no restrictions on file size or number of conversions. Use as much as you need.</p>
+            <h3>{t('features.noLimits.title')}</h3>
+            <p>{t('features.noLimits.description')}</p>
           </div>
         </div>
       </div>
@@ -178,30 +182,30 @@ function Home() {
       <footer className="home-footer">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>About</h3>
+            <h3>{t('footer.about')}</h3>
             <ul>
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/about">{t('footer.aboutUs')}</Link></li>
+              <li><Link to="/contact">{t('footer.contact')}</Link></li>
             </ul>
           </div>
           <div className="footer-section">
-            <h3>Legal</h3>
+            <h3>{t('footer.legal')}</h3>
             <ul>
-              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-              <li><Link to="/terms-of-service">Terms of Service</Link></li>
+              <li><Link to="/privacy-policy">{t('footer.privacyPolicy')}</Link></li>
+              <li><Link to="/terms-of-service">{t('footer.termsOfService')}</Link></li>
             </ul>
           </div>
           <div className="footer-section">
-            <h3>Resources</h3>
+            <h3>{t('footer.resources')}</h3>
             <ul>
-              <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">Sitemap</a></li>
-              <li><a href="/robots.txt" target="_blank" rel="noopener noreferrer">Robots.txt</a></li>
+              <li><a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">{t('footer.sitemap')}</a></li>
+              <li><a href="/robots.txt" target="_blank" rel="noopener noreferrer">{t('footer.robots')}</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2025 Web Toolbox. All rights reserved.</p>
-          <p>Made with ❤️ for everyone</p>
+          <p>{t('footer.copyright')}</p>
+          <p>{t('footer.madeWith')}</p>
         </div>
       </footer>
     </div>

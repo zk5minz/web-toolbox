@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile, toBlobURL } from '@ffmpeg/util';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './VideoConverter.css';
 
 function VideoConverter() {
+  const { t, i18n } = useTranslation(['videoConverter', 'translation']);
   const [file, setFile] = useState(null);
   const [outputFormat, setOutputFormat] = useState('mp4');
   const [quality, setQuality] = useState('medium');
@@ -51,12 +54,12 @@ function VideoConverter() {
   useEffect(() => {
     loadFFmpeg();
     // SEO Meta Tags
-    document.title = 'Free Video Converter - MP4, WEBM, AVI, MOV | Online Tools';
+    document.title = t('videoConverter:meta.title');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Convert video files between MP4, WEBM, AVI, and MOV formats. Free online video converter with resolution and quality control. 100% private, browser-based.');
+      metaDescription.setAttribute('content', t('videoConverter:meta.description'));
     }
-  }, []);
+  }, [t, i18n.language]);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -180,17 +183,20 @@ function VideoConverter() {
   return (
     <div className="video-converter-container">
       <header className="video-converter-header">
-        <div className="breadcrumb">
-          <Link to="/" className="breadcrumb-home-link">
-            🏠 Home
-          </Link>
-          <span> &gt; </span>
-          <span>Tools</span>
-          <span> &gt; </span>
-          <span>Video Converter</span>
+        <div className="header-top">
+          <div className="breadcrumb">
+            <Link to="/" className="breadcrumb-home-link">
+              🏠 {t('videoConverter:breadcrumb.home')}
+            </Link>
+            <span> &gt; </span>
+            <span>{t('videoConverter:breadcrumb.tools')}</span>
+            <span> &gt; </span>
+            <span>{t('videoConverter:breadcrumb.videoConverter')}</span>
+          </div>
+          <LanguageSwitcher />
         </div>
-        <h1>🎬 Video Converter</h1>
-        <p>Convert video files to different formats</p>
+        <h1>🎬 {t('videoConverter:title')}</h1>
+        <p>{t('videoConverter:description')}</p>
       </header>
 
       <div className="video-converter-content">
@@ -198,7 +204,7 @@ function VideoConverter() {
         {loadingFFmpeg && (
           <div className="loading-ffmpeg">
             <div className="spinner"></div>
-            <p>Loading video converter...</p>
+            <p>{t('videoConverter:upload.loading')}</p>
           </div>
         )}
 
@@ -217,9 +223,9 @@ function VideoConverter() {
               style={{ display: 'none' }}
             />
             <div className="upload-icon">🎥</div>
-            <h3>Drag & Drop your video file here</h3>
-            <p>or click to upload</p>
-            <p className="supported-formats">Supports: MP4, AVI, MOV, MKV, WEBM, FLV, WMV (Max 500MB)</p>
+            <h3>{t('videoConverter:upload.title')}</h3>
+            <p>{t('videoConverter:upload.subtitle')}</p>
+            <p className="supported-formats">{t('videoConverter:upload.formats')}</p>
           </div>
         )}
 
@@ -235,32 +241,32 @@ function VideoConverter() {
 
             <div className="settings-grid">
               <div className="setting-group">
-                <label>Output Format</label>
+                <label>{t('videoConverter:settings.outputFormat')}</label>
                 <select value={outputFormat} onChange={(e) => setOutputFormat(e.target.value)}>
-                  <option value="mp4">MP4 (H.264)</option>
-                  <option value="webm">WEBM (VP9)</option>
-                  <option value="avi">AVI (MPEG-4)</option>
-                  <option value="mov">MOV (QuickTime)</option>
+                  <option value="mp4">{t('videoConverter:settings.formats.mp4')}</option>
+                  <option value="webm">{t('videoConverter:settings.formats.webm')}</option>
+                  <option value="avi">{t('videoConverter:settings.formats.avi')}</option>
+                  <option value="mov">{t('videoConverter:settings.formats.mov')}</option>
                 </select>
               </div>
 
               <div className="setting-group">
-                <label>Quality</label>
+                <label>{t('videoConverter:settings.quality')}</label>
                 <select value={quality} onChange={(e) => setQuality(e.target.value)}>
-                  <option value="low">Low (Smaller file)</option>
-                  <option value="medium">Medium (Balanced)</option>
-                  <option value="high">High (Better quality)</option>
+                  <option value="low">{t('videoConverter:settings.qualities.low')}</option>
+                  <option value="medium">{t('videoConverter:settings.qualities.medium')}</option>
+                  <option value="high">{t('videoConverter:settings.qualities.high')}</option>
                 </select>
               </div>
 
               <div className="setting-group">
-                <label>Resolution</label>
+                <label>{t('videoConverter:settings.resolution')}</label>
                 <select value={resolution} onChange={(e) => setResolution(e.target.value)}>
-                  <option value="original">Original</option>
-                  <option value="1920:1080">1080p (1920x1080)</option>
-                  <option value="1280:720">720p (1280x720)</option>
-                  <option value="854:480">480p (854x480)</option>
-                  <option value="640:360">360p (640x360)</option>
+                  <option value="original">{t('videoConverter:settings.resolutions.original')}</option>
+                  <option value="1920:1080">{t('videoConverter:settings.resolutions.1080p')}</option>
+                  <option value="1280:720">{t('videoConverter:settings.resolutions.720p')}</option>
+                  <option value="854:480">{t('videoConverter:settings.resolutions.480p')}</option>
+                  <option value="640:360">{t('videoConverter:settings.resolutions.360p')}</option>
                 </select>
               </div>
             </div>
@@ -270,7 +276,7 @@ function VideoConverter() {
                 <div className="progress-bar">
                   <div className="progress-fill" style={{ width: `${progress}%` }}></div>
                 </div>
-                <p className="progress-text">Converting... {progress}%</p>
+                <p className="progress-text">{t('videoConverter:progress.converting')} {progress}%</p>
               </div>
             )}
 
@@ -280,14 +286,14 @@ function VideoConverter() {
                 onClick={convertVideo}
                 disabled={isConverting || !ffmpegLoaded}
               >
-                {isConverting ? 'Converting...' : '🔄 Convert Video'}
+                {isConverting ? t('videoConverter:buttons.converting') : `🔄 ${t('videoConverter:buttons.convert')}`}
               </button>
               <button 
                 className="reset-btn"
                 onClick={resetConverter}
                 disabled={isConverting}
               >
-                ❌ Cancel
+                ❌ {t('videoConverter:buttons.cancel')}
               </button>
             </div>
           </div>
@@ -297,7 +303,7 @@ function VideoConverter() {
           <div className="result-panel">
             <div className="success-message">
               <div className="success-icon">✅</div>
-              <h2>Conversion Complete!</h2>
+              <h2>{t('videoConverter:result.success')}</h2>
             </div>
 
             <div className="converted-file-info">
@@ -307,8 +313,8 @@ function VideoConverter() {
                 <p>{formatFileSize(convertedFile.size)}</p>
                 {file && (
                   <p className="size-comparison">
-                    Original: {formatFileSize(file.size)}
-                    {' '}({Math.round((convertedFile.size / file.size) * 100)}% of original)
+                    {t('videoConverter:result.original')}: {formatFileSize(file.size)}
+                    {' '}({Math.round((convertedFile.size / file.size) * 100)}% {t('videoConverter:result.ofOriginal')})
                   </p>
                 )}
               </div>
@@ -316,10 +322,10 @@ function VideoConverter() {
 
             <div className="button-group">
               <button className="download-btn" onClick={downloadFile}>
-                ⬇️ Download Video
+                ⬇️ {t('videoConverter:buttons.download')}
               </button>
               <button className="reset-btn" onClick={resetConverter}>
-                🔄 Convert Another
+                🔄 {t('videoConverter:buttons.convertAnother')}
               </button>
             </div>
           </div>
@@ -327,37 +333,37 @@ function VideoConverter() {
 
         {/* Features Section */}
         <div className="features-section">
-          <h2>Why Use Our Video Converter?</h2>
+          <h2>{t('videoConverter:features.title')}</h2>
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">🔒</div>
-              <h3>100% Private & Secure</h3>
-              <p>All video conversion happens locally in your browser. Your videos never leave your device and are not uploaded to any server.</p>
+              <h3>{t('videoConverter:features.private.title')}</h3>
+              <p>{t('videoConverter:features.private.description')}</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">🎬</div>
-              <h3>Multiple Formats</h3>
-              <p>Convert between MP4, WEBM, AVI, and MOV formats. Support for all major video codecs and containers.</p>
+              <h3>{t('videoConverter:features.formats.title')}</h3>
+              <p>{t('videoConverter:features.formats.description')}</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">⚙️</div>
-              <h3>Quality Control</h3>
-              <p>Choose quality settings and resolution. Optimize for file size or video quality based on your needs.</p>
+              <h3>{t('videoConverter:features.quality.title')}</h3>
+              <p>{t('videoConverter:features.quality.description')}</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">⚡</div>
-              <h3>Fast Conversion</h3>
-              <p>Powered by FFmpeg WebAssembly for fast, efficient video processing directly in your browser.</p>
+              <h3>{t('videoConverter:features.fast.title')}</h3>
+              <p>{t('videoConverter:features.fast.description')}</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">📊</div>
-              <h3>Real-Time Progress</h3>
-              <p>See conversion progress in real-time with detailed progress indicators and estimated time.</p>
+              <h3>{t('videoConverter:features.progress.title')}</h3>
+              <p>{t('videoConverter:features.progress.description')}</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">🆓</div>
-              <h3>100% Free Forever</h3>
-              <p>No watermarks, no limits. Convert unlimited videos with all features completely free.</p>
+              <h3>{t('videoConverter:features.free.title')}</h3>
+              <p>{t('videoConverter:features.free.description')}</p>
             </div>
           </div>
         </div>

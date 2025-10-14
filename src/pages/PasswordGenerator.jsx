@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './PasswordGenerator.css';
 
 function PasswordGenerator() {
+  const { t } = useTranslation(['passwordGenerator', 'translation']);
+
   // SEO Meta Tags
   useEffect(() => {
     document.title = 'Free Password Generator - Strong & Secure Passwords | Online Tools';
@@ -55,6 +59,11 @@ function PasswordGenerator() {
     generatePassword();
   }, [length, options]);
 
+  // Update copy button text when language changes
+  useEffect(() => {
+    setCopyText(t('passwordGenerator:buttons.copy'));
+  }, [t]);
+
   const generatePassword = () => {
     let charset = '';
     let guaranteedChars = '';
@@ -92,7 +101,7 @@ function PasswordGenerator() {
 
     // Ensure at least one option is selected
     if (charset === '') {
-      setPassword('Please select at least one character type');
+      setPassword(t('passwordGenerator:passwordDisplay.selectAtLeastOne'));
       return;
     }
 
@@ -111,7 +120,9 @@ function PasswordGenerator() {
   };
 
   const calculateStrength = () => {
-    if (!password || password.includes('Please select')) return { text: 'None', color: '#999', percentage: 0 };
+    if (!password || password.includes(t('passwordGenerator:passwordDisplay.selectAtLeastOne'))) {
+      return { text: t('passwordGenerator:strength.none'), color: '#999', percentage: 0 };
+    }
 
     let score = 0;
 
@@ -129,19 +140,19 @@ function PasswordGenerator() {
 
     const percentage = (score / 8) * 100;
 
-    if (score <= 3) return { text: 'Weak', color: '#ef4444', percentage };
-    if (score <= 5) return { text: 'Medium', color: '#f59e0b', percentage };
-    if (score <= 6) return { text: 'Strong', color: '#10b981', percentage };
-    return { text: 'Very Strong', color: '#059669', percentage };
+    if (score <= 3) return { text: t('passwordGenerator:strength.weak'), color: '#ef4444', percentage };
+    if (score <= 5) return { text: t('passwordGenerator:strength.medium'), color: '#f59e0b', percentage };
+    if (score <= 6) return { text: t('passwordGenerator:strength.strong'), color: '#10b981', percentage };
+    return { text: t('passwordGenerator:strength.veryStrong'), color: '#059669', percentage };
   };
 
   const handleCopy = async () => {
-    if (!password || password.includes('Please select')) return;
+    if (!password || password.includes(t('passwordGenerator:passwordDisplay.selectAtLeastOne'))) return;
 
     try {
       await navigator.clipboard.writeText(password);
-      setCopyText('Copied!');
-      setTimeout(() => setCopyText('Copy'), 2000);
+      setCopyText(t('passwordGenerator:buttons.copied'));
+      setTimeout(() => setCopyText(t('passwordGenerator:buttons.copy')), 2000);
     } catch (err) {
       alert('Failed to copy password');
     }
@@ -162,6 +173,10 @@ function PasswordGenerator() {
 
   return (
     <div className="password-generator-container">
+      <div style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1000 }}>
+        <LanguageSwitcher />
+      </div>
+
       <header className="password-generator-header">
         <div className="breadcrumb">
           <Link
@@ -187,12 +202,12 @@ function PasswordGenerator() {
               e.target.style.transform = 'scale(1)';
             }}
           >
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span> &gt; </span>
-          <span>Tools</span>
+          <span>{t('passwordGenerator:breadcrumb.tools')}</span>
           <span> &gt; </span>
-          <span>Password Generator</span>
+          <span>{t('passwordGenerator:breadcrumb.current')}</span>
         </div>
         <h1 style={{
           fontSize: '56px',
@@ -206,7 +221,7 @@ function PasswordGenerator() {
           margin: '0'
         }}>
           <span>🔐</span>
-          <span>Password Generator</span>
+          <span>{t('passwordGenerator:header.title')}</span>
         </h1>
         <p style={{
           fontSize: '22px',
@@ -216,13 +231,13 @@ function PasswordGenerator() {
           marginTop: '10px',
           marginBottom: '40px'
         }}>
-          Generate strong and secure passwords
+          {t('passwordGenerator:header.subtitle')}
         </p>
       </header>
 
       <div className="password-generator-content">
         <div className="password-display-section">
-          <label className="section-label">Generated Password</label>
+          <label className="section-label">{t('passwordGenerator:passwordDisplay.label')}</label>
           <div className="password-display-wrapper">
             <input
               type="text"
@@ -232,7 +247,7 @@ function PasswordGenerator() {
             />
             <div className="password-buttons">
               <button onClick={generatePassword} className="regenerate-btn">
-                Regenerate
+                {t('passwordGenerator:buttons.regenerate')}
               </button>
               <button onClick={handleCopy} className="copy-btn">
                 {copyText}
@@ -242,7 +257,7 @@ function PasswordGenerator() {
         </div>
 
         <div className="password-strength-section">
-          <label className="section-label">Password Strength</label>
+          <label className="section-label">{t('passwordGenerator:strength.label')}</label>
           <div className="strength-bar-container">
             <div
               className="strength-bar"
@@ -260,7 +275,7 @@ function PasswordGenerator() {
         <div className="password-options-section">
           <div className="length-section">
             <label className="section-label">
-              Password Length: <span className="length-value">{length}</span>
+              {t('passwordGenerator:length.label')}: <span className="length-value">{length}</span>
             </label>
             <input
               type="range"
@@ -277,7 +292,7 @@ function PasswordGenerator() {
           </div>
 
           <div className="character-options">
-            <label className="section-label">Include Characters</label>
+            <label className="section-label">{t('passwordGenerator:characters.label')}</label>
             <div className="checkbox-group">
               <label className="checkbox-label">
                 <input
@@ -285,7 +300,7 @@ function PasswordGenerator() {
                   checked={options.uppercase}
                   onChange={() => handleOptionChange('uppercase')}
                 />
-                <span>Uppercase Letters (A-Z)</span>
+                <span>{t('passwordGenerator:characters.uppercase')}</span>
               </label>
 
               <label className="checkbox-label">
@@ -294,7 +309,7 @@ function PasswordGenerator() {
                   checked={options.lowercase}
                   onChange={() => handleOptionChange('lowercase')}
                 />
-                <span>Lowercase Letters (a-z)</span>
+                <span>{t('passwordGenerator:characters.lowercase')}</span>
               </label>
 
               <label className="checkbox-label">
@@ -303,7 +318,7 @@ function PasswordGenerator() {
                   checked={options.numbers}
                   onChange={() => handleOptionChange('numbers')}
                 />
-                <span>Numbers (0-9)</span>
+                <span>{t('passwordGenerator:characters.numbers')}</span>
               </label>
 
               <label className="checkbox-label">
@@ -312,7 +327,7 @@ function PasswordGenerator() {
                   checked={options.symbols}
                   onChange={() => handleOptionChange('symbols')}
                 />
-                <span>Special Characters (!@#$%^&*)</span>
+                <span>{t('passwordGenerator:characters.symbols')}</span>
               </label>
 
               <label className="checkbox-label">
@@ -321,7 +336,7 @@ function PasswordGenerator() {
                   checked={options.excludeSimilar}
                   onChange={() => handleOptionChange('excludeSimilar')}
                 />
-                <span>Exclude Similar Characters (i, l, 1, L, o, 0, O)</span>
+                <span>{t('passwordGenerator:characters.excludeSimilar')}</span>
               </label>
 
               <label className="checkbox-label">
@@ -330,50 +345,50 @@ function PasswordGenerator() {
                   checked={options.excludeAmbiguous}
                   onChange={() => handleOptionChange('excludeAmbiguous')}
                 />
-                <span>Exclude Ambiguous Symbols ({'{}<>[]()'})</span>
+                <span>{t('passwordGenerator:characters.excludeAmbiguous')}</span>
               </label>
             </div>
           </div>
         </div>
 
         <button onClick={generatePassword} className="generate-btn">
-          Generate Password
+          {t('passwordGenerator:buttons.generate')}
         </button>
       </div>
 
       {/* Features Section */}
       <div className="features-section">
-        <h2>Why Use Our Password Generator?</h2>
+        <h2>{t('passwordGenerator:features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Secure & Private</h3>
-            <p>All passwords are generated locally in your browser. Nothing is sent to any server, ensuring your passwords remain completely private.</p>
+            <h3>{t('passwordGenerator:features.secure.title')}</h3>
+            <p>{t('passwordGenerator:features.secure.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🛡️</div>
-            <h3>Cryptographically Strong</h3>
-            <p>Uses secure random number generation to create truly random passwords that are resistant to brute-force attacks.</p>
+            <h3>{t('passwordGenerator:features.strong.title')}</h3>
+            <p>{t('passwordGenerator:features.strong.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⚙️</div>
-            <h3>Fully Customizable</h3>
-            <p>Choose length from 8-32 characters and select which character types to include: uppercase, lowercase, numbers, and symbols.</p>
+            <h3>{t('passwordGenerator:features.customizable.title')}</h3>
+            <p>{t('passwordGenerator:features.customizable.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📊</div>
-            <h3>Real-Time Strength Check</h3>
-            <p>Instantly see password strength with visual indicators and estimated crack time to ensure maximum security.</p>
+            <h3>{t('passwordGenerator:features.strengthCheck.title')}</h3>
+            <p>{t('passwordGenerator:features.strengthCheck.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📋</div>
-            <h3>One-Click Copy</h3>
-            <p>Quickly copy generated passwords to clipboard with a single click. Perfect for fast password creation and usage.</p>
+            <h3>{t('passwordGenerator:features.copy.title')}</h3>
+            <p>{t('passwordGenerator:features.copy.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>100% Free Forever</h3>
-            <p>No registration required, no limits on usage. Generate unlimited secure passwords completely free of charge.</p>
+            <h3>{t('passwordGenerator:features.free.title')}</h3>
+            <p>{t('passwordGenerator:features.free.description')}</p>
           </div>
         </div>
       </div>

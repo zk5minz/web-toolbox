@@ -1,0 +1,124 @@
+{
+  "metaTitle": "Free Online Notepad - Auto-Save & Dark Mode | Online Tools",
+  "metaDescription": "Free online notepad with auto-save feature, dark mode, find & replace, and word count. Your notes are stored locally in browser. 100% private and secure.",
+  "alert": "This notepad uses localStorage to save your notes. Your data is stored locally in your browser.",
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "notepad": "Notepad",
+    "file": "File"
+  },
+  "menu": {
+    "file": "File",
+    "edit": "Edit",
+    "view": "View",
+    "help": "Help"
+  },
+  "fileMenu": {
+    "new": "New",
+    "open": "Open",
+    "save": "Save (Ctrl+S)",
+    "saveAs": "Save As",
+    "share": "Share",
+    "print": "Print (Ctrl+P)"
+  },
+  "editMenu": {
+    "undo": "Undo (Ctrl+Z)",
+    "redo": "Redo (Ctrl+Y)",
+    "cut": "Cut (Ctrl+X)",
+    "copy": "Copy (Ctrl+C)",
+    "paste": "Paste (Ctrl+V)",
+    "delete": "Delete",
+    "selectAll": "Select All (Ctrl+A)"
+  },
+  "viewMenu": {
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "preferences": "Preferences"
+  },
+  "helpMenu": {
+    "about": "About",
+    "aboutText": "Simple online notepad with auto-save\\nVersion 1.0",
+    "shortcuts": "Keyboard Shortcuts",
+    "shortcutsText": "Keyboard shortcuts:\\nCtrl+S - Save\\nCtrl+Z - Undo\\nCtrl+Y - Redo\\nCtrl+A - Select All\\nCtrl+P - Print"
+  },
+  "toolbar": {
+    "new": "New",
+    "open": "Open",
+    "save": "Save (Ctrl+S)",
+    "cut": "Cut (Ctrl+X)",
+    "copy": "Copy (Ctrl+C)",
+    "paste": "Paste (Ctrl+V)",
+    "undo": "Undo (Ctrl+Z)",
+    "redo": "Redo (Ctrl+Y)",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "fontSize": "Font Size",
+    "help": "Help"
+  },
+  "statusBar": {
+    "line": "Line",
+    "column": "Column",
+    "chars": "Chars",
+    "words": "Words"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "fontSize": "Font Size",
+    "darkMode": "Dark Mode",
+    "close": "Close"
+  },
+  "share": {
+    "title": "Share Options",
+    "copyClipboard": {
+      "title": "Copy to Clipboard",
+      "description": "Copy text to paste anywhere"
+    },
+    "email": {
+      "title": "Send via Email",
+      "description": "Open email client with text"
+    },
+    "download": {
+      "title": "Download as TXT",
+      "description": "Save as text file"
+    }
+  },
+  "messages": {
+    "confirmNew": "Current text will be lost. Continue?",
+    "fileSaved": "File saved successfully!",
+    "saveFailed": "Failed to save file",
+    "enterFilename": "Enter filename:",
+    "copiedToClipboard": "Text copied to clipboard!",
+    "copyFailed": "Failed to copy to clipboard"
+  },
+  "placeholder": "Start typing...",
+  "features": {
+    "title": "Why Use Our Online Notepad?",
+    "privateSecure": {
+      "title": "100% Private & Secure",
+      "description": "Your notes are stored locally in your browser. Nothing is uploaded to any server, ensuring complete privacy and security."
+    },
+    "autoSave": {
+      "title": "Auto-Save Feature",
+      "description": "Never lose your work! All changes are automatically saved to your browser's local storage in real-time."
+    },
+    "darkMode": {
+      "title": "Dark Mode Support",
+      "description": "Switch between light and dark themes for comfortable writing in any lighting condition. Your preference is saved."
+    },
+    "richText": {
+      "title": "Rich Text Editing",
+      "description": "Full editing capabilities with undo/redo, find & replace, word count, and customizable font size for optimal writing experience."
+    },
+    "fileOps": {
+      "title": "Easy File Operations",
+      "description": "Open, save, and download text files. Export your notes as TXT files or share via email with just one click."
+    },
+    "free": {
+      "title": "100% Free Forever",
+      "description": "No premium features, no subscriptions, no hidden costs. All features are completely free with unlimited usage."
+    }
+  }
+}

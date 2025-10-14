@@ -1,0 +1,109 @@
+{
+  "breadcrumb": {
+    "home": "主页",
+    "current": "世界时钟"
+  },
+  "header": {
+    "title": "世界时钟"
+  },
+  "buttons": {
+    "addCity": "添加城市",
+    "remove": "移除城市"
+  },
+  "modal": {
+    "title": "选择城市",
+    "searchPlaceholder": "搜索城市...",
+    "selected": "已选择"
+  },
+  "cities": {
+    "Seoul": "首尔",
+    "Busan": "釜山",
+    "Tokyo": "东京",
+    "Osaka": "大阪",
+    "Beijing": "北京",
+    "Shanghai": "上海",
+    "Hong Kong": "香港",
+    "Taipei": "台北",
+    "Singapore": "新加坡",
+    "Bangkok": "曼谷",
+    "Hanoi": "河内",
+    "Ho Chi Minh": "胡志明市",
+    "Jakarta": "雅加达",
+    "Manila": "马尼拉",
+    "Kuala Lumpur": "吉隆坡",
+    "New Delhi": "新德里",
+    "Mumbai": "孟买",
+    "Dubai": "迪拜",
+    "Tel Aviv": "特拉维夫",
+    "Istanbul": "伊斯坦布尔",
+    "London": "伦敦",
+    "Paris": "巴黎",
+    "Berlin": "柏林",
+    "Rome": "罗马",
+    "Madrid": "马德里",
+    "Barcelona": "巴塞罗那",
+    "Amsterdam": "阿姆斯特丹",
+    "Brussels": "布鲁塞尔",
+    "Zurich": "苏黎世",
+    "Vienna": "维也纳",
+    "Prague": "布拉格",
+    "Warsaw": "华沙",
+    "Stockholm": "斯德哥尔摩",
+    "Copenhagen": "哥本哈根",
+    "Oslo": "奥斯陆",
+    "Helsinki": "赫尔辛基",
+    "Dublin": "都柏林",
+    "Lisbon": "里斯本",
+    "Athens": "雅典",
+    "Moscow": "莫斯科",
+    "New York": "纽约",
+    "Los Angeles": "洛杉矶",
+    "Chicago": "芝加哥",
+    "Houston": "休斯顿",
+    "Miami": "迈阿密",
+    "San Francisco": "旧金山",
+    "Seattle": "西雅图",
+    "Las Vegas": "拉斯维加斯",
+    "Toronto": "多伦多",
+    "Vancouver": "温哥华",
+    "Mexico City": "墨西哥城",
+    "Buenos Aires": "布宜诺斯艾利斯",
+    "São Paulo": "圣保罗",
+    "Rio de Janeiro": "里约热内卢",
+    "Santiago": "圣地亚哥",
+    "Lima": "利马",
+    "Sydney": "悉尼",
+    "Melbourne": "墨尔本",
+    "Auckland": "奥克兰",
+    "Cairo": "开罗",
+    "Johannesburg": "约翰内斯堡",
+    "Nairobi": "内罗毕"
+  },
+  "features": {
+    "title": "为什么使用我们的世界时钟？",
+    "private": {
+      "title": "100%隐私和安全",
+      "description": "所有时间计算都在您的浏览器中本地完成。无跟踪，无数据收集，确保完全隐私。"
+    },
+    "global": {
+      "title": "全球覆盖",
+      "description": "跟踪所有大陆主要城市的时间。从首尔到纽约，伦敦到悉尼，访问全球100多个城市。"
+    },
+    "realTime": {
+      "title": "实时更新",
+      "description": "每秒自动更新的实时时钟显示。始终显示所有选定城市的准确本地时间。"
+    },
+    "save": {
+      "title": "保存您的城市",
+      "description": "您选择的城市会自动保存在浏览器中。无需每次访问时重新添加。"
+    },
+    "search": {
+      "title": "轻松搜索",
+      "description": "带时区偏移显示的快速城市搜索。通过直观的搜索界面即时找到任何城市。"
+    },
+    "free": {
+      "title": "永久100%免费",
+      "description": "无需注册，无限制。使用所有功能完全免费跟踪无限城市和时区。"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "metaTitle": "Free Character Counter - Word & Character Count Tool | Online Tools",
+  "metaDescription": "Count characters, words, sentences, and analyze text statistics in real-time. Free character counter with detailed analysis. Perfect for essays, articles, and social media.",
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "characterCounter": "Character Counter"
+  },
+  "title": "Character Counter",
+  "subtitle": "Count words, characters, sentences and analyze text",
+  "placeholder": "Start typing or paste your text here...",
+  "stats": {
+    "title": "Statistics",
+    "characters": "Characters",
+    "charactersNoSpaces": "Characters (no spaces)",
+    "words": "Words",
+    "sentences": "Sentences",
+    "paragraphs": "Paragraphs",
+    "lines": "Lines",
+    "numbers": "Numbers",
+    "specialChars": "Special Characters",
+    "koreanChars": "Korean Characters",
+    "englishChars": "English Characters",
+    "avgWordLength": "Avg Word Length",
+    "avgSentenceLength": "Avg Sentence Length",
+    "readingTime": "Reading Time",
+    "speakingTime": "Speaking Time"
+  },
+  "buttons": {
+    "textInput": "Text Input",
+    "clear": "Clear All",
+    "copy": "Copy Text",
+    "copyStats": "Copy Stats",
+    "paste": "Paste",
+    "uppercase": "UPPERCASE",
+    "lowercase": "lowercase",
+    "titleCase": "Title Case",
+    "sentenceCase": "Sentence case",
+    "reverse": "Reverse Text",
+    "removeSpaces": "Remove Spaces",
+    "removeLineBreaks": "Remove Line Breaks"
+  },
+  "messages": {
+    "copied": "Text copied to clipboard!",
+    "cleared": "Text cleared!",
+    "statsCopied": "Statistics copied to clipboard!",
+    "confirmClear": "Are you sure you want to clear all text?"
+  },
+  "features": {
+    "title": "Why Use Our Character Counter?",
+    "realtime": {
+      "title": "Real-Time Analysis",
+      "description": "Get instant character, word, and sentence counts as you type. Perfect for meeting specific length requirements."
+    },
+    "detailed": {
+      "title": "Detailed Statistics",
+      "description": "Comprehensive text analysis including reading time, speaking time, average word length, and more."
+    },
+    "textTools": {
+      "title": "Text Transformation Tools",
+      "description": "Convert text to uppercase, lowercase, title case, or sentence case with one click."
+    },
+    "private": {
+      "title": "100% Private",
+      "description": "All processing happens locally in your browser. Your text is never uploaded to any server."
+    },
+    "autosave": {
+      "title": "Auto-Save",
+      "description": "Your text is automatically saved to your browser's local storage, so you never lose your work."
+    },
+    "free": {
+      "title": "Completely Free",
+      "description": "No limits, no registration required. Count unlimited characters and words for free."
+    }
+  }
+}

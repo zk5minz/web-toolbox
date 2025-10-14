@@ -1,0 +1,84 @@
+{
+  "title": "Convertidor de Video",
+  "description": "Convierte archivos de video a diferentes formatos",
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "videoConverter": "Convertidor de Video"
+  },
+  "upload": {
+    "title": "Arrastra y suelta tu archivo de video aquí",
+    "subtitle": "o haz clic para cargar",
+    "formats": "Admite: MP4, AVI, MOV, MKV, WEBM, FLV, WMV (Máx 500MB)",
+    "loading": "Cargando convertidor de video..."
+  },
+  "settings": {
+    "outputFormat": "Formato de Salida",
+    "quality": "Calidad",
+    "resolution": "Resolución",
+    "formats": {
+      "mp4": "MP4 (H.264)",
+      "webm": "WEBM (VP9)",
+      "avi": "AVI (MPEG-4)",
+      "mov": "MOV (QuickTime)"
+    },
+    "qualities": {
+      "low": "Baja (Archivo pequeño)",
+      "medium": "Media (Equilibrado)",
+      "high": "Alta (Mejor calidad)"
+    },
+    "resolutions": {
+      "original": "Original",
+      "1080p": "1080p (1920x1080)",
+      "720p": "720p (1280x720)",
+      "480p": "480p (854x480)",
+      "360p": "360p (640x360)"
+    }
+  },
+  "buttons": {
+    "convert": "Convertir Video",
+    "converting": "Convirtiendo...",
+    "cancel": "Cancelar",
+    "download": "Descargar Video",
+    "convertAnother": "Convertir Otro"
+  },
+  "progress": {
+    "converting": "Convirtiendo..."
+  },
+  "result": {
+    "success": "¡Conversión Completa!",
+    "original": "Original",
+    "ofOriginal": "del original"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro convertidor de video?",
+    "private": {
+      "title": "100% Privado y Seguro",
+      "description": "Toda la conversión de video ocurre localmente en tu navegador. Tus videos nunca dejan tu dispositivo y no se cargan en ningún servidor."
+    },
+    "formats": {
+      "title": "Múltiples Formatos",
+      "description": "Convierte entre formatos MP4, WEBM, AVI y MOV. Compatible con todos los códecs y contenedores de video principales."
+    },
+    "quality": {
+      "title": "Control de Calidad",
+      "description": "Elige configuraciones de calidad y resolución. Optimiza el tamaño del archivo o la calidad del video según tus necesidades."
+    },
+    "fast": {
+      "title": "Conversión Rápida",
+      "description": "Impulsado por FFmpeg WebAssembly para un procesamiento de video rápido y eficiente directamente en tu navegador."
+    },
+    "progress": {
+      "title": "Progreso en Tiempo Real",
+      "description": "Ve el progreso de conversión en tiempo real con indicadores de progreso detallados y tiempo estimado."
+    },
+    "free": {
+      "title": "100% Gratis Para Siempre",
+      "description": "Sin marcas de agua, sin límites. Convierte videos ilimitados con todas las funciones completamente gratis."
+    }
+  },
+  "meta": {
+    "title": "Convertidor de Video Gratis - MP4, WEBM, AVI, MOV | Herramientas en Línea",
+    "description": "Convierte archivos de video entre formatos MP4, WEBM, AVI y MOV. Convertidor de video en línea gratuito con control de resolución y calidad. 100% privado, basado en navegador."
+  }
+}

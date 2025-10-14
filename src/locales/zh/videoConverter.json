@@ -1,0 +1,84 @@
+{
+  "title": "视频转换器",
+  "description": "将视频文件转换为不同格式",
+  "breadcrumb": {
+    "home": "首页",
+    "tools": "工具",
+    "videoConverter": "视频转换器"
+  },
+  "upload": {
+    "title": "拖放视频文件到这里",
+    "subtitle": "或点击上传",
+    "formats": "支持格式：MP4、AVI、MOV、MKV、WEBM、FLV、WMV（最大500MB）",
+    "loading": "正在加载视频转换器..."
+  },
+  "settings": {
+    "outputFormat": "输出格式",
+    "quality": "质量",
+    "resolution": "分辨率",
+    "formats": {
+      "mp4": "MP4（H.264）",
+      "webm": "WEBM（VP9）",
+      "avi": "AVI（MPEG-4）",
+      "mov": "MOV（QuickTime）"
+    },
+    "qualities": {
+      "low": "低（文件较小）",
+      "medium": "中（平衡）",
+      "high": "高（高质量）"
+    },
+    "resolutions": {
+      "original": "原始",
+      "1080p": "1080p（1920x1080）",
+      "720p": "720p（1280x720）",
+      "480p": "480p（854x480）",
+      "360p": "360p（640x360）"
+    }
+  },
+  "buttons": {
+    "convert": "转换视频",
+    "converting": "转换中...",
+    "cancel": "取消",
+    "download": "下载视频",
+    "convertAnother": "转换另一个"
+  },
+  "progress": {
+    "converting": "转换中..."
+  },
+  "result": {
+    "success": "转换完成！",
+    "original": "原始大小",
+    "ofOriginal": "占原始大小"
+  },
+  "features": {
+    "title": "为什么使用我们的视频转换器？",
+    "private": {
+      "title": "100%私密安全",
+      "description": "所有视频转换都在浏览器本地进行。您的视频不会离开设备，也不会上传到任何服务器。"
+    },
+    "formats": {
+      "title": "多种格式",
+      "description": "在MP4、WEBM、AVI和MOV格式之间转换。支持所有主要视频编解码器和容器。"
+    },
+    "quality": {
+      "title": "质量控制",
+      "description": "选择质量设置和分辨率。根据需要优化文件大小或视频质量。"
+    },
+    "fast": {
+      "title": "快速转换",
+      "description": "由FFmpeg WebAssembly提供支持，直接在浏览器中进行快速高效的视频处理。"
+    },
+    "progress": {
+      "title": "实时进度",
+      "description": "实时查看转换进度，显示详细进度指示器和预计时间。"
+    },
+    "free": {
+      "title": "永久免费",
+      "description": "无水印，无限制。完全免费使用所有功能无限制转换视频。"
+    }
+  },
+  "meta": {
+    "title": "免费视频转换器 - MP4、WEBM、AVI、MOV｜在线工具",
+    "description": "在MP4、WEBM、AVI和MOV格式之间转换视频文件。具有分辨率和质量控制的免费在线视频转换器。100%私密，基于浏览器。"
+  }
+}

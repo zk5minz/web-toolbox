@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "home": "首页",
+    "tools": "工具",
+    "about": "关于",
+    "contact": "联系",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "home": {
+    "title": "在线工具",
+    "subtitle": "日常所需的免费在线工具",
+    "metaTitle": "免费在线工具 - 图片/音频/视频转换器、二维码生成器、计算器",
+    "metaDescription": "100%免费在线工具。图片转换器、音频转换器、视频转换器、背景移除、颜色提取器、二维码生成器、密码生成器、科学计算器。隐私保护保证。"
+  },
+  "tools": {
+    "notepad": {
+      "title": "记事本",
+      "description": "支持自动保存和深色模式的简单在线记事本"
+    },
+    "imageConverter": {
+      "title": "图片转换器",
+      "description": "将PDF和图片转换为不同格式（PDF、JPEG、PNG、WEBP等）"
+    },
+    "backgroundRemover": {
+      "title": "背景移除",
+      "description": "使用AI自动移除图片背景"
+    },
+    "colorExtractor": {
+      "title": "颜色提取器",
+      "description": "从任何图片中提取HEX和RGB代码的调色板"
+    },
+    "audioConverter": {
+      "title": "音频转换器",
+      "description": "在MP3、WAV、OGG、M4A和FLAC格式之间转换音频文件"
+    },
+    "videoConverter": {
+      "title": "视频转换器",
+      "description": "在MP4、WEBM、AVI和MOV格式之间转换视频文件"
+    },
+    "qrGenerator": {
+      "title": "二维码生成器",
+      "description": "为URL、文本、WiFi等创建自定义二维码"
+    },
+    "passwordGenerator": {
+      "title": "密码生成器",
+      "description": "使用可自定义选项生成强大且安全的密码"
+    },
+    "scientificCalculator": {
+      "title": "科学计算器",
+      "description": "具有高级功能的专业科学计算器"
+    },
+    "stopwatchTimer": {
+      "title": "秒表和计时器",
+      "description": "使用秒表和倒计时计时器追踪时间"
+    },
+    "numberCounter": {
+      "title": "数字计数器",
+      "description": "带有增加和减少按钮的简单数字计数器"
+    },
+    "characterCounter": {
+      "title": "单词和字符计数器",
+      "description": "计算单词、字符、句子并分析文本统计"
+    },
+    "worldClock": {
+      "title": "世界时钟",
+      "description": "查看世界各地的时间"
+    }
+  },
+  "features": {
+    "title": "为什么选择我们的工具？",
+    "privateSecure": {
+      "title": "100%私密和安全",
+      "description": "所有处理都在您的浏览器中本地进行。您的文件和数据不会离开您的设备，也不会上传到任何服务器。"
+    },
+    "completelyFree": {
+      "title": "完全免费",
+      "description": "没有隐藏费用、订阅或高级功能。所有工具永久无限制100%免费。"
+    },
+    "fastEasy": {
+      "title": "快速简单",
+      "description": "无需安装或注册。只需打开浏览器即可立即开始使用我们的工具。"
+    },
+    "noDataCollection": {
+      "title": "不收集数据",
+      "description": "我们不跟踪、存储或收集您的任何数据。保证完全的隐私保护。"
+    },
+    "worksEverywhere": {
+      "title": "随处可用",
+      "description": "完全响应式设计适用于桌面、平板和移动设备。随时随地使用我们的工具。"
+    },
+    "noLimits": {
+      "title": "无限制",
+      "description": "处理无限文件，对文件大小或转换次数没有限制。根据需要使用。"
+    }
+  },
+  "footer": {
+    "about": "关于",
+    "aboutUs": "关于我们",
+    "contact": "联系",
+    "legal": "法律",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "resources": "资源",
+    "sitemap": "站点地图",
+    "robots": "Robots.txt",
+    "copyright": "© 2025 Web Toolbox. 版权所有。",
+    "madeWith": "用❤️为每个人制作"
+  },
+  "common": {
+    "language": "语言",
+    "selectLanguage": "选择语言",
+    "upload": "上传",
+    "download": "下载",
+    "reset": "重置",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "copy": "复制",
+    "paste": "粘贴",
+    "clear": "清除",
+    "start": "开始",
+    "stop": "停止",
+    "pause": "暂停",
+    "resume": "继续"
+  }
+}

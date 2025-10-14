@@ -1,0 +1,106 @@
+{
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "current": "QR Code Generator"
+  },
+  "header": {
+    "title": "QR Code Generator",
+    "subtitle": "Create custom QR codes for websites, text, contacts, and more"
+  },
+  "presets": {
+    "title": "Quick Presets"
+  },
+  "contentType": {
+    "title": "Content Type",
+    "website": "Website",
+    "text": "Text",
+    "email": "Email",
+    "phone": "Phone",
+    "sms": "SMS",
+    "wifi": "WiFi",
+    "vcard": "vCard"
+  },
+  "placeholders": {
+    "website": "Enter website URL (e.g., https://example.com)",
+    "text": "Enter any text you want to encode",
+    "emailAddress": "Email address",
+    "emailSubject": "Subject (optional)",
+    "emailBody": "Message (optional)",
+    "phone": "Enter phone number (e.g., +1234567890)",
+    "smsNumber": "Phone number",
+    "smsMessage": "Message (optional)",
+    "wifiSsid": "Network name (SSID)",
+    "wifiPassword": "Password",
+    "vcardName": "Full name",
+    "vcardPhone": "Phone number",
+    "vcardEmail": "Email address",
+    "vcardOrg": "Organization (optional)"
+  },
+  "customization": {
+    "title": "Customization",
+    "qrColor": "QR Color",
+    "bgColor": "BG Color",
+    "size": "Size",
+    "errorCorrection": "Error Correction",
+    "format": "Format",
+    "errorLevels": {
+      "low": "Low",
+      "medium": "Medium",
+      "quartile": "Quartile",
+      "high": "High"
+    },
+    "wifiSecurity": {
+      "wpa": "WPA/WPA2",
+      "wep": "WEP",
+      "nopass": "No Password"
+    }
+  },
+  "preview": {
+    "title": "Preview",
+    "emptyState": "Enter content to generate QR code",
+    "sizeLabel": "Size"
+  },
+  "buttons": {
+    "download": "Download",
+    "downloading": "Downloading...",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "reset": "Reset"
+  },
+  "history": {
+    "title": "Recent (Last 5)"
+  },
+  "errors": {
+    "enterContent": "Please enter content to generate QR code",
+    "downloadFailed": "Failed to download QR code",
+    "copyFailed": "Failed to copy to clipboard"
+  },
+  "features": {
+    "title": "Why Use Our QR Code Generator?",
+    "private": {
+      "title": "100% Private & Secure",
+      "description": "All QR codes are generated locally in your browser. Your data never leaves your device and is not stored on any server."
+    },
+    "customizable": {
+      "title": "Fully Customizable",
+      "description": "Customize colors, size, error correction level, and download in multiple formats (PNG, SVG, JPEG)."
+    },
+    "multipleTypes": {
+      "title": "Multiple QR Types",
+      "description": "Create QR codes for URLs, text, emails, phone numbers, WiFi credentials, and more."
+    },
+    "downloadShare": {
+      "title": "Download & Share",
+      "description": "Download high-quality QR codes or copy to clipboard instantly. Perfect for print and digital use."
+    },
+    "history": {
+      "title": "History Tracking",
+      "description": "Recent QR codes are saved locally so you can quickly regenerate or modify previous codes."
+    },
+    "free": {
+      "title": "100% Free Forever",
+      "description": "No watermarks, no limits, completely free. Generate unlimited QR codes with all features."
+    }
+  }
+}

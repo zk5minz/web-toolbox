@@ -1,0 +1,98 @@
+{
+  "title": "エンジニアリング計算機",
+  "metaTitle": "無料エンジニアリング計算機 - 高度な数学関数 | オンラインツール",
+  "metaDescription": "三角関数、対数、指数、統計機能を備えた無料のオンラインエンジニアリング計算機です。高度な数学計算機と計算履歴。学生とエンジニアに最適です。",
+  "header": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "title": "エンジニアリング計算機",
+    "subtitle": "高度な数学関数を備えた強力な計算機"
+  },
+  "tabs": {
+    "basic": "基本",
+    "functions": "関数",
+    "variables": "変数"
+  },
+  "angleMode": {
+    "deg": "DEG",
+    "rad": "RAD"
+  },
+  "buttons": {
+    "clear": "C",
+    "allClear": "AC",
+    "delete": "⌫",
+    "equals": "=",
+    "squared": "a²",
+    "power": "aᵇ",
+    "sqrt": "√",
+    "nthRoot": "ⁿ√",
+    "pi": "π",
+    "abs": "|a|",
+    "sin": "sin",
+    "cos": "cos",
+    "tan": "tan",
+    "asin": "sin⁻¹",
+    "acos": "cos⁻¹",
+    "atan": "tan⁻¹",
+    "exp": "eˣ",
+    "round": "round",
+    "mean": "mean",
+    "std": "stdev",
+    "stdp": "stdevp",
+    "ln": "ln",
+    "log": "log",
+    "nPr": "nPr",
+    "nCr": "nCr",
+    "factorial": "!",
+    "e": "e",
+    "ans": "ans",
+    "leftParen": "(",
+    "rightParen": ")",
+    "comma": ",",
+    "divide": "÷",
+    "multiply": "×",
+    "minus": "-",
+    "plus": "+",
+    "modulo": "%",
+    "fraction": "a/b"
+  },
+  "display": {
+    "placeholder": "式を入力してください",
+    "error": "エラー"
+  },
+  "history": {
+    "title": "計算履歴",
+    "clearHistory": "履歴をクリア",
+    "empty": "計算履歴がありません"
+  },
+  "messages": {
+    "clearConfirm": "すべての計算履歴をクリアしますか？"
+  },
+  "features": {
+    "title": "エンジニアリング計算機を選ぶ理由は?",
+    "privateSecure": {
+      "title": "100% プライベート & セキュア",
+      "description": "すべての計算はブラウザでローカルに処理されます。データがサーバーに送信されることなく、完全なプライバシーが保証されます。"
+    },
+    "advancedFunctions": {
+      "title": "高度な関数",
+      "description": "三角関数、対数、指数、統計、および複雑な数学演算を含む完全な科学計算機です。"
+    },
+    "calculationHistory": {
+      "title": "計算履歴",
+      "description": "詳細な履歴パネルですべての計算を追跡します。以前の計算をすばやく再利用できます。"
+    },
+    "highPrecision": {
+      "title": "高い精度",
+      "description": "複雑な方程式、行列、および統計関数をサポートする正確な計算です。"
+    },
+    "keyboardSupport": {
+      "title": "キーボードサポート",
+      "description": "より高速な入力のための完全なキーボードサポート。数字、演算子、関数にキーボードを使用します。"
+    },
+    "free": {
+      "title": "永遠に無料",
+      "description": "登録は不要です。すべての高度なエンジニアリング計算機機能を無制限に完全無料で使用できます。"
+    }
+  }
+}

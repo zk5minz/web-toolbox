@@ -1,0 +1,84 @@
+{
+  "title": "Video Converter",
+  "description": "Convert video files to different formats",
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "videoConverter": "Video Converter"
+  },
+  "upload": {
+    "title": "Drag & Drop your video file here",
+    "subtitle": "or click to upload",
+    "formats": "Supports: MP4, AVI, MOV, MKV, WEBM, FLV, WMV (Max 500MB)",
+    "loading": "Loading video converter..."
+  },
+  "settings": {
+    "outputFormat": "Output Format",
+    "quality": "Quality",
+    "resolution": "Resolution",
+    "formats": {
+      "mp4": "MP4 (H.264)",
+      "webm": "WEBM (VP9)",
+      "avi": "AVI (MPEG-4)",
+      "mov": "MOV (QuickTime)"
+    },
+    "qualities": {
+      "low": "Low (Smaller file)",
+      "medium": "Medium (Balanced)",
+      "high": "High (Better quality)"
+    },
+    "resolutions": {
+      "original": "Original",
+      "1080p": "1080p (1920x1080)",
+      "720p": "720p (1280x720)",
+      "480p": "480p (854x480)",
+      "360p": "360p (640x360)"
+    }
+  },
+  "buttons": {
+    "convert": "Convert Video",
+    "converting": "Converting...",
+    "cancel": "Cancel",
+    "download": "Download Video",
+    "convertAnother": "Convert Another"
+  },
+  "progress": {
+    "converting": "Converting..."
+  },
+  "result": {
+    "success": "Conversion Complete!",
+    "original": "Original",
+    "ofOriginal": "of original"
+  },
+  "features": {
+    "title": "Why Use Our Video Converter?",
+    "private": {
+      "title": "100% Private & Secure",
+      "description": "All video conversion happens locally in your browser. Your videos never leave your device and are not uploaded to any server."
+    },
+    "formats": {
+      "title": "Multiple Formats",
+      "description": "Convert between MP4, WEBM, AVI, and MOV formats. Support for all major video codecs and containers."
+    },
+    "quality": {
+      "title": "Quality Control",
+      "description": "Choose quality settings and resolution. Optimize for file size or video quality based on your needs."
+    },
+    "fast": {
+      "title": "Fast Conversion",
+      "description": "Powered by FFmpeg WebAssembly for fast, efficient video processing directly in your browser."
+    },
+    "progress": {
+      "title": "Real-Time Progress",
+      "description": "See conversion progress in real-time with detailed progress indicators and estimated time."
+    },
+    "free": {
+      "title": "100% Free Forever",
+      "description": "No watermarks, no limits. Convert unlimited videos with all features completely free."
+    }
+  },
+  "meta": {
+    "title": "Free Video Converter - MP4, WEBM, AVI, MOV | Online Tools",
+    "description": "Convert video files between MP4, WEBM, AVI, and MOV formats. Free online video converter with resolution and quality control. 100% private, browser-based."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "breadcrumb": {
+    "home": "主页",
+    "tools": "工具",
+    "current": "数字计数器"
+  },
+  "header": {
+    "title": "数字计数器",
+    "subtitle": "使用可自定义的增量计数数字"
+  },
+  "buttons": {
+    "reset": "重置",
+    "settings": "设置",
+    "close": "关闭",
+    "resetSettings": "重置设置"
+  },
+  "settings": {
+    "title": "设置",
+    "limits": "限制",
+    "maximum": "最大值",
+    "on": "开",
+    "off": "关",
+    "background": "背景",
+    "fontColor": "字体颜色"
+  },
+  "features": {
+    "title": "为什么使用我们的数字计数器？",
+    "private": {
+      "title": "100%隐私和安全",
+      "description": "所有计数都在您的浏览器中本地完成。没有数据发送到任何服务器，确保完全隐私。"
+    },
+    "autoSave": {
+      "title": "自动保存设置",
+      "description": "您的计数器值和自定义设置会自动保存，因此您永远不会丢失进度。"
+    },
+    "customizable": {
+      "title": "完全可自定义",
+      "description": "使用自定义增量、颜色、字体和大小个性化您的计数器以匹配您的偏好。"
+    },
+    "history": {
+      "title": "历史记录跟踪",
+      "description": "通过时间戳历史记录跟踪所有计数活动，您可以随时查看。"
+    },
+    "shortcuts": {
+      "title": "键盘快捷键",
+      "description": "使用键盘快捷键快速访问增量、减量和重置操作。"
+    },
+    "free": {
+      "title": "永久100%免费",
+      "description": "没有限制，没有订阅。使用所有自定义功能的无限计数器完全免费。"
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "about": "概要",
+    "contact": "お問い合わせ",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約"
+  },
+  "home": {
+    "title": "オンラインツール",
+    "subtitle": "日常に必要な無料オンラインツール",
+    "metaTitle": "無料オンラインツール - 画像/音声/動画変換、QRコード生成、電卓",
+    "metaDescription": "100%無料のオンラインツール。画像変換、音声変換、動画変換、背景削除、色抽出、QRコード生成、パスワード生成、関数電卓。プライバシー保護保証。"
+  },
+  "tools": {
+    "notepad": {
+      "title": "メモ帳",
+      "description": "自動保存とダークモード対応のシンプルなオンラインメモ帳"
+    },
+    "imageConverter": {
+      "title": "画像変換",
+      "description": "PDFと画像を様々な形式に変換（PDF、JPEG、PNG、WEBPなど）"
+    },
+    "backgroundRemover": {
+      "title": "背景削除",
+      "description": "AIで画像の背景を自動削除"
+    },
+    "colorExtractor": {
+      "title": "色抽出",
+      "description": "画像からHEXおよびRGBコードでカラーパレットを抽出"
+    },
+    "audioConverter": {
+      "title": "音声変換",
+      "description": "MP3、WAV、OGG、M4A、FLAC形式間で音声ファイルを変換"
+    },
+    "videoConverter": {
+      "title": "動画変換",
+      "description": "MP4、WEBM、AVI、MOV形式間で動画ファイルを変換"
+    },
+    "qrGenerator": {
+      "title": "QRコード生成",
+      "description": "URL、テキスト、WiFiなどのカスタムQRコードを作成"
+    },
+    "passwordGenerator": {
+      "title": "パスワード生成",
+      "description": "カスタマイズ可能なオプションで強力で安全なパスワードを生成"
+    },
+    "scientificCalculator": {
+      "title": "関数電卓",
+      "description": "高度な機能を備えたプロフェッショナル関数電卓"
+    },
+    "stopwatchTimer": {
+      "title": "ストップウォッチ＆タイマー",
+      "description": "ストップウォッチとカウントダウンタイマーで時間を計測"
+    },
+    "numberCounter": {
+      "title": "数字カウンター",
+      "description": "増減ボタン付きのシンプルな数字カウンター"
+    },
+    "characterCounter": {
+      "title": "単語＆文字数カウンター",
+      "description": "単語、文字、文の数を数え、テキスト統計を分析"
+    },
+    "worldClock": {
+      "title": "世界時計",
+      "description": "世界中の時間を確認"
+    }
+  },
+  "features": {
+    "title": "なぜ私たちのツールを選ぶべきか？",
+    "privateSecure": {
+      "title": "100%プライベート＆セキュア",
+      "description": "すべての処理はブラウザでローカルに行われます。ファイルとデータはデバイスから離れず、サーバーにアップロードされません。"
+    },
+    "completelyFree": {
+      "title": "完全無料",
+      "description": "隠れたコスト、サブスクリプション、プレミアム機能はありません。すべてのツールは永久に無制限で100%無料です。"
+    },
+    "fastEasy": {
+      "title": "高速＆簡単",
+      "description": "インストールや登録は不要です。ブラウザを開いてすぐにツールの使用を開始できます。"
+    },
+    "noDataCollection": {
+      "title": "データ収集なし",
+      "description": "あなたのデータを追跡、保存、収集しません。完全なプライバシー保護が保証されます。"
+    },
+    "worksEverywhere": {
+      "title": "どこでも動作",
+      "description": "デスクトップ、タブレット、モバイルデバイスで動作する完全レスポンシブデザイン。いつでもどこでもツールを使用できます。"
+    },
+    "noLimits": {
+      "title": "制限なし",
+      "description": "ファイルサイズや変換回数に制限なく、無制限のファイルを処理できます。必要なだけ使用してください。"
+    }
+  },
+  "footer": {
+    "about": "概要",
+    "aboutUs": "会社概要",
+    "contact": "お問い合わせ",
+    "legal": "法的情報",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "resources": "リソース",
+    "sitemap": "サイトマップ",
+    "robots": "Robots.txt",
+    "copyright": "© 2025 Web Toolbox. All rights reserved.",
+    "madeWith": "みんなのために❤️で作られました"
+  },
+  "common": {
+    "language": "言語",
+    "selectLanguage": "言語を選択",
+    "upload": "アップロード",
+    "download": "ダウンロード",
+    "reset": "リセット",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "copy": "コピー",
+    "paste": "貼り付け",
+    "clear": "クリア",
+    "start": "開始",
+    "stop": "停止",
+    "pause": "一時停止",
+    "resume": "再開"
+  }
+}

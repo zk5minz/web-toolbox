@@ -1,0 +1,66 @@
+{
+  "metaTitle": "無料背景除去ツール - AIで画像背景を除去 | オンラインツール",
+  "metaDescription": "AIを使用して自動的に画像背景を除去します。透明PNG出力が可能な無料背景除去ツール。製品写真、ポートレート、デザインに最適。",
+  "breadcrumb": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "backgroundRemover": "背景除去ツール"
+  },
+  "title": "背景除去ツール",
+  "subtitle": "AIで画像背景を自動的に除去",
+  "header": {
+    "title": "🪄 背景除去ツール",
+    "description": "AIで画像背景を自動的に除去"
+  },
+  "upload": {
+    "dragDrop": "ここに画像をドラッグ＆ドロップ",
+    "or": "または",
+    "clickUpload": "クリックしてアップロード",
+    "supportedFormats": "対応形式: JPG, PNG, WEBP (最大 10MB)"
+  },
+  "processing": {
+    "title": "背景を除去中です...",
+    "description": "少しお待ちください"
+  },
+  "errors": {
+    "fileTooLarge": "ファイルサイズが大きすぎます。最大10MBです。",
+    "unsupportedFormat": "サポートされていない形式です。JPG、PNG、またはWEBPを使用してください。",
+    "processingFailed": "背景の除去に失敗しました。もう一度お試しください。"
+  },
+  "results": {
+    "title": "背景が正常に除去されました！",
+    "before": "前",
+    "after": "後"
+  },
+  "buttons": {
+    "download": "⬇️ PNG をダウンロード",
+    "tryAnother": "🔄 別の画像を試す"
+  },
+  "features": {
+    "title": "背景除去ツールを使用する理由は？",
+    "privateSecure": {
+      "title": "🔒 100% プライベート＆安全",
+      "description": "すべての処理はブラウザ内でAIを使用してローカルで実行されます。画像はデバイスから離れることなく、サーバーにアップロードされません。"
+    },
+    "aiPowered": {
+      "title": "🤖 AI駆動の精密さ",
+      "description": "高度なAI技術が背景を自動的に検出し、複雑な画像でも高精度で除去します。"
+    },
+    "instantResults": {
+      "title": "⚡ 即座の結果",
+      "description": "数秒で背景を除去します。待機なし、複雑な設定なし、アップロードするだけで結果を得られます。"
+    },
+    "transparentPng": {
+      "title": "🖼️ 透明PNG出力",
+      "description": "デザインとマーケティングに最適な、透明な背景の高品質PNG画像をダウンロードします。"
+    },
+    "worksAnywhere": {
+      "title": "📱 どこでも作動",
+      "description": "完全反応型デザインでデスクトップ、タブレット、モバイルで作動します。どのデバイスからでも背景を除去します。"
+    },
+    "free": {
+      "title": "🆓 100% 永久無料",
+      "description": "ウォーターマークなし、制限なし。無制限に画像の背景を完全無料で除去します。"
+    }
+  }
+}

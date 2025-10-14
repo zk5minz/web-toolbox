@@ -1,0 +1,98 @@
+{
+  "title": "Engineering Calculator",
+  "metaTitle": "Free Engineering Calculator - Advanced Math Functions | Online Tools",
+  "metaDescription": "Free online engineering calculator with trigonometry, logarithms, exponentials, and statistics. Advanced math calculator with calculation history. Perfect for students and engineers.",
+  "header": {
+    "home": "Home",
+    "tools": "Tools",
+    "title": "Engineering Calculator",
+    "subtitle": "Powerful calculator with advanced math functions"
+  },
+  "tabs": {
+    "basic": "Basic",
+    "functions": "Functions",
+    "variables": "Variables"
+  },
+  "angleMode": {
+    "deg": "DEG",
+    "rad": "RAD"
+  },
+  "buttons": {
+    "clear": "C",
+    "allClear": "AC",
+    "delete": "⌫",
+    "equals": "=",
+    "squared": "a²",
+    "power": "aᵇ",
+    "sqrt": "√",
+    "nthRoot": "ⁿ√",
+    "pi": "π",
+    "abs": "|a|",
+    "sin": "sin",
+    "cos": "cos",
+    "tan": "tan",
+    "asin": "sin⁻¹",
+    "acos": "cos⁻¹",
+    "atan": "tan⁻¹",
+    "exp": "eˣ",
+    "round": "round",
+    "mean": "mean",
+    "std": "stdev",
+    "stdp": "stdevp",
+    "ln": "ln",
+    "log": "log",
+    "nPr": "nPr",
+    "nCr": "nCr",
+    "factorial": "!",
+    "e": "e",
+    "ans": "ans",
+    "leftParen": "(",
+    "rightParen": ")",
+    "comma": ",",
+    "divide": "÷",
+    "multiply": "×",
+    "minus": "-",
+    "plus": "+",
+    "modulo": "%",
+    "fraction": "a/b"
+  },
+  "display": {
+    "placeholder": "Enter expression",
+    "error": "Error"
+  },
+  "history": {
+    "title": "History",
+    "clearHistory": "Clear History",
+    "empty": "No calculations yet"
+  },
+  "messages": {
+    "clearConfirm": "Clear all calculation history?"
+  },
+  "features": {
+    "title": "Why Use Our Engineering Calculator?",
+    "privateSecure": {
+      "title": "100% Private & Secure",
+      "description": "All calculations are processed locally in your browser. No data is sent to any server, ensuring complete privacy."
+    },
+    "advancedFunctions": {
+      "title": "Advanced Functions",
+      "description": "Full scientific calculator with trigonometry, logarithms, exponentials, statistics, and complex mathematical operations."
+    },
+    "calculationHistory": {
+      "title": "Calculation History",
+      "description": "Keep track of all your calculations with a detailed history panel. Quickly reuse previous calculations."
+    },
+    "highPrecision": {
+      "title": "High Precision",
+      "description": "Accurate calculations with support for complex equations, matrices, and statistical functions."
+    },
+    "keyboardSupport": {
+      "title": "Keyboard Support",
+      "description": "Full keyboard support for faster input. Use your keyboard for numbers, operators, and functions."
+    },
+    "free": {
+      "title": "100% Free Forever",
+      "description": "No registration required. Use all advanced engineering calculator features completely free with unlimited calculations."
+    }
+  }
+}

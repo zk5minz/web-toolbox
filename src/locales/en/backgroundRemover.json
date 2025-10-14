@@ -1,0 +1,66 @@
+{
+  "metaTitle": "Free Background Remover - Remove Image Backgrounds with AI | Online Tools",
+  "metaDescription": "Remove image backgrounds automatically with AI. Free background remover tool with transparent PNG output. Perfect for product photos, portraits, and design.",
+  "breadcrumb": {
+    "home": "Home",
+    "tools": "Tools",
+    "backgroundRemover": "Background Remover"
+  },
+  "title": "Background Remover",
+  "subtitle": "Remove image backgrounds automatically with AI",
+  "header": {
+    "title": "🪄 Background Remover",
+    "description": "Remove image backgrounds automatically with AI"
+  },
+  "upload": {
+    "dragDrop": "Drag & Drop your image here",
+    "or": "or",
+    "clickUpload": "click to upload",
+    "supportedFormats": "Supports: JPG, PNG, WEBP (Max 10MB)"
+  },
+  "processing": {
+    "title": "Removing background...",
+    "description": "This may take a few moments"
+  },
+  "errors": {
+    "fileTooLarge": "File size too large. Maximum 10MB.",
+    "unsupportedFormat": "Unsupported format. Use JPG, PNG, or WEBP.",
+    "processingFailed": "Failed to remove background. Please try again."
+  },
+  "results": {
+    "title": "Background Removed Successfully!",
+    "before": "Before",
+    "after": "After"
+  },
+  "buttons": {
+    "download": "⬇️ Download PNG",
+    "tryAnother": "🔄 Try Another Image"
+  },
+  "features": {
+    "title": "Why Use Our Background Remover?",
+    "privateSecure": {
+      "title": "🔒 100% Private & Secure",
+      "description": "All processing happens locally in your browser using AI. Your images never leave your device and are not uploaded to any server."
+    },
+    "aiPowered": {
+      "title": "🤖 AI-Powered Precision",
+      "description": "Advanced AI technology automatically detects and removes backgrounds with high accuracy, even for complex images."
+    },
+    "instantResults": {
+      "title": "⚡ Instant Results",
+      "description": "Fast background removal in seconds. No waiting, no complicated settings, just upload and get results."
+    },
+    "transparentPng": {
+      "title": "🖼️ Transparent PNG Output",
+      "description": "Download high-quality PNG images with transparent backgrounds, perfect for design and marketing."
+    },
+    "worksAnywhere": {
+      "title": "📱 Works Anywhere",
+      "description": "Fully responsive design works on desktop, tablet, and mobile. Remove backgrounds from any device."
+    },
+    "free": {
+      "title": "🆓 100% Free Forever",
+      "description": "No watermarks, no limits. Remove backgrounds from unlimited images completely free."
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "breadcrumb": {
+    "home": "Inicio",
+    "current": "Reloj Mundial"
+  },
+  "header": {
+    "title": "Reloj Mundial"
+  },
+  "buttons": {
+    "addCity": "Agregar Ciudad",
+    "remove": "Eliminar ciudad"
+  },
+  "modal": {
+    "title": "Seleccionar Ciudad",
+    "searchPlaceholder": "Buscar ciudades...",
+    "selected": "seleccionado"
+  },
+  "cities": {
+    "Seoul": "Seúl",
+    "Busan": "Busan",
+    "Tokyo": "Tokio",
+    "Osaka": "Osaka",
+    "Beijing": "Pekín",
+    "Shanghai": "Shanghái",
+    "Hong Kong": "Hong Kong",
+    "Taipei": "Taipéi",
+    "Singapore": "Singapur",
+    "Bangkok": "Bangkok",
+    "Hanoi": "Hanói",
+    "Ho Chi Minh": "Ciudad Ho Chi Minh",
+    "Jakarta": "Yakarta",
+    "Manila": "Manila",
+    "Kuala Lumpur": "Kuala Lumpur",
+    "New Delhi": "Nueva Delhi",
+    "Mumbai": "Bombay",
+    "Dubai": "Dubái",
+    "Tel Aviv": "Tel Aviv",
+    "Istanbul": "Estambul",
+    "London": "Londres",
+    "Paris": "París",
+    "Berlin": "Berlín",
+    "Rome": "Roma",
+    "Madrid": "Madrid",
+    "Barcelona": "Barcelona",
+    "Amsterdam": "Ámsterdam",
+    "Brussels": "Bruselas",
+    "Zurich": "Zúrich",
+    "Vienna": "Viena",
+    "Prague": "Praga",
+    "Warsaw": "Varsovia",
+    "Stockholm": "Estocolmo",
+    "Copenhagen": "Copenhague",
+    "Oslo": "Oslo",
+    "Helsinki": "Helsinki",
+    "Dublin": "Dublín",
+    "Lisbon": "Lisboa",
+    "Athens": "Atenas",
+    "Moscow": "Moscú",
+    "New York": "Nueva York",
+    "Los Angeles": "Los Ángeles",
+    "Chicago": "Chicago",
+    "Houston": "Houston",
+    "Miami": "Miami",
+    "San Francisco": "San Francisco",
+    "Seattle": "Seattle",
+    "Las Vegas": "Las Vegas",
+    "Toronto": "Toronto",
+    "Vancouver": "Vancouver",
+    "Mexico City": "Ciudad de México",
+    "Buenos Aires": "Buenos Aires",
+    "São Paulo": "São Paulo",
+    "Rio de Janeiro": "Río de Janeiro",
+    "Santiago": "Santiago",
+    "Lima": "Lima",
+    "Sydney": "Sídney",
+    "Melbourne": "Melbourne",
+    "Auckland": "Auckland",
+    "Cairo": "El Cairo",
+    "Johannesburg": "Johannesburgo",
+    "Nairobi": "Nairobi"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Reloj Mundial?",
+    "private": {
+      "title": "100% Privado y Seguro",
+      "description": "Todos los cálculos de tiempo se realizan localmente en su navegador. Sin seguimiento, sin recopilación de datos, garantizando privacidad completa."
+    },
+    "global": {
+      "title": "Cobertura Global",
+      "description": "Rastree el tiempo en las principales ciudades de todos los continentes. Desde Seúl hasta Nueva York, Londres hasta Sídney, acceda a más de 100 ciudades en todo el mundo."
+    },
+    "realTime": {
+      "title": "Actualizaciones en Tiempo Real",
+      "description": "Pantalla de reloj en vivo con actualizaciones automáticas cada segundo. Siempre muestra la hora local precisa para todas las ciudades seleccionadas."
+    },
+    "save": {
+      "title": "Guarde sus Ciudades",
+      "description": "Sus ciudades seleccionadas se guardan automáticamente en su navegador. No es necesario volver a agregarlas cada vez que visite."
+    },
+    "search": {
+      "title": "Búsqueda Fácil",
+      "description": "Búsqueda rápida de ciudades con visualización de diferencia horaria. Encuentre cualquier ciudad al instante con nuestra interfaz de búsqueda intuitiva."
+    },
+    "free": {
+      "title": "100% Gratis para Siempre",
+      "description": "No se requiere registro, sin límites. Rastree ciudades y zonas horarias ilimitadas completamente gratis con todas las funciones."
+    }
+  }
+}

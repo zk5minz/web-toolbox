@@ -1,0 +1,72 @@
+{
+  "metaTitle": "Conversor de Audio Gratuito - MP3, WAV, OGG, M4A, FLAC | Herramientas en Línea",
+  "metaDescription": "Convierte archivos de audio entre formatos MP3, WAV, OGG, M4A y FLAC. Conversor de audio en línea gratuito con control de calidad. 100% privado, sin carga en servidor.",
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "audioConverter": "Conversor de Audio"
+  },
+  "title": "🎵 Conversor de Audio",
+  "subtitle": "Convierte archivos de audio a diferentes formatos",
+  "loading": {
+    "title": "Cargando procesador de audio...",
+    "hint": "Esto puede tomar un momento en la primera carga"
+  },
+  "upload": {
+    "dragDrop": "Arrastra y suelta tu archivo de audio aquí",
+    "or": "o",
+    "clickUpload": "haz clic para subir",
+    "supportedFormats": "Formatos compatibles: MP3, WAV, OGG, M4A, FLAC (Máx 100MB)"
+  },
+  "fileInfo": {
+    "size": "MB"
+  },
+  "options": {
+    "outputFormat": "Formato de Salida",
+    "quality": "Calidad:",
+    "kbps": "kbps",
+    "qualityLabels": {
+      "low": "Baja (64)",
+      "standard": "Estándar (192)",
+      "high": "Alta (320)"
+    }
+  },
+  "errors": {
+    "fileTooLarge": "Archivo demasiado grande. El tamaño máximo es 100MB.",
+    "conversionFailed": "La conversión falló. Por favor, inténtalo de nuevo o usa un archivo diferente.",
+    "loadFailed": "Error al cargar el procesador de audio. Por favor, actualiza la página."
+  },
+  "buttons": {
+    "convert": "Convertir Audio",
+    "converting": "Convirtiendo...",
+    "download": "📥 Descargar",
+    "remove": "✕"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Conversor de Audio?",
+    "privateSecure": {
+      "title": "🔒 100% Privado y Seguro",
+      "description": "Todas las conversiones ocurren en tu navegador. Tus archivos nunca salen de tu dispositivo y no se suben a ningún servidor."
+    },
+    "fastEfficient": {
+      "title": "⚡ Rápido y Eficiente",
+      "description": "Sin carga o descarga en servidor significa conversión más rápida. Procesa tus archivos localmente sin esperar en la cola."
+    },
+    "multipleFormats": {
+      "title": "🎵 Múltiples Formatos",
+      "description": "Convierte entre formatos MP3, WAV, OGG, M4A y FLAC con configuración de calidad personalizable."
+    },
+    "freeUnlimited": {
+      "title": "💾 Gratis e Ilimitado",
+      "description": "Sin límites de tamaño de archivo, sin límites de conversión, y completamente gratis. Convierte tantos archivos como necesites."
+    },
+    "qualityControl": {
+      "title": "🔧 Control de Calidad",
+      "description": "Ajusta la velocidad de bits desde 64 kbps hasta 320 kbps para equilibrar entre tamaño de archivo y calidad de audio."
+    },
+    "worksOffline": {
+      "title": "🌐 Funciona sin Conexión",
+      "description": "Una vez cargado, el conversor funciona completamente sin conexión. No se requiere conexión a Internet para la conversión."
+    }
+  }
+}

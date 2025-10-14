@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './NumberCounter.css';
 
 function NumberCounter() {
+  const { t } = useTranslation(['numbercounter', 'translation']);
+  
   const [count, setCount] = useState(0);
   const [increment, setIncrement] = useState(1);
   const [showSettings, setShowSettings] = useState(false);
@@ -82,6 +86,9 @@ function NumberCounter() {
   return (
     <div className="number-counter-container">
       <header className="number-counter-header">
+        <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
+          <LanguageSwitcher />
+        </div>
         <div className="breadcrumb">
           <Link
             to="/"
@@ -106,17 +113,17 @@ function NumberCounter() {
               e.target.style.transform = 'scale(1)';
             }}
           >
-            🏠 Home
+            🏠 {t('translation:nav.home')}
           </Link>
           <span> &gt; </span>
-          <span>Tools</span>
+          <span>{t('numbercounter:breadcrumb.tools')}</span>
           <span> &gt; </span>
-          <span>Number Counter</span>
+          <span>{t('numbercounter:breadcrumb.current')}</span>
         </div>
 
         <div className="title-section-centered">
-          <h1>🔢 Number Counter</h1>
-          <p>Count numbers with customizable increments</p>
+          <h1>🔢 {t('numbercounter:header.title')}</h1>
+          <p>{t('numbercounter:header.subtitle')}</p>
         </div>
       </header>
 
@@ -165,7 +172,7 @@ function NumberCounter() {
 
         <div className="reset-button-container">
           <button className="reset-counter-btn" onClick={handleReset}>
-            Reset
+            {t('numbercounter:buttons.reset')}
           </button>
         </div>
       </div>
@@ -174,22 +181,22 @@ function NumberCounter() {
       {showSettings && (
         <div className="modal-overlay" onClick={() => setShowSettings(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>Settings</h2>
+            <h2>{t('numbercounter:settings.title')}</h2>
 
             <div className="settings-section">
               <div className="settings-row">
-                <label className="settings-label">Limits</label>
+                <label className="settings-label">{t('numbercounter:settings.limits')}</label>
                 <button
                   className={`toggle-switch ${limitsEnabled ? 'on' : 'off'}`}
                   onClick={() => setLimitsEnabled(!limitsEnabled)}
                 >
-                  <span className="toggle-label">{limitsEnabled ? 'On' : 'Off'}</span>
+                  <span className="toggle-label">{limitsEnabled ? t('numbercounter:settings.on') : t('numbercounter:settings.off')}</span>
                   <span className="toggle-slider"></span>
                 </button>
               </div>
 
               <div className="settings-row">
-                <label className="settings-label">Maximum</label>
+                <label className="settings-label">{t('numbercounter:settings.maximum')}</label>
                 <input
                   type="number"
                   className="settings-input"
@@ -206,13 +213,13 @@ function NumberCounter() {
                   className={`color-tab ${colorTab === 'background' ? 'active' : ''}`}
                   onClick={() => setColorTab('background')}
                 >
-                  Background
+                  {t('numbercounter:settings.background')}
                 </button>
                 <button
                   className={`color-tab ${colorTab === 'font' ? 'active' : ''}`}
                   onClick={() => setColorTab('font')}
                 >
-                  Font Color
+                  {t('numbercounter:settings.fontColor')}
                 </button>
               </div>
 
@@ -243,14 +250,14 @@ function NumberCounter() {
               className="reset-settings-btn"
               onClick={handleResetSettings}
             >
-              Reset Settings
+              {t('numbercounter:buttons.resetSettings')}
             </button>
 
             <button
               className="modal-close-btn"
               onClick={() => setShowSettings(false)}
             >
-              Close
+              {t('numbercounter:buttons.close')}
             </button>
           </div>
         </div>
@@ -258,37 +265,37 @@ function NumberCounter() {
 
       {/* Features Section */}
       <div className="features-section">
-        <h2>Why Use Our Number Counter?</h2>
+        <h2>{t('numbercounter:features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Private & Secure</h3>
-            <p>All counting is done locally in your browser. No data is sent to any server, ensuring complete privacy.</p>
+            <h3>{t('numbercounter:features.private.title')}</h3>
+            <p>{t('numbercounter:features.private.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">💾</div>
-            <h3>Auto-Save Settings</h3>
-            <p>Your counter value and custom settings are automatically saved, so you never lose your progress.</p>
+            <h3>{t('numbercounter:features.autoSave.title')}</h3>
+            <p>{t('numbercounter:features.autoSave.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🎨</div>
-            <h3>Fully Customizable</h3>
-            <p>Personalize your counter with custom increments, colors, fonts, and sizes to match your preferences.</p>
+            <h3>{t('numbercounter:features.customizable.title')}</h3>
+            <p>{t('numbercounter:features.customizable.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⏱️</div>
-            <h3>History Tracking</h3>
-            <p>Keep track of all your counting activities with timestamp history that you can review anytime.</p>
+            <h3>{t('numbercounter:features.history.title')}</h3>
+            <p>{t('numbercounter:features.history.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⚙️</div>
-            <h3>Keyboard Shortcuts</h3>
-            <p>Quick access with keyboard shortcuts for increment, decrement, and reset operations.</p>
+            <h3>{t('numbercounter:features.shortcuts.title')}</h3>
+            <p>{t('numbercounter:features.shortcuts.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>100% Free Forever</h3>
-            <p>No limits, no subscriptions. Use unlimited counters with all customization features completely free.</p>
+            <h3>{t('numbercounter:features.free.title')}</h3>
+            <p>{t('numbercounter:features.free.description')}</p>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+import i18n from '../i18n';
+
 const HISTORY_KEY = 'image_converter_history';
 const MAX_HISTORY_ITEMS = 20;
 
@@ -94,18 +96,19 @@ export function getRelativeTime(timestamp) {
   const diffMin = Math.floor(diffSec / 60);
   const diffHour = Math.floor(diffMin / 60);
   const diffDay = Math.floor(diffHour / 24);
-
-  if (diffSec < 60) return 'just now';
-  if (diffMin < 60) return `${diffMin} minute${diffMin > 1 ? 's' : ''} ago`;
-  if (diffHour < 24) return `${diffHour} hour${diffHour > 1 ? 's' : ''} ago`;
-  if (diffDay < 7) return `${diffDay} day${diffDay > 1 ? 's' : ''} ago`;
-  if (diffDay < 30) return `${Math.floor(diffDay / 7)} week${Math.floor(diffDay / 7) > 1 ? 's' : ''} ago`;
-
+  const diffWeek = Math.floor(diffDay / 7);
   const diffMonth = Math.floor(diffDay / 30);
-  if (diffMonth < 12) return `${diffMonth} month${diffMonth > 1 ? 's' : ''} ago`;
-
   const diffYear = Math.floor(diffMonth / 12);
-  return `${diffYear} year${diffYear > 1 ? 's' : ''} ago`;
+
+  const t = i18n.t.bind(i18n);
+
+  if (diffSec < 60) return t('imageConverter:time.justNow');
+  if (diffMin < 60) return t('imageConverter:time.minutesAgo', { count: diffMin });
+  if (diffHour < 24) return t('imageConverter:time.hoursAgo', { count: diffHour });
+  if (diffDay < 7) return t('imageConverter:time.daysAgo', { count: diffDay });
+  if (diffDay < 30) return t('imageConverter:time.weeksAgo', { count: diffWeek });
+  if (diffMonth < 12) return t('imageConverter:time.monthsAgo', { count: diffMonth });
+  return t('imageConverter:time.yearsAgo', { count: diffYear });
 }
 
 /**

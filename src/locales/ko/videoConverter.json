@@ -1,0 +1,84 @@
+{
+  "title": "비디오 변환기",
+  "description": "비디오 파일을 다른 형식으로 변환하세요",
+  "breadcrumb": {
+    "home": "홈",
+    "tools": "도구",
+    "videoConverter": "비디오 변환기"
+  },
+  "upload": {
+    "title": "비디오 파일을 여기에 드래그 앤 드롭하세요",
+    "subtitle": "또는 클릭하여 업로드",
+    "formats": "지원 형식: MP4, AVI, MOV, MKV, WEBM, FLV, WMV (최대 500MB)",
+    "loading": "비디오 변환기 로딩 중..."
+  },
+  "settings": {
+    "outputFormat": "출력 형식",
+    "quality": "품질",
+    "resolution": "해상도",
+    "formats": {
+      "mp4": "MP4 (H.264)",
+      "webm": "WEBM (VP9)",
+      "avi": "AVI (MPEG-4)",
+      "mov": "MOV (QuickTime)"
+    },
+    "qualities": {
+      "low": "낮음 (작은 파일)",
+      "medium": "중간 (균형)",
+      "high": "높음 (고품질)"
+    },
+    "resolutions": {
+      "original": "원본",
+      "1080p": "1080p (1920x1080)",
+      "720p": "720p (1280x720)",
+      "480p": "480p (854x480)",
+      "360p": "360p (640x360)"
+    }
+  },
+  "buttons": {
+    "convert": "비디오 변환",
+    "converting": "변환 중...",
+    "cancel": "취소",
+    "download": "비디오 다운로드",
+    "convertAnother": "다른 파일 변환"
+  },
+  "progress": {
+    "converting": "변환 중..."
+  },
+  "result": {
+    "success": "변환 완료!",
+    "original": "원본",
+    "ofOriginal": "원본 대비"
+  },
+  "features": {
+    "title": "왜 우리 비디오 변환기를 사용해야 하나요?",
+    "private": {
+      "title": "100% 프라이빗 & 보안",
+      "description": "모든 비디오 변환은 브라우저에서 로컬로 처리됩니다. 비디오가 기기를 떠나지 않으며 서버에 업로드되지 않습니다."
+    },
+    "formats": {
+      "title": "다양한 형식",
+      "description": "MP4, WEBM, AVI, MOV 형식 간 변환. 모든 주요 비디오 코덱 및 컨테이너 지원."
+    },
+    "quality": {
+      "title": "품질 제어",
+      "description": "품질 설정 및 해상도 선택. 필요에 따라 파일 크기 또는 비디오 품질을 최적화하세요."
+    },
+    "fast": {
+      "title": "빠른 변환",
+      "description": "FFmpeg WebAssembly 기반으로 브라우저에서 직접 빠르고 효율적인 비디오 처리."
+    },
+    "progress": {
+      "title": "실시간 진행 상황",
+      "description": "상세한 진행 표시기와 예상 시간으로 실시간 변환 진행 상황을 확인하세요."
+    },
+    "free": {
+      "title": "영구 무료",
+      "description": "워터마크 없음, 제한 없음. 모든 기능을 완전 무료로 무제한 비디오 변환."
+    }
+  },
+  "meta": {
+    "title": "무료 비디오 변환기 - MP4, WEBM, AVI, MOV | 온라인 도구",
+    "description": "MP4, WEBM, AVI, MOV 형식 간 비디오 파일 변환. 해상도 및 품질 제어가 가능한 무료 온라인 비디오 변환기. 100% 프라이빗, 브라우저 기반."
+  }
+}

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Filters({ onFilterChange }) {
+  const { t } = useTranslation('imageConverter');
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
 
@@ -15,43 +17,43 @@ export default function Filters({ onFilterChange }) {
   const presets = [
     {
       id: 'original',
-      label: 'Original',
+      label: t('filters.original'),
       icon: '🔄',
       values: { brightness: 0, contrast: 0, saturation: 0, hue: 0 }
     },
     {
       id: 'grayscale',
-      label: 'Grayscale',
+      label: t('filters.grayscale'),
       icon: '⚫',
       values: { brightness: 0, contrast: 0, saturation: -100, hue: 0 }
     },
     {
       id: 'sepia',
-      label: 'Sepia',
+      label: t('filters.sepia'),
       icon: '🟤',
       values: { brightness: 10, contrast: -10, saturation: -20, hue: 30, sepia: true }
     },
     {
       id: 'vivid',
-      label: 'Vivid',
+      label: t('filters.vivid'),
       icon: '🌈',
       values: { brightness: 5, contrast: 15, saturation: 40, hue: 0 }
     },
     {
       id: 'vintage',
-      label: 'Vintage',
+      label: t('filters.vintage'),
       icon: '📷',
       values: { brightness: 5, contrast: -15, saturation: -30, hue: 20, sepia: true }
     },
     {
       id: 'cool',
-      label: 'Cool',
+      label: t('filters.cool'),
       icon: '❄️',
       values: { brightness: 0, contrast: 5, saturation: 10, hue: 200 }
     },
     {
       id: 'warm',
-      label: 'Warm',
+      label: t('filters.warm'),
       icon: '🔥',
       values: { brightness: 5, contrast: 5, saturation: 15, hue: 30 }
     },
@@ -116,10 +118,10 @@ export default function Filters({ onFilterChange }) {
             <svg className="w-5 h-5 sm:w-6 sm:h-6 text-pink-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
             </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Filters & Effects</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">{t('filters.title')}</h2>
             {isEnabled && hasChanges && (
               <span className="ml-3 px-2 py-1 bg-pink-100 text-pink-700 rounded text-xs font-medium">
-                Active
+                {t('padding.active')}
               </span>
             )}
           </div>
@@ -145,7 +147,7 @@ export default function Filters({ onFilterChange }) {
                   onChange={(e) => setIsEnabled(e.target.checked)}
                   className="w-5 h-5 text-pink-600 border-gray-300 rounded focus:ring-pink-500"
                 />
-                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">Enable Filters & Effects</span>
+                <span className="ml-2 text-sm sm:text-base text-gray-700 font-medium">{t('filters.enable')}</span>
               </label>
             </div>
 
@@ -153,7 +155,7 @@ export default function Filters({ onFilterChange }) {
               <>
                 {/* Preset Filters */}
                 <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">Preset Filters</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">{t('filters.presetFilters')}</label>
                   <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
                     {presets.map((preset) => (
                       <button
@@ -174,7 +176,7 @@ export default function Filters({ onFilterChange }) {
                         className="p-3 sm:p-4 border-2 border-pink-600 bg-pink-50 text-pink-700 rounded-lg font-medium text-xs sm:text-sm transition-all min-h-[70px] flex flex-col items-center justify-center"
                       >
                         <span className="text-2xl mb-1">⚙️</span>
-                        <span className="text-xs">Custom</span>
+                        <span className="text-xs">{t('filters.custom')}</span>
                       </button>
                     )}
                   </div>
@@ -182,12 +184,12 @@ export default function Filters({ onFilterChange }) {
 
                 {/* Manual Adjustments */}
                 <div className="mb-6 space-y-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">Manual Adjustments</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">{t('filters.manualAdjustments')}</label>
 
                   {/* Brightness */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm text-gray-600">Brightness</label>
+                      <label className="text-sm text-gray-600">{t('filters.brightness')}</label>
                       <span className="text-sm font-semibold text-gray-800">{brightness > 0 ? '+' : ''}{brightness}</span>
                     </div>
                     <input
@@ -202,15 +204,15 @@ export default function Filters({ onFilterChange }) {
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     />
                     <div className="flex justify-between text-xs text-gray-500 mt-1">
-                      <span>Darker</span>
-                      <span>Brighter</span>
+                      <span>{t('filters.darker')}</span>
+                      <span>{t('filters.brighter')}</span>
                     </div>
                   </div>
 
                   {/* Contrast */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm text-gray-600">Contrast</label>
+                      <label className="text-sm text-gray-600">{t('filters.contrast')}</label>
                       <span className="text-sm font-semibold text-gray-800">{contrast > 0 ? '+' : ''}{contrast}</span>
                     </div>
                     <input
@@ -225,15 +227,15 @@ export default function Filters({ onFilterChange }) {
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     />
                     <div className="flex justify-between text-xs text-gray-500 mt-1">
-                      <span>Low</span>
-                      <span>High</span>
+                      <span>{t('filters.low')}</span>
+                      <span>{t('filters.high')}</span>
                     </div>
                   </div>
 
                   {/* Saturation */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm text-gray-600">Saturation</label>
+                      <label className="text-sm text-gray-600">{t('filters.saturation')}</label>
                       <span className="text-sm font-semibold text-gray-800">{saturation > 0 ? '+' : ''}{saturation}</span>
                     </div>
                     <input
@@ -248,15 +250,15 @@ export default function Filters({ onFilterChange }) {
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                     />
                     <div className="flex justify-between text-xs text-gray-500 mt-1">
-                      <span>Grayscale</span>
-                      <span>Vivid</span>
+                      <span>{t('filters.grayscaleLabel')}</span>
+                      <span>{t('filters.vividLabel')}</span>
                     </div>
                   </div>
 
                   {/* Hue */}
                   <div>
                     <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm text-gray-600">Hue</label>
+                      <label className="text-sm text-gray-600">{t('filters.hue')}</label>
                       <span className="text-sm font-semibold text-gray-800">{hue}°</span>
                     </div>
                     <input
@@ -287,11 +289,11 @@ export default function Filters({ onFilterChange }) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <div className="text-sm text-gray-600">
-                      <p className="font-medium mb-1">Filter Guide</p>
+                      <p className="font-medium mb-1">{t('filters.guideTitle')}</p>
                       <ul className="space-y-1 text-xs">
-                        <li>• Select a preset or adjust manually</li>
-                        <li>• Filters don't modify the original image</li>
-                        <li>• Filters are only applied during conversion</li>
+                        <li>• {t('filters.guide1')}</li>
+                        <li>• {t('filters.guide2')}</li>
+                        <li>• {t('filters.guide3')}</li>
                       </ul>
                     </div>
                   </div>
@@ -308,7 +310,7 @@ export default function Filters({ onFilterChange }) {
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
-                    Reset
+                    {t('buttons.reset')}
                   </button>
                 </div>
               </>
@@ -316,7 +318,7 @@ export default function Filters({ onFilterChange }) {
 
             {!isEnabled && (
               <div className="text-center py-8 text-gray-500">
-                Check the box above to apply filters and effects
+                {t('filters.instruction')}
               </div>
             )}
           </div>

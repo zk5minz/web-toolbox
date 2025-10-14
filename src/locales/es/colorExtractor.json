@@ -1,0 +1,57 @@
+{
+  "metaTitle": "Extractor de Colores Gratis - Extrae Paletas de Colores de Imágenes | Herramientas en Línea",
+  "metaDescription": "Extrae paletas de colores de cualquier imagen con códigos HEX y RGB. Herramienta gratuita de selección de colores con detección inteligente de colores. Perfecta para diseñadores y desarrolladores.",
+  "breadcrumb": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "colorExtractor": "Extractor de Colores"
+  },
+  "title": "🎨 Extractor de Colores",
+  "subtitle": "Extrae paletas de colores de cualquier imagen",
+  "upload": {
+    "dragDrop": "Arrastra y suelta tu imagen aquí",
+    "or": "o",
+    "clickUpload": "haz clic para subir",
+    "supportedFormats": "Formatos compatibles: JPG, PNG, WEBP (Máx 10MB)"
+  },
+  "extracting": {
+    "title": "Extrayendo colores..."
+  },
+  "palette": {
+    "title": "Paleta de Colores",
+    "hex": "HEX:",
+    "rgb": "RGB:",
+    "copyHex": "Copiar HEX",
+    "copyRgb": "Copiar RGB"
+  },
+  "buttons": {
+    "uploadNew": "Subir Nueva Imagen"
+  },
+  "features": {
+    "title": "¿Por qué usar nuestro Extractor de Colores?",
+    "privateSecure": {
+      "title": "🔒 100% Privado y Seguro",
+      "description": "Toda la extracción de colores ocurre localmente en tu navegador. Tus imágenes nunca salen de tu dispositivo y no se suben a ningún servidor."
+    },
+    "smartDetection": {
+      "title": "🎨 Detección Inteligente de Colores",
+      "description": "Algoritmo avanzado detecta colores dominantes con agrupación inteligente. Obtén la paleta de colores más representativa de cualquier imagen."
+    },
+    "multipleFormats": {
+      "title": "📊 Múltiples Formatos",
+      "description": "Obtén códigos de color en formatos HEX y RGB. La copia de un clic facilita el uso de colores en tus proyectos."
+    },
+    "instantResults": {
+      "title": "⚡ Resultados Instantáneos",
+      "description": "Extracción rápida de colores con vista previa en tiempo real. Ve tu paleta de colores en segundos después de subir una imagen."
+    },
+    "anyImageType": {
+      "title": "🖼️ Cualquier Tipo de Imagen",
+      "description": "Compatible con JPG, PNG, WEBP y más. Extrae colores de fotos, logotipos, obras de arte o cualquier archivo de imagen."
+    },
+    "free": {
+      "title": "🆓 100% Gratis Para Siempre",
+      "description": "Sin marcas de agua, sin límites. Extrae paletas de colores ilimitadas de imágenes ilimitadas completamente gratis."
+    }
+  }
+}

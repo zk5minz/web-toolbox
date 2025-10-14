@@ -1,0 +1,124 @@
+{
+  "metaTitle": "무료 온라인 메모장 - 자동 저장 및 다크 모드 | 온라인 도구",
+  "metaDescription": "자동 저장 기능, 다크 모드, 찾기 및 바꾸기, 단어 수 세기가 있는 무료 온라인 메모장. 메모는 브라우저에 로컬로 저장됩니다. 100% 개인정보 보호 및 보안.",
+  "alert": "이 메모장은 localStorage를 사용하여 메모를 저장합니다. 데이터는 브라우저에 로컬로 저장됩니다.",
+  "breadcrumb": {
+    "home": "홈",
+    "tools": "도구",
+    "notepad": "메모장",
+    "file": "파일"
+  },
+  "menu": {
+    "file": "파일",
+    "edit": "편집",
+    "view": "보기",
+    "help": "도움말"
+  },
+  "fileMenu": {
+    "new": "새로 만들기",
+    "open": "열기",
+    "save": "저장 (Ctrl+S)",
+    "saveAs": "다른 이름으로 저장",
+    "share": "공유",
+    "print": "인쇄 (Ctrl+P)"
+  },
+  "editMenu": {
+    "undo": "실행 취소 (Ctrl+Z)",
+    "redo": "다시 실행 (Ctrl+Y)",
+    "cut": "잘라내기 (Ctrl+X)",
+    "copy": "복사 (Ctrl+C)",
+    "paste": "붙여넣기 (Ctrl+V)",
+    "delete": "삭제",
+    "selectAll": "모두 선택 (Ctrl+A)"
+  },
+  "viewMenu": {
+    "lightMode": "라이트 모드",
+    "darkMode": "다크 모드",
+    "zoomIn": "확대",
+    "zoomOut": "축소",
+    "preferences": "환경설정"
+  },
+  "helpMenu": {
+    "about": "정보",
+    "aboutText": "자동 저장 기능이 있는 간단한 온라인 메모장\\n버전 1.0",
+    "shortcuts": "키보드 단축키",
+    "shortcutsText": "키보드 단축키:\\nCtrl+S - 저장\\nCtrl+Z - 실행 취소\\nCtrl+Y - 다시 실행\\nCtrl+A - 모두 선택\\nCtrl+P - 인쇄"
+  },
+  "toolbar": {
+    "new": "새로 만들기",
+    "open": "열기",
+    "save": "저장 (Ctrl+S)",
+    "cut": "잘라내기 (Ctrl+X)",
+    "copy": "복사 (Ctrl+C)",
+    "paste": "붙여넣기 (Ctrl+V)",
+    "undo": "실행 취소 (Ctrl+Z)",
+    "redo": "다시 실행 (Ctrl+Y)",
+    "zoomIn": "확대",
+    "zoomOut": "축소",
+    "fontSize": "글꼴 크기",
+    "help": "도움말"
+  },
+  "statusBar": {
+    "line": "줄",
+    "column": "열",
+    "chars": "글자",
+    "words": "단어"
+  },
+  "preferences": {
+    "title": "환경설정",
+    "fontSize": "글꼴 크기",
+    "darkMode": "다크 모드",
+    "close": "닫기"
+  },
+  "share": {
+    "title": "공유 옵션",
+    "copyClipboard": {
+      "title": "클립보드에 복사",
+      "description": "어디든지 붙여넣을 수 있도록 텍스트 복사"
+    },
+    "email": {
+      "title": "이메일로 보내기",
+      "description": "텍스트와 함께 이메일 클라이언트 열기"
+    },
+    "download": {
+      "title": "TXT로 다운로드",
+      "description": "텍스트 파일로 저장"
+    }
+  },
+  "messages": {
+    "confirmNew": "현재 텍스트가 삭제됩니다. 계속하시겠습니까?",
+    "fileSaved": "파일이 성공적으로 저장되었습니다!",
+    "saveFailed": "파일 저장 실패",
+    "enterFilename": "파일명을 입력하세요:",
+    "copiedToClipboard": "텍스트가 클립보드에 복사되었습니다!",
+    "copyFailed": "클립보드 복사 실패"
+  },
+  "placeholder": "입력을 시작하세요...",
+  "features": {
+    "title": "왜 우리 온라인 메모장을 사용해야 할까요?",
+    "privateSecure": {
+      "title": "100% 개인정보 보호 및 보안",
+      "description": "메모는 브라우저에 로컬로 저장됩니다. 서버에 업로드되지 않아 완전한 개인정보 보호 및 보안이 보장됩니다."
+    },
+    "autoSave": {
+      "title": "자동 저장 기능",
+      "description": "작업 내용을 절대 잃지 마세요! 모든 변경 사항이 실시간으로 브라우저의 로컬 스토리지에 자동 저장됩니다."
+    },
+    "darkMode": {
+      "title": "다크 모드 지원",
+      "description": "모든 조명 조건에서 편안한 작성을 위해 라이트 및 다크 테마 간 전환. 설정이 저장됩니다."
+    },
+    "richText": {
+      "title": "풍부한 텍스트 편집",
+      "description": "실행 취소/다시 실행, 찾기 및 바꾸기, 단어 수 세기, 커스터마이징 가능한 글꼴 크기로 최적의 작성 경험을 제공하는 완전한 편집 기능."
+    },
+    "fileOps": {
+      "title": "쉬운 파일 작업",
+      "description": "텍스트 파일을 열고, 저장하고, 다운로드하세요. 메모를 TXT 파일로 내보내거나 이메일로 한 번의 클릭으로 공유하세요."
+    },
+    "free": {
+      "title": "영원히 100% 무료",
+      "description": "프리미엄 기능, 구독, 숨겨진 비용이 없습니다. 모든 기능은 무제한 사용으로 완전히 무료입니다."
+    }
+  }
+}

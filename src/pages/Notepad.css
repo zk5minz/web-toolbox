@@ -48,6 +48,8 @@
 
 /* Breadcrumb */
 .notepad-breadcrumb {
+  display: flex;
+  align-items: center;
   padding: 10px 20px;
   background: white;
   border-bottom: 1px solid #ddd;

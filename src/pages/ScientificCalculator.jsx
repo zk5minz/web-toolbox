@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as math from 'mathjs';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './ScientificCalculator.css';
 
 function ScientificCalculator() {
+  const { t, i18n } = useTranslation(['scientificCalculator', 'translation']);
   const [activeTab, setActiveTab] = useState('basic');
   const [input, setInput] = useState('');
   const [result, setResult] = useState('0');
@@ -11,13 +14,11 @@ function ScientificCalculator() {
   const [angleMode, setAngleMode] = useState('DEG');
   const [history, setHistory] = useState([]);
 
-  // Load from localStorage
   useEffect(() => {
-    // SEO Meta Tags
-    document.title = 'Free Scientific Calculator - Advanced Math Functions | Online Tools';
+    document.title = t('scientificCalculator:metaTitle');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free online scientific calculator with trigonometry, logarithms, exponentials, and statistics. Advanced math calculator with calculation history. Perfect for students and engineers.');
+      metaDescription.setAttribute('content', t('scientificCalculator:metaDescription'));
     }
     
     const savedHistory = localStorage.getItem('calcHistory');
@@ -27,9 +28,8 @@ function ScientificCalculator() {
     if (savedHistory) setHistory(JSON.parse(savedHistory));
     if (savedAngleMode) setAngleMode(savedAngleMode);
     if (savedLastResult) setLastResult(savedLastResult);
-  }, []);
+  }, [t]);
 
-  // Save to localStorage
   useEffect(() => {
     localStorage.setItem('calcHistory', JSON.stringify(history));
   }, [history]);
@@ -38,12 +38,10 @@ function ScientificCalculator() {
     localStorage.setItem('calcAngleMode', angleMode);
   }, [angleMode]);
 
-  // Track lastResult changes for debugging
   useEffect(() => {
     console.log('🔄 lastResult 변경됨:', lastResult);
   }, [lastResult]);
 
-  // Calculate function with proper symbol conversion
   const calculate = () => {
     try {
       let expression = input.trim();
@@ -53,42 +51,27 @@ function ScientificCalculator() {
         return;
       }
 
-      // ========== 디버깅 시작 ==========
       console.log('');
       console.log('🔵 ===== 계산 시작 =====');
       console.log('📝 입력:', input);
-      console.log('🔢 현재 lastResult:', lastResult);
-      console.log('🔢 lastResult 타입:', typeof lastResult);
-      console.log('');
 
-      // Convert ans to lastResult (FIRST!)
       expression = expression.replace(/\bans\b/gi, lastResult || '0');
       console.log('✏️ ans 치환 후:', expression);
 
-      // Check if input contains inverse trig functions
       const hasInverseTrig = /asin|acos|atan/i.test(expression);
 
-      // 1. Convert all special symbols to standard format
-      // IMPORTANT: Process in this order to avoid conflicts
       expression = expression
-        // Convert 2x → 2*x (but protect function names like exp, max)
-        .replace(/(\d+)x(?![a-z])/gi, '$1*x')  // Only convert x after numbers if not followed by letters
-        // Convert operators first
+        .replace(/(\d+)x(?![a-z])/gi, '$1*x')
         .replace(/×/g, '*')
         .replace(/÷/g, '/')
-        .replace(/\*/g, '*')  // Standardize multiplication
-        .replace(/−/g, '-')   // Standardize minus
+        .replace(/\*/g, '*')
+        .replace(/−/g, '-')
         .replace(/\^/g, '^')
-        // Convert constants - keep as math.js constants
-        .replace(/π/g, 'pi')  // math.js uses 'pi'
-        // Note: 'e' is already recognized by math.js, no conversion needed
-        // Convert stdp (population std) to std with 'uncorrected' parameter
-        .replace(/stdp\((\[[^\]]+\])\)/g, "std($1, 'uncorrected')")  // stdp([data]) → std([data], 'uncorrected')
-        // Convert log functions with markers to avoid conflicts
-        .replace(/ln\(/g, '__NATURALLOG__(')   // ln → temporary marker
-        .replace(/log\(/g, 'log10(')           // log → log10 (common log)
-        .replace(/__NATURALLOG__\(/g, 'log(')  // marker → log (natural log in math.js)
-        // Convert other functions
+        .replace(/π/g, 'pi')
+        .replace(/stdp\((\[[^\]]+\])\)/g, "std($1, 'uncorrected')")
+        .replace(/ln\(/g, '__NATURALLOG__(')
+        .replace(/log\(/g, 'log10(')
+        .replace(/__NATURALLOG__\(/g, 'log(')
         .replace(/√\(/g, 'sqrt(')
         .replace(/√/g, 'sqrt')
         .replace(/ⁿ√/g, 'nthRoot')
@@ -97,10 +80,7 @@ function ScientificCalculator() {
 
       console.log('Converted expression:', expression);
 
-      // 2. Handle angle mode for trigonometric functions
       if (angleMode === 'DEG' && !hasInverseTrig) {
-        // Convert degrees to radians for forward trig functions (sin, cos, tan)
-        // Only if there are no inverse trig functions
         expression = expression.replace(/sin\(([^)]+)\)/g, (match, angle) => {
           return `sin((${angle}) * pi / 180)`;
         });
@@ -113,35 +93,28 @@ function ScientificCalculator() {
         console.log('DEG mode - converted expression:', expression);
       }
 
-      // 3. Check if it's an equation (contains =)
       if (expression.includes('=')) {
         const parts = expression.split('=');
         if (parts.length === 2) {
           const leftSide = parts[0].trim();
           const rightSide = parts[1].trim();
 
-          // Find variables in the equation
           const variables = expression.match(/[a-z]/gi);
           if (variables && variables.length > 0) {
-            // Filter out math constants
             const mathConstants = ['e', 'pi', 'i'];
             const realVariables = variables.filter(v => !mathConstants.includes(v.toLowerCase()));
 
             if (realVariables.length > 0) {
               const variable = realVariables[0];
               try {
-                // Try to solve the equation
                 const solution = math.solve(`${leftSide} - (${rightSide})`, variable);
                 console.log('Equation solution:', solution);
                 const resultStr = `${variable} = ${formatResult(solution)}`;
                 setResult(resultStr);
-
-                // Add to history
                 addToHistory(input, resultStr);
                 return;
               } catch (e) {
                 console.error('Equation solving error:', e);
-                // If can't solve, evaluate both sides
                 try {
                   const left = math.evaluate(leftSide);
                   const right = math.evaluate(rightSide);
@@ -159,47 +132,32 @@ function ScientificCalculator() {
         }
       }
 
-      // 4. Calculate normal expression
       let calcResult = math.evaluate(expression);
 
       console.log('Result (before conversion):', calcResult);
 
-      // 5. Convert inverse trig result from radians to degrees if needed
       if (angleMode === 'DEG' && hasInverseTrig) {
-        // Convert result from radians to degrees
         calcResult = calcResult * 180 / Math.PI;
         console.log('Result (after DEG conversion):', calcResult);
       }
 
-      // 6. Display result
       console.log('');
       console.log('🎯 계산 결과:', calcResult);
-      console.log('🎯 결과 타입:', typeof calcResult);
 
       const resultStr = formatResult(calcResult);
       console.log('📤 resultString:', resultStr);
 
-      console.log('💾 setResult 호출...');
       setResult(resultStr);
-
-      console.log('💾 setLastResult 호출 전 - lastResult:', lastResult);
       setLastResult(resultStr);
-      console.log('💾 setLastResult 호출 후 - 저장할 값:', resultStr);
-
-      // Save lastResult to localStorage
       localStorage.setItem('lastResult', resultStr);
       console.log('💾 localStorage 저장 완료');
-
       console.log('🔵 ===== 계산 완료 =====');
       console.log('');
-      // ========== 디버깅 끝 ==========
 
-      // 7. Add to history
       addToHistory(input, resultStr);
 
     } catch (error) {
       console.error('❌ 계산 에러:', error);
-      console.error('❌ 에러 메시지:', error.message);
       setResult('Error: ' + error.message);
     }
   };
@@ -241,28 +199,18 @@ function ScientificCalculator() {
   };
 
   const handleClear = () => {
-    console.log('🧹 C (Clear) 호출 - input만 클리어');
     setInput('');
-    // lastResult는 유지됨
   };
 
   const handleAllClear = () => {
-    console.log('🧹🧹 AC (All Clear) 호출 - 전체 클리어');
     setInput('');
     setResult('0');
-    setLastResult('0');  // AC clears ans as well
+    setLastResult('0');
     localStorage.setItem('lastResult', '0');
-    console.log('💾 lastResult 초기화됨: 0');
-  };
-
-  const handleAns = () => {
-    if (result && result !== '0') {
-      setInput(prev => prev + result);
-    }
   };
 
   const handleClearHistory = () => {
-    if (confirm('Clear all calculation history?')) {
+    if (confirm(t('scientificCalculator:messages.clearConfirm'))) {
       setHistory([]);
     }
   };
@@ -279,110 +227,109 @@ function ScientificCalculator() {
   const handlePaste = (e) => {
     e.preventDefault();
     const pastedText = e.clipboardData.getData('text');
-    console.log('Pasted text:', pastedText);
-
-    // Clean and convert special characters
     let cleaned = pastedText
-      .replace(/\s+/g, '')  // Remove spaces
+      .replace(/\s+/g, '')
       .replace(/×/g, '*')
       .replace(/÷/g, '/');
-      // Note: Don't convert 'x' here - let calculate() handle it smartly
-
     setInput(prev => prev + cleaned);
   };
 
   return (
     <div className="scientific-calculator-container">
       <header className="calculator-header">
-        <div className="breadcrumb">
-          <Link
-            to="/"
-            className="breadcrumb-home-link"
-            style={{
-              background: 'white',
-              color: '#6366f1',
-              padding: '8px 16px',
-              borderRadius: '8px',
-              textDecoration: 'underline',
-              fontWeight: '700',
-              transition: 'all 0.3s'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#1e40af';
-              e.target.style.color = 'white';
-              e.target.style.transform = 'scale(1.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'white';
-              e.target.style.color = '#6366f1';
-              e.target.style.transform = 'scale(1)';
-            }}
-          >
-            🏠 Home
-          </Link>
-          <span> &gt; </span>
-          <span>Tools</span>
-          <span> &gt; </span>
-          <span>Scientific Calculator</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+          <div style={{ flex: 1, textAlign: 'center' }}>
+            <div className="breadcrumb" style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Link
+                to="/"
+                className="breadcrumb-home-link"
+                style={{
+                  background: 'white',
+                  color: '#6366f1',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  textDecoration: 'underline',
+                  fontWeight: '700',
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = '#1e40af';
+                  e.target.style.color = 'white';
+                  e.target.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'white';
+                  e.target.style.color = '#6366f1';
+                  e.target.style.transform = 'scale(1)';
+                }}
+              >
+                🏠 {t('translation:nav.home')}
+              </Link>
+              <span> &gt; </span>
+              <span>{t('translation:nav.tools')}</span>
+              <span> &gt; </span>
+              <span>{t('scientificCalculator:header.title')}</span>
+            </div>
+            <h1>
+              <img
+                src="/calculator-icon.png"
+                alt="Calculator"
+                style={{
+                  width: '64px',
+                  height: '64px',
+                  verticalAlign: 'middle',
+                  marginRight: '16px'
+                }}
+              />
+              {t('scientificCalculator:header.title')}
+            </h1>
+            <p>{t('scientificCalculator:header.subtitle')}</p>
+          </div>
+          <div style={{ position: 'absolute', top: '16px', right: '20px' }}>
+            <LanguageSwitcher />
+          </div>
         </div>
-        <h1>
-          <img
-            src="/calculator-icon.png"
-            alt="Calculator"
-            style={{
-              width: '64px',
-              height: '64px',
-              verticalAlign: 'middle',
-              marginRight: '16px'
-            }}
-          />
-          Scientific Calculator
-        </h1>
-        <p>Advanced calculator with equation solving</p>
       </header>
 
       <div className="calculator-content">
         <div className="calculator-main">
           <div className="calculator-body">
-            {/* Angle Mode Toggle */}
             <div className="angle-mode-toggle">
               <button
                 onClick={toggleAngleMode}
                 className={`angle-btn ${angleMode === 'DEG' ? 'active' : ''}`}
               >
-                DEG
+                {t('scientificCalculator:angleMode.deg')}
               </button>
               <button
                 onClick={toggleAngleMode}
                 className={`angle-btn ${angleMode === 'RAD' ? 'active' : ''}`}
               >
-                RAD
+                {t('scientificCalculator:angleMode.rad')}
               </button>
             </div>
 
-            {/* Tabs */}
             <div className="tabs">
               <button
                 className={`tab-btn ${activeTab === 'basic' ? 'active' : ''}`}
                 onClick={() => setActiveTab('basic')}
               >
-                Basic
+                {t('scientificCalculator:tabs.basic')}
               </button>
               <button
                 className={`tab-btn ${activeTab === 'functions' ? 'active' : ''}`}
                 onClick={() => setActiveTab('functions')}
               >
-                Functions
+                {t('scientificCalculator:tabs.functions')}
               </button>
               <button
                 className={`tab-btn ${activeTab === 'variables' ? 'active' : ''}`}
                 onClick={() => setActiveTab('variables')}
               >
-                Variables
+                {t('scientificCalculator:tabs.variables')}
               </button>
             </div>
 
-            {/* Display */}
             <div className="calculator-display">
               <input
                 type="text"
@@ -390,19 +337,16 @@ function ScientificCalculator() {
                 onChange={(e) => setInput(e.target.value)}
                 onPaste={handlePaste}
                 onKeyDown={(e) => {
-                  // Enter key to calculate
                   if (e.key === 'Enter') {
                     e.preventDefault();
                     calculate();
                   }
-                  // Escape key to clear all
                   else if (e.key === 'Escape') {
                     e.preventDefault();
                     handleAllClear();
                   }
-                  // Don't handle other keys here - let onChange handle them
                 }}
-                placeholder="Enter expression"
+                placeholder={t('scientificCalculator:display.placeholder')}
                 className="input-display"
               />
               <div className="result-display">
@@ -410,28 +354,27 @@ function ScientificCalculator() {
               </div>
             </div>
 
-            {/* Basic Tab */}
             {activeTab === 'basic' && (
               <div className="basic-layout">
                 <div className="left-functions">
-                  <button onClick={handleClear} className="btn btn-clear">C</button>
-                  <button onClick={handleAllClear} className="btn btn-clear">AC</button>
-                  <button onClick={() => handleButtonClick('^2')} className="btn btn-function">a²</button>
-                  <button onClick={() => handleButtonClick('^')} className="btn btn-function">aᵇ</button>
+                  <button onClick={handleClear} className="btn btn-clear">{t('scientificCalculator:buttons.clear')}</button>
+                  <button onClick={handleAllClear} className="btn btn-clear">{t('scientificCalculator:buttons.allClear')}</button>
+                  <button onClick={() => handleButtonClick('^2')} className="btn btn-function">{t('scientificCalculator:buttons.squared')}</button>
+                  <button onClick={() => handleButtonClick('^')} className="btn btn-function">{t('scientificCalculator:buttons.power')}</button>
 
-                  <button onClick={() => handleButtonClick('sqrt(')} className="btn btn-function">√</button>
-                  <button onClick={() => handleButtonClick('nthRoot(')} className="btn btn-function">ⁿ√</button>
-                  <button onClick={() => handleButtonClick('pi')} className="btn btn-constant">π</button>
-                  <button onClick={() => handleButtonClick('abs(')} className="btn btn-function">|a|</button>
+                  <button onClick={() => handleButtonClick('sqrt(')} className="btn btn-function">{t('scientificCalculator:buttons.sqrt')}</button>
+                  <button onClick={() => handleButtonClick('nthRoot(')} className="btn btn-function">{t('scientificCalculator:buttons.nthRoot')}</button>
+                  <button onClick={() => handleButtonClick('pi')} className="btn btn-constant">{t('scientificCalculator:buttons.pi')}</button>
+                  <button onClick={() => handleButtonClick('abs(')} className="btn btn-function">{t('scientificCalculator:buttons.abs')}</button>
 
-                  <button onClick={() => handleButtonClick('sin(')} className="btn btn-function">sin</button>
-                  <button onClick={() => handleButtonClick('cos(')} className="btn btn-function">cos</button>
-                  <button onClick={() => handleButtonClick('tan(')} className="btn btn-function">tan</button>
+                  <button onClick={() => handleButtonClick('sin(')} className="btn btn-function">{t('scientificCalculator:buttons.sin')}</button>
+                  <button onClick={() => handleButtonClick('cos(')} className="btn btn-function">{t('scientificCalculator:buttons.cos')}</button>
+                  <button onClick={() => handleButtonClick('tan(')} className="btn btn-function">{t('scientificCalculator:buttons.tan')}</button>
                   <button className="btn btn-empty"></button>
 
-                  <button onClick={() => handleButtonClick('(')} className="btn btn-parenthesis">(</button>
-                  <button onClick={() => handleButtonClick(')')} className="btn btn-parenthesis">)</button>
-                  <button onClick={() => handleButtonClick(',')} className="btn btn-parenthesis">,</button>
+                  <button onClick={() => handleButtonClick('(')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.leftParen')}</button>
+                  <button onClick={() => handleButtonClick(')')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.rightParen')}</button>
+                  <button onClick={() => handleButtonClick(',')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.comma')}</button>
                   <button className="btn btn-empty"></button>
                 </div>
 
@@ -439,72 +382,70 @@ function ScientificCalculator() {
                   <button onClick={() => handleButtonClick('7')} className="btn btn-number">7</button>
                   <button onClick={() => handleButtonClick('8')} className="btn btn-number">8</button>
                   <button onClick={() => handleButtonClick('9')} className="btn btn-number">9</button>
-                  <button onClick={() => handleButtonClick('/')} className="btn btn-operator">÷</button>
+                  <button onClick={() => handleButtonClick('/')} className="btn btn-operator">{t('scientificCalculator:buttons.divide')}</button>
 
                   <button onClick={() => handleButtonClick('4')} className="btn btn-number">4</button>
                   <button onClick={() => handleButtonClick('5')} className="btn btn-number">5</button>
                   <button onClick={() => handleButtonClick('6')} className="btn btn-number">6</button>
-                  <button onClick={() => handleButtonClick('*')} className="btn btn-operator">×</button>
+                  <button onClick={() => handleButtonClick('*')} className="btn btn-operator">{t('scientificCalculator:buttons.multiply')}</button>
 
                   <button onClick={() => handleButtonClick('1')} className="btn btn-number">1</button>
                   <button onClick={() => handleButtonClick('2')} className="btn btn-number">2</button>
                   <button onClick={() => handleButtonClick('3')} className="btn btn-number">3</button>
-                  <button onClick={() => handleButtonClick('-')} className="btn btn-operator">-</button>
+                  <button onClick={() => handleButtonClick('-')} className="btn btn-operator">{t('scientificCalculator:buttons.minus')}</button>
 
                   <button onClick={() => handleButtonClick('0')} className="btn btn-number">0</button>
                   <button onClick={() => handleButtonClick('.')} className="btn btn-number">.</button>
-                  <button onClick={handleDelete} className="btn btn-delete">⌫</button>
-                  <button onClick={() => handleButtonClick('+')} className="btn btn-operator">+</button>
+                  <button onClick={handleDelete} className="btn btn-delete">{t('scientificCalculator:buttons.delete')}</button>
+                  <button onClick={() => handleButtonClick('+')} className="btn btn-operator">{t('scientificCalculator:buttons.plus')}</button>
 
-                  <button onClick={() => handleButtonClick('ans')} className="btn btn-constant">ans</button>
-                  <button onClick={() => handleButtonClick('%')} className="btn btn-operator">%</button>
-                  <button onClick={() => handleButtonClick('/')} className="btn btn-operator">a/b</button>
-                  <button onClick={calculate} className="btn btn-equals">=</button>
+                  <button onClick={() => handleButtonClick('ans')} className="btn btn-constant">{t('scientificCalculator:buttons.ans')}</button>
+                  <button onClick={() => handleButtonClick('%')} className="btn btn-operator">{t('scientificCalculator:buttons.modulo')}</button>
+                  <button onClick={() => handleButtonClick('/')} className="btn btn-operator">{t('scientificCalculator:buttons.fraction')}</button>
+                  <button onClick={calculate} className="btn btn-equals">{t('scientificCalculator:buttons.equals')}</button>
                 </div>
               </div>
             )}
 
-            {/* Functions Tab */}
             {activeTab === 'functions' && (
               <div className="functions-grid">
-                <button onClick={handleClear} className="btn btn-clear">C</button>
-                <button onClick={handleAllClear} className="btn btn-clear">AC</button>
-                <button onClick={handleDelete} className="btn btn-delete">⌫</button>
-                <button onClick={() => handleButtonClick('^')} className="btn btn-function">aᵇ</button>
-                <button onClick={() => handleButtonClick('sqrt(')} className="btn btn-function">√</button>
-                <button onClick={() => handleButtonClick('nthRoot(')} className="btn btn-function">ⁿ√</button>
+                <button onClick={handleClear} className="btn btn-clear">{t('scientificCalculator:buttons.clear')}</button>
+                <button onClick={handleAllClear} className="btn btn-clear">{t('scientificCalculator:buttons.allClear')}</button>
+                <button onClick={handleDelete} className="btn btn-delete">{t('scientificCalculator:buttons.delete')}</button>
+                <button onClick={() => handleButtonClick('^')} className="btn btn-function">{t('scientificCalculator:buttons.power')}</button>
+                <button onClick={() => handleButtonClick('sqrt(')} className="btn btn-function">{t('scientificCalculator:buttons.sqrt')}</button>
+                <button onClick={() => handleButtonClick('nthRoot(')} className="btn btn-function">{t('scientificCalculator:buttons.nthRoot')}</button>
 
-                <button onClick={() => handleButtonClick('sin(')} className="btn btn-function">sin</button>
-                <button onClick={() => handleButtonClick('cos(')} className="btn btn-function">cos</button>
-                <button onClick={() => handleButtonClick('tan(')} className="btn btn-function">tan</button>
-                <button onClick={() => handleButtonClick('asin(')} className="btn btn-function">sin⁻¹</button>
-                <button onClick={() => handleButtonClick('acos(')} className="btn btn-function">cos⁻¹</button>
-                <button onClick={() => handleButtonClick('atan(')} className="btn btn-function">tan⁻¹</button>
+                <button onClick={() => handleButtonClick('sin(')} className="btn btn-function">{t('scientificCalculator:buttons.sin')}</button>
+                <button onClick={() => handleButtonClick('cos(')} className="btn btn-function">{t('scientificCalculator:buttons.cos')}</button>
+                <button onClick={() => handleButtonClick('tan(')} className="btn btn-function">{t('scientificCalculator:buttons.tan')}</button>
+                <button onClick={() => handleButtonClick('asin(')} className="btn btn-function">{t('scientificCalculator:buttons.asin')}</button>
+                <button onClick={() => handleButtonClick('acos(')} className="btn btn-function">{t('scientificCalculator:buttons.acos')}</button>
+                <button onClick={() => handleButtonClick('atan(')} className="btn btn-function">{t('scientificCalculator:buttons.atan')}</button>
 
-                <button onClick={() => handleButtonClick('exp(')} className="btn btn-function">eˣ</button>
-                <button onClick={() => handleButtonClick('abs(')} className="btn btn-function">abs</button>
-                <button onClick={() => handleButtonClick('round(')} className="btn btn-function">round</button>
-                <button onClick={() => handleButtonClick('mean(')} className="btn btn-function">mean</button>
-                <button onClick={() => handleButtonClick('std(')} className="btn btn-function">stdev</button>
-                <button onClick={() => handleButtonClick('stdp(')} className="btn btn-function">stdevp</button>
+                <button onClick={() => handleButtonClick('exp(')} className="btn btn-function">{t('scientificCalculator:buttons.exp')}</button>
+                <button onClick={() => handleButtonClick('abs(')} className="btn btn-function">{t('scientificCalculator:buttons.abs')}</button>
+                <button onClick={() => handleButtonClick('round(')} className="btn btn-function">{t('scientificCalculator:buttons.round')}</button>
+                <button onClick={() => handleButtonClick('mean(')} className="btn btn-function">{t('scientificCalculator:buttons.mean')}</button>
+                <button onClick={() => handleButtonClick('std(')} className="btn btn-function">{t('scientificCalculator:buttons.std')}</button>
+                <button onClick={() => handleButtonClick('stdp(')} className="btn btn-function">{t('scientificCalculator:buttons.stdp')}</button>
 
-                <button onClick={() => handleButtonClick('log(')} className="btn btn-function">ln</button>
-                <button onClick={() => handleButtonClick('log10(')} className="btn btn-function">log</button>
-                <button onClick={() => handleButtonClick('permutations(')} className="btn btn-function">nPr</button>
-                <button onClick={() => handleButtonClick('combinations(')} className="btn btn-function">nCr</button>
-                <button onClick={() => handleButtonClick('!')} className="btn btn-function">!</button>
-                <button onClick={calculate} className="btn btn-equals">=</button>
+                <button onClick={() => handleButtonClick('log(')} className="btn btn-function">{t('scientificCalculator:buttons.ln')}</button>
+                <button onClick={() => handleButtonClick('log10(')} className="btn btn-function">{t('scientificCalculator:buttons.log')}</button>
+                <button onClick={() => handleButtonClick('permutations(')} className="btn btn-function">{t('scientificCalculator:buttons.nPr')}</button>
+                <button onClick={() => handleButtonClick('combinations(')} className="btn btn-function">{t('scientificCalculator:buttons.nCr')}</button>
+                <button onClick={() => handleButtonClick('!')} className="btn btn-function">{t('scientificCalculator:buttons.factorial')}</button>
+                <button onClick={calculate} className="btn btn-equals">{t('scientificCalculator:buttons.equals')}</button>
 
-                <button onClick={() => handleButtonClick('e')} className="btn btn-constant">e</button>
-                <button onClick={() => handleButtonClick('pi')} className="btn btn-constant">π</button>
-                <button onClick={() => handleButtonClick('ans')} className="btn btn-constant">ans</button>
-                <button onClick={() => handleButtonClick('(')} className="btn btn-parenthesis">(</button>
-                <button onClick={() => handleButtonClick(')')} className="btn btn-parenthesis">)</button>
-                <button onClick={() => handleButtonClick(',')} className="btn btn-parenthesis">,</button>
+                <button onClick={() => handleButtonClick('e')} className="btn btn-constant">{t('scientificCalculator:buttons.e')}</button>
+                <button onClick={() => handleButtonClick('pi')} className="btn btn-constant">{t('scientificCalculator:buttons.pi')}</button>
+                <button onClick={() => handleButtonClick('ans')} className="btn btn-constant">{t('scientificCalculator:buttons.ans')}</button>
+                <button onClick={() => handleButtonClick('(')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.leftParen')}</button>
+                <button onClick={() => handleButtonClick(')')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.rightParen')}</button>
+                <button onClick={() => handleButtonClick(',')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.comma')}</button>
               </div>
             )}
 
-            {/* Variables Tab */}
             {activeTab === 'variables' && (
               <div className="variables-grid">
                 <button onClick={() => handleButtonClick('q')} className="btn btn-var">q</button>
@@ -527,45 +468,44 @@ function ScientificCalculator() {
                 <button onClick={() => handleButtonClick('j')} className="btn btn-var">j</button>
                 <button onClick={() => handleButtonClick('k')} className="btn btn-var">k</button>
                 <button onClick={() => handleButtonClick('l')} className="btn btn-var">l</button>
-                <button onClick={handleDelete} className="btn btn-delete">⌫</button>
+                <button onClick={handleDelete} className="btn btn-delete">{t('scientificCalculator:buttons.delete')}</button>
 
                 <button onClick={() => handleButtonClick('=')} className="btn btn-var">=</button>
-                <button onClick={() => handleButtonClick('/')} className="btn btn-operator">÷</button>
+                <button onClick={() => handleButtonClick('/')} className="btn btn-operator">{t('scientificCalculator:buttons.divide')}</button>
                 <button onClick={() => handleButtonClick('x')} className="btn btn-var">x</button>
                 <button onClick={() => handleButtonClick('c')} className="btn btn-var">c</button>
                 <button onClick={() => handleButtonClick('v')} className="btn btn-var">v</button>
                 <button onClick={() => handleButtonClick('b')} className="btn btn-var">b</button>
                 <button onClick={() => handleButtonClick('n')} className="btn btn-var">n</button>
                 <button onClick={() => handleButtonClick('m')} className="btn btn-var">m</button>
-                <button onClick={() => handleButtonClick(',')} className="btn btn-var">,</button>
-                <button onClick={handleClear} className="btn btn-clear">C</button>
+                <button onClick={() => handleButtonClick(',')} className="btn btn-var">{t('scientificCalculator:buttons.comma')}</button>
+                <button onClick={handleClear} className="btn btn-clear">{t('scientificCalculator:buttons.clear')}</button>
 
                 <button onClick={() => handleButtonClick('^')} className="btn btn-function">↑</button>
-                <button onClick={() => handleButtonClick('(')} className="btn btn-parenthesis">(</button>
-                <button onClick={() => handleButtonClick(')')} className="btn btn-parenthesis">)</button>
+                <button onClick={() => handleButtonClick('(')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.leftParen')}</button>
+                <button onClick={() => handleButtonClick(')')} className="btn btn-parenthesis">{t('scientificCalculator:buttons.rightParen')}</button>
                 <button onClick={() => handleButtonClick('[')} className="btn btn-var">[</button>
                 <button onClick={() => handleButtonClick(']')} className="btn btn-var">]</button>
-                <button onClick={() => handleButtonClick('!')} className="btn btn-var">!</button>
+                <button onClick={() => handleButtonClick('!')} className="btn btn-var">{t('scientificCalculator:buttons.factorial')}</button>
                 <button onClick={() => handleButtonClick("'")} className="btn btn-var">'</button>
-                <button onClick={() => handleButtonClick('pi')} className="btn btn-constant">π</button>
-                <button onClick={() => handleButtonClick('+')} className="btn btn-operator">+</button>
-                <button onClick={calculate} className="btn btn-equals">=</button>
+                <button onClick={() => handleButtonClick('pi')} className="btn btn-constant">{t('scientificCalculator:buttons.pi')}</button>
+                <button onClick={() => handleButtonClick('+')} className="btn btn-operator">{t('scientificCalculator:buttons.plus')}</button>
+                <button onClick={calculate} className="btn btn-equals">{t('scientificCalculator:buttons.equals')}</button>
               </div>
             )}
           </div>
         </div>
 
-        {/* History Panel */}
         <div className="history-panel">
           <div className="history-header">
-            <h3>History</h3>
+            <h3>{t('scientificCalculator:history.title')}</h3>
             <button onClick={handleClearHistory} className="clear-history-btn">
-              Clear History
+              {t('scientificCalculator:history.clearHistory')}
             </button>
           </div>
           <div className="history-list">
             {history.length === 0 ? (
-              <div className="history-empty">No calculations yet</div>
+              <div className="history-empty">{t('scientificCalculator:history.empty')}</div>
             ) : (
               history.map((item, index) => (
                 <div
@@ -582,39 +522,38 @@ function ScientificCalculator() {
         </div>
       </div>
 
-      {/* Features Section */}
       <div className="features-section">
-        <h2>Why Use Our Scientific Calculator?</h2>
+        <h2>{t('scientificCalculator:features.title')}</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
-            <h3>100% Private & Secure</h3>
-            <p>All calculations are processed locally in your browser. No data is sent to any server, ensuring complete privacy.</p>
+            <h3>{t('scientificCalculator:features.privateSecure.title')}</h3>
+            <p>{t('scientificCalculator:features.privateSecure.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📊</div>
-            <h3>Advanced Functions</h3>
-            <p>Full scientific calculator with trigonometry, logarithms, exponentials, statistics, and complex mathematical operations.</p>
+            <h3>{t('scientificCalculator:features.advancedFunctions.title')}</h3>
+            <p>{t('scientificCalculator:features.advancedFunctions.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📝</div>
-            <h3>Calculation History</h3>
-            <p>Keep track of all your calculations with a detailed history panel. Quickly reuse previous calculations.</p>
+            <h3>{t('scientificCalculator:features.calculationHistory.title')}</h3>
+            <p>{t('scientificCalculator:features.calculationHistory.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🎯</div>
-            <h3>High Precision</h3>
-            <p>Accurate calculations with support for complex equations, matrices, and statistical functions.</p>
+            <h3>{t('scientificCalculator:features.highPrecision.title')}</h3>
+            <p>{t('scientificCalculator:features.highPrecision.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">⌨️</div>
-            <h3>Keyboard Support</h3>
-            <p>Full keyboard support for faster input. Use your keyboard for numbers, operators, and functions.</p>
+            <h3>{t('scientificCalculator:features.keyboardSupport.title')}</h3>
+            <p>{t('scientificCalculator:features.keyboardSupport.description')}</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">🆓</div>
-            <h3>100% Free Forever</h3>
-            <p>No registration required. Use all advanced scientific calculator features completely free with unlimited calculations.</p>
+            <h3>{t('scientificCalculator:features.free.title')}</h3>
+            <p>{t('scientificCalculator:features.free.description')}</p>
           </div>
         </div>
       </div>

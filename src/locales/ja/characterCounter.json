@@ -1,0 +1,76 @@
+{
+  "metaTitle": "無料文字数カウンター - 単語＆文字数カウントツール | オンラインツール",
+  "metaDescription": "リアルタイムで文字、単語、文の数をカウントし、テキスト統計を分析。詳細分析機能付きの無料文字数カウンター。エッセイ、記事、ソーシャルメディアに最適。",
+  "breadcrumb": {
+    "home": "ホーム",
+    "tools": "ツール",
+    "characterCounter": "文字数カウンター"
+  },
+  "title": "文字数カウンター",
+  "subtitle": "単語、文字、文の数をカウントしてテキスト分析",
+  "placeholder": "ここに入力またはテキストを貼り付けてください...",
+  "stats": {
+    "title": "統計",
+    "characters": "文字",
+    "charactersNoSpaces": "文字（スペース除く）",
+    "words": "単語",
+    "sentences": "文",
+    "paragraphs": "段落",
+    "lines": "行",
+    "numbers": "数字",
+    "specialChars": "特殊文字",
+    "koreanChars": "韓国語文字",
+    "englishChars": "英語文字",
+    "avgWordLength": "平均単語長",
+    "avgSentenceLength": "平均文長",
+    "readingTime": "読む時間",
+    "speakingTime": "話す時間"
+  },
+  "buttons": {
+    "textInput": "テキスト入力",
+    "clear": "すべてクリア",
+    "copy": "テキストをコピー",
+    "copyStats": "統計をコピー",
+    "paste": "貼り付け",
+    "uppercase": "大文字",
+    "lowercase": "小文字",
+    "titleCase": "タイトルケース",
+    "sentenceCase": "文のケース",
+    "reverse": "テキストを逆転",
+    "removeSpaces": "スペースを削除",
+    "removeLineBreaks": "改行を削除"
+  },
+  "messages": {
+    "copied": "テキストがクリップボードにコピーされました！",
+    "cleared": "テキストがクリアされました！",
+    "statsCopied": "統計がクリップボードにコピーされました！",
+    "confirmClear": "本当にすべてのテキストをクリアしますか？"
+  },
+  "features": {
+    "title": "なぜ私たちの文字数カウンターを使うべきか？",
+    "realtime": {
+      "title": "リアルタイム分析",
+      "description": "入力中に即座に文字、単語、文の数を取得。特定の長さ要件を満たすのに最適。"
+    },
+    "detailed": {
+      "title": "詳細な統計",
+      "description": "読む時間、話す時間、平均単語長などを含む包括的なテキスト分析。"
+    },
+    "textTools": {
+      "title": "テキスト変換ツール",
+      "description": "ワンクリックでテキストを大文字、小文字、タイトルケース、または文のケースに変換。"
+    },
+    "private": {
+      "title": "100%プライベート",
+      "description": "すべての処理はブラウザでローカルに行われます。テキストはサーバーにアップロードされません。"
+    },
+    "autosave": {
+      "title": "自動保存",
+      "description": "テキストはブラウザのローカルストレージに自動保存されるため、作業を失うことはありません。"
+    },
+    "free": {
+      "title": "完全無料",
+      "description": "制限なし、登録不要。無料で無制限に文字と単語をカウント。"
+    }
+  }
+}
