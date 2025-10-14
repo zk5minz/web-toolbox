@@ -50,11 +50,11 @@ import jaVideoConverter from './locales/ja/videoConverter.json';
 import zhVideoConverter from './locales/zh/videoConverter.json';
 import esVideoConverter from './locales/es/videoConverter.json';
 
-import enQrgenerator from './locales/en/qrgenerator.json';
-import koQrgenerator from './locales/ko/qrgenerator.json';
-import jaQrgenerator from './locales/ja/qrgenerator.json';
-import zhQrgenerator from './locales/zh/qrgenerator.json';
-import esQrgenerator from './locales/es/qrgenerator.json';
+import enQrgenerator from './locales/en/qrGenerator.json';
+import koQrgenerator from './locales/ko/qrGenerator.json';
+import jaQrgenerator from './locales/ja/qrGenerator.json';
+import zhQrgenerator from './locales/zh/qrGenerator.json';
+import esQrgenerator from './locales/es/qrGenerator.json';
 
 import enNumbercounter from './locales/en/numbercounter.json';
 import koNumbercounter from './locales/ko/numbercounter.json';
