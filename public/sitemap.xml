@@ -7,7 +7,6 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
   <!-- Notepad -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/notepad</loc>
@@ -15,7 +14,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- Image Converter -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/image-converter</loc>
@@ -23,7 +21,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <!-- Background Remover -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/background-remover</loc>
@@ -31,7 +28,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <!-- Password Generator -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/password-generator</loc>
@@ -39,7 +35,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- Scientific Calculator -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/scientific-calculator</loc>
@@ -47,7 +42,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- Stopwatch & Timer -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/stopwatch-timer</loc>
@@ -55,7 +49,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- Character Counter -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/character-counter</loc>
@@ -63,7 +56,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- Number Counter -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/number-counter</loc>
@@ -71,7 +63,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <!-- World Clock -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/world-clock</loc>
@@ -79,7 +70,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- QR Code Generator -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/qr-generator</loc>
@@ -87,7 +77,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- Color Extractor -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/color-extractor</loc>
@@ -95,7 +84,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
   <!-- Audio Converter -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/audio-converter</loc>
@@ -103,7 +91,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <!-- Video Converter -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/video-converter</loc>
@@ -111,7 +98,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
   <!-- Privacy Policy -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/privacy-policy</loc>
@@ -119,7 +105,6 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
   <!-- Terms of Service -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/terms-of-service</loc>
@@ -127,7 +112,6 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
   <!-- About -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/about</loc>
@@ -135,7 +119,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <!-- Contact -->
   <url>
     <loc>https://web-toolbox-7dx.pages.dev/contact</loc>
