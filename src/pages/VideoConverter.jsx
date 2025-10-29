@@ -10,6 +10,7 @@ function VideoConverter() {
   const { t, i18n } = useTranslation(['videoConverter', 'translation']);
   const [file, setFile] = useState(null);
   const [outputFormat, setOutputFormat] = useState('mp4');
+  const [isAudioOnly, setIsAudioOnly] = useState(false);
   const [quality, setQuality] = useState('medium');
   const [resolution, setResolution] = useState('original');
   const [isConverting, setIsConverting] = useState(false);
@@ -85,29 +86,52 @@ function VideoConverter() {
   const getFFmpegParams = () => {
     const params = [];
     
-    // Quality settings
-    const qualityMap = {
-      low: { crf: '28', preset: 'fast' },
-      medium: { crf: '23', preset: 'medium' },
-      high: { crf: '18', preset: 'slow' }
-    };
+    // Audio-only formats
+    const audioFormats = ['mp3', 'wav', 'aac', 'm4a', 'ogg'];
+    const isAudioFormat = audioFormats.includes(outputFormat);
     
-    const q = qualityMap[quality];
-    
-    // Resolution
-    if (resolution !== 'original') {
-      params.push('-vf', `scale=${resolution}`);
-    }
-    
-    // Format-specific settings
-    if (outputFormat === 'mp4') {
-      params.push('-c:v', 'libx264', '-crf', q.crf, '-preset', q.preset, '-c:a', 'aac');
-    } else if (outputFormat === 'webm') {
-      params.push('-c:v', 'libvpx-vp9', '-crf', q.crf, '-b:v', '0', '-c:a', 'libopus');
-    } else if (outputFormat === 'avi') {
-      params.push('-c:v', 'mpeg4', '-q:v', '3', '-c:a', 'mp3');
-    } else if (outputFormat === 'mov') {
-      params.push('-c:v', 'libx264', '-crf', q.crf, '-preset', q.preset, '-c:a', 'aac');
+    if (isAudioFormat) {
+      // Audio extraction settings
+      if (outputFormat === 'mp3') {
+        const bitrateMap = { low: '128k', medium: '192k', high: '320k' };
+        params.push('-vn', '-acodec', 'libmp3lame', '-ab', bitrateMap[quality]);
+      } else if (outputFormat === 'wav') {
+        params.push('-vn', '-acodec', 'pcm_s16le');
+      } else if (outputFormat === 'aac') {
+        const bitrateMap = { low: '128k', medium: '192k', high: '256k' };
+        params.push('-vn', '-acodec', 'aac', '-ab', bitrateMap[quality]);
+      } else if (outputFormat === 'm4a') {
+        const bitrateMap = { low: '128k', medium: '192k', high: '256k' };
+        params.push('-vn', '-acodec', 'aac', '-ab', bitrateMap[quality]);
+      } else if (outputFormat === 'ogg') {
+        const bitrateMap = { low: '128k', medium: '192k', high: '256k' };
+        params.push('-vn', '-acodec', 'libvorbis', '-ab', bitrateMap[quality]);
+      }
+    } else {
+      // Video conversion settings
+      const qualityMap = {
+        low: { crf: '28', preset: 'fast' },
+        medium: { crf: '23', preset: 'medium' },
+        high: { crf: '18', preset: 'slow' }
+      };
+      
+      const q = qualityMap[quality];
+      
+      // Resolution
+      if (resolution !== 'original') {
+        params.push('-vf', `scale=${resolution}`);
+      }
+      
+      // Format-specific settings
+      if (outputFormat === 'mp4') {
+        params.push('-c:v', 'libx264', '-crf', q.crf, '-preset', q.preset, '-c:a', 'aac');
+      } else if (outputFormat === 'webm') {
+        params.push('-c:v', 'libvpx-vp9', '-crf', q.crf, '-b:v', '0', '-c:a', 'libopus');
+      } else if (outputFormat === 'avi') {
+        params.push('-c:v', 'mpeg4', '-q:v', '3', '-c:a', 'mp3');
+      } else if (outputFormat === 'mov') {
+        params.push('-c:v', 'libx264', '-crf', q.crf, '-preset', q.preset, '-c:a', 'aac');
+      }
     }
     
     return params;
@@ -135,7 +159,10 @@ function VideoConverter() {
 
       // Read output file
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([data.buffer], { type: `video/${outputFormat}` });
+      const audioFormats = ['mp3', 'wav', 'aac', 'm4a', 'ogg'];
+      const isAudioFormat = audioFormats.includes(outputFormat);
+      const mimeType = isAudioFormat ? `audio/${outputFormat === 'm4a' ? 'mp4' : outputFormat}` : `video/${outputFormat}`;
+      const blob = new Blob([data.buffer], { type: mimeType });
       
       setConvertedFile({
         blob,
@@ -243,15 +270,28 @@ function VideoConverter() {
               <div className="setting-group">
                 <label>{t('videoConverter:settings.outputFormat')}</label>
                 <select value={outputFormat} onChange={(e) => setOutputFormat(e.target.value)}>
-                  <option value="mp4">{t('videoConverter:settings.formats.mp4')}</option>
-                  <option value="webm">{t('videoConverter:settings.formats.webm')}</option>
-                  <option value="avi">{t('videoConverter:settings.formats.avi')}</option>
-                  <option value="mov">{t('videoConverter:settings.formats.mov')}</option>
+                  <optgroup label={t('videoConverter:settings.formatGroups.video')}>
+                    <option value="mp4">{t('videoConverter:settings.formats.mp4')}</option>
+                    <option value="webm">{t('videoConverter:settings.formats.webm')}</option>
+                    <option value="avi">{t('videoConverter:settings.formats.avi')}</option>
+                    <option value="mov">{t('videoConverter:settings.formats.mov')}</option>
+                  </optgroup>
+                  <optgroup label={t('videoConverter:settings.formatGroups.audio')}>
+                    <option value="mp3">{t('videoConverter:settings.formats.mp3')}</option>
+                    <option value="wav">{t('videoConverter:settings.formats.wav')}</option>
+                    <option value="aac">{t('videoConverter:settings.formats.aac')}</option>
+                    <option value="m4a">{t('videoConverter:settings.formats.m4a')}</option>
+                    <option value="ogg">{t('videoConverter:settings.formats.ogg')}</option>
+                  </optgroup>
                 </select>
               </div>
 
               <div className="setting-group">
-                <label>{t('videoConverter:settings.quality')}</label>
+                <label>
+                  {['mp3', 'wav', 'aac', 'm4a', 'ogg'].includes(outputFormat) 
+                    ? t('videoConverter:settings.audioBitrate')
+                    : t('videoConverter:settings.quality')}
+                </label>
                 <select value={quality} onChange={(e) => setQuality(e.target.value)}>
                   <option value="low">{t('videoConverter:settings.qualities.low')}</option>
                   <option value="medium">{t('videoConverter:settings.qualities.medium')}</option>
@@ -259,16 +299,18 @@ function VideoConverter() {
                 </select>
               </div>
 
-              <div className="setting-group">
-                <label>{t('videoConverter:settings.resolution')}</label>
-                <select value={resolution} onChange={(e) => setResolution(e.target.value)}>
-                  <option value="original">{t('videoConverter:settings.resolutions.original')}</option>
-                  <option value="1920:1080">{t('videoConverter:settings.resolutions.1080p')}</option>
-                  <option value="1280:720">{t('videoConverter:settings.resolutions.720p')}</option>
-                  <option value="854:480">{t('videoConverter:settings.resolutions.480p')}</option>
-                  <option value="640:360">{t('videoConverter:settings.resolutions.360p')}</option>
-                </select>
-              </div>
+              {!['mp3', 'wav', 'aac', 'm4a', 'ogg'].includes(outputFormat) && (
+                <div className="setting-group">
+                  <label>{t('videoConverter:settings.resolution')}</label>
+                  <select value={resolution} onChange={(e) => setResolution(e.target.value)}>
+                    <option value="original">{t('videoConverter:settings.resolutions.original')}</option>
+                    <option value="1920:1080">{t('videoConverter:settings.resolutions.1080p')}</option>
+                    <option value="1280:720">{t('videoConverter:settings.resolutions.720p')}</option>
+                    <option value="854:480">{t('videoConverter:settings.resolutions.480p')}</option>
+                    <option value="640:360">{t('videoConverter:settings.resolutions.360p')}</option>
+                  </select>
+                </div>
+              )}
             </div>
 
             {isConverting && (

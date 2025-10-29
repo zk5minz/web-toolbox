@@ -1,6 +1,6 @@
 {
   "title": "動画コンバーター",
-  "description": "動画ファイルを異なる形式に変換",
+  "description": "動画ファイルを異なる形式に変換またはMP3で音声を抽出",
   "breadcrumb": {
     "home": "ホーム",
     "tools": "ツール",
@@ -15,12 +15,22 @@
   "settings": {
     "outputFormat": "出力形式",
     "quality": "品質",
+    "audioBitrate": "オーディオビットレート",
     "resolution": "解像度",
+    "formatGroups": {
+      "video": "動画形式",
+      "audio": "オーディオ形式（音声抽出）"
+    },
     "formats": {
       "mp4": "MP4（H.264）",
       "webm": "WEBM（VP9）",
       "avi": "AVI（MPEG-4）",
-      "mov": "MOV（QuickTime）"
+      "mov": "MOV（QuickTime）",
+      "mp3": "MP3（音声のみ）",
+      "wav": "WAV（音声のみ）",
+      "aac": "AAC（音声のみ）",
+      "m4a": "M4A（音声のみ）",
+      "ogg": "OGG（音声のみ）"
     },
     "qualities": {
       "low": "低（ファイルサイズ小）",
@@ -58,7 +68,7 @@
     },
     "formats": {
       "title": "複数の形式",
-      "description": "MP4、WEBM、AVI、MOV形式間で変換。すべての主要な動画コーデックとコンテナをサポート。"
+      "description": "MP4、WEBM、AVI、MOV動画形式間で変換またはMP3、WAV、AAC、M4A、OGGで音声を抽出。すべての主要なコーデックをサポート。"
     },
     "quality": {
       "title": "品質管理",
@@ -78,7 +88,7 @@
     }
   },
   "meta": {
-    "title": "無料動画コンバーター - MP4、WEBM、AVI、MOV｜オンラインツール",
-    "description": "MP4、WEBM、AVI、MOV形式間で動画ファイルを変換。解像度と品質管理が可能な無料オンライン動画コンバーター。100%プライベート、ブラウザベース。"
+    "title": "無料動画コンバーター＆MP3抽出 - MP4、WEBM、AVI、MP3｜オンラインツール",
+    "description": "動画ファイルを変換またはMP3、WAV、AACで音声を抽出。MP4、WEBM、AVI、MOV形式をサポート。無料オンライン動画→MP3コンバーター。100%プライベート、ブラウザベース。"
   }
 }

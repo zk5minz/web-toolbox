@@ -1,6 +1,6 @@
 {
   "title": "视频转换器",
-  "description": "将视频文件转换为不同格式",
+  "description": "将视频文件转换为不同格式或提取音频为MP3",
   "breadcrumb": {
     "home": "首页",
     "tools": "工具",
@@ -15,12 +15,22 @@
   "settings": {
     "outputFormat": "输出格式",
     "quality": "质量",
+    "audioBitrate": "音频比特率",
     "resolution": "分辨率",
+    "formatGroups": {
+      "video": "视频格式",
+      "audio": "音频格式（提取音频）"
+    },
     "formats": {
       "mp4": "MP4（H.264）",
       "webm": "WEBM（VP9）",
       "avi": "AVI（MPEG-4）",
-      "mov": "MOV（QuickTime）"
+      "mov": "MOV（QuickTime）",
+      "mp3": "MP3（仅音频）",
+      "wav": "WAV（仅音频）",
+      "aac": "AAC（仅音频）",
+      "m4a": "M4A（仅音频）",
+      "ogg": "OGG（仅音频）"
     },
     "qualities": {
       "low": "低（文件较小）",
@@ -58,7 +68,7 @@
     },
     "formats": {
       "title": "多种格式",
-      "description": "在MP4、WEBM、AVI和MOV格式之间转换。支持所有主要视频编解码器和容器。"
+      "description": "在MP4、WEBM、AVI、MOV视频格式之间转换或提取音频为MP3、WAV、AAC、M4A、OGG。支持所有主要编解码器。"
     },
     "quality": {
       "title": "质量控制",
@@ -78,7 +88,7 @@
     }
   },
   "meta": {
-    "title": "免费视频转换器 - MP4、WEBM、AVI、MOV｜在线工具",
-    "description": "在MP4、WEBM、AVI和MOV格式之间转换视频文件。具有分辨率和质量控制的免费在线视频转换器。100%私密，基于浏览器。"
+    "title": "免费视频转换器和MP3提取器 - MP4、WEBM、AVI、MP3｜在线工具",
+    "description": "转换视频文件或提取音频为MP3、WAV、AAC。支持MP4、WEBM、AVI、MOV格式。免费在线视频→MP3转换器。100%私密，基于浏览器。"
   }
 }

@@ -1,6 +1,6 @@
 {
   "title": "Convertidor de Video",
-  "description": "Convierte archivos de video a diferentes formatos",
+  "description": "Convierte archivos de video a diferentes formatos o extrae audio como MP3",
   "breadcrumb": {
     "home": "Inicio",
     "tools": "Herramientas",
@@ -15,12 +15,22 @@
   "settings": {
     "outputFormat": "Formato de Salida",
     "quality": "Calidad",
+    "audioBitrate": "Bitrate de Audio",
     "resolution": "Resolución",
+    "formatGroups": {
+      "video": "Formatos de Video",
+      "audio": "Formatos de Audio (Extraer Audio)"
+    },
     "formats": {
       "mp4": "MP4 (H.264)",
       "webm": "WEBM (VP9)",
       "avi": "AVI (MPEG-4)",
-      "mov": "MOV (QuickTime)"
+      "mov": "MOV (QuickTime)",
+      "mp3": "MP3 (Solo Audio)",
+      "wav": "WAV (Solo Audio)",
+      "aac": "AAC (Solo Audio)",
+      "m4a": "M4A (Solo Audio)",
+      "ogg": "OGG (Solo Audio)"
     },
     "qualities": {
       "low": "Baja (Archivo pequeño)",
@@ -58,7 +68,7 @@
     },
     "formats": {
       "title": "Múltiples Formatos",
-      "description": "Convierte entre formatos MP4, WEBM, AVI y MOV. Compatible con todos los códecs y contenedores de video principales."
+      "description": "Convierte entre formatos de video MP4, WEBM, AVI, MOV o extrae audio como MP3, WAV, AAC, M4A, OGG. Compatible con todos los códecs principales."
     },
     "quality": {
       "title": "Control de Calidad",
@@ -78,7 +88,7 @@
     }
   },
   "meta": {
-    "title": "Convertidor de Video Gratis - MP4, WEBM, AVI, MOV | Herramientas en Línea",
-    "description": "Convierte archivos de video entre formatos MP4, WEBM, AVI y MOV. Convertidor de video en línea gratuito con control de resolución y calidad. 100% privado, basado en navegador."
+    "title": "Convertidor de Video Gratis y Extractor MP3 - MP4, WEBM, AVI, MP3 | Herramientas en Línea",
+    "description": "Convierte archivos de video o extrae audio como MP3, WAV, AAC. Soporta formatos MP4, WEBM, AVI, MOV. Convertidor gratuito de video a MP3 en línea. 100% privado, basado en navegador."
   }
 }

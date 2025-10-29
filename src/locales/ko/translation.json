@@ -35,8 +35,8 @@
       "description": "MP3, WAV, OGG, M4A, FLAC 형식 간 오디오 파일 변환"
     },
     "videoConverter": {
-      "title": "비디오 변환기",
-      "description": "MP4, WEBM, AVI, MOV 형식 간 비디오 파일 변환"
+      "title": "비디오 변환기 & MP3 추출기",
+      "description": "비디오 파일 변환 또는 모든 비디오에서 MP3, WAV, AAC로 오디오 추출"
     },
     "qrGenerator": {
       "title": "QR 코드 생성기",

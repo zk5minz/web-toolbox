@@ -35,8 +35,8 @@
       "description": "MP3、WAV、OGG、M4A、FLAC形式間で音声ファイルを変換"
     },
     "videoConverter": {
-      "title": "動画変換",
-      "description": "MP4、WEBM、AVI、MOV形式間で動画ファイルを変換"
+      "title": "動画変換＆MP3抽出",
+      "description": "動画ファイルを変換または任意の動画からMP3、WAV、AACで音声を抽出"
     },
     "qrGenerator": {
       "title": "QRコード生成",

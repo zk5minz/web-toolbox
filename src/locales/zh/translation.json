@@ -35,8 +35,8 @@
       "description": "在MP3、WAV、OGG、M4A和FLAC格式之间转换音频文件"
     },
     "videoConverter": {
-      "title": "视频转换器",
-      "description": "在MP4、WEBM、AVI和MOV格式之间转换视频文件"
+      "title": "视频转换器和MP3提取器",
+      "description": "转换视频文件或从任何视频中提取音频为MP3、WAV、AAC"
     },
     "qrGenerator": {
       "title": "二维码生成器",

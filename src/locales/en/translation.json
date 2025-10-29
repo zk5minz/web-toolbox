@@ -35,8 +35,8 @@
       "description": "Convert audio files between MP3, WAV, OGG, M4A, and FLAC formats"
     },
     "videoConverter": {
-      "title": "Video Converter",
-      "description": "Convert video files between MP4, WEBM, AVI, and MOV formats"
+      "title": "Video Converter & MP3 Extractor",
+      "description": "Convert video files or extract audio as MP3, WAV, AAC from any video"
     },
     "qrGenerator": {
       "title": "QR Code Generator",

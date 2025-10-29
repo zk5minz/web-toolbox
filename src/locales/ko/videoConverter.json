@@ -1,6 +1,6 @@
 {
   "title": "비디오 변환기",
-  "description": "비디오 파일을 다른 형식으로 변환하세요",
+  "description": "비디오 파일을 다른 형식으로 변환하거나 MP3로 오디오를 추출하세요",
   "breadcrumb": {
     "home": "홈",
     "tools": "도구",
@@ -15,12 +15,22 @@
   "settings": {
     "outputFormat": "출력 형식",
     "quality": "품질",
+    "audioBitrate": "오디오 비트레이트",
     "resolution": "해상도",
+    "formatGroups": {
+      "video": "비디오 형식",
+      "audio": "오디오 형식 (오디오 추출)"
+    },
     "formats": {
       "mp4": "MP4 (H.264)",
       "webm": "WEBM (VP9)",
       "avi": "AVI (MPEG-4)",
-      "mov": "MOV (QuickTime)"
+      "mov": "MOV (QuickTime)",
+      "mp3": "MP3 (오디오만)",
+      "wav": "WAV (오디오만)",
+      "aac": "AAC (오디오만)",
+      "m4a": "M4A (오디오만)",
+      "ogg": "OGG (오디오만)"
     },
     "qualities": {
       "low": "낮음 (작은 파일)",
@@ -58,7 +68,7 @@
     },
     "formats": {
       "title": "다양한 형식",
-      "description": "MP4, WEBM, AVI, MOV 형식 간 변환. 모든 주요 비디오 코덱 및 컨테이너 지원."
+      "description": "MP4, WEBM, AVI, MOV 비디오 형식 간 변환 또는 MP3, WAV, AAC, M4A, OGG로 오디오 추출. 모든 주요 코덱 지원."
     },
     "quality": {
       "title": "품질 제어",
@@ -78,7 +88,7 @@
     }
   },
   "meta": {
-    "title": "무료 비디오 변환기 - MP4, WEBM, AVI, MOV | 온라인 도구",
-    "description": "MP4, WEBM, AVI, MOV 형식 간 비디오 파일 변환. 해상도 및 품질 제어가 가능한 무료 온라인 비디오 변환기. 100% 프라이빗, 브라우저 기반."
+    "title": "무료 비디오 변환기 & MP3 추출기 - MP4, WEBM, AVI, MP3 | 온라인 도구",
+    "description": "비디오 파일 변환 또는 MP3, WAV, AAC로 오디오 추출. MP4, WEBM, AVI, MOV 형식 지원. 무료 온라인 비디오→MP3 변환기. 100% 프라이빗, 브라우저 기반."
   }
 }

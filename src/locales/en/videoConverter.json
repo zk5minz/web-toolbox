@@ -1,6 +1,6 @@
 {
   "title": "Video Converter",
-  "description": "Convert video files to different formats",
+  "description": "Convert video files to different formats or extract audio as MP3",
   "breadcrumb": {
     "home": "Home",
     "tools": "Tools",
@@ -15,12 +15,22 @@
   "settings": {
     "outputFormat": "Output Format",
     "quality": "Quality",
+    "audioBitrate": "Audio Bitrate",
     "resolution": "Resolution",
+    "formatGroups": {
+      "video": "Video Formats",
+      "audio": "Audio Formats (Extract Audio)"
+    },
     "formats": {
       "mp4": "MP4 (H.264)",
       "webm": "WEBM (VP9)",
       "avi": "AVI (MPEG-4)",
-      "mov": "MOV (QuickTime)"
+      "mov": "MOV (QuickTime)",
+      "mp3": "MP3 (Audio Only)",
+      "wav": "WAV (Audio Only)",
+      "aac": "AAC (Audio Only)",
+      "m4a": "M4A (Audio Only)",
+      "ogg": "OGG (Audio Only)"
     },
     "qualities": {
       "low": "Low (Smaller file)",
@@ -58,7 +68,7 @@
     },
     "formats": {
       "title": "Multiple Formats",
-      "description": "Convert between MP4, WEBM, AVI, and MOV formats. Support for all major video codecs and containers."
+      "description": "Convert between MP4, WEBM, AVI, MOV video formats or extract audio as MP3, WAV, AAC, M4A, OGG. Support for all major codecs."
     },
     "quality": {
       "title": "Quality Control",
@@ -78,7 +88,7 @@
     }
   },
   "meta": {
-    "title": "Free Video Converter - MP4, WEBM, AVI, MOV | Online Tools",
-    "description": "Convert video files between MP4, WEBM, AVI, and MOV formats. Free online video converter with resolution and quality control. 100% private, browser-based."
+    "title": "Free Video Converter & MP3 Extractor - MP4, WEBM, AVI, MP3 | Online Tools",
+    "description": "Convert video files or extract audio as MP3, WAV, AAC. Support MP4, WEBM, AVI, MOV formats. Free online video to MP3 converter. 100% private, browser-based."
   }
 }
