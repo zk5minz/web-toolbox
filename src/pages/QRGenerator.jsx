@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './CharacterCounter.css';
 
 function QRGenerator() {
   const { t } = useTranslation(['qrgenerator', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/qr-generator');
   
   // SEO Meta Tags
   useEffect(() => {

@@ -2,10 +2,15 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './CharacterCounter.css';
 
 function CharacterCounter() {
   const { t, i18n } = useTranslation(['characterCounter', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/character-counter');
+  
   const [text, setText] = useState('');
 
   // Load saved text from localStorage

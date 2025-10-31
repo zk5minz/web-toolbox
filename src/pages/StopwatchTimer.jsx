@@ -2,10 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './StopwatchTimer.css';
 
 function StopwatchTimer() {
   const { t } = useTranslation(['stopwatchTimer', 'translation']);
+
+  // Set canonical URL
+  useCanonicalUrl('/stopwatch-timer');
 
   // SEO Meta Tags
   useEffect(() => {

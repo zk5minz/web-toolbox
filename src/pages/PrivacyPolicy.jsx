@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './LegalPage.css';
 
 function PrivacyPolicy() {
+  // Set canonical URL
+  useCanonicalUrl('/privacy-policy');
+  
   useEffect(() => {
     document.title = 'Privacy Policy - Web Toolbox';
     const metaDescription = document.querySelector('meta[name="description"]');

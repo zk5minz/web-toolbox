@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { removeBackground } from '@imgly/background-removal';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 
 const BackgroundRemover = () => {
   const { t } = useTranslation(['backgroundRemover', 'translation']);
+
+  // Set canonical URL
+  useCanonicalUrl('/background-remover');
 
   // SEO Meta Tags
   useEffect(() => {

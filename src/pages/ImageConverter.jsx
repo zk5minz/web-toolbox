@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+import { useCanonicalUrl } from '../utils/seoHelpers'
 import JSZip from 'jszip'
 import ImageUploader from '../components/ImageUploader'
 import FileList from '../components/FileList'
@@ -26,6 +27,9 @@ import { updateStats } from '../utils/stats'
 
 function ImageConverter() {
   const { t, i18n } = useTranslation(['imageConverter', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/image-converter');
   
   // SEO Meta Tags
   useEffect(() => {

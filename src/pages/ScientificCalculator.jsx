@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import * as math from 'mathjs';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './ScientificCalculator.css';
 
 function ScientificCalculator() {
   const { t, i18n } = useTranslation(['scientificCalculator', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/scientific-calculator');
   const [activeTab, setActiveTab] = useState('basic');
   const [input, setInput] = useState('');
   const [result, setResult] = useState('0');

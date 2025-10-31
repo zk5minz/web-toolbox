@@ -2,10 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './Notepad.css';
 
 function Notepad() {
   const { t, i18n } = useTranslation(['notepad', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/notepad');
   const [text, setText] = useState('');
   const [darkMode, setDarkMode] = useState(false);
   const [fontSize, setFontSize] = useState(14);

@@ -1,28 +1,8 @@
-# robots.txt for Web Toolbox
-
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap
 Sitemap: https://web-toolbox-7dx.pages.dev/sitemap.xml
 
-# Disallow certain paths (if any)
-Disallow: /api/
-
-# Allow search engines to crawl all tools
-Allow: /notepad
-Allow: /image-converter
-Allow: /background-remover
-Allow: /password-generator
-Allow: /scientific-calculator
-Allow: /stopwatch-timer
-Allow: /character-counter
-Allow: /number-counter
-Allow: /world-clock
-Allow: /qr-generator
-Allow: /color-extractor
-Allow: /audio-converter
-Allow: /video-converter
-
-# Crawl delay (optional, in seconds)
+# Crawl delay (optional, adjust as needed)
 Crawl-delay: 1

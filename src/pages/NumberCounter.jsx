@@ -2,10 +2,14 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './NumberCounter.css';
 
 function NumberCounter() {
   const { t } = useTranslation(['numbercounter', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/number-counter');
   
   const [count, setCount] = useState(0);
   const [increment, setIncrement] = useState(1);

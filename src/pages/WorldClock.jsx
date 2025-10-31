@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import '../styles/WorldClock.css';
 
 const CITIES = [
@@ -80,6 +81,9 @@ const DEFAULT_CITIES = ['Seoul', 'New York', 'London', 'Tokyo'];
 
 function WorldClock() {
   const { t, i18n } = useTranslation(['worldclock', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/world-clock');
   
   // SEO Meta Tags
   useEffect(() => {

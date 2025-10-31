@@ -4,10 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile, toBlobURL } from '@ffmpeg/util';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './VideoConverter.css';
 
 function VideoConverter() {
   const { t, i18n } = useTranslation(['videoConverter', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/video-converter');
   const [file, setFile] = useState(null);
   const [outputFormat, setOutputFormat] = useState('mp4');
   const [isAudioOnly, setIsAudioOnly] = useState(false);

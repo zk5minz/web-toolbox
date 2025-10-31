@@ -2,10 +2,14 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './Home.css';
 
 function Home() {
   const { t, i18n } = useTranslation();
+  
+  // Set canonical URL
+  useCanonicalUrl('/');
   
   // SEO Meta Tags
   useEffect(() => {

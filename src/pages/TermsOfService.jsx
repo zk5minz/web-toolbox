@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './LegalPage.css';
 
 function TermsOfService() {
+  // Set canonical URL
+  useCanonicalUrl('/terms-of-service');
+  
   useEffect(() => {
     document.title = 'Terms of Service - Web Toolbox';
     const metaDescription = document.querySelector('meta[name="description"]');

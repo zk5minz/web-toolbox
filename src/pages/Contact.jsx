@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './LegalPage.css';
 
 function Contact() {
+  // Set canonical URL
+  useCanonicalUrl('/contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',

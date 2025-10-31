@@ -4,10 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile, toBlobURL } from '@ffmpeg/util';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './AudioConverter.css';
 
 function AudioConverter() {
   const { t } = useTranslation(['audioConverter', 'translation']);
+  
+  // Set canonical URL
+  useCanonicalUrl('/audio-converter');
   
   const [audioFile, setAudioFile] = useState(null);
   const [outputFormat, setOutputFormat] = useState('mp3');

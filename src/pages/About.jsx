@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useCanonicalUrl } from '../utils/seoHelpers';
 import './LegalPage.css';
 
 function About() {
+  // Set canonical URL
+  useCanonicalUrl('/about');
+  
   useEffect(() => {
     document.title = 'About Us - Web Toolbox';
     const metaDescription = document.querySelector('meta[name="description"]');
