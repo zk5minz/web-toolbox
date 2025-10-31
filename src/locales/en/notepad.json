@@ -14,8 +14,13 @@
     "view": "View",
     "help": "Help"
   },
+  "tabs": {
+    "newTab": "New Tab",
+    "close": "Close"
+  },
   "fileMenu": {
-    "new": "New",
+    "newWindow": "New Window",
+    "newTab": "New Tab (Ctrl+T)",
     "open": "Open",
     "save": "Save (Ctrl+S)",
     "saveAs": "Save As",
@@ -45,7 +50,7 @@
     "shortcutsText": "Keyboard shortcuts:\\nCtrl+S - Save\\nCtrl+Z - Undo\\nCtrl+Y - Redo\\nCtrl+A - Select All\\nCtrl+P - Print"
   },
   "toolbar": {
-    "new": "New",
+    "newWindow": "New Window",
     "open": "Open",
     "save": "Save (Ctrl+S)",
     "cut": "Cut (Ctrl+X)",
@@ -91,7 +96,9 @@
     "saveFailed": "Failed to save file",
     "enterFilename": "Enter filename:",
     "copiedToClipboard": "Text copied to clipboard!",
-    "copyFailed": "Failed to copy to clipboard"
+    "copyFailed": "Failed to copy to clipboard",
+    "cannotCloseLastTab": "Cannot close the last tab.",
+    "confirmCloseTab": "You have unsaved changes. Close this tab?"
   },
   "placeholder": "Start typing...",
   "features": {

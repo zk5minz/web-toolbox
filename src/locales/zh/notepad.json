@@ -14,8 +14,13 @@
     "view": "查看",
     "help": "帮助"
   },
+  "tabs": {
+    "newTab": "新标签页",
+    "close": "关闭"
+  },
   "fileMenu": {
-    "new": "新建",
+    "newWindow": "新窗口",
+    "newTab": "新标签页 (Ctrl+T)",
     "open": "打开",
     "save": "保存 (Ctrl+S)",
     "saveAs": "另存为",
@@ -45,7 +50,7 @@
     "shortcutsText": "键盘快捷键：\\nCtrl+S - 保存\\nCtrl+Z - 撤销\\nCtrl+Y - 重做\\nCtrl+A - 全选\\nCtrl+P - 打印"
   },
   "toolbar": {
-    "new": "新建",
+    "newWindow": "新窗口",
     "open": "打开",
     "save": "保存 (Ctrl+S)",
     "cut": "剪切 (Ctrl+X)",
@@ -91,7 +96,9 @@
     "saveFailed": "保存文件失败",
     "enterFilename": "输入文件名：",
     "copiedToClipboard": "文本已复制到剪贴板！",
-    "copyFailed": "复制到剪贴板失败"
+    "copyFailed": "复制到剪贴板失败",
+    "cannotCloseLastTab": "无法关闭最后一个标签页。",
+    "confirmCloseTab": "您有未保存的更改。关闭此标签页？"
   },
   "placeholder": "开始输入...",
   "features": {

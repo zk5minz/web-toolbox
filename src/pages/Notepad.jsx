@@ -10,7 +10,47 @@ function Notepad() {
   
   // Set canonical URL
   useCanonicalUrl('/notepad');
-  const [text, setText] = useState('');
+  
+  // 탭 관련 상태
+  const [tabs, setTabs] = useState(() => {
+    const saved = localStorage.getItem('notepad-tabs');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return [{
+          id: 1,
+          name: 'Untitled 1',
+          text: '',
+          history: [''],
+          historyIndex: 0,
+          fileName: '',
+          isModified: false
+        }];
+      }
+    }
+    return [{
+      id: 1,
+      name: 'Untitled 1',
+      text: '',
+      history: [''],
+      historyIndex: 0,
+      fileName: '',
+      isModified: false
+    }];
+  });
+  const [activeTabId, setActiveTabId] = useState(() => {
+    const saved = localStorage.getItem('notepad-active-tab');
+    return saved ? parseInt(saved) : 1;
+  });
+  const [nextTabId, setNextTabId] = useState(() => {
+    const maxId = Math.max(...tabs.map(t => t.id));
+    return maxId + 1;
+  });
+  
+  // 현재 활성 탭 찾기
+  const activeTab = tabs.find(tab => tab.id === activeTabId) || tabs[0];
+  
   const [darkMode, setDarkMode] = useState(false);
   const [fontSize, setFontSize] = useState(14);
   const [zoomLevel, setZoomLevel] = useState(1);
@@ -21,15 +61,11 @@ function Notepad() {
   const [showViewMenu, setShowViewMenu] = useState(false);
   const [showHelpMenu, setShowHelpMenu] = useState(false);
   const [showFontSizeMenu, setShowFontSizeMenu] = useState(false);
-  const [history, setHistory] = useState(['']);
-  const [historyIndex, setHistoryIndex] = useState(0);
   const [isComposing, setIsComposing] = useState(false);
-  const [currentFileName, setCurrentFileName] = useState('');
   const [showShareModal, setShowShareModal] = useState(false);
   const textareaRef = useRef(null);
   const fontSizeButtonRef = useRef(null);
   const typingTimerRef = useRef(null);
-  const fileHandleRef = useRef(null);
 
   // SEO Meta Tags
   useEffect(() => {
@@ -42,27 +78,21 @@ function Notepad() {
 
   // Load from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('notepad-text');
     const savedDarkMode = localStorage.getItem('notepad-darkmode');
     const savedFontSize = localStorage.getItem('notepad-fontsize');
 
-    if (saved) {
-      setText(saved);
-      // Initialize history with saved text
-      setHistory([saved]);
-      setHistoryIndex(0);
-    }
     if (savedDarkMode) setDarkMode(JSON.parse(savedDarkMode));
     if (savedFontSize) setFontSize(parseInt(savedFontSize));
   }, []);
 
-  // Auto-save to localStorage
+  // Auto-save tabs to localStorage
   useEffect(() => {
     const timer = setTimeout(() => {
-      localStorage.setItem('notepad-text', text);
+      localStorage.setItem('notepad-tabs', JSON.stringify(tabs));
+      localStorage.setItem('notepad-active-tab', activeTabId.toString());
     }, 500);
     return () => clearTimeout(timer);
-  }, [text]);
+  }, [tabs, activeTabId]);
 
   useEffect(() => {
     localStorage.setItem('notepad-darkmode', JSON.stringify(darkMode));
@@ -72,28 +102,37 @@ function Notepad() {
     localStorage.setItem('notepad-fontsize', fontSize.toString());
   }, [fontSize]);
 
+  // 탭 업데이트 헬퍼 함수
+  const updateTab = (tabId, updates) => {
+    setTabs(prevTabs => prevTabs.map(tab => 
+      tab.id === tabId ? { ...tab, ...updates } : tab
+    ));
+  };
+
   // Save to history helper
   const saveToHistory = (textToSave) => {
-    // Only save if text is different from current history entry
-    if (history[historyIndex] !== textToSave) {
-      const newHistory = history.slice(0, historyIndex + 1);
+    const currentHistory = activeTab.history;
+    const currentIndex = activeTab.historyIndex;
+    
+    if (currentHistory[currentIndex] !== textToSave) {
+      const newHistory = currentHistory.slice(0, currentIndex + 1);
       newHistory.push(textToSave);
-      setHistory(newHistory);
-      setHistoryIndex(newHistory.length - 1);
+      updateTab(activeTabId, { 
+        history: newHistory, 
+        historyIndex: newHistory.length - 1 
+      });
     }
   };
 
-  // Handle text change - only update text, don't save to history yet
+  // Handle text change
   const handleTextChange = (e) => {
     const newText = e.target.value;
-    setText(newText);
+    updateTab(activeTabId, { text: newText, isModified: true });
 
-    // Clear previous typing timer
     if (typingTimerRef.current) {
       clearTimeout(typingTimerRef.current);
     }
 
-    // Set new timer to save after 1 second of no typing
     if (!isComposing) {
       typingTimerRef.current = setTimeout(() => {
         saveToHistory(newText);
@@ -101,73 +140,111 @@ function Notepad() {
     }
   };
 
-  // Handle key down - save to history on space or enter
+  // Handle key down
   const handleKeyDown = (e) => {
-    // Save to history on space or enter (but not during Korean composition)
     if ((e.key === ' ' || e.key === 'Enter') && !isComposing) {
-      // Clear typing timer
       if (typingTimerRef.current) {
         clearTimeout(typingTimerRef.current);
       }
 
-      // Save current text to history
-      // Use setTimeout to ensure the new character is included
       setTimeout(() => {
-        saveToHistory(text + (e.key === ' ' ? ' ' : '\n'));
+        saveToHistory(activeTab.text + (e.key === ' ' ? ' ' : '\n'));
       }, 0);
     }
   };
 
-  // Handle composition events for Korean input
+  // Handle composition events
   const handleCompositionStart = () => {
     setIsComposing(true);
-    // Clear typing timer during composition
     if (typingTimerRef.current) {
       clearTimeout(typingTimerRef.current);
     }
   };
 
-  const handleCompositionEnd = (e) => {
+  const handleCompositionEnd = () => {
     setIsComposing(false);
-    // Don't immediately save on composition end
-    // Let the typing timer handle it, or wait for space/enter
   };
 
   // Undo/Redo
   const handleUndo = () => {
-    if (historyIndex > 0) {
-      // Clear any pending typing timer
+    if (activeTab.historyIndex > 0) {
       if (typingTimerRef.current) {
         clearTimeout(typingTimerRef.current);
       }
 
-      const newIndex = historyIndex - 1;
-      setHistoryIndex(newIndex);
-      setText(history[newIndex]);
+      const newIndex = activeTab.historyIndex - 1;
+      updateTab(activeTabId, {
+        text: activeTab.history[newIndex],
+        historyIndex: newIndex
+      });
     }
   };
 
   const handleRedo = () => {
-    if (historyIndex < history.length - 1) {
-      // Clear any pending typing timer
+    if (activeTab.historyIndex < activeTab.history.length - 1) {
       if (typingTimerRef.current) {
         clearTimeout(typingTimerRef.current);
       }
 
-      const newIndex = historyIndex + 1;
-      setHistoryIndex(newIndex);
-      setText(history[newIndex]);
+      const newIndex = activeTab.historyIndex + 1;
+      updateTab(activeTabId, {
+        text: activeTab.history[newIndex],
+        historyIndex: newIndex
+      });
     }
   };
 
+  // 새 탭 생성
+  const handleNewTab = () => {
+    const newTab = {
+      id: nextTabId,
+      name: `Untitled ${nextTabId}`,
+      text: '',
+      history: [''],
+      historyIndex: 0,
+      fileName: '',
+      isModified: false
+    };
+    setTabs(prevTabs => [...prevTabs, newTab]);
+    setActiveTabId(nextTabId);
+    setNextTabId(nextTabId + 1);
+  };
+
+  // 탭 닫기
+  const handleCloseTab = (tabId, e) => {
+    e.stopPropagation();
+    
+    if (tabs.length === 1) {
+      alert(t('notepad:messages.cannotCloseLastTab') || '마지막 탭은 닫을 수 없습니다.');
+      return;
+    }
+
+    const tabToClose = tabs.find(t => t.id === tabId);
+    if (tabToClose.isModified && tabToClose.text) {
+      if (!confirm(t('notepad:messages.confirmCloseTab') || '저장되지 않은 변경사항이 있습니다. 탭을 닫으시겠습니까?')) {
+        return;
+      }
+    }
+
+    const newTabs = tabs.filter(tab => tab.id !== tabId);
+    setTabs(newTabs);
+
+    if (activeTabId === tabId) {
+      const currentIndex = tabs.findIndex(t => t.id === tabId);
+      const nextTab = newTabs[currentIndex] || newTabs[currentIndex - 1] || newTabs[0];
+      setActiveTabId(nextTab.id);
+    }
+  };
+
+  // 탭 전환
+  const handleTabClick = (tabId) => {
+    setActiveTabId(tabId);
+  };
+
   // File operations
-  const handleNew = () => {
-    if (text && !confirm(t('notepad:messages.confirmNew'))) return;
-    setText('');
-    setHistory(['']);
-    setHistoryIndex(0);
-    setCurrentFileName('');
-    fileHandleRef.current = null;
+  const handleNewWindow = () => {
+    // 현재 URL로 새 창 열기
+    window.open(window.location.href, '_blank');
   };
 
   const handleOpen = () => {
@@ -180,12 +257,14 @@ function Notepad() {
         const reader = new FileReader();
         reader.onload = (event) => {
           const loadedText = event.target.result;
-          setText(loadedText);
-          // Reset history with loaded text
-          setHistory([loadedText]);
-          setHistoryIndex(0);
-          // Set file name
-          setCurrentFileName(file.name);
+          updateTab(activeTabId, {
+            text: loadedText,
+            history: [loadedText],
+            historyIndex: 0,
+            fileName: file.name,
+            name: file.name,
+            isModified: false
+          });
         };
         reader.readAsText(file);
       }
@@ -194,25 +273,6 @@ function Notepad() {
   };
 
   const handleSave = async () => {
-    // If we have a file handle, use it to save
-    if (fileHandleRef.current) {
-      try {
-        const writable = await fileHandleRef.current.createWritable();
-        await writable.write(text);
-        await writable.close();
-        alert(t('notepad:messages.fileSaved'));
-        return;
-      } catch (err) {
-        console.error('Error saving file:', err);
-        // Fall through to Save As if error
-      }
-    }
-
-    // No file handle, trigger Save As
-    handleSaveAs();
-  };
-
-  const handleSaveAs = async () => {
     // Check if File System Access API is supported
     if ('showSaveFilePicker' in window) {
       try {
@@ -221,17 +281,19 @@ function Notepad() {
             description: 'Text Files',
             accept: { 'text/plain': ['.txt'] },
           }],
-          suggestedName: currentFileName || 'notepad.txt',
+          suggestedName: activeTab.fileName || `${activeTab.name}.txt`,
         });
 
         const writable = await handle.createWritable();
-        await writable.write(text);
+        await writable.write(activeTab.text);
         await writable.close();
 
-        // Save file handle and file name
-        fileHandleRef.current = handle;
-        setCurrentFileName(handle.name);
-        alert('File saved successfully!');
+        updateTab(activeTabId, {
+          fileName: handle.name,
+          name: handle.name,
+          isModified: false
+        });
+        alert(t('notepad:messages.fileSaved'));
       } catch (err) {
         if (err.name !== 'AbortError') {
           console.error('Error saving file:', err);
@@ -240,35 +302,41 @@ function Notepad() {
       }
     } else {
       // Fallback: traditional download
-      const filename = prompt(t('notepad:messages.enterFilename'), currentFileName || 'notepad.txt');
-      if (filename) {
-        const blob = new Blob([text], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        const finalFilename = filename.endsWith('.txt') ? filename : filename + '.txt';
-        a.download = finalFilename;
-        a.click();
-        URL.revokeObjectURL(url);
-        setCurrentFileName(finalFilename);
-      }
+      handleSaveAs();
+    }
+  };
+
+  const handleSaveAs = async () => {
+    const filename = prompt(t('notepad:messages.enterFilename'), activeTab.fileName || `${activeTab.name}.txt`);
+    if (filename) {
+      const blob = new Blob([activeTab.text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const finalFilename = filename.endsWith('.txt') ? filename : filename + '.txt';
+      a.download = finalFilename;
+      a.click();
+      URL.revokeObjectURL(url);
+      updateTab(activeTabId, {
+        fileName: finalFilename,
+        name: finalFilename,
+        isModified: false
+      });
     }
   };
 
   const handleShare = () => {
-    // Always show custom share modal
     setShowShareModal(true);
   };
 
   const handleCopyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(activeTab.text);
       alert(t('notepad:messages.copiedToClipboard'));
       setShowShareModal(false);
     } catch (err) {
-      // Fallback for older browsers
       const textarea = document.createElement('textarea');
-      textarea.value = text;
+      textarea.value = activeTab.text;
       document.body.appendChild(textarea);
       textarea.select();
       try {
@@ -284,17 +352,17 @@ function Notepad() {
 
   const handleEmailShare = () => {
     const subject = encodeURIComponent('Notepad');
-    const body = encodeURIComponent(text);
+    const body = encodeURIComponent(activeTab.text);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
     setShowShareModal(false);
   };
 
   const handleDownloadShare = () => {
-    const blob = new Blob([text], { type: 'text/plain' });
+    const blob = new Blob([activeTab.text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = currentFileName || 'notepad.txt';
+    a.download = activeTab.fileName || `${activeTab.name}.txt`;
     a.click();
     URL.revokeObjectURL(url);
     setShowShareModal(false);
@@ -319,8 +387,8 @@ function Notepad() {
       const textarea = textareaRef.current;
       const start = textarea.selectionStart;
       const end = textarea.selectionEnd;
-      const newText = text.substring(0, start) + clipboardText + text.substring(end);
-      setText(newText);
+      const newText = activeTab.text.substring(0, start) + clipboardText + activeTab.text.substring(end);
+      updateTab(activeTabId, { text: newText, isModified: true });
     } catch (err) {
       console.error('Failed to paste:', err);
     }
@@ -331,8 +399,8 @@ function Notepad() {
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
     if (start !== end) {
-      const newText = text.substring(0, start) + text.substring(end);
-      setText(newText);
+      const newText = activeTab.text.substring(0, start) + activeTab.text.substring(end);
+      updateTab(activeTabId, { text: newText, isModified: true });
     }
   };
 
@@ -340,7 +408,7 @@ function Notepad() {
     textareaRef.current?.select();
   };
 
-  // View operations - Screen Zoom
+  // View operations
   const handleZoomIn = () => {
     setZoomLevel(prev => Math.min(prev + 0.1, 2));
   };
@@ -356,13 +424,13 @@ function Notepad() {
   };
 
   // Calculate stats
-  const lines = text.split('\n').length;
+  const lines = activeTab.text.split('\n').length;
   const cursorPos = textareaRef.current?.selectionStart || 0;
-  const textBeforeCursor = text.substring(0, cursorPos);
+  const textBeforeCursor = activeTab.text.substring(0, cursorPos);
   const currentLine = textBeforeCursor.split('\n').length;
   const currentColumn = textBeforeCursor.split('\n').pop().length + 1;
-  const chars = text.length;
-  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const chars = activeTab.text.length;
+  const words = activeTab.text.trim() ? activeTab.text.trim().split(/\s+/).length : 0;
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -381,8 +449,15 @@ function Notepad() {
             e.preventDefault();
             handleRedo();
             break;
-          case 'a':
-            // Let default behavior work
+          case 't':
+            e.preventDefault();
+            handleNewTab();
+            break;
+          case 'w':
+            e.preventDefault();
+            if (tabs.length > 1) {
+              handleCloseTab(activeTabId, e);
+            }
             break;
           case 'p':
             e.preventDefault();
@@ -394,9 +469,9 @@ function Notepad() {
 
     document.addEventListener('keydown', handleGlobalKeyDown);
     return () => document.removeEventListener('keydown', handleGlobalKeyDown);
-  }, [historyIndex, history, text]);
+  }, [activeTabId, activeTab, tabs]);
 
-  // Cleanup timer on unmount
+  // Cleanup
   useEffect(() => {
     return () => {
       if (typingTimerRef.current) {
@@ -430,9 +505,7 @@ function Notepad() {
       {showAlert && (
         <div className="notepad-alert">
           <div className="alert-content">
-            <span>
-              {t('notepad:alert')}
-            </span>
+            <span>{t('notepad:alert')}</span>
             <button onClick={() => setShowAlert(false)} className="alert-close">×</button>
           </div>
         </div>
@@ -445,18 +518,39 @@ function Notepad() {
         <span>{t('translation:nav.tools')}</span>
         <span> {'>'} </span>
         <span>{t('notepad:breadcrumb.notepad')}</span>
-        <span className="file-name-display">
-          {currentFileName ? (
-            <>
-              <span style={{ marginLeft: '20px', marginRight: '8px' }}>{t('notepad:breadcrumb.file')} 📄</span>
-              <span style={{ color: '#888' }}>{currentFileName}</span>
-            </>
-          ) : (
-            <span style={{ marginLeft: '20px', color: '#888' }}>{t('notepad:breadcrumb.file')} 📄</span>
-          )}
-        </span>
         <div style={{ marginLeft: 'auto' }}>
           <LanguageSwitcher />
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="notepad-tabs">
+        <div className="tabs-container">
+          {tabs.map(tab => (
+            <div 
+              key={tab.id}
+              className={`tab ${tab.id === activeTabId ? 'active' : ''}`}
+              onClick={() => handleTabClick(tab.id)}
+            >
+              <span className="tab-name" title={tab.name}>
+                {tab.isModified && '● '}{tab.name}
+              </span>
+              <button 
+                className="tab-close"
+                onClick={(e) => handleCloseTab(tab.id, e)}
+                title={t('notepad:tabs.close') || '닫기'}
+              >
+                ×
+              </button>
+            </div>
+          ))}
+          <button 
+            className="new-tab-btn" 
+            onClick={handleNewTab}
+            title={t('notepad:tabs.newTab') || '새 탭'}
+          >
+            +
+          </button>
         </div>
       </div>
 
@@ -470,8 +564,10 @@ function Notepad() {
           {t('notepad:menu.file')}
           {showFileMenu && (
             <div className="dropdown-menu">
-              <div className="menu-option" onClick={handleNew}>{t('notepad:fileMenu.new')}</div>
+              <div className="menu-option" onClick={handleNewWindow}>{t('notepad:fileMenu.newWindow') || '새 창'}</div>
+              <div className="menu-option" onClick={handleNewTab}>{t('notepad:fileMenu.newTab') || '새 탭'}</div>
               <div className="menu-option" onClick={handleOpen}>{t('notepad:fileMenu.open')}</div>
+              <div className="menu-divider"></div>
               <div className="menu-option" onClick={handleSave}>{t('notepad:fileMenu.save')}</div>
               <div className="menu-option" onClick={handleSaveAs}>{t('notepad:fileMenu.saveAs')}</div>
               <div className="menu-divider"></div>
@@ -489,10 +585,10 @@ function Notepad() {
           {t('notepad:menu.edit')}
           {showEditMenu && (
             <div className="dropdown-menu">
-              <div className="menu-option" onClick={handleUndo} style={{ opacity: historyIndex <= 0 ? 0.5 : 1 }}>
+              <div className="menu-option" onClick={handleUndo} style={{ opacity: activeTab.historyIndex <= 0 ? 0.5 : 1 }}>
                 {t('notepad:editMenu.undo')}
               </div>
-              <div className="menu-option" onClick={handleRedo} style={{ opacity: historyIndex >= history.length - 1 ? 0.5 : 1 }}>
+              <div className="menu-option" onClick={handleRedo} style={{ opacity: activeTab.historyIndex >= activeTab.history.length - 1 ? 0.5 : 1 }}>
                 {t('notepad:editMenu.redo')}
               </div>
               <div className="menu-divider"></div>
@@ -547,7 +643,7 @@ function Notepad() {
 
       {/* Toolbar */}
       <div className="notepad-toolbar">
-        <button onClick={handleNew} title={t('notepad:toolbar.new')} className="toolbar-btn">📄</button>
+        <button onClick={handleNewWindow} title={t('notepad:toolbar.newWindow') || '새 창'} className="toolbar-btn">🪟</button>
         <button onClick={handleOpen} title={t('notepad:toolbar.open')} className="toolbar-btn">📂</button>
         <button onClick={handleSave} title={t('notepad:toolbar.save')} className="toolbar-btn">💾</button>
         <div className="toolbar-divider"></div>
@@ -555,8 +651,8 @@ function Notepad() {
         <button onClick={handleCopy} title={t('notepad:toolbar.copy')} className="toolbar-btn">📑</button>
         <button onClick={handlePaste} title={t('notepad:toolbar.paste')} className="toolbar-btn">📋</button>
         <div className="toolbar-divider"></div>
-        <button onClick={handleUndo} title={t('notepad:toolbar.undo')} className="toolbar-btn" disabled={historyIndex <= 0}>↶</button>
-        <button onClick={handleRedo} title={t('notepad:toolbar.redo')} className="toolbar-btn" disabled={historyIndex >= history.length - 1}>↷</button>
+        <button onClick={handleUndo} title={t('notepad:toolbar.undo')} className="toolbar-btn" disabled={activeTab.historyIndex <= 0}>↶</button>
+        <button onClick={handleRedo} title={t('notepad:toolbar.redo')} className="toolbar-btn" disabled={activeTab.historyIndex >= activeTab.history.length - 1}>↷</button>
         <div className="toolbar-divider"></div>
         <button onClick={handleZoomIn} title={t('notepad:toolbar.zoomIn')} className="toolbar-btn">🔍+</button>
         <button onClick={handleZoomOut} title={t('notepad:toolbar.zoomOut')} className="toolbar-btn">🔍−</button>
@@ -593,7 +689,7 @@ function Notepad() {
         <textarea
           ref={textareaRef}
           className="notepad-textarea"
-          value={text}
+          value={activeTab.text}
           onChange={handleTextChange}
           onCompositionStart={handleCompositionStart}
           onCompositionEnd={handleCompositionEnd}
