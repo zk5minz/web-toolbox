@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import './Home.css';
 
@@ -122,7 +122,7 @@ function Home() {
       <div className="home-wrapper">
         <header className="home-header">
           <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
-            <LanguageSwitcher />
+            <HeaderControls />
           </div>
           <h1>{t('home.title')}</h1>
           <p>{t('home.subtitle')}</p>

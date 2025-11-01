@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import './NumberCounter.css';
 
@@ -91,7 +91,7 @@ function NumberCounter() {
     <div className="number-counter-container">
       <header className="number-counter-header">
         <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
-          <LanguageSwitcher />
+          <HeaderControls />
         </div>
         <div className="breadcrumb">
           <Link

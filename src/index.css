@@ -1,9 +1,69 @@
 @import "tailwindcss";
 
+/* Dark Mode Support */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #1a1a1a;
+  color: #e5e5e5;
+}
+
 /* Global Feature Card Hover Effects - Applied to ALL pages */
 .feature-card:hover,
 div[style*="padding: 1.5rem"][style*="background: white"]:hover {
   transform: translateY(-4px) !important;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
   border-color: #667eea !important;
+}
+
+/* Image Converter Dark Mode */
+.dark .image-converter-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.dark .image-converter-title {
+  color: #ffffff !important;
+}
+
+.dark .image-converter-subtitle {
+  color: #b0b0b0 !important;
+}
+
+.dark .home-button {
+  background: white !important;
+  color: #6366f1 !important;
+}
+
+.dark .home-button:hover {
+  background: #1e40af !important;
+  color: white !important;
+}
+
+.dark .features-section {
+  background: #2d2d44 !important;
+  border: 2px solid #444 !important;
+}
+
+.dark .features-title {
+  color: #ffffff !important;
+}
+
+.dark .feature-card-container {
+  background: #1e1e1e !important;
+  border-color: #444 !important;
+}
+
+.dark .feature-card-title {
+  color: #ffffff !important;
+}
+
+.dark .feature-card-description {
+  color: #b0b0b0 !important;
+}
+
+.dark .feature-card-container:hover {
+  border-color: #818cf8 !important;
+  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.3) !important;
 }

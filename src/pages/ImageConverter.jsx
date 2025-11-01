@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import LanguageSwitcher from '../components/LanguageSwitcher'
+import HeaderControls from '../components/HeaderControls'
 import { useCanonicalUrl } from '../utils/seoHelpers'
 import JSZip from 'jszip'
 import ImageUploader from '../components/ImageUploader'
@@ -476,12 +476,12 @@ function ImageConverter() {
   };
 
   return (
-    <div className="min-h-screen py-6 sm:py-8 md:py-12" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+    <div className="min-h-screen py-6 sm:py-8 md:py-12 image-converter-container" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
       {/* Header */}
       <div className="text-center mb-6 sm:mb-8 px-4 relative">
         {/* Language Switcher and Settings */}
         <div style={{ position: 'absolute', top: '0', right: '20px', display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <LanguageSwitcher />
+          <HeaderControls />
           <button
             onClick={() => setIsSettingsOpen(true)}
             className="p-2 sm:p-3 bg-white rounded-lg shadow-md hover:shadow-lg hover:bg-gray-50 transition-all"
@@ -510,12 +510,12 @@ function ImageConverter() {
             onMouseEnter={(e) => {
               e.target.style.background = '#1e40af';
               e.target.style.color = 'white';
-              e.target.style.transform = 'scale(1.05)';
+              e.target.style.transform = 'translateY(-2px)';
             }}
             onMouseLeave={(e) => {
               e.target.style.background = 'white';
               e.target.style.color = '#6366f1';
-              e.target.style.transform = 'scale(1)';
+              e.target.style.transform = 'translateY(0)';
             }}
           >
             🏠 {t('translation:nav.home')}
@@ -523,8 +523,8 @@ function ImageConverter() {
           <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{'>'}</span>
           <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{t('imageConverter:breadcrumb.imageConverter')}</span>
         </div>
-        <h1 className="font-bold mb-2" style={{ color: 'white', fontSize: '2.5rem', fontWeight: '700' }}>{t('imageConverter:title')}</h1>
-        <p className="text-sm sm:text-base" style={{ color: 'white' }}>{t('imageConverter:subtitle')}</p>
+        <h1 className="font-bold mb-2 image-converter-title" style={{ color: 'white', fontSize: '2.5rem', fontWeight: '700' }}>{t('imageConverter:title')}</h1>
+        <p className="text-sm sm:text-base image-converter-subtitle" style={{ color: 'white' }}>{t('imageConverter:subtitle')}</p>
       </div>
 
       {/* Settings Modal */}
@@ -700,38 +700,38 @@ function ImageConverter() {
       <Stats />
 
       {/* Features Section */}
-      <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderRadius: '12px' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>{t('imageConverter:features.title')}</h2>
+      <div className="features-section" style={{ marginTop: '3rem', padding: '2rem', background: 'white', borderRadius: '12px' }}>
+        <h2 className="features-title" style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>{t('imageConverter:features.title')}</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+          <div className="feature-card-container" style={{ padding: '1.5rem', background: '#f9fafb', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.privateSecure.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.privateSecure.description')}</p>
+            <h3 className="feature-card-title" style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.privateSecure.title')}</h3>
+            <p className="feature-card-description" style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.privateSecure.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+          <div className="feature-card-container" style={{ padding: '1.5rem', background: '#f9fafb', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔄</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.multipleFormats.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.multipleFormats.description')}</p>
+            <h3 className="feature-card-title" style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.multipleFormats.title')}</h3>
+            <p className="feature-card-description" style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.multipleFormats.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+          <div className="feature-card-container" style={{ padding: '1.5rem', background: '#f9fafb', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚙️</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.advancedTools.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.advancedTools.description')}</p>
+            <h3 className="feature-card-title" style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.advancedTools.title')}</h3>
+            <p className="feature-card-description" style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.advancedTools.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+          <div className="feature-card-container" style={{ padding: '1.5rem', background: '#f9fafb', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📦</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.batchProcessing.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.batchProcessing.description')}</p>
+            <h3 className="feature-card-title" style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.batchProcessing.title')}</h3>
+            <p className="feature-card-description" style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.batchProcessing.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+          <div className="feature-card-container" style={{ padding: '1.5rem', background: '#f9fafb', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📊</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.qualityControl.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.qualityControl.description')}</p>
+            <h3 className="feature-card-title" style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.qualityControl.title')}</h3>
+            <p className="feature-card-description" style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.qualityControl.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb' }}>
+          <div className="feature-card-container" style={{ padding: '1.5rem', background: '#f9fafb', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.free.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.free.description')}</p>
+            <h3 className="feature-card-title" style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('imageConverter:features.free.title')}</h3>
+            <p className="feature-card-description" style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('imageConverter:features.free.description')}</p>
           </div>
         </div>
       </div>

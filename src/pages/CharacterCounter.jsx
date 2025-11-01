@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import './CharacterCounter.css';
 
@@ -124,9 +124,9 @@ Reading Time: ${stats.readingTime} min`;
   return (
     <div className="character-counter-container">
       <header className="character-counter-header">
-        {/* Language Switcher */}
+        {/* Header Controls */}
         <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
-          <LanguageSwitcher />
+          <HeaderControls />
         </div>
         
         <div className="breadcrumb">

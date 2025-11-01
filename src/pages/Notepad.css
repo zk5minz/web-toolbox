@@ -73,8 +73,19 @@
 }
 
 .notepad-breadcrumb a:hover {
-  opacity: 0.8;
+  background: #1e40af !important;
+  color: white !important;
   transform: translateY(-2px);
+}
+
+.dark-mode .notepad-breadcrumb a {
+  background: white;
+  color: #6366f1;
+}
+
+.dark-mode .notepad-breadcrumb a:hover {
+  background: #1e40af !important;
+  color: white !important;
 }
 
 .notepad-breadcrumb span {
@@ -705,7 +716,13 @@
 }
 
 .dark-mode .notepad-features {
-  background: #1e1e1e;
+  background: #2d2d44;
+  border: 2px solid #444;
+}
+
+.dark .notepad-features {
+  background: #2d2d44 !important;
+  border: 2px solid #444 !important;
 }
 
 .notepad-features h2 {
@@ -718,6 +735,10 @@
 
 .dark-mode .notepad-features h2 {
   color: #fff;
+}
+
+.dark .notepad-features h2 {
+  color: #fff !important;
 }
 
 .features-grid {
@@ -737,8 +758,13 @@
 }
 
 .dark-mode .feature-card {
-  background: #2a2a2a;
+  background: #2d2d2d;
   border-color: #444;
+}
+
+.dark .feature-card {
+  background: #2d2d2d !important;
+  border-color: #444 !important;
 }
 
 .feature-card:hover {
@@ -763,6 +789,10 @@
   color: #fff;
 }
 
+.dark .feature-card h3 {
+  color: #fff !important;
+}
+
 .feature-card p {
   font-size: 0.95rem;
   color: #666;
@@ -772,6 +802,10 @@
 
 .dark-mode .feature-card p {
   color: #999;
+}
+
+.dark .feature-card p {
+  color: #999 !important;
 }
 
 @media (max-width: 1024px) {

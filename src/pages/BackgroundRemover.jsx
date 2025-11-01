@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { removeBackground } from '@imgly/background-removal';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
+import './BackgroundRemover.css';
 
 const BackgroundRemover = () => {
   const { t } = useTranslation(['backgroundRemover', 'translation']);
@@ -78,103 +79,56 @@ const BackgroundRemover = () => {
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      padding: '48px 16px'
-    }}>
+    <div className="background-remover-container">
       {/* Header */}
-      <div style={{
-        textAlign: 'center',
-        marginBottom: '32px',
-        paddingLeft: '16px',
-        paddingRight: '16px',
-        position: 'relative'
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          right: 0
-        }}>
-          <LanguageSwitcher />
+      <div className="background-remover-header">
+        <div className="background-remover-header-controls">
+          <HeaderControls />
         </div>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          marginBottom: '16px',
-          fontSize: '18px'
-        }}>
+        <div className="background-remover-breadcrumb">
           <Link
             to="/"
+            className="breadcrumb-home-link"
             style={{
               background: 'white',
               color: '#6366f1',
               padding: '8px 16px',
               borderRadius: '8px',
               textDecoration: 'underline',
-              fontWeight: 700,
+              fontWeight: '700',
               transition: 'all 0.3s'
             }}
             onMouseEnter={(e) => {
               e.target.style.background = '#1e40af';
               e.target.style.color = 'white';
-              e.target.style.transform = 'scale(1.05)';
+              e.target.style.transform = 'translateY(-2px)';
             }}
             onMouseLeave={(e) => {
               e.target.style.background = 'white';
               e.target.style.color = '#6366f1';
-              e.target.style.transform = 'scale(1)';
+              e.target.style.transform = 'translateY(0)';
             }}
           >
             🏠 {t('translation:nav.home')}
           </Link>
-          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{'>'}</span>
-          <span style={{ color: 'rgba(255, 255, 255, 0.8)' }}>{t('backgroundRemover:breadcrumb.backgroundRemover')}</span>
+          <span> &gt; </span>
+          <span>{t('backgroundRemover:breadcrumb.backgroundRemover')}</span>
         </div>
-        <h1 style={{
-          fontSize: '2.5rem',
-          fontWeight: 700,
-          color: 'white',
-          marginBottom: '8px'
-        }}>
+        <h1 className="background-remover-title">
           {t('backgroundRemover:header.title')}
         </h1>
-        <p style={{
-          fontSize: '16px',
-          fontWeight: 700,
-          color: 'white'
-        }}>
+        <p className="background-remover-subtitle">
           {t('backgroundRemover:header.description')}
         </p>
       </div>
 
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
+      <div className="background-remover-content">
 
         {/* Main Content Card */}
-        <div style={{
-          background: 'white',
-          borderRadius: '24px',
-          padding: '40px',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.2)',
-          minHeight: '400px'
-        }}>
+        <div className="background-remover-card">
           {/* Error Message */}
           {error && (
-            <div style={{
-              background: '#ffebee',
-              color: '#c62828',
-              padding: '16px',
-              borderRadius: '12px',
-              marginBottom: '20px',
-              fontWeight: 700,
-              textAlign: 'center',
-              border: '2px solid #ef5350'
-            }}>
+            <div className="background-remover-error">
               ⚠️ {error}
             </div>
           )}
@@ -189,32 +143,16 @@ const BackgroundRemover = () => {
                 }}
                 onDragOver={(e) => e.preventDefault()}
                 onClick={() => fileInputRef.current?.click()}
-                style={{
-                  border: '3px dashed #2196F3',
-                  borderRadius: '16px',
-                  padding: '60px 20px',
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  background: '#f5f5f5',
-                  transition: 'all 0.3s'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#e3f2fd';
-                  e.currentTarget.style.borderColor = '#1976d2';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#f5f5f5';
-                  e.currentTarget.style.borderColor = '#2196F3';
-                }}
+                className="background-remover-upload-area"
               >
-                <div style={{ fontSize: '80px', marginBottom: '20px' }}>📤</div>
-                <h3 style={{ fontWeight: 700, marginBottom: '10px', fontSize: '28px', color: '#333' }}>
+                <div className="background-remover-upload-icon">📤</div>
+                <h3 className="background-remover-upload-title">
                   {t('backgroundRemover:upload.dragDrop')}
                 </h3>
-                <p style={{ fontWeight: 700, color: '#666', fontSize: '18px', marginBottom: '10px' }}>
+                <p className="background-remover-upload-text">
                   {t('backgroundRemover:upload.or')} {t('backgroundRemover:upload.clickUpload')}
                 </p>
-                <p style={{ fontWeight: 700, color: '#999', fontSize: '16px', marginTop: '10px' }}>
+                <p className="background-remover-upload-hint">
                   {t('backgroundRemover:upload.supportedFormats')}
                 </p>
               </div>
@@ -231,32 +169,12 @@ const BackgroundRemover = () => {
 
           {/* Processing */}
           {isProcessing && (
-            <div style={{
-              textAlign: 'center',
-              padding: '60px 20px'
-            }}>
-              <div style={{
-                width: '80px',
-                height: '80px',
-                border: '8px solid #f3f3f3',
-                borderTop: '8px solid #2196F3',
-                borderRadius: '50%',
-                animation: 'spin 1s linear infinite',
-                margin: '0 auto 30px'
-              }}></div>
-              <h3 style={{
-                fontSize: '24px',
-                fontWeight: 700,
-                color: '#333',
-                marginBottom: '10px'
-              }}>
+            <div className="background-remover-processing">
+              <div className="background-remover-spinner"></div>
+              <h3 className="background-remover-processing-title">
                 {t('backgroundRemover:processing.title')}
               </h3>
-              <p style={{
-                fontSize: '16px',
-                fontWeight: 700,
-                color: '#666'
-              }}>
+              <p className="background-remover-processing-text">
                 {t('backgroundRemover:processing.description')}
               </p>
             </div>
@@ -265,156 +183,49 @@ const BackgroundRemover = () => {
           {/* Results */}
           {processedImage && !isProcessing && (
             <div>
-              <h2 style={{
-                fontSize: '32px',
-                fontWeight: 700,
-                color: '#333',
-                marginBottom: '30px',
-                textAlign: 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '10px'
-              }}>
+              <h2 className="background-remover-results-title">
                 <span>✨</span>
                 <span>{t('backgroundRemover:results.title')}</span>
               </h2>
 
               {/* Before/After Comparison */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '20px',
-                marginBottom: '30px'
-              }}>
+              <div className="background-remover-comparison">
                 {/* Original */}
                 <div>
-                  <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    color: '#333',
-                    marginBottom: '10px',
-                    textAlign: 'center'
-                  }}>
+                  <h3 className="background-remover-comparison-label">
                     {t('backgroundRemover:results.before')}
                   </h3>
-                  <div style={{
-                    border: '2px solid #e0e0e0',
-                    borderRadius: '12px',
-                    padding: '10px',
-                    background: 'white',
-                    textAlign: 'center'
-                  }}>
+                  <div className="background-remover-comparison-original">
                     <img
                       src={originalImage}
                       alt="Original"
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '400px',
-                        borderRadius: '8px'
-                      }}
+                      className="background-remover-comparison-img"
                     />
                   </div>
                 </div>
 
                 {/* Processed */}
                 <div>
-                  <h3 style={{
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    color: '#333',
-                    marginBottom: '10px',
-                    textAlign: 'center'
-                  }}>
+                  <h3 className="background-remover-comparison-label">
                     {t('backgroundRemover:results.after')}
                   </h3>
-                  <div style={{
-                    border: '2px solid #4CAF50',
-                    borderRadius: '12px',
-                    padding: '10px',
-                    backgroundImage: `
-                      linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
-                      linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
-                      linear-gradient(-45deg, transparent 75%, #e0e0e0 75%)
-                    `,
-                    backgroundSize: '20px 20px',
-                    backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px',
-                    textAlign: 'center'
-                  }}>
+                  <div className="background-remover-comparison-processed">
                     <img
                       src={processedImage}
                       alt="Background Removed"
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: '400px',
-                        borderRadius: '8px'
-                      }}
+                      className="background-remover-comparison-img"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div style={{
-                display: 'flex',
-                gap: '20px',
-                justifyContent: 'center',
-                flexWrap: 'wrap'
-              }}>
-                <button
-                  onClick={handleDownload}
-                  style={{
-                    background: '#4CAF50',
-                    color: 'white',
-                    padding: '20px 40px',
-                    fontSize: '20px',
-                    fontWeight: 700,
-                    borderRadius: '12px',
-                    cursor: 'pointer',
-                    border: 'none',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                    transition: 'all 0.3s'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#45a049';
-                    e.target.style.transform = 'translateY(-2px)';
-                    e.target.style.boxShadow = '0 6px 8px rgba(0,0,0,0.15)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = '#4CAF50';
-                    e.target.style.transform = 'translateY(0)';
-                    e.target.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-                  }}
-                >
+              <div className="background-remover-buttons">
+                <button onClick={handleDownload} className="background-remover-download-btn">
                   {t('backgroundRemover:buttons.download')}
                 </button>
 
-                <button
-                  onClick={resetAll}
-                  style={{
-                    background: '#757575',
-                    color: 'white',
-                    padding: '20px 40px',
-                    fontSize: '18px',
-                    fontWeight: 700,
-                    borderRadius: '12px',
-                    cursor: 'pointer',
-                    border: 'none',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                    transition: 'all 0.3s'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#616161';
-                    e.target.style.transform = 'translateY(-2px)';
-                    e.target.style.boxShadow = '0 6px 8px rgba(0,0,0,0.15)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = '#757575';
-                    e.target.style.transform = 'translateY(0)';
-                    e.target.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-                  }}
-                >
+                <button onClick={resetAll} className="background-remover-reset-btn">
                   {t('backgroundRemover:buttons.tryAnother')}
                 </button>
               </div>
@@ -424,38 +235,38 @@ const BackgroundRemover = () => {
       </div>
 
       {/* Features Section */}
-      <div style={{ marginTop: '3rem', padding: '2rem', background: '#f9fafb', borderTop: '2px solid #e5e7eb' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#333', textAlign: 'center', marginBottom: '2rem' }}>{t('backgroundRemover:features.title')}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔒</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.privateSecure.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.privateSecure.description')}</p>
+      <div className="background-remover-features">
+        <h2 className="background-remover-features-title">{t('backgroundRemover:features.title')}</h2>
+        <div className="background-remover-features-grid">
+          <div className="background-remover-feature-card">
+            <div className="background-remover-feature-icon">🔒</div>
+            <h3 className="background-remover-feature-title">{t('backgroundRemover:features.privateSecure.title')}</h3>
+            <p className="background-remover-feature-desc">{t('backgroundRemover:features.privateSecure.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🤖</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.aiPowered.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.aiPowered.description')}</p>
+          <div className="background-remover-feature-card">
+            <div className="background-remover-feature-icon">🤖</div>
+            <h3 className="background-remover-feature-title">{t('backgroundRemover:features.aiPowered.title')}</h3>
+            <p className="background-remover-feature-desc">{t('backgroundRemover:features.aiPowered.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚡</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.instantResults.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.instantResults.description')}</p>
+          <div className="background-remover-feature-card">
+            <div className="background-remover-feature-icon">⚡</div>
+            <h3 className="background-remover-feature-title">{t('backgroundRemover:features.instantResults.title')}</h3>
+            <p className="background-remover-feature-desc">{t('backgroundRemover:features.instantResults.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🖼️</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.transparentPng.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.transparentPng.description')}</p>
+          <div className="background-remover-feature-card">
+            <div className="background-remover-feature-icon">🖼️</div>
+            <h3 className="background-remover-feature-title">{t('backgroundRemover:features.transparentPng.title')}</h3>
+            <p className="background-remover-feature-desc">{t('backgroundRemover:features.transparentPng.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📱</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.worksAnywhere.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.worksAnywhere.description')}</p>
+          <div className="background-remover-feature-card">
+            <div className="background-remover-feature-icon">📱</div>
+            <h3 className="background-remover-feature-title">{t('backgroundRemover:features.worksAnywhere.title')}</h3>
+            <p className="background-remover-feature-desc">{t('backgroundRemover:features.worksAnywhere.description')}</p>
           </div>
-          <div style={{ padding: '1.5rem', background: 'white', borderRadius: '12px', border: '2px solid #e5e7eb', transition: 'all 0.3s' }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🆓</div>
-            <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#333', marginBottom: '0.5rem' }}>{t('backgroundRemover:features.free.title')}</h3>
-            <p style={{ fontSize: '0.95rem', color: '#666', lineHeight: '1.6', margin: 0 }}>{t('backgroundRemover:features.free.description')}</p>
+          <div className="background-remover-feature-card">
+            <div className="background-remover-feature-icon">🆓</div>
+            <h3 className="background-remover-feature-title">{t('backgroundRemover:features.free.title')}</h3>
+            <p className="background-remover-feature-desc">{t('backgroundRemover:features.free.description')}</p>
           </div>
         </div>
       </div>

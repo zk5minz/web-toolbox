@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import * as math from 'mathjs';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import './ScientificCalculator.css';
 
@@ -290,7 +290,7 @@ function ScientificCalculator() {
             <p>{t('scientificCalculator:header.subtitle')}</p>
           </div>
           <div style={{ position: 'absolute', top: '16px', right: '20px' }}>
-            <LanguageSwitcher />
+            <HeaderControls />
           </div>
         </div>
       </header>

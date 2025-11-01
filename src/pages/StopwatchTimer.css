@@ -4,6 +4,10 @@
   padding: 2rem;
 }
 
+.dark .stopwatch-timer-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
 .stopwatch-timer-header {
   text-align: center;
   color: white;
@@ -31,7 +35,8 @@
 }
 
 .breadcrumb-home-link:hover {
-  opacity: 0.8;
+  background: #1e40af !important;
+  color: white !important;
   transform: translateY(-2px);
 }
 
@@ -502,4 +507,112 @@
   .features-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Dark Mode Styles */
+.dark .stopwatch-timer-content {
+  background: #2d2d44;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dark .tab {
+  color: #b0b0b0;
+}
+
+.dark .tab:hover {
+  color: #ffffff;
+  background: #3a3a52;
+}
+
+.dark .tab.active {
+  color: #818cf8;
+  border-bottom-color: #818cf8;
+  background: #2a2a3e;
+}
+
+.dark .time-display {
+  color: #ffffff;
+  background: linear-gradient(135deg, #3a3a52 0%, #2a2a3e 100%);
+}
+
+.dark .laps-section h3 {
+  color: #ffffff;
+}
+
+.dark .lap-item {
+  background: #2a2a3e;
+  border-color: #444;
+}
+
+.dark .lap-item.fastest {
+  background: #1e4620;
+  border-color: #10b981;
+}
+
+.dark .lap-item.slowest {
+  background: #4a1e1e;
+  border-color: #ef4444;
+}
+
+.dark .lap-number {
+  color: #b0b0b0;
+}
+
+.dark .lap-split {
+  color: #ffffff;
+}
+
+.dark .lap-total {
+  color: #b0b0b0;
+}
+
+.dark .time-input-group label {
+  color: #b0b0b0;
+}
+
+.dark .time-input-group input {
+  background: #1e1e1e;
+  border-color: #444;
+  color: #e5e5e5;
+}
+
+.dark .time-separator {
+  color: #ffffff;
+}
+
+.dark .features-section {
+  background: #1e1e1e;
+  border-top-color: #444;
+}
+
+.dark .features-section h2 {
+  color: #ffffff;
+}
+
+.dark .feature-card {
+  background: #2a2a3e;
+  border-color: #444;
+}
+
+.dark .feature-card:hover {
+  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.3);
+  border-color: #818cf8;
+}
+
+.dark .feature-card h3 {
+  color: #ffffff;
+}
+
+.dark .feature-card p {
+  color: #b0b0b0;
+}
+
+.dark .breadcrumb-home-link {
+  background: white;
+  color: #6366f1;
+}
+
+.dark .breadcrumb-home-link:hover {
+  background: #1e40af !important;
+  color: white !important;
 }

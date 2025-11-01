@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile, toBlobURL } from '@ffmpeg/util';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import './VideoConverter.css';
 
@@ -216,7 +216,29 @@ function VideoConverter() {
       <header className="video-converter-header">
         <div className="header-top">
           <div className="breadcrumb">
-            <Link to="/" className="breadcrumb-home-link">
+            <Link
+              to="/"
+              className="breadcrumb-home-link"
+              style={{
+                background: 'white',
+                color: '#6366f1',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                textDecoration: 'underline',
+                fontWeight: '700',
+                transition: 'all 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#1e40af';
+                e.target.style.color = 'white';
+                e.target.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'white';
+                e.target.style.color = '#6366f1';
+                e.target.style.transform = 'scale(1)';
+              }}
+            >
               🏠 {t('videoConverter:breadcrumb.home')}
             </Link>
             <span> &gt; </span>
@@ -224,7 +246,9 @@ function VideoConverter() {
             <span> &gt; </span>
             <span>{t('videoConverter:breadcrumb.videoConverter')}</span>
           </div>
-          <LanguageSwitcher />
+          <div>
+            <HeaderControls />
+          </div>
         </div>
         <h1>🎬 {t('videoConverter:title')}</h1>
         <p>{t('videoConverter:description')}</p>

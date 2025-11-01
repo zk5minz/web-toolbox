@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import './Notepad.css';
 
@@ -51,7 +51,10 @@ function Notepad() {
   // 현재 활성 탭 찾기
   const activeTab = tabs.find(tab => tab.id === activeTabId) || tabs[0];
   
-  const [darkMode, setDarkMode] = useState(false);
+  // 전역 테마 감지
+  const [darkMode, setDarkMode] = useState(() => {
+    return document.documentElement.classList.contains('dark');
+  });
   const [fontSize, setFontSize] = useState(14);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [showAlert, setShowAlert] = useState(true);
@@ -78,11 +81,22 @@ function Notepad() {
 
   // Load from localStorage
   useEffect(() => {
-    const savedDarkMode = localStorage.getItem('notepad-darkmode');
     const savedFontSize = localStorage.getItem('notepad-fontsize');
-
-    if (savedDarkMode) setDarkMode(JSON.parse(savedDarkMode));
     if (savedFontSize) setFontSize(parseInt(savedFontSize));
+  }, []);
+
+  // 전역 테마 변경 감지
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setDarkMode(document.documentElement.classList.contains('dark'));
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   // Auto-save tabs to localStorage
@@ -94,9 +108,17 @@ function Notepad() {
     return () => clearTimeout(timer);
   }, [tabs, activeTabId]);
 
-  useEffect(() => {
-    localStorage.setItem('notepad-darkmode', JSON.stringify(darkMode));
-  }, [darkMode]);
+  // 메모장 내부에서 다크모드 토글 시 전역 테마도 변경
+  const handleToggleDarkMode = () => {
+    const newTheme = darkMode ? 'light' : 'dark';
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', newTheme);
+    setDarkMode(!darkMode);
+  };
 
   useEffect(() => {
     localStorage.setItem('notepad-fontsize', fontSize.toString());
@@ -519,7 +541,7 @@ function Notepad() {
         <span> {'>'} </span>
         <span>{t('notepad:breadcrumb.notepad')}</span>
         <div style={{ marginLeft: 'auto' }}>
-          <LanguageSwitcher />
+          <HeaderControls />
         </div>
       </div>
 
@@ -610,7 +632,7 @@ function Notepad() {
           {t('notepad:menu.view')}
           {showViewMenu && (
             <div className="dropdown-menu">
-              <div className="menu-option" onClick={() => setDarkMode(!darkMode)}>
+              <div className="menu-option" onClick={handleToggleDarkMode}>
                 {darkMode ? t('notepad:viewMenu.lightMode') : t('notepad:viewMenu.darkMode')}
               </div>
               <div className="menu-divider"></div>
@@ -728,7 +750,7 @@ function Notepad() {
                   <input
                     type="checkbox"
                     checked={darkMode}
-                    onChange={(e) => setDarkMode(e.target.checked)}
+                    onChange={handleToggleDarkMode}
                   />
                   {t('notepad:preferences.darkMode')}
                 </label>

@@ -19,6 +19,7 @@
     "i18next-http-backend": "^3.0.2",
     "jspdf": "^3.0.3",
     "jszip": "^3.10.1",
+    "lucide-react": "^0.552.0",
     "mathjs": "^14.8.2",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^5.4.149",

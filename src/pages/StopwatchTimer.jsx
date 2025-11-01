@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import './StopwatchTimer.css';
 
@@ -241,7 +241,7 @@ function StopwatchTimer() {
   return (
     <div className="stopwatch-timer-container">
       <div style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1000 }}>
-        <LanguageSwitcher />
+        <HeaderControls />
       </div>
 
       <header className="stopwatch-timer-header">

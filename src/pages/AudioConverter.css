@@ -20,19 +20,7 @@
 }
 
 .breadcrumb-home-link {
-  background: white;
-  color: #6366f1;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: underline;
-  font-weight: 700;
   font-size: 18px;
-  transition: all 0.3s;
-}
-
-.breadcrumb-home-link:hover {
-  opacity: 0.8;
-  transform: translateY(-2px);
 }
 
 .breadcrumb span {
@@ -458,3 +446,161 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Dark Mode Styles */
+.dark .audio-converter-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.dark .audio-converter-content {
+  background: #2d2d44;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dark .upload-area {
+  background: #3a3a52;
+  border-color: #818cf8;
+}
+
+.dark .upload-area:hover {
+  background: #4a4a62;
+  border-color: #6366f1;
+}
+
+.dark .upload-icon {
+  color: #818cf8;
+}
+
+.dark .upload-text {
+  color: #e5e5e5;
+}
+
+.dark .upload-hint {
+  color: #b0b0b0;
+}
+
+.dark .file-info {
+  background: #3a3a52;
+  border-color: #444;
+}
+
+.dark .file-details {
+  color: #e5e5e5;
+}
+
+.dark .file-name {
+  color: #ffffff;
+}
+
+.dark .file-size {
+  color: #b0b0b0;
+}
+
+.dark .section-title {
+  color: #ffffff;
+}
+
+.dark .format-btn {
+  background: #3a3a52;
+  border-color: #444;
+  color: #e5e5e5;
+}
+
+.dark .format-btn:hover {
+  background: #4a4a62;
+  border-color: #818cf8;
+}
+
+.dark .format-btn.selected {
+  background: #818cf8;
+  border-color: #6366f1;
+  color: white;
+}
+
+.dark .settings-grid label {
+  color: #e5e5e5;
+}
+
+.dark .quality-value {
+  color: #818cf8;
+}
+
+.dark .error-message {
+  background: #4a1e1e;
+  border-color: #dc2626;
+  color: #f87171;
+}
+
+.dark .features-section {
+  border-top-color: #444;
+}
+
+.dark .features-section h2 {
+  color: #ffffff;
+}
+
+.dark .feature-card {
+  background: #2a2a3e;
+  border-color: #444;
+}
+
+.dark .feature-card:hover {
+  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.3);
+  border-color: #818cf8;
+}
+
+.dark .feature-card h3 {
+  color: #ffffff;
+}
+
+.dark .feature-card p {
+  color: #b0b0b0;
+}
+
+.dark .loading-message p {
+  color: #ffffff;
+}
+
+.dark .loading-hint {
+  color: #b0b0b0 !important;
+}
+
+.dark .upload-area h2 {
+  color: #ffffff;
+}
+
+.dark .upload-area p {
+  color: #e5e5e5;
+}
+
+.dark .file-details h3 {
+  color: #ffffff;
+}
+
+.dark .file-details p {
+  color: #b0b0b0;
+}
+
+.dark .conversion-options {
+  background: #3a3a52;
+}
+
+.dark .option-group label {
+  color: #ffffff;
+}
+
+.dark .quality-labels {
+  color: #b0b0b0;
+}
+
+.dark .breadcrumb-home-link {
+  background: white;
+  color: #6366f1;
+}
+
+.dark .breadcrumb-home-link:hover {
+  background: #1e40af !important;
+  color: white !important;
+}
+
+

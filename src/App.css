@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Image Converter Features Section Dark Mode */
+.dark .features-section {
+  background: #1e1e1e !important;
+}
+
+.dark .features-title {
+  color: #ffffff !important;
+}
+
+.dark .feature-card-container {
+  background: #2d2d2d !important;
+  border-color: #444 !important;
+}
+
+.dark .feature-card-title {
+  color: #ffffff !important;
+}
+
+.dark .feature-card-description {
+  color: #b0b0b0 !important;
+}

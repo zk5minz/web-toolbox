@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import HeaderControls from '../components/HeaderControls';
 import { useCanonicalUrl } from '../utils/seoHelpers';
 import '../styles/WorldClock.css';
 
@@ -188,11 +188,35 @@ function WorldClock() {
   return (
     <div className="world-clock-container">
       <div style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1000 }}>
-        <LanguageSwitcher />
+        <HeaderControls />
       </div>
       
       <div className="breadcrumb">
-        <Link to="/" className="home-button">🏠 {t('translation:nav.home')}</Link>
+        <Link
+          to="/"
+          className="home-button"
+          style={{
+            background: 'white',
+            color: '#6366f1',
+            padding: '8px 16px',
+            borderRadius: '8px',
+            textDecoration: 'underline',
+            fontWeight: '700',
+            transition: 'all 0.3s'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.background = '#1e40af';
+            e.target.style.color = 'white';
+            e.target.style.transform = 'scale(1.05)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = 'white';
+            e.target.style.color = '#6366f1';
+            e.target.style.transform = 'scale(1)';
+          }}
+        >
+          🏠 {t('translation:nav.home')}
+        </Link>
         <span> &gt; {t('worldclock:breadcrumb.current')}</span>
       </div>
 
