@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import HeaderControls from '../components/HeaderControls';
@@ -66,6 +66,9 @@ function Notepad() {
   const [showFontSizeMenu, setShowFontSizeMenu] = useState(false);
   const [isComposing, setIsComposing] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [currentColor, setCurrentColor] = useState('#000000');
+  const editorRef = useRef(null);
   const textareaRef = useRef(null);
   const fontSizeButtonRef = useRef(null);
   const typingTimerRef = useRef(null);
@@ -295,6 +298,9 @@ function Notepad() {
   };
 
   const handleSave = async () => {
+    // Get plain text content for saving
+    const textToSave = getTextContent(activeTab.text);
+    
     // Check if File System Access API is supported
     if ('showSaveFilePicker' in window) {
       try {
@@ -307,7 +313,7 @@ function Notepad() {
         });
 
         const writable = await handle.createWritable();
-        await writable.write(activeTab.text);
+        await writable.write(textToSave);
         await writable.close();
 
         updateTab(activeTabId, {
@@ -331,7 +337,8 @@ function Notepad() {
   const handleSaveAs = async () => {
     const filename = prompt(t('notepad:messages.enterFilename'), activeTab.fileName || `${activeTab.name}.txt`);
     if (filename) {
-      const blob = new Blob([activeTab.text], { type: 'text/plain' });
+      const textToSave = getTextContent(activeTab.text);
+      const blob = new Blob([textToSave], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -353,12 +360,13 @@ function Notepad() {
 
   const handleCopyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(activeTab.text);
+      const textToCopy = getTextContent(activeTab.text);
+      await navigator.clipboard.writeText(textToCopy);
       alert(t('notepad:messages.copiedToClipboard'));
       setShowShareModal(false);
     } catch (err) {
       const textarea = document.createElement('textarea');
-      textarea.value = activeTab.text;
+      textarea.value = getTextContent(activeTab.text);
       document.body.appendChild(textarea);
       textarea.select();
       try {
@@ -374,13 +382,13 @@ function Notepad() {
 
   const handleEmailShare = () => {
     const subject = encodeURIComponent('Notepad');
-    const body = encodeURIComponent(activeTab.text);
+    const body = encodeURIComponent(getTextContent(activeTab.text));
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
     setShowShareModal(false);
   };
 
   const handleDownloadShare = () => {
-    const blob = new Blob([activeTab.text], { type: 'text/plain' });
+    const blob = new Blob([getTextContent(activeTab.text)], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -445,14 +453,103 @@ function Notepad() {
     setShowFontSizeMenu(false);
   };
 
-  // Calculate stats
-  const lines = activeTab.text.split('\n').length;
-  const cursorPos = textareaRef.current?.selectionStart || 0;
-  const textBeforeCursor = activeTab.text.substring(0, cursorPos);
-  const currentLine = textBeforeCursor.split('\n').length;
-  const currentColumn = textBeforeCursor.split('\n').pop().length + 1;
-  const chars = activeTab.text.length;
-  const words = activeTab.text.trim() ? activeTab.text.trim().split(/\s+/).length : 0;
+  // Text formatting operations
+  const applyFormat = useCallback((command, value = null) => {
+    document.execCommand(command, false, value);
+    editorRef.current?.focus();
+    
+    // Save to history after formatting
+    if (editorRef.current) {
+      const newContent = editorRef.current.innerHTML;
+      updateTab(activeTabId, { text: newContent, isModified: true });
+      setTimeout(() => saveToHistory(newContent), 0);
+    }
+  }, [activeTabId]);
+
+  const handleBold = () => {
+    applyFormat('bold');
+  };
+
+  const handleUnderline = () => {
+    applyFormat('underline');
+  };
+
+  const handleTextColor = (color) => {
+    setCurrentColor(color);
+    applyFormat('foreColor', color);
+    setShowColorPicker(false);
+  };
+
+  const handleHighlight = (color) => {
+    applyFormat('hiliteColor', color);
+  };
+
+  // Handle editor input
+  const handleEditorInput = () => {
+    if (editorRef.current) {
+      const newContent = editorRef.current.innerHTML;
+      updateTab(activeTabId, { text: newContent, isModified: true });
+
+      if (typingTimerRef.current) {
+        clearTimeout(typingTimerRef.current);
+      }
+
+      if (!isComposing) {
+        typingTimerRef.current = setTimeout(() => {
+          saveToHistory(newContent);
+        }, 1000);
+      }
+    }
+  };
+
+  // Handle editor paste - strip formatting if needed
+  const handleEditorPaste = (e) => {
+    // Allow formatted paste by default
+    // If you want plain text only, uncomment below:
+    // e.preventDefault();
+    // const text = e.clipboardData.getData('text/plain');
+    // document.execCommand('insertText', false, text);
+  };
+
+  // Handle editor key down
+  const handleEditorKeyDown = (e) => {
+    if (e.ctrlKey || e.metaKey) {
+      switch(e.key.toLowerCase()) {
+        case 'b':
+          e.preventDefault();
+          handleBold();
+          break;
+        case 'u':
+          e.preventDefault();
+          handleUnderline();
+          break;
+      }
+    }
+  };
+
+  // Color presets
+  const colorPresets = [
+    '#000000', '#434343', '#666666', '#999999', '#cccccc', '#ffffff',
+    '#ff0000', '#ff9900', '#ffff00', '#00ff00', '#00ffff', '#0000ff',
+    '#9900ff', '#ff00ff', '#f4cccc', '#fce5cd', '#fff2cc', '#d9ead3',
+    '#d0e0e3', '#cfe2f3', '#d9d2e9', '#ead1dc'
+  ];
+
+  // Calculate stats - extract text content from HTML
+  const getTextContent = (html) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html || '';
+    return tempDiv.textContent || tempDiv.innerText || '';
+  };
+  
+  const plainText = getTextContent(activeTab.text);
+  const lines = plainText.split('\n').length;
+  const chars = plainText.length;
+  const words = plainText.trim() ? plainText.trim().split(/\s+/).length : 0;
+  
+  // For cursor position in contentEditable
+  const currentLine = 1;
+  const currentColumn = 1;
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -509,6 +606,7 @@ function Notepad() {
     setShowViewMenu(false);
     setShowHelpMenu(false);
     setShowFontSizeMenu(false);
+    setShowColorPicker(false);
   };
 
   // Close menus when clicking outside
@@ -679,45 +777,93 @@ function Notepad() {
         <button onClick={handleZoomIn} title={t('notepad:toolbar.zoomIn')} className="toolbar-btn">🔍+</button>
         <button onClick={handleZoomOut} title={t('notepad:toolbar.zoomOut')} className="toolbar-btn">🔍−</button>
         <div className="toolbar-divider"></div>
-        <button
-          ref={fontSizeButtonRef}
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowFontSizeMenu(!showFontSizeMenu);
-          }}
-          title={t('notepad:toolbar.fontSize')}
-          className="toolbar-btn toolbar-btn-relative"
-        >
-          A
+        <div className="toolbar-btn-relative">
+          <button
+            ref={fontSizeButtonRef}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowFontSizeMenu(!showFontSizeMenu);
+            }}
+            title={t('notepad:toolbar.fontSize')}
+            className="toolbar-btn font-size-btn"
+          >
+            <span className="font-size-value">{fontSize}</span>
+            <span className="font-size-unit">pt</span>
+          </button>
           {showFontSizeMenu && (
             <div className="font-size-dropdown">
-              <div className="font-size-option" onClick={() => handleFontSizeChange(10)}>10px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(12)}>12px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(14)}>14px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(16)}>16px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(18)}>18px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(20)}>20px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(24)}>24px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(28)}>28px</div>
-              <div className="font-size-option" onClick={() => handleFontSizeChange(32)}>32px</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(10)}>10 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(12)}>12 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(14)}>14 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(16)}>16 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(18)}>18 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(20)}>20 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(24)}>24 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(28)}>28 pt</div>
+              <div className="font-size-option" onClick={() => handleFontSizeChange(32)}>32 pt</div>
             </div>
           )}
-        </button>
+        </div>
+        <div className="toolbar-divider"></div>
+        <button onClick={handleBold} title={t('notepad:toolbar.bold') || '굵게 (Ctrl+B)'} className="toolbar-btn toolbar-format-btn">B</button>
+        <button onClick={handleUnderline} title={t('notepad:toolbar.underline') || '밑줄 (Ctrl+U)'} className="toolbar-btn toolbar-format-btn underline-btn">U</button>
+        <div className="toolbar-btn-relative">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowColorPicker(!showColorPicker);
+            }}
+            title={t('notepad:toolbar.textColor') || '글자 색상'}
+            className="toolbar-btn color-btn"
+          >
+            <span className="color-btn-text">A</span>
+            <span className="color-indicator" style={{ backgroundColor: currentColor }}></span>
+          </button>
+          {showColorPicker && (
+            <div className="color-picker-dropdown" onClick={(e) => e.stopPropagation()}>
+              <div className="color-picker-title">{t('notepad:toolbar.textColor') || '글자 색상'}</div>
+              <div className="color-presets">
+                {colorPresets.map((color) => (
+                  <button
+                    key={color}
+                    className="color-preset-btn"
+                    style={{ backgroundColor: color }}
+                    onClick={() => handleTextColor(color)}
+                    title={color}
+                  />
+                ))}
+              </div>
+              <div className="custom-color-section">
+                <input
+                  type="color"
+                  value={currentColor}
+                  onChange={(e) => handleTextColor(e.target.value)}
+                  className="custom-color-input"
+                />
+                <span className="custom-color-label">{t('notepad:toolbar.customColor') || '사용자 지정 색상'}</span>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="toolbar-divider"></div>
         <button onClick={() => alert(t('notepad:helpMenu.aboutText'))} title={t('notepad:toolbar.help')} className="toolbar-btn">❓</button>
       </div>
 
-      {/* Text Area Container with Zoom */}
+      {/* Rich Text Editor Container with Zoom */}
       <div style={{ flex: 1, overflow: 'auto', transform: `scale(${zoomLevel})`, transformOrigin: 'top left', width: `${100/zoomLevel}%`, height: `${100/zoomLevel}%` }}>
-        <textarea
-          ref={textareaRef}
-          className="notepad-textarea"
-          value={activeTab.text}
-          onChange={handleTextChange}
+        <div
+          ref={editorRef}
+          className="notepad-editor"
+          contentEditable={true}
+          onInput={handleEditorInput}
           onCompositionStart={handleCompositionStart}
           onCompositionEnd={handleCompositionEnd}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleEditorKeyDown}
+          onPaste={handleEditorPaste}
           style={{ fontSize: `${fontSize}px`, minHeight: '100%' }}
-          placeholder={t('notepad:placeholder')}
+          dangerouslySetInnerHTML={{ __html: activeTab.text || '' }}
+          data-placeholder={t('notepad:placeholder')}
+          suppressContentEditableWarning={true}
         />
       </div>
 

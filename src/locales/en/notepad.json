@@ -47,7 +47,7 @@
     "about": "About",
     "aboutText": "Simple online notepad with auto-save\\nVersion 1.0",
     "shortcuts": "Keyboard Shortcuts",
-    "shortcutsText": "Keyboard shortcuts:\\nCtrl+S - Save\\nCtrl+Z - Undo\\nCtrl+Y - Redo\\nCtrl+A - Select All\\nCtrl+P - Print"
+    "shortcutsText": "Keyboard shortcuts:\\nCtrl+S - Save\\nCtrl+Z - Undo\\nCtrl+Y - Redo\\nCtrl+A - Select All\\nCtrl+P - Print\\nCtrl+B - Bold\\nCtrl+U - Underline"
   },
   "toolbar": {
     "newWindow": "New Window",
@@ -61,6 +61,10 @@
     "zoomIn": "Zoom In",
     "zoomOut": "Zoom Out",
     "fontSize": "Font Size",
+    "bold": "Bold (Ctrl+B)",
+    "underline": "Underline (Ctrl+U)",
+    "textColor": "Text Color",
+    "customColor": "Custom Color",
     "help": "Help"
   },
   "statusBar": {

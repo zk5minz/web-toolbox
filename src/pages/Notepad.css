@@ -405,14 +405,38 @@
   background: #3d3d3d;
 }
 
-/* Text Area */
-.notepad-textarea {
+/* Font Size Button */
+.font-size-btn {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 8px 12px !important;
+  min-width: 60px !important;
+}
+
+.font-size-value {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.font-size-unit {
+  font-size: 11px;
+  color: #666;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dark-mode .font-size-unit {
+  color: #999;
+}
+
+/* Rich Text Editor */
+.notepad-editor {
   flex: 1;
   width: 100%;
   border: none;
   padding: 8px 20px 20px 50px;
   font-family: 'Courier New', monospace;
-  resize: none;
   outline: none;
   color: #000;
   line-height: 30px;
@@ -434,9 +458,12 @@
       #d3d3d3 30px
     );
   background-attachment: local;
+  min-height: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-.dark-mode .notepad-textarea {
+.dark-mode .notepad-editor {
   color: #d4d4d4;
   background-color: #1e1e1e;
   background-image:
@@ -458,7 +485,129 @@
   background-attachment: local;
 }
 
-.notepad-textarea::placeholder {
+.notepad-editor:empty:before {
+  content: attr(data-placeholder);
+  color: #999;
+  pointer-events: none;
+}
+
+.notepad-editor:focus {
+  outline: none;
+}
+
+/* Format Buttons */
+.toolbar-format-btn {
+  font-weight: 700;
+  font-family: 'Georgia', serif;
+}
+
+.underline-btn {
+  text-decoration: underline;
+}
+
+.color-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4px !important;
+}
+
+.color-btn-text {
+  font-weight: 700;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.color-indicator {
+  width: 18px;
+  height: 4px;
+  border-radius: 1px;
+  margin-top: 2px;
+}
+
+/* Color Picker Dropdown */
+.color-picker-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 240px;
+  z-index: 1000;
+  margin-top: 4px;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.dark-mode .color-picker-dropdown {
+  background: #2d2d2d;
+  border-color: #444;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.color-picker-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.dark-mode .color-picker-title {
+  color: #999;
+}
+
+.color-presets {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.color-preset-btn {
+  width: 28px;
+  height: 28px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.color-preset-btn:hover {
+  transform: scale(1.1);
+  border-color: #007bff;
+}
+
+.custom-color-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+.dark-mode .custom-color-section {
+  border-top-color: #444;
+}
+
+.custom-color-input {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.custom-color-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.dark-mode .custom-color-label {
   color: #999;
 }
 

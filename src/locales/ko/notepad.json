@@ -47,7 +47,7 @@
     "about": "정보",
     "aboutText": "자동 저장 기능이 있는 간단한 온라인 메모장\\n버전 1.0",
     "shortcuts": "키보드 단축키",
-    "shortcutsText": "키보드 단축키:\\nCtrl+S - 저장\\nCtrl+Z - 실행 취소\\nCtrl+Y - 다시 실행\\nCtrl+A - 모두 선택\\nCtrl+P - 인쇄"
+    "shortcutsText": "키보드 단축키:\\nCtrl+S - 저장\\nCtrl+Z - 실행 취소\\nCtrl+Y - 다시 실행\\nCtrl+A - 모두 선택\\nCtrl+P - 인쇄\\nCtrl+B - 굵게\\nCtrl+U - 밑줄"
   },
   "toolbar": {
     "newWindow": "새 창",
@@ -61,6 +61,10 @@
     "zoomIn": "확대",
     "zoomOut": "축소",
     "fontSize": "글꼴 크기",
+    "bold": "굵게 (Ctrl+B)",
+    "underline": "밑줄 (Ctrl+U)",
+    "textColor": "글자 색상",
+    "customColor": "사용자 지정 색상",
     "help": "도움말"
   },
   "statusBar": {
