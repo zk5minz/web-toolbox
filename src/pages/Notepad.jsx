@@ -190,6 +190,24 @@ function Notepad() {
     setIsComposing(false);
   };
 
+  // 탭 전환 시 에디터 내용 동기화
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.innerHTML = activeTab.text || '';
+    }
+  }, [activeTabId]);
+
+  // Undo/Redo 시 에디터 내용 동기화
+  useEffect(() => {
+    if (editorRef.current) {
+      const currentContent = editorRef.current.innerHTML;
+      if (currentContent !== activeTab.text) {
+        // 히스토리에서 복원된 경우에만 업데이트
+        editorRef.current.innerHTML = activeTab.text || '';
+      }
+    }
+  }, [activeTab.historyIndex]);
+
   // Undo/Redo
   const handleUndo = () => {
     if (activeTab.historyIndex > 0) {
@@ -513,6 +531,47 @@ function Notepad() {
 
   // Handle editor key down
   const handleEditorKeyDown = (e) => {
+    // Enter 키 처리 - <br> 태그 삽입
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      
+      // 현재 선택 영역 가져오기
+      const selection = window.getSelection();
+      const range = selection.getRangeAt(0);
+      
+      // <br> 태그 생성 및 삽입
+      const br = document.createElement('br');
+      range.deleteContents();
+      range.insertNode(br);
+      
+      // 커서를 <br> 다음으로 이동
+      range.setStartAfter(br);
+      range.setEndAfter(br);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      
+      // 빈 줄에서 커서가 보이도록 추가 <br> 삽입 (마지막 줄인 경우)
+      if (!br.nextSibling || (br.nextSibling.nodeName === 'BR')) {
+        const extraBr = document.createElement('br');
+        br.parentNode.insertBefore(extraBr, br.nextSibling);
+      }
+      
+      // 상태 업데이트
+      if (editorRef.current) {
+        const newContent = editorRef.current.innerHTML;
+        updateTab(activeTabId, { text: newContent, isModified: true });
+        
+        if (typingTimerRef.current) {
+          clearTimeout(typingTimerRef.current);
+        }
+        typingTimerRef.current = setTimeout(() => {
+          saveToHistory(newContent);
+        }, 1000);
+      }
+      
+      return;
+    }
+    
     if (e.ctrlKey || e.metaKey) {
       switch(e.key.toLowerCase()) {
         case 'b':
@@ -861,7 +920,6 @@ function Notepad() {
           onKeyDown={handleEditorKeyDown}
           onPaste={handleEditorPaste}
           style={{ fontSize: `${fontSize}px`, minHeight: '100%' }}
-          dangerouslySetInnerHTML={{ __html: activeTab.text || '' }}
           data-placeholder={t('notepad:placeholder')}
           suppressContentEditableWarning={true}
         />
